@@ -1,0 +1,6 @@
+E:\Projets\Hand.ServerManagerCmdEmul\Hand.ServerManagerCmdEmul\%system32%\Hand.ServerManagerCmdEmul.exe.config
+E:\Projets\Hand.ServerManagerCmdEmul\Hand.ServerManagerCmdEmul\%systemroot%\Hand.ServerManagerCmdEmul.exe.config
+E:\Projets\Hand.ServerManagerCmdEmul\Hand.ServerManagerCmdEmul\%systemroot%\system32\Hand.ServerManagerCmdEmul.exe.config
+E:\Projets\Hand.ServerManagerCmdEmul\Hand.ServerManagerCmdEmul\%systemroot%\system32\Hand.ServerManagerCmdEmul.exe
+E:\Projets\Hand.ServerManagerCmdEmul\Hand.ServerManagerCmdEmul\%systemroot%\system32\Hand.ServerManagerCmdEmul.pdb
+E:\Projets\Hand.ServerManagerCmdEmul\Hand.ServerManagerCmdEmul\Bin\Debug\Hand.ServerManagerCmdEmul.exe.config
