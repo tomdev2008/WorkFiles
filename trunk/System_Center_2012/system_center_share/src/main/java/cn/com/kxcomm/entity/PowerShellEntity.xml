@@ -10,7 +10,7 @@
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<select id="queryAll" resultMap="DomainResultMap">
+	<select id="listByType" resultMap="DomainResultMap">
 		select id,file_name,powerShell_name,shell_type_id,variable_id,remark from tb_powershell
    </select>
   

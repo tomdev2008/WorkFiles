@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import cn.com.kxcomm.entity.DomUserEntity;
 import cn.com.kxcomm.systemcenter.domUser.dao.DomUserDAO;
-import cn.com.kxcomm.systemcenter.domUser.entity.DomUserEntity;
+import cn.com.kxcomm.systemcenter.domUser.dao.PowerShellDAO;
 import cn.com.kxcomm.systemcenter.domUser.service.DomUserService;
 import cn.com.kxcomm.systemcenter.domUser.service.ExecuteService;
 
@@ -22,6 +23,7 @@ public class DomUserServiceImpl implements DomUserService {
 	private static DomUserServiceImpl domUserServiceImpl;
 	private ExecuteService execute = CommonServiceImpl.getInstance();
 	private DomUserDAO domUserDAO = DomUserDAO.getInstance();
+	private PowerShellDAO powerShellDAO = PowerShellDAO.getInstance();
 	
 	/**
 	 * 
@@ -38,11 +40,12 @@ public class DomUserServiceImpl implements DomUserService {
 	}
 
 	@Override
-	public void listDomUser() {
-		String powerShell = "powershell get-process p*";
+	public List<DomUserEntity> listDomUser() {
+		//获取查询所有的域用户的脚本
 		List<DomUserEntity> list = domUserDAO.listEntity();
 		System.out.println("list"+list);
-		execute.execute(powerShell);
+//		execute.execute(powerShell);
+		return null;
 	}
 	
 }

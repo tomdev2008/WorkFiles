@@ -9,7 +9,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 import cn.com.kxcomm.common.base.CommonDAO;
 import cn.com.kxcomm.common.db.IbatisClientManager;
-import cn.com.kxcomm.systemcenter.domUser.entity.DomUserEntity;
+import cn.com.kxcomm.entity.DomUserEntity;
 
 /**
  * 
