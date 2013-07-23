@@ -1,10 +1,12 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2013/7/22 14:38:46                           */
+/* Created on:     2013/7/23 14:32:14                           */
 /*==============================================================*/
 
 
 drop table if exists tb_checking_in;
+
+drop table if exists tb_checking_instance;
 
 drop table if exists tb_depart;
 
@@ -26,7 +28,7 @@ drop table if exists tb_post;
 create table tb_checking_in
 (
    id                   varchar(50) not null comment '考勤主键id',
-   employee_id          varchar(50) comment '主键id',
+   emp_id               varchar(50) comment '主键id',
    stauts               varchar(50) comment '状态',
    reason               varchar(100) comment '原因',
    time                 date comment '时间',
@@ -34,12 +36,33 @@ create table tb_checking_in
 );
 
 /*==============================================================*/
+/* Table: tb_checking_instance                                  */
+/*==============================================================*/
+create table tb_checking_instance
+(
+   emp_id               varchar(50) comment '主键id',
+   instance_id          bigint,
+   emp_name             varchar(100) comment '员工姓名',
+   orgen_name           varchar(100),
+   emp_due              int,
+   emp_actual           int,
+   neglect_work         int,
+   emp_late             int,
+   leave_early          int,
+   overtime             int,
+   emp_leave            int,
+   emp_away             int,
+   weekend_overtime     int,
+   happenday            date
+);
+
+/*==============================================================*/
 /* Table: tb_depart                                             */
 /*==============================================================*/
 create table tb_depart
 (
+   perm_name            varchar(100) comment '员工姓名',
    id                   varchar(50) not null comment '部门主键id',
-   name                 varchar(100) comment '员工姓名',
    duty                 varchar(100) comment '职责',
    parent_depart        varchar(50) comment '父级部门',
    primary key (id)
@@ -52,9 +75,9 @@ alter table tb_depart comment '部门表';
 /*==============================================================*/
 create table tb_deptOrgen
 (
-   orgen_jd             varchar(50) not null comment '主键id',
+   orgen_id             varchar(50) not null comment '主键id',
    dept_id              varchar(50) not null comment '主键',
-   primary key (orgen_jd, dept_id)
+   primary key (orgen_id, dept_id)
 );
 
 /*==============================================================*/
@@ -63,13 +86,12 @@ create table tb_deptOrgen
 create table tb_employee
 (
    id                   varchar(50) not null comment '员工主键id',
-   orgen_jd             varchar(50) comment '机构主键id',
+   orgen_id             varchar(50) comment '机构主键id',
    post_id              varchar(50) comment '岗位主键id',
-   name                 varchar(100) comment '员工姓名',
    identity_card        varchar(18) comment '身份证',
    birthday             date comment '出生年月',
    address              varchar(100) comment '家庭地址',
-   phone                varchar(50) comment '联系电话',
+   orgen_phone          varchar(50) comment '联系电话',
    native_place         varchar(10) comment '籍贯',
    domicile_place       varchar(50) comment '户口所在地',
    graduation_date      date comment '毕业时间',
@@ -93,6 +115,7 @@ create table tb_employee
    change_jobs          varchar(20) comment '岗位变动',
    social_security_time date comment '社保保险缴费起始月',
    job_no               varchar(20) comment '工号',
+   emp_name             varchar(50),
    primary key (id)
 );
 
@@ -102,7 +125,7 @@ create table tb_employee
 create table tb_employee_contracts
 (
    id                   varchar(50) not null comment '员工合同主键ID',
-   employee_id          varchar(50) comment '员工id',
+   emp_id               varchar(50) comment '员工id',
    contract_effective_date date comment '合同生效日期',
    contract_end_date    date comment '合同终止日期',
    contract_date        date comment '合同签订日期',
@@ -116,8 +139,8 @@ create table tb_employee_contracts
 create table tb_orgen
 (
    id                   varchar(50) not null comment '机构主键id',
-   name                 varchar(100) comment '员工姓名',
-   phone                varchar(50) comment '联系电话',
+   perm_name            varchar(100) comment '员工姓名',
+   orgen_phone          varchar(50) comment '联系电话',
    place                varchar(100) comment '地址',
    type                 smallint comment '类型',
    create_time          date comment '成立时间',
@@ -138,9 +161,9 @@ alter table tb_orgen comment '机构表';
 create table tb_permanent_assets
 (
    id                   varchar(50) not null comment '固定资产主键id',
-   employee_id          varchar(50) comment '员工id',
+   emp_id               varchar(50) comment '员工id',
    number               varchar(100) comment '资产编号',
-   name                 varchar(100) comment '员工姓名',
+   perm_name            varchar(100) comment '员工姓名',
    acc_type             smallint comment '资产类型',
    state                smallint comment '状态
             1：使用中
@@ -166,25 +189,28 @@ create table tb_post
    primary key (id)
 );
 
-alter table tb_checking_in add constraint FK_Relationship_7 foreign key (employee_id)
+alter table tb_checking_in add constraint FK_Relationship_7 foreign key (emp_id)
+      references tb_employee (id) on delete restrict on update restrict;
+
+alter table tb_checking_instance add constraint FK_Relationship_12 foreign key (emp_id)
       references tb_employee (id) on delete restrict on update restrict;
 
 alter table tb_deptOrgen add constraint FK_Relationship_10 foreign key (dept_id)
       references tb_depart (id) on delete restrict on update restrict;
 
-alter table tb_deptOrgen add constraint FK_Relationship_9 foreign key (orgen_jd)
+alter table tb_deptOrgen add constraint FK_Relationship_9 foreign key (orgen_id)
       references tb_orgen (id) on delete restrict on update restrict;
 
 alter table tb_employee add constraint FK_Relationship_6 foreign key (post_id)
       references tb_post (id) on delete restrict on update restrict;
 
-alter table tb_employee add constraint FK_Relationship_8 foreign key (orgen_jd)
+alter table tb_employee add constraint FK_Relationship_8 foreign key (orgen_id)
       references tb_orgen (id) on delete restrict on update restrict;
 
-alter table tb_employee_contracts add constraint FK_Relationship_4 foreign key (employee_id)
+alter table tb_employee_contracts add constraint FK_Relationship_4 foreign key (emp_id)
       references tb_employee (id) on delete restrict on update restrict;
 
-alter table tb_permanent_assets add constraint FK_Relationship_11 foreign key (employee_id)
+alter table tb_permanent_assets add constraint FK_Relationship_11 foreign key (emp_id)
       references tb_employee (id) on delete restrict on update restrict;
 
 alter table tb_post add constraint FK_Relationship_5 foreign key (dept_id)
