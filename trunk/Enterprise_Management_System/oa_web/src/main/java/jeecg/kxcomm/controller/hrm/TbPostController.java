@@ -20,8 +20,10 @@ import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import jeecg.system.pojo.base.TSDepart;
 import jeecg.system.service.SystemService;
+
 import org.jeecgframework.core.util.MyBeanUtils;
 
+import jeecg.kxcomm.entity.hrm.TbDepartEntity;
 import jeecg.kxcomm.entity.hrm.TbPostEntity;
 import jeecg.kxcomm.service.hrm.TbPostServiceI;
 
@@ -132,6 +134,7 @@ public class TbPostController extends BaseController {
 		return j;
 	}
 
+
 	/**
 	 * 岗位表列表页面跳转
 	 * 
@@ -143,6 +146,8 @@ public class TbPostController extends BaseController {
 			tbPost = tbPostService.getEntity(TbPostEntity.class, tbPost.getId());
 			req.setAttribute("tbPostPage", tbPost);
 		}
+		List<TbDepartEntity> departList = systemService.getList(TbDepartEntity.class);
+		req.setAttribute("departList", departList);
 		return new ModelAndView("jeecg/kxcomm/hrm/tbPost");
 	}
 }

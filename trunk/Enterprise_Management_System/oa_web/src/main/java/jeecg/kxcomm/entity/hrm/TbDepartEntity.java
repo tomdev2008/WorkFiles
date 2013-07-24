@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.SequenceGenerator;
@@ -24,14 +27,14 @@ import javax.persistence.SequenceGenerator;
 @Table(name = "tb_depart", schema = "")
 @SuppressWarnings("serial")
 public class TbDepartEntity implements java.io.Serializable {
-	/**员工姓名*/
+	/**部门名称*/
 	private java.lang.String permName;
 	/**部门主键id*/
 	private java.lang.String id;
 	/**职责*/
 	private java.lang.String duty;
 	/**父级部门*/
-	private java.lang.String parentDepart;
+	private TbDepartEntity parentDepart;
 	
 	/**
 	 *方法: 取得java.lang.String
@@ -85,20 +88,15 @@ public class TbDepartEntity implements java.io.Serializable {
 	public void setDuty(java.lang.String duty){
 		this.duty = duty;
 	}
-	/**
-	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  父级部门
-	 */
-	@Column(name ="PARENT_DEPART",nullable=true,length=50)
-	public java.lang.String getParentDepart(){
-		return this.parentDepart;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "parent_depart")
+	public TbDepartEntity getParentDepart() {
+		return parentDepart;
 	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  父级部门
-	 */
-	public void setParentDepart(java.lang.String parentDepart){
+	public void setParentDepart(TbDepartEntity parentDepart) {
 		this.parentDepart = parentDepart;
 	}
+
 }

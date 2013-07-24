@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.SequenceGenerator;
@@ -27,9 +30,9 @@ public class TbEmployeeEntity implements java.io.Serializable {
 	/**员工主键id*/
 	private java.lang.String id;
 	/**机构主键id*/
-	private java.lang.String orgenId;
+	private TbOrgenEntity orgenId=new TbOrgenEntity();
 	/**岗位主键id*/
-	private java.lang.String postId;
+	private TbPostEntity postId=new TbPostEntity();
 	/**身份证*/
 	private java.lang.String identityCard;
 	/**出生年月*/
@@ -61,7 +64,7 @@ public class TbEmployeeEntity implements java.io.Serializable {
 	/**入职时间*/
 	private java.util.Date datesEmployed;
 	/**司龄*/
-	private java.util.Date workingTime;
+	private java.lang.String workingTime;
 	/**邮箱*/
 	private java.lang.String eMail;
 	/**直系亲属*/
@@ -84,7 +87,7 @@ public class TbEmployeeEntity implements java.io.Serializable {
 	private java.util.Date socialSecurityTime;
 	/**工号*/
 	private java.lang.String jobNo;
-	/**empName*/
+	/**员工姓名*/
 	private java.lang.String empName;
 	
 	/**
@@ -107,38 +110,34 @@ public class TbEmployeeEntity implements java.io.Serializable {
 	public void setId(java.lang.String id){
 		this.id = id;
 	}
-	/**
-	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  机构主键id
-	 */
-	@Column(name ="ORGEN_ID",nullable=true,length=50)
-	public java.lang.String getOrgenId(){
-		return this.orgenId;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "orgen_id")
+	public TbOrgenEntity getOrgenId() {
+		return orgenId;
 	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  机构主键id
-	 */
-	public void setOrgenId(java.lang.String orgenId){
+	public void setOrgenId(TbOrgenEntity orgenId) {
 		this.orgenId = orgenId;
 	}
-	/**
-	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  岗位主键id
-	 */
-	@Column(name ="POST_ID",nullable=true,length=50)
-	public java.lang.String getPostId(){
-		return this.postId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "post_id")
+	public TbPostEntity getPostId() {
+		return postId;
 	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  岗位主键id
-	 */
-	public void setPostId(java.lang.String postId){
+	public void setPostId(TbPostEntity postId) {
 		this.postId = postId;
 	}
+	@Column(name ="E_MAIL",nullable=true,length=50)
+	public java.lang.String geteMail() {
+		return eMail;
+	}
+
+	public void seteMail(java.lang.String eMail) {
+		this.eMail = eMail;
+	}
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  身份证
@@ -383,34 +382,16 @@ public class TbEmployeeEntity implements java.io.Serializable {
 	 *方法: 取得java.util.Date
 	 *@return: java.util.Date  司龄
 	 */
-	@Column(name ="WORKING_TIME",nullable=true)
-	public java.util.Date getWorkingTime(){
-		return this.workingTime;
+	@Column(name ="WORKING_TIME",nullable=true,length=50)
+	public java.lang.String getWorkingTime() {
+		return workingTime;
 	}
 
-	/**
-	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  司龄
-	 */
-	public void setWorkingTime(java.util.Date workingTime){
+	public void setWorkingTime(java.lang.String workingTime) {
 		this.workingTime = workingTime;
 	}
-	/**
-	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  邮箱
-	 */
-	@Column(name ="E_MAIL",nullable=true,length=50)
-	public java.lang.String getEMail(){
-		return this.eMail;
-	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  邮箱
-	 */
-	public void setEMail(java.lang.String eMail){
-		this.eMail = eMail;
-	}
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  直系亲属
@@ -419,6 +400,7 @@ public class TbEmployeeEntity implements java.io.Serializable {
 	public java.lang.String getImmediateFamily(){
 		return this.immediateFamily;
 	}
+
 
 	/**
 	 *方法: 设置java.lang.String

@@ -13,13 +13,23 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							部门id:
+							部门:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="deptId" name="deptId" ignore="ignore"
+					<%-- 	<input class="inputxt" id="deptId" name="deptId" ignore="ignore"
 							   value="${tbPostPage.deptId}">
-						<span class="Validform_checktip"></span>
+						<span class="Validform_checktip"></span> --%>
+						<select id="deptId.id"  name="deptId.id"  datatype="*">
+					       <c:forEach items="${departList}" var="depart">
+					        <option value="${depart.id }"  <%-- <c:if test="${depart.id==tbOrdersPage.channelId.id}">selected="selected"</c:if> --%>>
+					         ${depart.permName}
+					        </option>
+					       </c:forEach>
+				      	</select>
+						<%-- <input class="inputxt" id="channel" name="channel" 
+							   value="${tbOrdersPage.channel}" datatype="*"> --%>
+						<span class="Validform_checktip">请选择部门</span>
 					</td>
 				</tr>
 				<tr>

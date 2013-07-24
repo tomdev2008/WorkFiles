@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.SequenceGenerator;
@@ -27,18 +30,15 @@ public class TbPermanentAssetsEntity implements java.io.Serializable {
 	/**固定资产主键id*/
 	private java.lang.String id;
 	/**员工id*/
-	private java.lang.String empId;
+	private TbEmployeeEntity empId=new TbEmployeeEntity();
 	/**资产编号*/
 	private java.lang.String number;
-	/**员工姓名*/
+	/**资产名称*/
 	private java.lang.String permName;
 	/**资产类型*/
 	private java.lang.Integer accType;
-	/**状态
-            1：使用中
-            2：损坏
-            3：库存*/
-	private java.lang.Integer state;
+	/**状态*/
+	private java.lang.Integer stauts;
 	/**购入时间*/
 	private java.util.Date buyTime;
 	/**资产价值*/
@@ -66,22 +66,17 @@ public class TbPermanentAssetsEntity implements java.io.Serializable {
 	public void setId(java.lang.String id){
 		this.id = id;
 	}
-	/**
-	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  员工id
-	 */
-	@Column(name ="EMP_ID",nullable=true,length=50)
-	public java.lang.String getEmpId(){
-		return this.empId;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "emp_id")
+	public TbEmployeeEntity getEmpId() {
+		return empId;
 	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  员工id
-	 */
-	public void setEmpId(java.lang.String empId){
+	public void setEmpId(TbEmployeeEntity empId) {
 		this.empId = empId;
 	}
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  资产编号
@@ -137,20 +132,13 @@ public class TbPermanentAssetsEntity implements java.io.Serializable {
             2：损坏
             3：库存
 	 */
-	@Column(name ="STATE",nullable=true,precision=5,scale=0)
-	public java.lang.Integer getState(){
-		return this.state;
+	@Column(name ="STAUTS",nullable=true,precision=5,scale=0)
+	public java.lang.Integer getStauts() {
+		return stauts;
 	}
 
-	/**
-	 *方法: 设置java.lang.Integer
-	 *@param: java.lang.Integer  状态
-            1：使用中
-            2：损坏
-            3：库存
-	 */
-	public void setState(java.lang.Integer state){
-		this.state = state;
+	public void setStauts(java.lang.Integer stauts) {
+		this.stauts = stauts;
 	}
 	/**
 	 *方法: 取得java.util.Date
@@ -160,6 +148,8 @@ public class TbPermanentAssetsEntity implements java.io.Serializable {
 	public java.util.Date getBuyTime(){
 		return this.buyTime;
 	}
+
+
 
 	/**
 	 *方法: 设置java.util.Date

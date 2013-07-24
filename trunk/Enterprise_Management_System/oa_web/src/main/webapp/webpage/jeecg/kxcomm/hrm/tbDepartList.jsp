@@ -4,9 +4,9 @@
   <div region="center" style="padding:1px;">
   <t:datagrid name="tbDepartList" title="部门表" actionUrl="tbDepartController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
-   <t:dgCol title="员工姓名" field="permName" ></t:dgCol>
+   <t:dgCol title="部门名称" field="permName" ></t:dgCol>
    <t:dgCol title="职责" field="duty" ></t:dgCol>
-   <t:dgCol title="父级部门" field="parentDepart" ></t:dgCol>
+   <t:dgCol title="上级部门" field="parentDepart_permName" ></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
    <t:dgDelOpt title="删除" url="tbDepartController.do?del&id={id}" />
    <t:dgToolBar title="录入" icon="icon-add" url="tbDepartController.do?addorupdate" funname="add"></t:dgToolBar>

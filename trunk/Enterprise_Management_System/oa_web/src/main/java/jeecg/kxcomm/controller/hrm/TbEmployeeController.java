@@ -22,7 +22,10 @@ import jeecg.system.pojo.base.TSDepart;
 import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
 
+import jeecg.kxcomm.entity.hrm.TbDepartEntity;
 import jeecg.kxcomm.entity.hrm.TbEmployeeEntity;
+import jeecg.kxcomm.entity.hrm.TbOrgenEntity;
+import jeecg.kxcomm.entity.hrm.TbPostEntity;
 import jeecg.kxcomm.service.hrm.TbEmployeeServiceI;
 
 /**   
@@ -143,6 +146,10 @@ public class TbEmployeeController extends BaseController {
 			tbEmployee = tbEmployeeService.getEntity(TbEmployeeEntity.class, tbEmployee.getId());
 			req.setAttribute("tbEmployeePage", tbEmployee);
 		}
+		List<TbOrgenEntity> orgenList = systemService.getList(TbOrgenEntity.class);
+		req.setAttribute("orgenList", orgenList);
+		List<TbPostEntity> postList = systemService.getList(TbPostEntity.class);
+		req.setAttribute("postList", postList);
 		return new ModelAndView("jeecg/kxcomm/hrm/tbEmployee");
 	}
 }

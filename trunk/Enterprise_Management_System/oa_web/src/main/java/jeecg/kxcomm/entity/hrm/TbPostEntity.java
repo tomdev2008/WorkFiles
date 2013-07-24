@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.SequenceGenerator;
@@ -27,7 +30,7 @@ public class TbPostEntity implements java.io.Serializable {
 	/**岗位id*/
 	private java.lang.String id;
 	/**部门id*/
-	private java.lang.String deptId;
+	private TbDepartEntity deptId=new TbDepartEntity();
 	/**岗位名称*/
 	private java.lang.String postName;
 	/**岗位职责*/
@@ -53,22 +56,17 @@ public class TbPostEntity implements java.io.Serializable {
 	public void setId(java.lang.String id){
 		this.id = id;
 	}
-	/**
-	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  部门id
-	 */
-	@Column(name ="DEPT_ID",nullable=true,length=50)
-	public java.lang.String getDeptId(){
-		return this.deptId;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "dept_id")
+	public TbDepartEntity getDeptId() {
+		return deptId;
 	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  部门id
-	 */
-	public void setDeptId(java.lang.String deptId){
+	public void setDeptId(TbDepartEntity deptId) {
 		this.deptId = deptId;
 	}
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  岗位名称

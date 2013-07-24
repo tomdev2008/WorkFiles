@@ -143,6 +143,8 @@ public class TbDepartController extends BaseController {
 			tbDepart = tbDepartService.getEntity(TbDepartEntity.class, tbDepart.getId());
 			req.setAttribute("tbDepartPage", tbDepart);
 		}
+		List<TbDepartEntity> departList = systemService.getList(TbDepartEntity.class);
+		req.setAttribute("departList", departList);
 		return new ModelAndView("jeecg/kxcomm/hrm/tbDepart");
 	}
 }

@@ -10,18 +10,7 @@
   <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbPermanentAssetsController.do?save">
 			<input id="id" name="id" type="hidden" value="${tbPermanentAssetsPage.id }">
 			<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							员工id:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="empId" name="empId" ignore="ignore"
-							   value="${tbPermanentAssetsPage.empId}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
+				
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
@@ -37,12 +26,12 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							员工姓名:
+							资产名称:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="permName" name="permName" ignore="ignore"
-							   value="${tbPermanentAssetsPage.permName}">
+							<input class="inputxt" id="permName" name="permName" ignore="ignore"
+							   value="${tbPermanentAssetsPage.number}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -53,24 +42,32 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="accType" name="accType" ignore="ignore"
-							   value="${tbPermanentAssetsPage.accType}" datatype="n">
-						<span class="Validform_checktip"></span>
+							<select id="accType"  name="accType"  datatype="*">
+					        <option value="1" >
+					        计算机设备
+					        </option>
+					            <option value="2" >
+					      办公用品
+					        </option>
+				      	</select>
+						<span class="Validform_checktip">请选择员工</span>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
 							状态
-            1：使用中
-            2：损坏
-            3：库存:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="state" name="state" ignore="ignore"
-							   value="${tbPermanentAssetsPage.state}" datatype="n">
-						<span class="Validform_checktip"></span>
+					<select id="stauts"  name="stauts"  datatype="*">
+				      	 <c:forEach items="${statusList}" var="stauts">
+					        <option value="${stauts.id }" <%--  <c:if test="${depart.id==tbOrdersPage.channelId.id}">selected="selected"</c:if> --%>>
+					         ${stauts.name}
+					        </option>
+					       </c:forEach>
+				      	</select>
+						<span class="Validform_checktip">请选择状态</span> 
 					</td>
 				</tr>
 				<tr>
@@ -95,6 +92,25 @@
 						<input class="inputxt" id="price" name="price" ignore="ignore"
 							   value="${tbPermanentAssetsPage.price}" datatype="d">
 						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							使用人:
+						</label>
+					</td>
+					<td class="value">
+							<select id="empId.id"  name="empId.id"  datatype="*">
+					       <c:forEach items="${employeeList}" var="employee">
+					        <option value="${employee.id }"  <%-- <c:if test="${depart.id==tbOrdersPage.channelId.id}">selected="selected"</c:if> --%>>
+					         ${employee.empName}
+					        </option>
+					       </c:forEach>
+				      	</select>
+						<%-- <input class="inputxt" id="channel" name="channel" 
+							   value="${tbOrdersPage.channel}" datatype="*"> --%>
+						<span class="Validform_checktip">请选择员工</span>
 					</td>
 				</tr>
 				<tr>
