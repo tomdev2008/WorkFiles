@@ -7,10 +7,10 @@
    <t:dgCol title="机构名称" field="permName" ></t:dgCol>
    <t:dgCol title="联系电话" field="orgenPhone" ></t:dgCol>
    <t:dgCol title="地址" field="place" ></t:dgCol>
-   <t:dgCol title="类型" field="type" ></t:dgCol>
+   <t:dgCol title="类型" field="type" replace="总公司_1,分公司_2,办事处_3"></t:dgCol>
    <t:dgCol title="成立时间" field="createTime" formatter="yyyy-MM-dd"></t:dgCol>
-   <t:dgCol title="上级机构" field="parentOrgen" ></t:dgCol>
-   <t:dgCol title="资产编号" field="number" ></t:dgCol>
+   <t:dgCol title="上级机构" field="parentOrgen"  hidden="false"></t:dgCol>
+   <t:dgCol title="组织机构代码" field="number" ></t:dgCol>
    <t:dgCol title="手机号码" field="tellPhone" ></t:dgCol>
    <t:dgCol title="税务登记证" field="businessLicenseNo" ></t:dgCol>
    <t:dgCol title="开户行名称" field="bankName" ></t:dgCol>

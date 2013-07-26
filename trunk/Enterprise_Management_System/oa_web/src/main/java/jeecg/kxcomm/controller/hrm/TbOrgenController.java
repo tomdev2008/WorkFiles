@@ -143,6 +143,8 @@ public class TbOrgenController extends BaseController {
 			tbOrgen = tbOrgenService.getEntity(TbOrgenEntity.class, tbOrgen.getId());
 			req.setAttribute("tbOrgenPage", tbOrgen);
 		}
+		List<TbOrgenEntity> orgenList = systemService.getList(TbOrgenEntity.class);
+		req.setAttribute("orgenList", orgenList);
 		return new ModelAndView("jeecg/kxcomm/hrm/tbOrgen");
 	}
 }

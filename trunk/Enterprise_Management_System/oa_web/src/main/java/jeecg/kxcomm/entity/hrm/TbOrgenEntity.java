@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.SequenceGenerator;
@@ -33,11 +36,11 @@ public class TbOrgenEntity implements java.io.Serializable {
 	/**地址*/
 	private java.lang.String place;
 	/**类型*/
-	private java.lang.Integer type;
+	private java.lang.Integer type;		//1：总公司、2：分公司、3：办事处
 	/**成立时间*/
 	private java.util.Date createTime;
 	/**上级机构*/
-	private java.lang.Integer parentOrgen;
+	private java.lang.String parentOrgen;
 	/**资产编号*/
 	private java.lang.String number;
 	/**手机号码*/
@@ -150,22 +153,6 @@ public class TbOrgenEntity implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 	/**
-	 *方法: 取得java.lang.Integer
-	 *@return: java.lang.Integer  上级机构
-	 */
-	@Column(name ="PARENT_ORGEN",nullable=true,precision=10,scale=0)
-	public java.lang.Integer getParentOrgen(){
-		return this.parentOrgen;
-	}
-
-	/**
-	 *方法: 设置java.lang.Integer
-	 *@param: java.lang.Integer  上级机构
-	 */
-	public void setParentOrgen(java.lang.Integer parentOrgen){
-		this.parentOrgen = parentOrgen;
-	}
-	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  资产编号
 	 */
@@ -244,5 +231,26 @@ public class TbOrgenEntity implements java.io.Serializable {
 	 */
 	public void setTaxRegistrationCertificate(java.lang.String taxRegistrationCertificate){
 		this.taxRegistrationCertificate = taxRegistrationCertificate;
+	}
+	@Column(name ="PARENT_ORGEN",nullable=true,length=50)
+	public java.lang.String getParentOrgen() {
+		return this.parentOrgen;
+	}
+
+	public void setParentOrgen(java.lang.String parentOrgen) {
+		this.parentOrgen = parentOrgen;
+	}
+
+	@Override
+	public String toString() {
+		return "TbOrgenEntity [id=" + this.id + ", permName=" + this.permName
+				+ ", orgenPhone=" + this.orgenPhone + ", place=" + this.place
+				+ ", type=" + this.type + ", createTime=" + this.createTime
+				+ ", parentOrgen=" + this.parentOrgen + ", number="
+				+ this.number + ", tellPhone=" + this.tellPhone
+				+ ", businessLicenseNo=" + this.businessLicenseNo
+				+ ", bankName=" + this.bankName
+				+ ", taxRegistrationCertificate="
+				+ this.taxRegistrationCertificate + "]";
 	}
 }

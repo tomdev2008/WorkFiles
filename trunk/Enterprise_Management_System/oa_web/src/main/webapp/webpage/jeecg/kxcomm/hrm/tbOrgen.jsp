@@ -6,6 +6,37 @@
   <title>机构表</title>
   <t:base type="jquery,easyui,tools,DatePicker"></t:base>
  </head>
+ <script type="text/javascript">
+ //判断是新增还是修改
+ 	function checkAddOrUpdate() {
+ 		var endid = '${tbOrgenPage.id}';
+ 		if(null != endid || "" != endid) {
+ 			var rogenstype = '${tbOrgenPage.type}';
+ 			var rogensParentOrgen = '${tbOrgenPage.parentOrgen}';
+ 			$("#rogenTypes").val(rogenstype);
+ 			$("#parentOrgen").val(rogensParentOrgen);
+ 		}
+ 	}
+ //根据选择的机构类型，显示不同的内容
+ 	function changeInfoByType() {
+		 var chooesOne = $("#rogenTypes").val();
+		 if("1" == chooesOne) {		//如果选择的是总公司
+			 $("#shangjijigou").hide();
+			 $("#zzjgdm").show();
+			 $("#shoujihaoma").show();
+			 $("#shuiwudengji").show();
+			 $("#kaihuhang").show();
+			 $("#yingyezhizhao").show();
+		 } else if("2" == chooesOne ||　"3" == chooesOne) {		//如果选择的是分公司或办事处
+			 $("#shangjijigou").show();	
+			 $("#zzjgdm").hide();
+			 $("#shoujihaoma").hide();
+			 $("#shuiwudengji").hide();
+			 $("#kaihuhang").hide();
+			 $("#yingyezhizhao").hide();
+		 }
+ 	}
+ </script>
  <body style="overflow-y: hidden" scroll="no">
   <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbOrgenController.do?save">
 			<input id="id" name="id" type="hidden" value="${tbOrgenPage.id }">
@@ -53,9 +84,11 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="type" name="type" ignore="ignore"
-							   value="${tbOrgenPage.type}" datatype="n">
-						<span class="Validform_checktip"></span>
+						<select id="rogenTypes"  name="type"  datatype="*" onchange="changeInfoByType();">
+					        <option value="1">总公司</option>
+					        <option value="2">分公司</option>
+					        <option value="3">办事处</option>
+				      	</select>
 					</td>
 				</tr>
 				<tr>
@@ -70,22 +103,26 @@
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				<tr>
+				<tr id="shangjijigou">
 					<td align="right">
 						<label class="Validform_label">
 							上级机构:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="parentOrgen" name="parentOrgen" ignore="ignore"
-							   value="${tbOrgenPage.parentOrgen}" datatype="n">
-						<span class="Validform_checktip"></span>
+						<select id="parentOrgen"  name="parentOrgen"  datatype="*">
+					       <c:forEach items="${orgenList}" var="orgen">
+					        <option value="${orgen.id }" >
+					         ${orgen.permName}
+					        </option>
+					       </c:forEach>
+				      	</select>
 					</td>
 				</tr>
-				<tr>
+				<tr id="zzjgdm">
 					<td align="right">
 						<label class="Validform_label">
-							资产编号:
+							组织机构代码:
 						</label>
 					</td>
 					<td class="value">
@@ -94,7 +131,7 @@
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				<tr>
+				<tr id="shoujihaoma">
 					<td align="right">
 						<label class="Validform_label">
 							手机号码:
@@ -106,7 +143,7 @@
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				<tr>
+				<tr id="shuiwudengji">
 					<td align="right">
 						<label class="Validform_label">
 							税务登记证:
@@ -118,7 +155,7 @@
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				<tr>
+				<tr id="kaihuhang">
 					<td align="right">
 						<label class="Validform_label">
 							开户行名称:
@@ -130,7 +167,7 @@
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
-				<tr>
+				<tr id="yingyezhizhao">
 					<td align="right">
 						<label class="Validform_label">
 							营业执照:
@@ -145,3 +182,7 @@
 			</table>
 		</t:formvalid>
  </body>
+ <script type="text/javascript">
+ checkAddOrUpdate();
+ changeInfoByType();
+ </script>
