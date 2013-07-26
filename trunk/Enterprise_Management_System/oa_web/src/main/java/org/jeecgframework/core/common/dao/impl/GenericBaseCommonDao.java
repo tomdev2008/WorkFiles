@@ -677,7 +677,6 @@ public abstract class GenericBaseCommonDao<T, PK extends Serializable> implement
 		// cq.getField().split(","), cq.getClass1(), false);
 		List list = criteria.list();
 		cq.getDataGrid().setReaults(list);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@"+list.size());
 		cq.getDataGrid().setTotal(allCounts);
 		return new DataGridReturn(allCounts, list);
 	}
