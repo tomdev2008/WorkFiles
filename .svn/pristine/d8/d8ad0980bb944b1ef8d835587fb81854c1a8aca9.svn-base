@@ -23,19 +23,13 @@
  		if(null != endid && "" != endid) {
  			var empconstatus = '${tbEmployeeContractsPage.status}';
  			$("#status").val(empconstatus);
-			var rowsd = $("#tbEmplooyList").datagrid("getRows");
-			var deids = '${tbEmployeeContractsPage.empId.id}'+"";
-			for(var i = 0; i < rowsd.length; i++) {
-				if(rowsd[i].id == deids+"") {
-					$("#tbEmplooyList").datagrid("selectRow",i);
-				}
-			}
+ 			$("#theemploeTabel").hide();
  		}
  	} 
  </script>
  <body style="overflow-y: hidden" scroll="no">
  <div id="theemploeTabel" style="width: 600px;height: 200px;">
-	 <t:datagrid name="tbEmplooyList"  actionUrl="tbEmployeeContractsController.do?empdatagrid" idField="id" fit="true" pagination="false" onLoadSuccess="checkAddOrUpdate();">
+	 <t:datagrid name="tbEmplooyList" checkbox="true" actionUrl="tbEmployeeContractsController.do?empdatagrid" idField="id" fit="true">
 	   <t:dgCol title="ID" field="id" hidden="false"></t:dgCol>
 	   <t:dgCol title="员工号" field="jobNo"></t:dgCol>
 	   <t:dgCol title="员工名称" field="empName" hidden="true"></t:dgCol>
@@ -112,9 +106,5 @@
 		</t:formvalid>
  </body>
  <script type="text/javascript">
- $(document).ready(function(){ 
-	$('#tbEmplooyList').datagrid({
-		singleSelect:true
-	});
-});
+ checkAddOrUpdate();
  </script>

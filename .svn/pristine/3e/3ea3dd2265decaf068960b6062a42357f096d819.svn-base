@@ -7,35 +7,6 @@
   <t:base type="jquery,easyui,tools,DatePicker"></t:base>
  </head>
  <script type="text/javascript">
- 	//初始化时勾选上用户选择的部门
- 	function initCheckdept() {
- 		var endid = '${tbOrgenPage.id}';
- 		if(null != endid && "" != endid) {
- 			var deptIds = '${deptIds}'+"";
- 			if(null != deptIds && "" != deptIds) {
- 				var deids = [];
- 				deids = deptIds.split(",");
- 				var rows = $("#departList").datagrid("getRows");
- 				for(var j = 0; j < deids.length; j++) {
- 					for(var i = 0; i < rows.length; i++) {
- 						if(rows[i].id == deids[j]) {
- 							$("#departList").datagrid("selectRow",i);
- 						}
- 					}
- 				}
- 			}
- 		}
- 	}
-	//获得点击的行的数据
-	function wantSelectRowData() {
-		var ids = "";
-		var rows = $("#departList").datagrid("getSelections");
-		for(var i=0;i<rows.length;i++){
-			ids += rows[i].id+",";
-		}
-		ids = ids.substring(0,ids.length-1);
-		$("#ids").val(ids);
-	}	
  //判断是新增还是修改
  	function checkAddOrUpdate() {
  		var endid = '${tbOrgenPage.id}';
@@ -67,7 +38,7 @@
  	}
  </script>
  <body style="overflow-y: hidden" scroll="no">
-  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbOrgenController.do?save" beforeSubmit="wantSelectRowData();">
+  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbOrgenController.do?save">
 			<input id="id" name="id" type="hidden" value="${tbOrgenPage.id }">
 			<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
 				<tr>
@@ -77,9 +48,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="permName" name="permName" 
+						<input class="inputxt" id="permName" name="permName" ignore="ignore"
 							   value="${tbOrgenPage.permName}">
-						<input style="display: none;" id="ids" name="ids">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -211,13 +181,6 @@
 				</tr>
 			</table>
 		</t:formvalid>
-	<div id="theemploeTabel" style="width: 600px;height: 200px;">
-		<t:datagrid name="departList" title="选择部门列表" checkbox="true" actionUrl="tbOrgenController.do?departgrid" idField="id" pagination="false" onLoadSuccess="initCheckdept();">
-		 <t:dgCol title="编号" field="id" treefield="id" hidden="false"></t:dgCol>
-		 <t:dgCol title="部门名称" field="departname"></t:dgCol>
-		 <t:dgCol title="职能描述" field="description"></t:dgCol>
-		</t:datagrid>
-	</div>
  </body>
  <script type="text/javascript">
  checkAddOrUpdate();
