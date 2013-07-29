@@ -39,8 +39,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="postName" name="postName" ignore="ignore"
-							   value="${tbPostPage.postName}">
+						<input class="inputxt" id="postName" name="postName" datatype="s1-20"
+							   value="${tbPostPage.postName}" >
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -51,7 +51,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="postDuty" name="postDuty" ignore="ignore"
+						<input class="inputxt" id="postDuty" name="postDuty" datatype="s0-50"
 							   value="${tbPostPage.postDuty}">
 						<span class="Validform_checktip"></span>
 					</td>

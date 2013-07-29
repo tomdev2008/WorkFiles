@@ -18,8 +18,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="number" name="number" ignore="ignore"
-							   value="${tbPermanentAssetsPage.number}">
+						<input class="inputxt" id="number" name="number" 
+							   value="${tbPermanentAssetsPage.number}" datatype="s0-50">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -30,8 +30,8 @@
 						</label>
 					</td>
 					<td class="value">
-							<input class="inputxt" id="permName" name="permName" ignore="ignore"
-							   value="${tbPermanentAssetsPage.number}">
+							<input class="inputxt" id="permName" name="permName" 
+							   value="${tbPermanentAssetsPage.number}" datatype="s0-100">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -119,7 +119,6 @@
 					</td>
 					<td class="value">
 							<select id="empId.id"  name="empId.id"  datatype="*">
-							<option selected="selected" value="无">
 					       <c:forEach items="${employeeList}" var="employee">
 					        <option value="${employee.id }"  <%-- <c:if test="${depart.id==tbOrdersPage.channelId.id}">selected="selected"</c:if> --%>>
 					         ${employee.empName}
@@ -138,7 +137,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="remark" name="remark" ignore="ignore"
+						<input class="inputxt" id="remark" name="remark" datatype="s0-100"
 							   value="${tbPermanentAssetsPage.remark}">
 						<span class="Validform_checktip"></span>
 					</td>

@@ -78,7 +78,7 @@
 					</td>
 					<td class="value">
 						<input class="inputxt" id="permName" name="permName" 
-							   value="${tbOrgenPage.permName}">
+							   value="${tbOrgenPage.permName}" datatype="*">
 						<input style="display: none;" id="ids" name="ids">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -91,7 +91,7 @@
 					</td>
 					<td class="value">
 						<input class="inputxt" id="orgenPhone" name="orgenPhone" ignore="ignore"
-							   value="${tbOrgenPage.orgenPhone}">
+							   value="${tbOrgenPage.orgenPhone}" datatype="*">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -103,7 +103,7 @@
 					</td>
 					<td class="value">
 						<input class="inputxt" id="place" name="place" ignore="ignore"
-							   value="${tbOrgenPage.place}">
+							   value="${tbOrgenPage.place}" datatype="*">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -129,7 +129,7 @@
 					</td>
 					<td class="value">
 						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="createTime" name="createTime" ignore="ignore"
-							   value="<fmt:formatDate value='${tbOrgenPage.createTime}' type="date" pattern="yyyy-MM-dd"/>">
+							   value="<fmt:formatDate value='${tbOrgenPage.createTime}' type="date" pattern="yyyy-MM-dd"/>" datatype="*">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -140,7 +140,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<select id="parentOrgen"  name="parentOrgen"  datatype="*">
+						<select id="parentOrgen"  name="parentOrgen" >
 					       <c:forEach items="${orgenList}" var="orgen">
 					        <option value="${orgen.id }" >
 					         ${orgen.permName}

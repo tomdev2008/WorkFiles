@@ -11,6 +11,10 @@
 	function wantSelectRowData() {
 		var ids = "";
 		var rows = $("#tbEmplooyList").datagrid("getSelections");
+		if(0 >= rows.length) {
+			alert("请选择一个员工");
+			return false;
+		}
 		for(var i=0;i<rows.length;i++){
 			ids += rows[i].id+",";
 		}
@@ -65,8 +69,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractEffectiveDate" name="contractEffectiveDate" ignore="ignore"
-							   value="<fmt:formatDate value='${tbEmployeeContractsPage.contractEffectiveDate}' type="date" pattern="yyyy-MM-dd"/>">
+						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractEffectiveDate" name="contractEffectiveDate" 
+							   value="<fmt:formatDate value='${tbEmployeeContractsPage.contractEffectiveDate}' type="date" pattern="yyyy-MM-dd"/>" datatype="*">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -77,8 +81,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractEndDate" name="contractEndDate" ignore="ignore"
-							   value="<fmt:formatDate value='${tbEmployeeContractsPage.contractEndDate}' type="date" pattern="yyyy-MM-dd"/>">
+						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractEndDate" name="contractEndDate" 
+							   value="<fmt:formatDate value='${tbEmployeeContractsPage.contractEndDate}' type="date" pattern="yyyy-MM-dd"/>" datatype="*">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -89,8 +93,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractDate" name="contractDate" ignore="ignore"
-							   value="<fmt:formatDate value='${tbEmployeeContractsPage.contractDate}' type="date" pattern="yyyy-MM-dd"/>">
+						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractDate" name="contractDate" 
+							   value="<fmt:formatDate value='${tbEmployeeContractsPage.contractDate}' type="date" pattern="yyyy-MM-dd"/>" datatype="*">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>

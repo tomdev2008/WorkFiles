@@ -9,7 +9,7 @@
  <body style="overflow-y: hidden" scroll="no">
   <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbEmployeeController.do?save">
 			<input id="id" name="id" type="hidden" value="${tbEmployeePage.id }">
-			<table style="width: 700px;" cellpadding="0" cellspacing="1" class="formtable">
+			<table style="width: 800px;" cellpadding="0" cellspacing="1" class="formtable">
 			<tr>
 			<td colspan="4" bgcolor="#BFEFFF" style="font-size: 14px;">员工基本信息</td>
 			</tr>
@@ -20,8 +20,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="jobNo" name="jobNo" ignore="ignore"
-							   value="${tbEmployeePage.jobNo}">
+						<input class="inputxt" id="jobNo" name="jobNo" 
+							   value="${tbEmployeePage.jobNo}" datatype="s1-20">
 						<span class="Validform_checktip"></span>
 					</td>
 				<td align="right">
@@ -30,8 +30,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="empName" name="empName" ignore="ignore"
-							   value="${tbEmployeePage.empName}">
+						<input class="inputxt" id="empName" name="empName" 
+							   value="${tbEmployeePage.empName}" datatype="s2-50">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -43,8 +43,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="identityCard" name="identityCard" ignore="ignore"
-							   value="${tbEmployeePage.identityCard}">
+						<input class="inputxt" id="identityCard" name="identityCard" 
+							   value="${tbEmployeePage.identityCard}" datatype="s6-18">
 						<span class="Validform_checktip"></span>
 					</td>
 					<td align="right">
@@ -65,7 +65,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="address" name="address" ignore="ignore"
+						<input class="inputxt" id="address" name="address" datatype="s0-100"
 							   value="${tbEmployeePage.address}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -75,7 +75,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="orgenPhone" name="orgenPhone" ignore="ignore"
+						<input class="inputxt" id="orgenPhone" name="orgenPhone" datatype="s6-11"
 							   value="${tbEmployeePage.orgenPhone}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -87,7 +87,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="nativePlace" name="nativePlace" ignore="ignore"
+						<input class="inputxt" id="nativePlace" name="nativePlace" datatype="s0-10"
 							   value="${tbEmployeePage.nativePlace}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -97,7 +97,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="domicilePlace" name="domicilePlace" ignore="ignore"
+						<input class="inputxt" id="domicilePlace" name="domicilePlace" datatype="s0-50"
 							   value="${tbEmployeePage.domicilePlace}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -109,7 +109,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="householdProperties" name="householdProperties" ignore="ignore"
+						<input class="inputxt" id="householdProperties" name="householdProperties" datatype="s0-2"
 							   value="${tbEmployeePage.householdProperties}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -119,7 +119,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="immediateFamily" name="immediateFamily" ignore="ignore"
+						<input class="inputxt" id="immediateFamily" name="immediateFamily" datatype="s0-50"
 							   value="${tbEmployeePage.immediateFamily}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -141,7 +141,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="graduateSchool" name="graduateSchool" ignore="ignore"
+						<input class="inputxt" id="graduateSchool" name="graduateSchool" datatype="s0-50"
 							   value="${tbEmployeePage.graduateSchool}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -153,7 +153,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="major" name="major" ignore="ignore"
+						<input class="inputxt" id="major" name="major" datatype="s0-20"
 							   value="${tbEmployeePage.major}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -163,7 +163,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="educationBackground" name="educationBackground" ignore="ignore"
+						<input class="inputxt" id="educationBackground" name="educationBackground" datatype="s0-20"
 							   value="${tbEmployeePage.educationBackground}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -175,17 +175,17 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="marry" name="marry" ignore="ignore"
+						<input class="inputxt" id="marry" name="marry" datatype="s0-20"
 							   value="${tbEmployeePage.marry}">
 						<span class="Validform_checktip"></span>
 					</td>
 					<td align="right">
 						<label class="Validform_label">
-							名族:
+							民族:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="nation" name="nation" ignore="ignore"
+						<input class="inputxt" id="nation" name="nation" datatype="s0-20"
 							   value="${tbEmployeePage.nation}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -213,7 +213,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="politicsStatus" name="politicsStatus" ignore="ignore"
+						<input class="inputxt" id="politicsStatus" name="politicsStatus" datatype="s0-20"
 							   value="${tbEmployeePage.politicsStatus}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -270,8 +270,8 @@
 						</label>
 					</td>
 					<td class="value">
-							<input class="inputxt" id="workingTime" name="workingTime" ignore="ignore"
-							   value="${tbEmployeePage.eMail}">
+							<input class="inputxt" id="workingTime" name="workingTime" datatype="s0-50"
+							   value="${tbEmployeePage.workingTime}">
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>
@@ -282,7 +282,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="eMail" name="eMail" ignore="ignore"
+						<input class="inputxt" id="eMail" name="eMail" datatype="s0-50"
 							   value="${tbEmployeePage.eMail}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -310,7 +310,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="openingBank" name="openingBank" ignore="ignore"
+						<input class="inputxt" id="openingBank" name="openingBank" datatype="s0-50"
 							   value="${tbEmployeePage.openingBank}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -320,7 +320,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="cardNo" name="cardNo" ignore="ignore"
+						<input class="inputxt" id="cardNo" name="cardNo" datatype="s0-20"
 							   value="${tbEmployeePage.cardNo}" datatype="d">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -332,7 +332,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="jobTitle" name="jobTitle" ignore="ignore"
+						<input class="inputxt" id="jobTitle" name="jobTitle" datatype="s0-20"
 							   value="${tbEmployeePage.jobTitle}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -342,7 +342,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="titleLevel" name="titleLevel" ignore="ignore"
+						<input class="inputxt" id="titleLevel" name="titleLevel" datatype="s0-20"
 							   value="${tbEmployeePage.titleLevel}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -354,7 +354,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="changeJobs" name="changeJobs" ignore="ignore"
+						<input class="inputxt" id="changeJobs" name="changeJobs" datatype="s0-20"
 							   value="${tbEmployeePage.changeJobs}">
 						<span class="Validform_checktip"></span>
 					</td>

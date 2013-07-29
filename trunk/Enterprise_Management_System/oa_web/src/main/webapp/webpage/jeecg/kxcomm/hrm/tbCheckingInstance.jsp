@@ -22,20 +22,27 @@
 	} 
 //获得点击的行的数据
 	function wantSelectRowData() {
+	var end = true;
 		var ids = "";
 		var rows = $("#tbEmplooyList").datagrid("getSelections");
+		if(0 >= rows.length) {
+			alert("请选择一个员工");
+			end = false;
+		}
 		for(var i=0;i<rows.length;i++){
 			ids += rows[i].id+",";
 		}
 		ids = ids.substring(0,ids.length-1);
 		$("#empId").val(ids);
+		return end;
 	}
  	//提交表单前，获得所选择的复选框。
  	function wantSelections() {
  		var endid = '${tbCheckingInstancePage.id}';
-//  		if(null == endid || "" == endid) {
- 			wantSelectRowData();
-//  		}
+ 		var whatstats = wantSelectRowData();
+ 		if(!whatstats) {
+ 			return false;
+ 		}
  		var end = null;
  		var ids = "";
  		$("#checkstabel input:checkbox").each(function(){
@@ -143,8 +150,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="happenday" name="happenday" ignore="ignore"
-							   value="<fmt:formatDate value='${tbCheckingInstancePage.happenday}' type="date" pattern="yyyy-MM-dd"/>">
+						<input class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="happenday" name="happenday" 
+							   value="<fmt:formatDate value='${tbCheckingInstancePage.happenday}' type="date" pattern="yyyy-MM-dd"/>" datatype="*">
 						<input id="hidenids" name="ids" style="display: none;" >
 						<span class="Validform_checktip"></span>
 					</td>

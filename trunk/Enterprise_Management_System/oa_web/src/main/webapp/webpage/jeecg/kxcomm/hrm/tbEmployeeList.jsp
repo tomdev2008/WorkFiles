@@ -24,7 +24,7 @@
    <t:dgCol title="性别" field="sex" replace="男_1,女_2" ></t:dgCol>
    <t:dgCol title="政治面貌" field="politicsStatus" hidden="false"></t:dgCol>
    <t:dgCol title="入职时间" field="datesEmployed" formatter="yyyy-MM-dd"></t:dgCol>
-   <t:dgCol title="司龄" field="workingTime" formatter="yyyy-MM-dd"></t:dgCol>
+   <t:dgCol title="司龄" field="workingTime" ></t:dgCol>
    <t:dgCol title="邮箱" field="eMail" hidden="false"></t:dgCol>
    <t:dgCol title="直系亲属" field="immediateFamily" hidden="false"></t:dgCol>
    <t:dgCol title="状态" field="status" replace="正式员工_1,实习员工_2" ></t:dgCol>
