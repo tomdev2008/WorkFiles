@@ -23,6 +23,7 @@
 	   <t:dgToolBar title="录入" icon="icon-add" url="tbCheckingInstanceController.do?addorupdate" funname="add"></t:dgToolBar>
 	   <t:dgToolBar title="编辑" icon="icon-edit" url="tbCheckingInstanceController.do?addorupdate" funname="update"></t:dgToolBar>
 	   <t:dgToolBar title="查看" icon="icon-search" url="tbCheckingInstanceController.do?queryInfo" funname="detail"></t:dgToolBar>
+	    <t:dgToolBar title="导入" icon="icon-add" url="tbCheckingInstanceController.do?goImporExcel" funname="openuploadwin"></t:dgToolBar>
 	  </t:datagrid>
   </div>
 </div>

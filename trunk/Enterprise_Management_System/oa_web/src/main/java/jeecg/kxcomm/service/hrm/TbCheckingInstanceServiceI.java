@@ -1,7 +1,8 @@
 package jeecg.kxcomm.service.hrm;
 
+import java.io.InputStream;
+
 import jeecg.kxcomm.entity.hrm.TbCheckingInstanceEntity;
-import jeecg.system.pojo.base.TSUser;
 
 import org.jeecgframework.core.common.hibernate.qbc.HqlQuery;
 import org.jeecgframework.core.common.hibernate.qbc.PageList;
@@ -20,4 +21,14 @@ public interface TbCheckingInstanceServiceI extends CommonService{
 	 * @return
 	 */
 	public PageList getPageList(HqlQuery hqlQuery, boolean b,TbCheckingInstanceEntity tbCheckingInstance, String starttime, String endtime,String empname);
+	
+	/**
+	 * 
+	* 方法用途和描述: 考勤导入
+	* @param io
+	* @return
+	* @author chenliang 新增日期：2013-7-25
+	* @since oa_web
+	 */
+	public boolean importExcel(InputStream io,String yyyyMM) throws Exception;
 }

@@ -2,15 +2,23 @@ package jeecg.kxcomm.controller.hrm;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import org.jeecgframework.core.util.ExceptionUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.hibernate.criterion.DetachedCriteria;
@@ -26,7 +34,6 @@ import org.jeecgframework.core.util.ResourceUtil;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.core.util.oConvertUtils;
 import org.jeecgframework.tag.core.easyui.TagUtil;
-import jeecg.system.pojo.base.TSDepart;
 import jeecg.system.pojo.base.TSUser;
 import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
@@ -265,4 +272,68 @@ public class TbCheckingInstanceController extends BaseController {
 	public void queryCheckInfoByTime(TbCheckingInstanceEntity tbCheckingInstance, HttpServletRequest req) {
 		
 	}
+	
+	
+	/**
+	 * 
+	* 方法用途和描述: 考勤统计导入页面跳转
+	* @return
+	* @author chenliang 新增日期：2013-7-25
+	* @since oa_web
+	 */
+	@RequestMapping(params = "goImporExcel")
+	public ModelAndView uploadExcel(HttpServletRequest req){
+		//获取当前时间的年和月
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		int year = cal.get(Calendar.YEAR);
+		List<Integer> yearlist = new ArrayList<Integer>();
+		//当前年前五年到当前年后10年可供下拉框
+		for (int i = year-5; i < year+10; i++) {
+			yearlist.add(i);
+		}
+		List<Integer> monthlist = new ArrayList<Integer>();
+		for (int i = 1; i <= 12; i++) {
+			monthlist.add(i);
+		}
+		req.setAttribute("yearlist", yearlist);
+		req.setAttribute("monthlist", monthlist);
+		return new ModelAndView("jeecg/kxcomm/hrm/uploadExcel");
+	}
+	
+	/**
+	 * 
+	* 方法用途和描述: 上传考情统计
+	* @return
+	* @author chenliang 新增日期：2013-7-25
+	 * @throws Exception 
+	* @since oa_web
+	 */
+	@RequestMapping(params="importExcel", method = RequestMethod.POST)
+	@ResponseBody
+	public  AjaxJson importExcel(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		AjaxJson j = new AjaxJson();
+		
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
+		for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
+			MultipartFile file = entity.getValue();// 获取上传文件对象
+			List<TbCheckingInstanceEntity> listCheckingInstance;
+			try {
+				tbCheckingInstanceService.importExcel(file.getInputStream(),year+"-"+month);
+				j.setMsg("文件导入成功！");
+			} catch (IOException e) {
+				j.setMsg("文件导入失败！");
+				logger.error(ExceptionUtil.getExceptionMessage(e));
+			}
+			//break; // 不支持多个文件导入？
+		}
+		
+		j.setMsg("上传成功");
+		return j;
+	}
+	
 }
