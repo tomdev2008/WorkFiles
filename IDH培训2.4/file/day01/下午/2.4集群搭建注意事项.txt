@@ -1,0 +1,15 @@
+安装
+selinux必须为disabled
+先安装OS的repo
+前提是/etc/yum.repo.d/     下面必须是空或其他repo无效
+成功后创建了/etc/yum.repo.d/os.repo
+
+记录路径  ftp://hostname/pub/os
+
+
+创建了/var/ftp/pub/os
+新建/var/ftp/pub/2.4
+拷贝intelhadoop/idh      manager    os_related   到2.4
+在2.4上执行createrepo  .
+
+ftp://hostname/pub/2.4

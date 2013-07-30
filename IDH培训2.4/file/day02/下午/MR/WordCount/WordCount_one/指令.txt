@@ -1,0 +1,3 @@
+hadoop jar WordCount_one.jar  MRDemo.WordCount_one.WordCount /user/input /user/output
+
+hadoop fs -cat /user/output/part-r-00000
