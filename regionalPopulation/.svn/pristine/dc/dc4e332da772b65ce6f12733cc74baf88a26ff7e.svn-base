@@ -1,0 +1,173 @@
+package kxcom.hd.common;
+
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+
+public class DataUtils {
+	public static final String FILE_NAME="data.txt";
+	public static final String DIRECTORY_NAME="F:/data";
+	
+	public static final String[] PHONE_PREFIX={"130","131","132","155","156","186"};
+//	
+//	private static final String MYSQL_URI="jdbc:mysql://192.168.1.7:3306/BigData?user=kxcomm&password=123";
+//	static{
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+	
+	/**
+	 * 鏃堕棿鐢熸垚鏃堕棿
+	 * @param begindate
+	 * @param enddate
+	 * @return
+	 */
+	private static String randomdate(String begindate,String  enddate ){ 
+		try { 
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss"); 
+			Date start = format.parse(begindate); 
+			Date end = format.parse(enddate);
+			if(start.getTime() >= end.getTime()){ 
+				return null; 
+			} 
+			long date = random(start.getTime(),end.getTime()); 
+			return format.format(new Date(date)); 
+		} catch (Exception e) { 
+			e.printStackTrace();
+		} 
+		return null; 
+	} 
+	
+	/**
+	 * long鐢熸垚鍣�
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
+	private static long random(long begin,long end){ 
+		long rtn = begin + (long)(Math.random() * (end - begin)); 
+		if(rtn == begin || rtn == end){  
+			return random(begin,end); 
+		} 
+		
+		return rtn; 
+	} 
+	
+	/**
+	 * double鐢熸垚鍣�
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
+	private static String randomDouble(int begin,int end){
+		double rtn = begin + (Math.random() * (end - begin)); 
+		
+		if(rtn == begin || rtn == end){  
+			return randomDouble(begin,end); 
+		} 
+		DecimalFormat df=new DecimalFormat(".##");
+		String st=df.format(rtn);
+		return st; 
+	}
+	
+	/**
+	 * 鐢熸垚鐢佃瘽鍙风爜鍚庨潰9涓綅鏁�
+	 * @param start
+	 * @param max
+	 * @return
+	 */
+	private static String randomNine(long start,long max){
+		long templong=random(start,max);
+		String tempstr=Long.toString(templong);
+		StringBuilder builder=new StringBuilder(tempstr);
+		for(;builder.length()<8;){
+			builder.append("0");
+		}
+		return builder.toString();
+	}
+	/**
+	 * 鐢熸垚鐢佃瘽鍙风爜
+	 * @return
+	 */
+	private static String createMobileNum(){
+		int index=(int) (Math.random()*10);
+		if(index<6){
+			String prefix= PHONE_PREFIX[index];
+			String sufix=randomNine(99999999,0);
+			return prefix+sufix;
+		}else{
+			return createMobileNum();
+		}
+	}
+
+	
+	public static void writeToFile() throws IOException, SQLException{
+//		Connection conn=DriverManager.getConnection(MYSQL_URI);
+//		String sql="insert into user_info values (?,?,?,?)";
+//		PreparedStatement psmt = conn.prepareStatement(sql);
+		File file=new File(DIRECTORY_NAME,FILE_NAME);
+		if(!file.exists()){
+			file.createNewFile();
+		}
+		
+		
+		BufferedWriter fileWriter = new BufferedWriter(
+				new FileWriter(file, true));
+		for(int i=0;i<10000;i++){
+			String datetime=randomdate("20120501123456", "20120530223456");
+			
+			String mobilenum=createMobileNum();			
+			double jindu=Math.random()*100;
+			double weidu=Math.random()*100;			
+			StringBuffer buffer=new StringBuffer();
+			buffer.append(mobilenum);
+			buffer.append("\t");
+			buffer.append(randomDouble(112, 114));
+			buffer.append("\t");
+			buffer.append(randomDouble(22, 24));
+			buffer.append("\t");
+			buffer.append(datetime);
+			buffer.append("\n");
+			fileWriter.write(buffer.toString());
+			
+			
+//			String str=i%3==0?"C":(i%2==0?"B":"A");
+//
+//			psmt.setString(2,mobilenum);
+//			psmt.setString(1,"gaoxing");
+//			psmt.setString(3,str );
+//			psmt.setDouble(4,Math.random()*1000);
+//			
+//			psmt.addBatch();
+//			if(i%50==0){
+//				psmt.executeBatch();
+//			}
+		}
+//		psmt.close();
+//		conn.close();
+		fileWriter.flush();
+		fileWriter.close();
+	}
+	
+
+	
+	
+	public static void main(String[] args) throws IOException, SQLException {
+		writeToFile();
+	}
+}
