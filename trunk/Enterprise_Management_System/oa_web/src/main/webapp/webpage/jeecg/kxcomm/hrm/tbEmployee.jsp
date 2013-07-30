@@ -75,7 +75,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="orgenPhone" name="orgenPhone" datatype="s0-11"
+						<input class="inputxt" id="orgenPhone" name="orgenPhone" datatype="n0-11"
 							   value="${tbEmployeePage.orgenPhone}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -175,9 +175,21 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="marry" name="marry" datatype="s0-20"
-							   value="${tbEmployeePage.marry}">
-						<span class="Validform_checktip"></span>
+						<select id="marry"  name="marry"  datatype="*">
+					        <option value="1"  >
+					        未婚
+					        </option>
+					           <option value="2">
+					        已婚
+					        </option>
+					           <option value="3">
+					        离异
+					        </option>
+					           <option value="4">
+					        丧偶
+					        </option>
+				      	</select>
+						<span class="Validform_checktip">请选择性别</span>
 					</td>
 					<td align="right">
 						<label class="Validform_label">
@@ -270,7 +282,7 @@
 						</label>
 					</td>
 					<td class="value">
-							<input class="inputxt" id="workingTime" name="workingTime" datatype="s0-50"
+							<input class="inputxt" id="workingTime" name="workingTime" datatype="n0-50"
 							   value="${tbEmployeePage.workingTime}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -282,7 +294,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="eMail" name="eMail" datatype="s0-50"
+						<input class="inputxt" id="eMail" name="eMail" datatype="e"
 							   value="${tbEmployeePage.eMail}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -320,7 +332,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="cardNo" name="cardNo" datatype="s0-20"
+						<input class="inputxt" id="cardNo" name="cardNo" datatype="n0-20"
 							   value="${tbEmployeePage.cardNo}" datatype="d">
 						<span class="Validform_checktip"></span>
 					</td>
