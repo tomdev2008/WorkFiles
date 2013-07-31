@@ -1,4 +1,5 @@
 package jeecg.kxcomm.controller.hrm;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -78,6 +81,22 @@ public class TbCheckingInController extends BaseController {
 	@RequestMapping(params = "datagrid")
 	public void datagrid(TbCheckingInEntity tbCheckingIn,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(TbCheckingInEntity.class, dataGrid);
+		String ctBegin = request.getParameter("happenday_begin");
+		String ctEnd = request.getParameter("happenday_end");
+		String empIdId = request.getParameter("empId_id");
+		System.out.println(ctBegin+"------------"+empIdId+"------------"+ctEnd);
+		if(StringUtil.isNotEmpty(ctBegin)&& StringUtil.isNotEmpty(ctEnd)){
+			try {
+				cq.ge("time", new SimpleDateFormat("yyyy-MM-dd").parse(ctBegin));
+				cq.le("time", new SimpleDateFormat("yyyy-MM-dd").parse(ctEnd));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		if(StringUtil.isNotEmpty(empIdId)) {
+			cq.eq("empId.id", empIdId);
+		}
+		cq.add();
 		//查询条件组装器
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbCheckingIn);
 		this.tbCheckingInService.getDataGridReturn(cq, true);

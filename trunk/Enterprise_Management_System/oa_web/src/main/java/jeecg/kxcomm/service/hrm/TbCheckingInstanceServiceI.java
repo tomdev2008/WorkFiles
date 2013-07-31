@@ -31,4 +31,11 @@ public interface TbCheckingInstanceServiceI extends CommonService{
 	* @since oa_web
 	 */
 	public boolean importExcel(InputStream io,String yyyyMM) throws Exception;
+
+	/**
+	 * TODO 删除考勤明细.
+	 *
+	 * @param tbCheckingInstance
+	 */
+	public void delMiddleDatas(TbCheckingInstanceEntity tbCheckingInstance);
 }

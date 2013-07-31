@@ -124,7 +124,9 @@ public class TbCheckingInstanceServiceImpl extends CommonServiceImpl implements 
 				for (int k = 0; k < checking.size(); k++) {
 					CheckingInstanceVo vo = checking.get(k);
 					TbCheckingInEntity entity = new TbCheckingInEntity();
-					entity.setEmpId(vo.getEmpId());
+					TbEmployeeEntity empId = new TbEmployeeEntity();
+					empId.setId(vo.getEmpId());
+					entity.setEmpId(empId);
 					entity.setStauts(vo.getWorkState());
 					entity.setTime(sdf.parse(vo.getTime()));
 					if(null!=entity.getEmpId()&&!"".equals(entity.getEmpId())){
@@ -312,5 +314,18 @@ public class TbCheckingInstanceServiceImpl extends CommonServiceImpl implements 
 		}
 		return yyyyMM;
 	}
-	
+
+	/**
+	 * 
+	* 方法用途和描述: 删除考勤明细
+	* @return
+	* @author lizl 新增日期：2013-7-31
+	* @since oa_web
+	 */
+	@Override
+	public void delMiddleDatas(TbCheckingInstanceEntity tbCheckingInstance) {
+		//删除中间表中的数据
+		String delsql = "delete from tb_checking_in where emp_id = ? and date_format(time,'%Y-%m-%d') = date_format('"+tbCheckingInstance.getHappenday()+" 00:00:00','%Y-%m-%d') ";
+		this.commonDao.executeSql(delsql, tbCheckingInstance.getEmpId().getId());
+	}
 }

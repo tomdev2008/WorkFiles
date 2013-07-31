@@ -41,8 +41,10 @@ import org.jeecgframework.core.util.MyBeanUtils;
 import jeecg.kxcomm.entity.hrm.TbCheckingInEntity;
 import jeecg.kxcomm.entity.hrm.TbCheckingInstanceEntity;
 import jeecg.kxcomm.entity.hrm.TbEmployeeEntity;
+import jeecg.kxcomm.service.hrm.TbCheckingInServiceI;
 import jeecg.kxcomm.service.hrm.TbCheckingInstanceServiceI;
 import jeecg.kxcomm.service.hrm.TbEmployeeServiceI;
+import jeecg.kxcomm.util.BusinessUtil;
 
 /**   
  * @Title: Controller
@@ -66,6 +68,8 @@ public class TbCheckingInstanceController extends BaseController {
 	private SystemService systemService;
 	@Autowired
 	private TbEmployeeServiceI tbEmployeeService;
+	@Autowired
+	private TbCheckingInServiceI tbCheckingInService;
 	private String message;
 	private String ids;		//事项类型：迟到，早退，旷工
 	private String empids;	//员工ID集合
@@ -140,6 +144,9 @@ public class TbCheckingInstanceController extends BaseController {
 		hqlQuery.setPageSize(dataGrid.getRows());
 		hqlQuery.setDataGrid(dataGrid);
 		PageList pagelist = this.tbCheckingInstanceService.getPageList(hqlQuery, true,tbCheckingInstance,ctBegin,ctEnd,empName);
+		for(int d = 0; d < pagelist.getResultList().size(); d++) {
+			((TbCheckingInstanceEntity) pagelist.getResultList().get(d)).setEmpName(ctBegin+","+ctEnd);
+		}
 		dataGrid.setPage(pagelist.getCurPageNO());
 		dataGrid.setTotal(pagelist.getCount());
 		dataGrid.setReaults(pagelist.getResultList());
@@ -155,6 +162,14 @@ public class TbCheckingInstanceController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbCheckingInstanceEntity tbCheckingInstance, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
+		String happenday = request.getParameter("empName");
+		String empId_id = request.getParameter("empId_id");
+		String hptime = request.getParameter("happenday");
+		String[] times = happenday.split(",");
+		if(1 < times.length) {
+			System.out.println(times[0]+"------------"+empId_id+"------------"+times[1]);
+		}
+		tbCheckingInService.delDataByTimeAndEmp(times,empId_id,hptime);
 		tbCheckingInstance = systemService.getEntity(TbCheckingInstanceEntity.class, tbCheckingInstance.getId());
 		message = "删除成功";
 		tbCheckingInstanceService.delete(tbCheckingInstance);
@@ -194,6 +209,7 @@ public class TbCheckingInstanceController extends BaseController {
 				t.setHappenday(tbCheckingInstance.getHappenday());
 				System.out.println(t.toString());
 				tbCheckingInstanceService.saveOrUpdate(t);
+				tbCheckingInstanceService.delMiddleDatas(tbCheckingInstance);
 				systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -220,6 +236,35 @@ public class TbCheckingInstanceController extends BaseController {
 				entity.setHappenday(tbCheckingInstance.getHappenday());
 				System.out.println(entity.toString());
 				tbCheckingInstanceService.save(entity);
+			}
+			TbCheckingInEntity tbCheckingIn = null;
+			for(int u = 0; u < primarSouce.length; u++) {
+				if("1".equals(primarSouce[u])) {
+					tbCheckingIn = new TbCheckingInEntity();
+					TbEmployeeEntity empId = new TbEmployeeEntity();
+					empId.setId(emploSouce[0]);
+					tbCheckingIn.setEmpId(empId);
+					tbCheckingIn.setReason("无");
+					if(u == 2) {		//矿工
+						tbCheckingIn.setStauts(BusinessUtil.Absenteeism);
+					} else if(u == 3) {		//迟到
+						tbCheckingIn.setStauts(BusinessUtil.beLate);
+					} else if(u == 4) {		//早退
+						tbCheckingIn.setStauts(BusinessUtil.leaveEarly);
+					} else if(u == 5) {		//加班
+						tbCheckingIn.setStauts(BusinessUtil.overTime);
+					} else if(u == 6) {		//请假
+						tbCheckingIn.setStauts(BusinessUtil.leave);
+					} else if(u == 7) {		//公出
+						tbCheckingIn.setStauts(BusinessUtil.publicOut);
+					} else if(u == 8) {		//周末加班
+						tbCheckingIn.setStauts(BusinessUtil.overTime);
+					} else {		//正常
+						tbCheckingIn.setStauts(BusinessUtil.normal);
+					}
+					tbCheckingIn.setTime(tbCheckingInstance.getHappenday());
+					tbCheckingInService.save(tbCheckingIn);
+				}
 			}
 			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 		}
@@ -269,8 +314,21 @@ public class TbCheckingInstanceController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(params = "queryInfo")
-	public void queryCheckInfoByTime(TbCheckingInstanceEntity tbCheckingInstance, HttpServletRequest req) {
-		
+	public ModelAndView queryCheckInfoByTime(HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		//----------------------------------------------------------------
+		//update-start--Author:anchao  Date:20130415 for：按钮权限控制
+		//----------------------------------------------------------------
+		String happenday_begin = request.getParameter("happenday_begin");
+		String happenday_end = request.getParameter("happenday_end");
+		String empId_id = request.getParameter("empId_id");
+		request.setAttribute("happenday_begin", happenday_begin);
+		request.setAttribute("empId_id", empId_id);
+		request.setAttribute("happenday_end", happenday_end);
+		System.out.println(happenday_begin+"------------"+empId_id+"------------"+happenday_end);
+		//----------------------------------------------------------------
+		//update-end--Author:anchao  Date:20130415 for：按钮权限控制
+		//----------------------------------------------------------------
+		return new ModelAndView("jeecg/kxcomm/hrm/tbCheckingInList");
 	}
 	
 	

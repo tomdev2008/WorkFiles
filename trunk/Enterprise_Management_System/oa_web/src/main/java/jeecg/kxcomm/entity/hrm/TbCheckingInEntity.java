@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.SequenceGenerator;
@@ -26,8 +29,8 @@ import javax.persistence.SequenceGenerator;
 public class TbCheckingInEntity implements java.io.Serializable {
 	/**考勤主键id*/
 	private java.lang.String id;
-	/**主键id*/
-	private java.lang.String empId;
+	/**员工*/
+	private TbEmployeeEntity empId = new TbEmployeeEntity();
 	/**状态*/
 	private java.lang.String stauts;
 	/**原因*/
@@ -54,22 +57,6 @@ public class TbCheckingInEntity implements java.io.Serializable {
 	 */
 	public void setId(java.lang.String id){
 		this.id = id;
-	}
-	/**
-	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  主键id
-	 */
-	@Column(name ="EMP_ID",nullable=true,length=50)
-	public java.lang.String getEmpId(){
-		return this.empId;
-	}
-
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  主键id
-	 */
-	public void setEmpId(java.lang.String empId){
-		this.empId = empId;
 	}
 	/**
 	 *方法: 取得java.lang.String
@@ -118,5 +105,15 @@ public class TbCheckingInEntity implements java.io.Serializable {
 	 */
 	public void setTime(java.util.Date time){
 		this.time = time;
+	}
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "emp_id")
+	public TbEmployeeEntity getEmpId() {
+		return this.empId;
+	}
+
+	public void setEmpId(TbEmployeeEntity empId) {
+		this.empId = empId;
 	}
 }
