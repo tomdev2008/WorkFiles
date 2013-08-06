@@ -34,5 +34,7 @@ public class TbCheckingInServiceImpl extends CommonServiceImpl implements TbChec
 			delsql.append(" and emp_id = '"+empId+"'");
 		}
 		this.commonDao.executeSql(delsql.toString());
+		String delprisql = "delete from tb_checking_instance where 1=1 and emp_id = '"+empId+"'";
+		this.commonDao.executeSql(delprisql.toString());
 	}
 }

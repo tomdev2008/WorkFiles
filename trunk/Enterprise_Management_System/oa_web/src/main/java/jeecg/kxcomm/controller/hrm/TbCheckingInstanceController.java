@@ -170,9 +170,9 @@ public class TbCheckingInstanceController extends BaseController {
 			System.out.println(times[0]+"------------"+empId_id+"------------"+times[1]);
 		}
 		tbCheckingInService.delDataByTimeAndEmp(times,empId_id,hptime);
-		tbCheckingInstance = systemService.getEntity(TbCheckingInstanceEntity.class, tbCheckingInstance.getId());
+//		tbCheckingInstance = systemService.getEntity(TbCheckingInstanceEntity.class, tbCheckingInstance.getId());
 		message = "删除成功";
-		tbCheckingInstanceService.delete(tbCheckingInstance);
+//		tbCheckingInstanceService.delete(tbCheckingInstance);
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		
 		j.setMsg(message);
