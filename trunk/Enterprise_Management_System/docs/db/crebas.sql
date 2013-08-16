@@ -1,16 +1,18 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2013/7/30 17:11:57                           */
+/* Created on:     2013/8/14 16:09:07                           */
 /*==============================================================*/
 
+
+drop table if exists Relationship_9;
 
 drop table if exists tb_checking_in;
 
 drop table if exists tb_checking_instance;
 
-drop table if exists tb_depart;
+drop table if exists tb_customer;
 
-drop table if exists tb_deptOrgen;
+drop table if exists tb_depart;
 
 drop table if exists tb_employee;
 
@@ -22,17 +24,29 @@ drop table if exists tb_permanent_assets;
 
 drop table if exists tb_post;
 
+drop table if exists tb_project;
+
+/*==============================================================*/
+/* Table: Relationship_9                                        */
+/*==============================================================*/
+create table Relationship_9
+(
+   orgen_id             varchar(32) not null comment '主键id',
+   dept_id              varchar(32) not null comment '主键',
+   primary key (orgen_id, dept_id)
+);
+
 /*==============================================================*/
 /* Table: tb_checking_in                                        */
 /*==============================================================*/
 create table tb_checking_in
 (
-   id                   varchar(32) not null comment '考勤主键id',
+   checking_id          varchar(32) not null comment '主键id',
    emp_id               varchar(32) comment '主键id',
    stauts               varchar(50) comment '状态',
    reason               varchar(100) comment '原因',
    time                 date comment '时间',
-   primary key (id)
+   primary key (checking_id)
 );
 
 /*==============================================================*/
@@ -57,37 +71,45 @@ create table tb_checking_instance
 );
 
 /*==============================================================*/
+/* Table: tb_customer                                           */
+/*==============================================================*/
+create table tb_customer
+(
+   customer_id          varchar(32) not null comment '主键ID',
+   address              varchar(100) comment '地址',
+   company_name         varchar(100) comment '公司名称',
+   description          varchar(100) comment '描述',
+   contact              varchar(50) comment '联系人',
+   email                varchar(100) comment '邮箱',
+   phone                varchar(20) comment '电话',
+   job_place_id         archar(32) comment '收货地址ID',
+   primary key (customer_id)
+);
+
+alter table tb_customer comment '客户';
+
+/*==============================================================*/
 /* Table: tb_depart                                             */
 /*==============================================================*/
 create table tb_depart
 (
    perm_name            varchar(100) comment '员工姓名',
-   id                   varchar(32) not null comment '部门主键id',
+   dept_id              varchar(32) not null comment '主键',
    duty                 varchar(100) comment '职责',
    parent_depart        varchar(50) comment '父级部门',
-   primary key (id)
+   primary key (dept_id)
 );
 
 alter table tb_depart comment '部门表';
-
-/*==============================================================*/
-/* Table: tb_deptOrgen                                          */
-/*==============================================================*/
-create table tb_deptOrgen
-(
-   orgen_id             varchar(32) not null comment '主键id',
-   dept_id              varchar(32) not null comment '主键',
-   primary key (orgen_id, dept_id)
-);
 
 /*==============================================================*/
 /* Table: tb_employee                                           */
 /*==============================================================*/
 create table tb_employee
 (
-   id                   varchar(32) not null comment '员工主键id',
-   orgen_id             varchar(32) comment '机构主键id',
-   post_id              varchar(32) comment '岗位主键id',
+   emp_id               varchar(32) not null comment '主键id',
+   orgen_id             varchar(32) comment '主键id',
+   post_id              varchar(32) comment '主键',
    identity_card        varchar(18) comment '身份证',
    birthday             date comment '出生年月',
    address              varchar(100) comment '家庭地址',
@@ -116,7 +138,7 @@ create table tb_employee
    social_security_time date comment '社保保险缴费起始月',
    job_no               varchar(20) comment '工号',
    emp_name             varchar(50),
-   primary key (id)
+   primary key (emp_id)
 );
 
 /*==============================================================*/
@@ -124,13 +146,13 @@ create table tb_employee
 /*==============================================================*/
 create table tb_employee_contracts
 (
-   id                   varchar(32) not null comment '员工合同主键ID',
-   emp_id               varchar(32) comment '员工id',
+   emp_contract_id      varchar(32) not null comment 'ID',
+   emp_id               varchar(32) comment '主键id',
    contract_effective_date date comment '合同生效日期',
    contract_end_date    date comment '合同终止日期',
    contract_date        date comment '合同签订日期',
    status               char(2) comment '状态',
-   primary key (id)
+   primary key (emp_contract_id)
 );
 
 /*==============================================================*/
@@ -138,7 +160,7 @@ create table tb_employee_contracts
 /*==============================================================*/
 create table tb_orgen
 (
-   id                   varchar(32) not null comment '机构主键id',
+   orgen_id             varchar(32) not null comment '主键id',
    perm_name            varchar(100) comment '员工姓名',
    orgen_phone          varchar(50) comment '联系电话',
    place                varchar(100) comment '地址',
@@ -150,7 +172,7 @@ create table tb_orgen
    business_license_no  varchar(100) comment '税务登记证',
    bank_name            varchar(100) comment '开户行名称',
    tax_registration_certificate varchar(100) comment '营业执照',
-   primary key (id)
+   primary key (orgen_id)
 );
 
 alter table tb_orgen comment '机构表';
@@ -160,8 +182,8 @@ alter table tb_orgen comment '机构表';
 /*==============================================================*/
 create table tb_permanent_assets
 (
-   id                   varchar(32) not null comment '固定资产主键id',
-   emp_id               varchar(32) comment '员工id',
+   perm_id              varchar(32) not null comment '主键',
+   emp_id               varchar(32) comment '主键id',
    number               varchar(100) comment '资产编号',
    perm_name            varchar(100) comment '员工姓名',
    acc_type             smallint comment '资产类型',
@@ -172,7 +194,7 @@ create table tb_permanent_assets
    buy_time             date comment '购入时间',
    price                double comment '资产价值',
    remark               varchar(100) comment '备注',
-   primary key (id)
+   primary key (perm_id)
 );
 
 alter table tb_permanent_assets comment '固定资产';
@@ -182,37 +204,53 @@ alter table tb_permanent_assets comment '固定资产';
 /*==============================================================*/
 create table tb_post
 (
-   id                   varchar(32) not null comment '岗位id',
-   dept_id              varchar(32) comment '部门id',
+   post_id              varchar(32) not null comment '主键',
+   dept_id              varchar(32) comment '主键',
    post_name            varchar(20) comment '岗位名称',
    post_duty            varchar(50) comment '岗位职责',
-   primary key (id)
+   primary key (post_id)
 );
 
+/*==============================================================*/
+/* Table: tb_project                                            */
+/*==============================================================*/
+create table tb_project
+(
+   project_id           varchar(32) not null comment '主键ID',
+   create_time          date comment '创建时间',
+   description          varchar(100) comment '描述',
+   project_name         varchar(50) comment '项目名称',
+   user_id              varchar(32) comment '用户ID',
+   customer             varchar(32) comment '客户ID',
+   primary key (project_id)
+);
+
+alter table tb_project comment '项目';
+
+alter table Relationship_9 add constraint FK_Relationship_10 foreign key (dept_id)
+      references tb_depart (dept_id) on delete restrict on update restrict;
+
+alter table Relationship_9 add constraint FK_Relationship_9 foreign key (orgen_id)
+      references tb_orgen (orgen_id) on delete restrict on update restrict;
+
 alter table tb_checking_in add constraint FK_Relationship_7 foreign key (emp_id)
-      references tb_employee (id) on delete restrict on update restrict;
+      references tb_employee (emp_id) on delete restrict on update restrict;
 
 alter table tb_checking_instance add constraint FK_Relationship_12 foreign key (emp_id)
-      references tb_employee (id) on delete restrict on update restrict;
-
-alter table tb_deptOrgen add constraint FK_Relationship_10 foreign key (dept_id)
-      references tb_depart (id) on delete restrict on update restrict;
-
-alter table tb_deptOrgen add constraint FK_Relationship_9 foreign key (orgen_id)
-      references tb_orgen (id) on delete restrict on update restrict;
+      references tb_employee (emp_id) on delete restrict on update restrict;
 
 alter table tb_employee add constraint FK_Relationship_6 foreign key (post_id)
-      references tb_post (id) on delete restrict on update restrict;
+      references tb_post (post_id) on delete restrict on update restrict;
 
 alter table tb_employee add constraint FK_Relationship_8 foreign key (orgen_id)
-      references tb_orgen (id) on delete restrict on update restrict;
+      references tb_orgen (orgen_id) on delete restrict on update restrict;
 
 alter table tb_employee_contracts add constraint FK_Relationship_4 foreign key (emp_id)
-      references tb_employee (id) on delete restrict on update restrict;
+      references tb_employee (emp_id) on delete restrict on update restrict;
 
 alter table tb_permanent_assets add constraint FK_Relationship_11 foreign key (emp_id)
-      references tb_employee (id) on delete restrict on update restrict;
+      references tb_employee (emp_id) on delete restrict on update restrict;
 
 alter table tb_post add constraint FK_Relationship_5 foreign key (dept_id)
-      references tb_depart (id) on delete restrict on update restrict;
+      references tb_depart (dept_id) on delete restrict on update restrict;
 
