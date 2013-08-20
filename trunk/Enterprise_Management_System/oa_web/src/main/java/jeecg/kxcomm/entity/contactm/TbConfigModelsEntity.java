@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
  * @Title: Entity
  * @Description: 机型配置
  * @author zhangdaihao
- * @date 2013-08-19 10:56:22
+ * @date 2013-08-19 16:17:00
  * @version V1.0   
  *
  */
@@ -49,6 +49,7 @@ public class TbConfigModelsEntity implements java.io.Serializable {
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  ID
 	 */
+	@Id
 	@GeneratedValue(generator = "paymentableGenerator")
 	@GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
 	@Column(name ="CONFIG_ID",nullable=false,length=32)

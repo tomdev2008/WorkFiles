@@ -29,7 +29,7 @@ import jeecg.kxcomm.service.contactm.TbConfigModelsServiceI;
  * @Title: Controller
  * @Description: 机型配置
  * @author zhangdaihao
- * @date 2013-08-19 10:56:22
+ * @date 2013-08-19 16:17:00
  * @version V1.0   
  *
  */

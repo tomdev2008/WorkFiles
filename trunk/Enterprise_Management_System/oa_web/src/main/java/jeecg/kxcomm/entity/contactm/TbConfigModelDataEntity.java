@@ -83,7 +83,7 @@ public class TbConfigModelDataEntity implements java.io.Serializable {
 	 *@return: java.lang.String  ID
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Column(name ="CONFIG_ID",nullable=true,length=32)
+	@JoinColumn(name = "CONFIG_ID")
 	public TbConfigModelsEntity getConfigId() {
 		return configId;
 	}
