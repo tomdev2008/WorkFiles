@@ -1,5 +1,0 @@
-* html .u4_normal {
-    background-image: none;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="Home_files/u4_normal.png");
-}
-
