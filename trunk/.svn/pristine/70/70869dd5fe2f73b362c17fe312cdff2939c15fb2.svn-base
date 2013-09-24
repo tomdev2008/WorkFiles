@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cn.com.kxcomm.entity.RightEntity">
+	<resultMap id="RightResultMap" class="cn.com.kxcomm.entity.RightEntity">
+		<result column="Id" property="rightId" jdbcType="BIGINT" />
+		<result column="right_name" property="rightName" jdbcType="VARCHAR" />
+		<result column="parent_id" property="parentId" jdbcType="BIGINT" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="level" property="level" jdbcType="SHORTINT" />
+	</resultMap>
+
+	<select id="queryAll" resultMap="RightResultMap">
+		select id,right_name from tb_cms_right
+   </select>
+  
+</sqlMap>
