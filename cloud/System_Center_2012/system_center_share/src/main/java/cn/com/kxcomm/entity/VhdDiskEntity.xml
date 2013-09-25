@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cn.com.kxcomm.entity.VhdDiskEntity">
+  	<resultMap id="VhdDiskResultMap" class="cn.com.kxcomm.entity.VhdDiskEntity">
+		<result column="id" property="id" jdbcType="BIGINT" />
+		<result column="disk_name" property="diskName" jdbcType="VARCHAR" />
+		<result column="disk_size" property="diskSize" jdbcType="BIGINT" />
+	</resultMap>
+
+	<select id="queryAll" resultMap="VhdDiskResultMap">
+		select id,disk_name from tb_vhd_disk
+   </select>
+  
+</sqlMap>

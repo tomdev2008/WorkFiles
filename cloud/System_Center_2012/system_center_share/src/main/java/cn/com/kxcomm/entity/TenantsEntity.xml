@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+	<sqlMap namespace="cn.com.kxcomm.entity.TenantsEntity">
+	<typeAlias alias="TenantsEntity" type="cn.com.kxcomm.entity.TenantsEntity"/>
+	<resultMap id="TeanantsResultMap" class="cn.com.kxcomm.entity.TenantsEntity">
+		<result column="ID" property="id" jdbcType="BIGINT" />
+		<result column="tb_dom_user_id" property="domUserId" jdbcType="BIGINT" />
+		<result column="user_name" property="userName" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="account" property="account" jdbcType="VARCHAR" />
+		<result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="register_time" property="registerTime" jdbcType="timestamp" />
+		<result column="unRegister_time" property="registerTime" jdbcType="timestamp" />
+	</resultMap>
+
+	<select id="queryAll" resultMap="TeanantsResultMap">
+		select id,user_name,password,account,email from tb_tenants
+   </select>
+  
+  	<select id="login" resultClass="TenantsEntity" parameterClass="TenantsEntity">
+  		select id,user_name,email,account,login_name,password from tb_tenants where account = #account# and password = #password#
+  	</select>
+  
+</sqlMap>

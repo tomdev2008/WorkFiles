@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cn.com.kxcomm.entity.ISOEntity">
+	
+	<resultMap id="ISOResultMap" class="cn.com.kxcomm.entity.ISOEntity">
+		<result column="id" property="id" jdbcType="BIGINT" />
+		<result column="iso_name" property="isoName" jdbcType="VARCHAR" />
+		<result column="iso_size" property="isoSize" jdbcType="BIGINT" />
+		<result column="size_unit" property="sizeUnit" jdbcType="VARCHAR" />
+		<result column="iso_url" property="isoUrl" jdbcType="VARCHAR" />
+		<result column="iso_version" property="isoVersion" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="queryAll" resultMap="ISOResultMap">
+		select id,iso_size,iso_name,size_unit from tb_iso
+   </select>
+  
+</sqlMap>

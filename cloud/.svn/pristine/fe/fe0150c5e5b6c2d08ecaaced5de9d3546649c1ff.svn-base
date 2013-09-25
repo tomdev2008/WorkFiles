@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="cn.com.kxcomm.entity.VirtualMachineEntity">
+  	<resultMap id="VirtualMachineResultMap" class="cn.com.kxcomm.entity.VirtualMachineEntity">
+		<result column="id" property="id" jdbcType="BIGINT" />
+		<result column="tb_vhd_disk_id" property="tbVhdDiskId" jdbcType="BIGINT" />
+		<result column="tb_iso_id" property="tbIsoId" jdbcType="BIGINT" />
+		<result column="tb_virtual_type_id" property="tbVirtualTypeId" jdbcType="BIGINT" />
+			<result column="tb_virtual_network_switch_id" property="tbVirtualNetWorkSwitchId" jdbcType="BIGINT" />
+		<result column="host_name" property="hostName" jdbcType="VARCHAR" />
+		<result column="intranet_ip" property="intranetIp" jdbcType="VARCHAR" />
+			<result column="extranet_ip" property="extranetIp" jdbcType="VARCHAR" />
+		<result column="destruction_time" property="destructionTime" jdbcType="TIMESTAMP" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+			<result column="boot_time" property="bootTime" jdbcType="TIMESTAMP" />
+		<result column="shutdown_time" property="shutDownTime" jdbcType="TIMESTAMP" />
+		<result column="cpu_size" property="cpuSize" jdbcType="BIGINT" />
+		<result column="memory_size" property="memorySizeLong" jdbcType="BIGINT" />
+		<result column="disk_size" property="diskSize" jdbcType="BIGINT" />
+		<result column="extranet_port" property="extranetPort" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="SMALLINT" />
+		<result column="cpu_unit" property="cpuUnit" jdbcType="VARCHAR" />
+		<result column="memory_unit" property="memoryUnit" jdbcType="VARCHAR" />
+		<result column="disk_unit" property="diskUnit" jdbcType="VARCHAR" />
+	<result column="operating_system" property="operatingSystem" jdbcType="VARCHAR" />
+		<result column="data_disk_size" property="dataDiskSize" jdbcType="BIGINT" />
+		<result column="data_disk_unit" property="dataDiskUnit" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="queryAll" resultMap="VirtualMachineResultMap">
+		select id,tb_vhd_disk_id from tb_virtual_machine
+   </select>
+  
+</sqlMap>

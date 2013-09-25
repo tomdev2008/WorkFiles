@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<!DOCTYPE sqlMapConfig         
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"         
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">   
+<sqlMapConfig>    
+    <settings 
+        cacheModelsEnabled="true" 
+        enhancementEnabled="true"
+        lazyLoadingEnabled="false"  
+        maxSessions="64" 
+        maxTransactions="8" 
+        maxRequests="128"
+        useStatementNamespaces="true"
+         />   
+    <sqlMap resource="cn/com/kxcomm/entity/DomainEntity.xml"/> 
+    <sqlMap resource="cn/com/kxcomm/entity/DomUserEntity.xml"/>
+    <sqlMap resource="cn/com/kxcomm/entity/GroupEntity.xml"/>
+    <sqlMap resource="cn/com/kxcomm/entity/PowerShellEntity.xml"/>
+    <sqlMap resource="cn/com/kxcomm/entity/ShellTypeEntity.xml"/>
+    <sqlMap resource="cn/com/kxcomm/entity/TenantsEntity.xml"/>
+    <sqlMap resource="cn/com/kxcomm/entity/VariableEntity.xml"/>
+   
+</sqlMapConfig>
