@@ -54,19 +54,9 @@
 			<tr>
 				<td align="center"><input style="width:20px;"  type="checkbox" name="ck" /></td>
 				<td align="center"><input name="tbOrderDetailList[${stuts.index }].id" maxlength="85" value="${poVal.id }" type="hidden"></td>
-				<td align="center"><select id="sel" name="tbOrderDetailList[${stuts.index }].name">
-									<option value="${poVal.name }">${poVal.name }</option>
-									<option value="服务器">服务器</option>
-									<option value="存储">存储</option>
-									<option value="交换机">交换机</option>
-									<option value="操作系统">操作系统</option>
-									<option value="笔记本">笔记本</option>
-									<option value="台式机">台式机</option>
-									<option value="服务">服务</option>
-									<option value="配件">配件</option>
-									<option value="存储配件">存储配件</option>
-									<option value="服务器配件">服务器配件</option>
-								</select></td>
+				<td align="center">
+				<t:dictSelect field="tbOrderDetailList[${stuts.index }].name"  typeGroupCode="seltype"  hasLabel="N" defaultVal="${poVal.name }"></t:dictSelect>
+				</td>
 				<td align="center"><input name="tbOrderDetailList[${stuts.index }].type" maxlength="85" value="${poVal.type }" type="text" style="width:120px;"/></td>
 				<td align="center"><input name="tbOrderDetailList[${stuts.index }].price" maxlength="85" value="${poVal.price }" type="text" style="width:120px;" ></td>
 				<td align="center"><input name="tbOrderDetailList[${stuts.index }].number" maxlength="85" value="${poVal.number }" type="text" style="width:120px;" /></td>

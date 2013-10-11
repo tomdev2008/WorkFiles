@@ -211,8 +211,8 @@ public class TbOrderController extends BaseController {
 	public ModelAndView orderDetail(HttpServletRequest req,String id) {
 		String hql = "from TbOrderEntity where 1 = 1 AND id = ? ";
 		List<TbOrderEntity> tbOrderEntityList = systemService.findHql(hql,id);
-		String hql0 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder = ? ";
-		List<TbOrderDetailEntity> tbOrderDetailEntityList = systemService.findHql(hql0,tbOrderEntityList.get(0));
+		String hql0 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder.id = ? ";
+		List<TbOrderDetailEntity> tbOrderDetailEntityList = systemService.findHql(hql0,tbOrderEntityList.get(0).getId());
 		req.setAttribute("tbOrderDetailList", tbOrderDetailEntityList);
 		
 		return new ModelAndView("jeecg/kxcomm/contactm/tbOrderDetail");

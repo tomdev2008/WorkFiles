@@ -19,6 +19,7 @@ import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
 import jeecg.kxcomm.entity.contactm.TbContractEntity;
 import jeecg.kxcomm.entity.contactm.TbOrderEntity;
 import jeecg.kxcomm.entity.contactm.TbOrderDetailEntity;
+import jeecg.kxcomm.entity.contactm.TbPurchaseEntity;
 import jeecg.kxcomm.entity.hrm.TbCheckingInstanceEntity;
 import jeecg.kxcomm.entity.hrm.TbEmployeeEntity;
 import jeecg.kxcomm.entity.hrm.TbOrgenEntity;
@@ -44,15 +45,6 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 	@Override
 	public void updateMain(TbOrderEntity tbOrder,
 	        List<TbOrderDetailEntity> tbOrderDetailList) {
-		//保存订单主信息
-//		String id = tbOrder.getTbContract().getId();
-//		
-//		if(id!=null){
-//			TbContractEntity tbContract = this.getEntity(TbContractEntity.class, id);
-//		    tbOrder.setTbContract(tbContract);
-//		}else{
-//			tbOrder.setTbContract(null);
-//		}
 	   
 	    this.saveOrUpdate(tbOrder);
 		
@@ -61,28 +53,57 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 		//获取参数
 		Object id0 = tbOrder.getId();
 		//===================================================================================
-		//删除-产品明细
-	    String hql0 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder = ? ";
+		String hql0 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder = ? ";
 	    List<TbOrderDetailEntity> tbOrderDetailOldList = this.findHql(hql0,tbOrder);
+	    
 		//this.deleteAllEntitie(tbOrderDetailOldList);
-	    for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailOldList){
-	    	
-	    	tbOrderDetail.setTbOrder(null);
+	    
+//	    for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailOldList){
+//	    	String hql1 = "from TbPurchaseEntity where 1 = 1 AND tbOrderDetail = ? ";
+//		    List<TbPurchaseEntity> tbPurchaseList = this.findHql(hql1,tbOrderDetail);
+//	    	//tbOrderDetail.setTbOrder(null);
+//		    this.deleteAllEntitie(tbPurchaseList);
+//	    }
+//	    this.deleteAllEntitie(tbOrderDetailOldList);
+		
+		HashMap newMap = new HashMap<String,TbOrderDetailEntity>();
+	    for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
+	    	if(null!=tbOrderDetail.getId() && !(tbOrderDetail.getId()).equals("")){
+	    		TbOrderDetailEntity t = this.getEntity(TbOrderDetailEntity.class, tbOrderDetail.getId());
+	    		t.setName(tbOrderDetail.getName());
+	    		t.setNumber(tbOrderDetail.getNumber());
+	    		t.setPrice(tbOrderDetail.getPrice());
+	    		t.setTotalprice(tbOrderDetail.getTotalprice());
+	    		t.setType(tbOrderDetail.getType());
+				this.updateEntitie(t);
+	    		newMap.put(tbOrderDetail.getId(), tbOrderDetail);
+	    		
+	    	}else{
+	    		tbOrderDetail.setTbOrder(tbOrder);
+				this.save(tbOrderDetail);
+	    	}
 	    }
 	    
-		//保存-产品明细
-		for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
-			
-			//if(!tbOrderDetail.getId().equals("")){
-				tbOrderDetail.setTbOrder(tbOrder);
-				this.save(tbOrderDetail);
-			//}else{
-				//外键设置
-				tbOrderDetail.setTbOrder(tbOrder);
-				this.save(tbOrderDetail);
-			//}
-			
-		}
+	    
+	    for(TbOrderDetailEntity tbOrderDetailOld:tbOrderDetailOldList){
+	    	TbOrderDetailEntity tmp = (TbOrderDetailEntity) newMap.get(tbOrderDetailOld.getId());
+	    	if(tmp==null){
+	    		this.delete(tbOrderDetailOld);
+	    	}
+	    }
+//		//保存-产品明细
+//		for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
+//			
+//			if(null!=tbOrderDetail.getId() && !(tbOrderDetail.getId()).equals("")){
+//				tbOrderDetail.setTbOrder(tbOrder);
+//				this.saveOrUpdate(tbOrderDetail);
+//			}else{
+//				//外键设置
+//				tbOrderDetail.setTbOrder(tbOrder);
+//				this.save(tbOrderDetail);
+//			}
+//			
+//		}
 		
 	}
 
@@ -124,11 +145,14 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 				if(null != principal && !("").equals(principal)) {
 					whereSql.append(" and a.principal like '%"+principal+"%' ");
 				}
+				//if((null == kxOrderNo && ("").equals(kxOrderNo))&&(null == projectName && ("").equals(projectName))&&(null == contractNo && ("").equals(contractNo))&&(null == client && ("").equals(client))&&(null == principal && ("").equals(principal))){
+					whereSql.append(" group by a.id ");
+				//}
 				//主干sql
 				StringBuffer hql = new StringBuffer();
 				hql.append(" select a.id,a.kx_order_no,a.project_name,a.client,a.final_client," +
-						"a.payment,a.principal,a.total_price,a.remark ");
-				hql.append(" from tb_order a where 1=1 ");
+						"a.payment,a.principal,sum(b.price*b.number),a.remark ");
+				hql.append(" from tb_order a ,tb_order_detail b where a.id=b.order_id ");
 				hql.append(whereSql.toString());
 				
 				hqlQuery.setQueryString(hql.toString());

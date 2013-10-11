@@ -14,14 +14,14 @@
      <label class="Validform_label">
       类型名称:
      </label>
-     <input name="typename" class="inputxt"  value="${type.typename }" datatype="s2-10" >
+     <input name="typename" class="inputxt"  value="${type.typename }" datatype="*" >
      <span class="Validform_checktip">类型范围在2~10位字符,且不为空</span>
     </div>
     <div class="form">
      <label class="Validform_label">
       类型编码:
      </label>
-     <input name="typecode" class="inputxt" ajaxurl="systemController.do?checkType&code=${type.typecode }&typeGroupCode=${type.TSTypegroup.typegroupcode}"  value="${type.typecode }"  datatype="s1-10">
+     <input name="typecode" class="inputxt" ajaxurl="systemController.do?checkType&code=${type.typecode }&typeGroupCode=${type.TSTypegroup.typegroupcode}"  value="${type.typecode }"  datatype="*">
      <span class="Validform_checktip">类型编码在1~10位字符,且不为空</span>
     </div>
    </fieldset>

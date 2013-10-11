@@ -98,10 +98,10 @@
 									   value="${tbOrderPage.finalClient}">
 								<span class="Validform_checktip"></span>
 			</td>
-			<td align="right"><label class="Validform_label">付款方式:</label></td>
+			<td align="right"><label class="Validform_label">订单总价:</label></td>
 			<td class="value">
-				<input nullmsg="请填写payment" errormsg="payment格式不对" class="inputxt" id="payment" name="payment" ignore="ignore"
-									   value="${tbOrderPage.payment}">
+				<input nullmsg="请填写订单总价" errormsg="格式不对" class="inputxt" id="totalPrice" name="totalPrice"
+									   value="${tbOrderPage.totalPrice}">
 								<span class="Validform_checktip"></span>
 			</td>
 			</tr>
@@ -112,12 +112,8 @@
 									   value="${tbOrderPage.principal}">
 								<span class="Validform_checktip"></span>
 			</td>
-			<td align="right"><label class="Validform_label">订单总价:</label></td>
-			<td class="value">
-				<input nullmsg="请填写订单总价" errormsg="格式不对" class="inputxt" id="totalPrice" name="totalPrice"
-									   value="${tbOrderPage.totalPrice}">
-								<span class="Validform_checktip"></span>
-			</td>
+			<td align="right"><label class="Validform_label">付款方式:</label></td>
+			<td class="value"><t:dictSelect field="payment" typeGroupCode="payment"  title="付款方式"  hasLabel="N"></t:dictSelect></td>
 			</tr>
 			<tr>
 				<td align="right"><label class="Validform_label">备注:</label></td>
@@ -129,6 +125,7 @@
 								
 				</td>
 			</tr>
+			
 			</table>
 			<div style="width: auto;height: 200px;">
 				<%-- 增加一个div，用于调节页面大小，否则默认太小 --%>
@@ -144,18 +141,8 @@
 			<tr>
 			 <td align="center"><input style="width:20px;" type="checkbox" name="ck"/></td>
 			 <td align="center"><input name="tbOrderDetailList[#index#].id" maxlength="85" type="hidden" style="width:120px;"></td>
-				<td align="center"><select id="sel" name="tbOrderDetailList[#index#].name">
-									<option value="服务器">服务器</option>
-									<option value="存储">存储</option>
-									<option value="交换机">交换机</option>
-									<option value="操作系统">操作系统</option>
-									<option value="笔记本">笔记本</option>
-									<option value="台式机">台式机</option>
-									<option value="服务">服务</option>
-									<option value="配件">配件</option>
-									<option value="存储配件">存储配件</option>
-									<option value="服务器配件">服务器配件</option>
-								</select>
+				<td align="center">
+				<t:dictSelect field="tbOrderDetailList[#index#].name"  typeGroupCode="seltype" title="*"></t:dictSelect>
 							</td>
 				 <td align="center"><input name="tbOrderDetailList[#index#].type" maxlength="85" type="text" style="width:120px;"></td>
 				 <td align="center"><input name="tbOrderDetailList[#index#].price" maxlength="85" type="text" style="width:120px;"></td>
