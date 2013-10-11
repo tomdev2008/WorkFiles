@@ -1,0 +1,91 @@
+package jeecg.kxcomm.service.impl.contactm;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import jeecg.kxcomm.service.contactm.TbOrderServiceI;
+import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
+
+import jeecg.kxcomm.entity.contactm.TbContractEntity;
+import jeecg.kxcomm.entity.contactm.TbOrderEntity;
+import jeecg.kxcomm.entity.contactm.TbOrderDetailEntity;
+@Service("tbOrderService")
+@Transactional
+public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServiceI {
+
+	@Override
+	public void addMain(TbOrderEntity tbOrder,
+	        List<TbOrderDetailEntity> tbOrderDetailList){
+			//保存主信息
+			tbOrder.setTbContract(null);//有主外键关系
+			this.save(tbOrder);
+		
+			/**保存-产品明细*/
+			for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
+				//外键设置
+				tbOrderDetail.setTbOrder(tbOrder);//.setOrderId(tbOrder.getId());////
+				this.save(tbOrderDetail);
+			}
+	}
+
+	@Override
+	public void updateMain(TbOrderEntity tbOrder,
+	        List<TbOrderDetailEntity> tbOrderDetailList) {
+		//保存订单主信息
+		String id = tbOrder.getTbContract().getId();
+		if(id!=null){
+			TbContractEntity tbContract = this.getEntity(TbContractEntity.class, id);
+		    tbOrder.setTbContract(tbContract);
+		}else{
+			tbOrder.setTbContract(null);
+		}
+	   
+	    this.saveOrUpdate(tbOrder);
+		
+		
+		//===================================================================================
+		//获取参数
+		Object id0 = tbOrder.getId();
+		//===================================================================================
+		//删除-产品明细
+	    String hql0 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder = ? ";
+	    List<TbOrderDetailEntity> tbOrderDetailOldList = this.findHql(hql0,tbOrder);
+		//this.deleteAllEntitie(tbOrderDetailOldList);
+	    for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailOldList){
+	    	
+	    	tbOrderDetail.setTbOrder(null);
+	    }
+	    
+		//保存-产品明细
+		for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
+			
+			//if(!tbOrderDetail.getId().equals("")){
+				tbOrderDetail.setTbOrder(tbOrder);
+				this.save(tbOrderDetail);
+			//}else{
+				//外键设置
+				tbOrderDetail.setTbOrder(tbOrder);//.setOrderId(tbOrder.getId());
+				this.save(tbOrderDetail);
+			//}
+			
+		}
+		
+	}
+
+	@Override
+	public void delMain(TbOrderEntity tbOrder) {
+		
+		
+		//===================================================================================
+		//获取参数
+		Object id0 = tbOrder.getId();
+		//===================================================================================
+		//删除-产品明细
+	    String hql0 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder = ? ";
+	    List<TbOrderDetailEntity> tbOrderDetailOldList = this.findHql(hql0,tbOrder);
+		this.deleteAllEntitie(tbOrderDetailOldList);
+		//删除主表信息
+		this.delete(tbOrder);
+	}
+	
+}

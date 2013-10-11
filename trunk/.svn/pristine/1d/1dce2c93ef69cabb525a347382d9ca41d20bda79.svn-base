@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<import resource="daoContext.xml" />
+	<context:component-scan base-package="cn.com.kxcomm" />
+	<!-- database conection config -->
+	<bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@192.168.7.145:1521:orcl" /> 
+		<property name="username" value="sys_center" />
+		<property name="password" value="123456" />
+		<property name="maxActive" value="50" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="1000" />
+	</bean> 
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	
+	<!--Hibernate TransactionManager-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+		<!-- 配置事务特性，配置add，delete，update开始的方法，事务传播特性为required -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置那些类的方法进行事务管理，当前com.sy.crm.service包中的子包， 类中所有方法需要，还需要参考tx:advice的设置 -->
+	<aop:config>
+		<aop:pointcut id="allManagerMethod"
+			expression="execution(* cn.com.kxcomm.selfservice.service.impl.*Service*.*(..))" />
+		<aop:pointcut id="allActionMethod"
+			expression="execution(public String com.unicom.mms.cms.action.web..*.*()) and
+			 !execution(* get*()) and !execution(* toString()) and !execution(* ...*$$EnhancerByCGLIB*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
+	</aop:config>
+	
+	<!-- hibernate config -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	<property name="dataSource" ref="baseDataSource" />
+	<property name="hibernateProperties">
+		<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+			<prop key="hibernate.show_sql">true</prop>
+			<prop key="hibernate.connection.release_mode">after_transaction</prop>
+			<prop key="hibernate.hbm2ddl.auto">update</prop>
+			<prop key="hibernate.jdbc.fetch_size">50</prop>
+			<prop key="hibernate.jdbc.batch_size">30</prop>
+			<!-- 启用二级缓存 -->
+			<!-- <prop key="hibernate.cache.use_second_level_cache">true</prop>-->
+			<!--配置缓存插件 -->
+			<!-- <prop key="hibernate.cache.provider_class">com.googlecode.hibernate.memcached.MemcachedCacheProvider</prop> -->
+			<!-- 设置memcache缓存服务器端口 -->
+		<!-- 	<prop key="hibernate.memcached.servers">192.168.1.11:11211</prop> -->
+			<!-- 否使用结构化的方式缓存对象 -->
+			<!-- <prop key="hibernate.cache.use_structured_entries">true</prop> -->
+			<!-- 设置二级缓存的前缀名称 -->
+			<!-- <prop key="hibernate.cache.region_prefix">quality.cache.ehcache</prop>  -->
+			<!--启用查询缓存 -->
+			<!-- <prop key="hibernate.cache.use_query_cache">true</prop> -->
+		</props>
+	</property>
+	<property name="annotatedClasses">
+			<list>
+				<value>cn.com.kxcomm.selfservice.entity.TbCmsUser</value>
+				<!-- <value>cn.com.kxcomm.selfservice.entity.TbRole</value>
+				<value>cn.com.kxcomm.selfservice.entity.TbRightRoleId</value>
+				<value>cn.com.kxcomm.selfservice.entity.TbRight</value>
+				<value>cn.com.kxcomm.selfservice.entity.TbRightRole</value> -->
+			</list>
+		</property>
+	</bean>
+	
+	<!-- dao config -->
+	
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

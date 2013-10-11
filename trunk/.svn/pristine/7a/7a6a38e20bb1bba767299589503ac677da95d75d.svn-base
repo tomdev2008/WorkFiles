@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- dao实现类的配置 -->
+	<bean id="commonDAO" class="cn.com.kxcomm.base.dao.CommonDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="rightDAO" class="cn.com.kxcomm.selfservice.dao.RightDAO" parent="commonDAO"></bean>
+	<bean id="roleDAO" class="cn.com.kxcomm.selfservice.dao.RoleDAO" parent="commonDAO"></bean>
+	<bean id="rightRoleDAO" class="cn.com.kxcomm.selfservice.dao.RightRoleDAO" parent="commonDAO"></bean>
+	<bean id="cmsUserDAO" class="cn.com.kxcomm.selfservice.dao.CmsUserDAO" parent="commonDAO"></bean>
+	<bean id="tenantsDAO" class="cn.com.kxcomm.selfservice.dao.TenantsDAO" parent="commonDAO"></bean>
+</beans>
