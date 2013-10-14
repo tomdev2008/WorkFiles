@@ -198,8 +198,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="typeServiceNo" name="typeServiceNo" ignore="ignore"
-							   value="${tbPurchasePage.typeServiceNo}">
+						<textarea style="width:90%;" nullmsg="请填写机型服务编号" errormsg="机型服务编号格式不对" id="typeServiceNo" name="typeServiceNo" ignore="ignore">${tbPurchasePage.typeServiceNo}</textarea>
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>

@@ -38,13 +38,11 @@
 				if(data!=null){
 					var tt = $("input[name='"+object.name+"']").parent().parent();
 					$(tt.find("input")[2]).val(data.projectName);
-					$(tt.find("input")[3]).val(data.contractNo);
-	    			$(tt.find("input")[4]).val(data.client);
-	    			$(tt.find("input")[5]).val(data.finalClient);
-	    			$(tt.find("input")[6]).val(data.payment);
-	    			$(tt.find("input")[7]).val(data.principal);
-	    			$(tt.find("input")[8]).val(data.remark);
-						
+	    			$(tt.find("input")[3]).val(data.client);
+	    			$(tt.find("input")[4]).val(data.finalClient);
+	    			$(tt.find("input")[5]).val(data.payment);
+	    			$(tt.find("input")[6]).val(data.principal);
+	    			$(tt.find("input")[7]).val(data.remark);
 				}else{  	
 					alert("订单号有误");
 					return false;
@@ -92,42 +90,42 @@
 			<tr>
 			<td align="right"><label class="Validform_label">开票日期:</label></td>
 			<td class="value">
-				<input nullmsg="请填写billing" errormsg="billing格式不对" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="billingDate" name="billingDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.billingDate}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
+				<input nullmsg="请填写billing" errormsg="billing格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="billingDate" name="billingDate" ignore="ignore"
+									     value="<fmt:formatDate value='${tbContractPage.billingDate}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
 			</td>
 			<td align="right"><label class="Validform_label">到货款回款日期:</label></td>
 			<td class="value">
-				<input nullmsg="请填写daohuoP" errormsg="daohuoP格式不对" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="daohuoPaymentDate" name="daohuoPaymentDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.daohuoPaymentDate}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
+				<input nullmsg="请填写daohuoP" errormsg="daohuoP格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="daohuoPaymentDate" name="daohuoPaymentDate" ignore="ignore"
+									     value="<fmt:formatDate value='${tbContractPage.daohuoPaymentDate}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
 			</td>
 			</tr>
 			<tr>
 			<td align="right"><label class="Validform_label">初验款回款日期:</label></td>
 			<td class="value">
-				<input nullmsg="请填写chuyanP" errormsg="chuyanP格式不对" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="chuyanPaymentDate" name="chuyanPaymentDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.chuyanPaymentDate}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
+				<input nullmsg="请填写chuyanP" errormsg="chuyanP格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="chuyanPaymentDate" name="chuyanPaymentDate" ignore="ignore"
+									     value="<fmt:formatDate value='${tbContractPage.chuyanPaymentDate}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
 			</td>
 			<td align="right"><label class="Validform_label">终验款回款日期:</label></td>
 			<td class="value">
-				<input nullmsg="请填写zhongya" errormsg="zhongya格式不对" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="zhongyanPaymentDate" name="zhongyanPaymentDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.zhongyanPaymentDate}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
+				<input nullmsg="请填写zhongya" errormsg="zhongya格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="zhongyanPaymentDate" name="zhongyanPaymentDate" ignore="ignore"
+									     value="<fmt:formatDate value='${tbContractPage.zhongyanPaymentDate}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
 			</td>
 			</tr>
 			<tr>
 			<td align="right"><label class="Validform_label">合同归档日期:</label></td>
 			<td class="value">
-				<input nullmsg="请填写contrac" errormsg="contrac格式不对" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="contractFilingDate" name="contractFilingDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.contractFilingDate}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
+				<input nullmsg="请填写contrac" errormsg="contrac格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractFilingDate" name="contractFilingDate" ignore="ignore"
+									     value="<fmt:formatDate value='${tbContractPage.contractFilingDate}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
 			</td>
 			<td align="right"><label class="Validform_label">合同签订日期:</label></td>
 			<td class="value">
-				<input nullmsg="请填写contrac" errormsg="contrac格式不对" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="contractSigningDate" name="contractSigningDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.contractSigningDate}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
+				<input nullmsg="请填写contrac" errormsg="contrac格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractSigningDate" name="contractSigningDate" ignore="ignore"
+									     value="<fmt:formatDate value='${tbContractPage.contractSigningDate}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
 			</td>
 			</tr>

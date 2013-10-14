@@ -142,20 +142,23 @@ public class TbContractController extends BaseController {
 		List<TbOrderEntity> tbOrderList =  tbContractPage.getTbOrderList();
 		AjaxJson j = new AjaxJson();
 		//判断销售合同是否唯一
-		String hql0 = "from TbContractEntity where 1 = 1 AND contractNo = ? ";
-	    List<TbContractEntity> tbContractList = systemService.findHql(hql0,tbContract.getContractNo());
-	    if(tbContractList.size()>0){
-	    	j.setMsg("操作失败:销售合同编号不能重复!");
-			return j;
-		}
+		
 		if (StringUtil.isNotEmpty(tbContract.getId())) {
 			message = "更新成功";
 			tbContractService.updateMain(tbContract, tbOrderList);
 			systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 		} else {
-			message = "添加成功";
-			tbContractService.addMain(tbContract, tbOrderList);
-			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
+			String hql0 = "from TbContractEntity where 1 = 1 AND contractNo = ? ";
+		    List<TbContractEntity> tbContractList = systemService.findHql(hql0,tbContract.getContractNo());
+		    if(tbContractList.size()>0){
+		    	j.setMsg("操作失败:销售合同编号不能重复!");
+				return j;
+			}else{
+				message = "添加成功";
+				tbContractService.addMain(tbContract, tbOrderList);
+				systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
+			}
+			
 		}
 		j.setMsg(message);
 		return j;

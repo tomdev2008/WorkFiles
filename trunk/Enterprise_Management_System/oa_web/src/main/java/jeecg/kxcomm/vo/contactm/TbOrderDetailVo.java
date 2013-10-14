@@ -32,7 +32,43 @@ public class TbOrderDetailVo implements Serializable {
 	private java.lang.String sum;
 	private java.lang.String kxOrderNo;
 	private java.lang.String finalClient;
+	private String projectName;
+	private String client;
+	private String principal;
+	private String remark;
 	
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
+	public String getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(String principal) {
+		this.principal = principal;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 
 	public java.lang.String getKxOrderNo() {
 		return kxOrderNo;

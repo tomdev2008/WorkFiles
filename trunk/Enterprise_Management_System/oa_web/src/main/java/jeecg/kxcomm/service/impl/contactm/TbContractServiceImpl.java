@@ -141,7 +141,7 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 			vo.setId(""+obj[0]);
 			vo.setContractNo(""+obj[1]);
 			vo.setContractPrice(""+obj[2]);
-			SimpleDateFormat a=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat a=new SimpleDateFormat("yyyy-MM-dd");
 			
 			try {
 				Date d1 = null;

@@ -1,0 +1,51 @@
+创建hive表
+create table dataDemo (number int,value string)row format delimited fields terminated by '&' stored as textfile;
+加载数据到dataDemo 表
+load data local inpath '/Test/data.txt' into table dataDemo;
+
+查询所有
+select * from datademo;
+
+select * from dataDemo where number>=100 and number<=120;
+
+select *, count(1) as f2 from chartable group by value sort by f2 desc limit 10;
+
+
+
+分区
+ create table partitionDemo (number int,value string) partitioned by (datas string,country string);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

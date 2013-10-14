@@ -5,8 +5,12 @@
   <t:datagrid name="tbOrderDetailCopyList" title="销售订单明细" actionUrl="tbOrderDetailController.do?datagrid"  idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="康讯订单号" field="kxOrderNo" query="true" width="60"></t:dgCol>
-   <t:dgCol title="最终客户" field="finalClient" width="60"></t:dgCol>
-   <t:dgCol title="商品名称" field="name" width="60"></t:dgCol>
+   <t:dgCol title="项目名称" field="projectName" width="250"></t:dgCol>
+   <t:dgCol title="客户名称" field="client" width="60" hidden="false"></t:dgCol>
+    <t:dgCol title="最终客户" field="finalClient" width="60"></t:dgCol>
+    <t:dgCol title="负责人" field="principal" width="30"></t:dgCol>
+    <t:dgCol title="备注" field="remark" width="30"  hidden="false"></t:dgCol>
+   <t:dgCol title="商品名称" field="name" width="40"></t:dgCol>
    <t:dgCol title="型号" field="type" width="60"></t:dgCol>
    <%--<t:dgCol title="单价" field="price" width="50"></t:dgCol>--%>
    <t:dgCol title="数量" field="number" width="30"></t:dgCol>

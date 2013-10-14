@@ -123,8 +123,8 @@
 			<tr>
 			<td align="right"><label class="Validform_label">创建时间:</label></td>
 			<td class="value">
-				<input nullmsg="请填写创建时间" errormsg="princip格式不对" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  style="width: 150px" id="createTime" name="createTime" ignore="ignore"
-									   value="<fmt:formatDate value='${tbOrderPage.createTime}' type="date" pattern="yyyy-MM-dd hh:mm:ss"/>">
+				<input nullmsg="请填写创建时间" errormsg="princip格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="createTime" name="createTime" ignore="ignore"
+									   value="<fmt:formatDate value='${tbOrderPage.createTime}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
 								
 			</td>

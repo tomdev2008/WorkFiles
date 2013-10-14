@@ -1,0 +1,3 @@
+hadoop jar PageRankDemo.jar MRDemo.PageRank.PageRankDemo /user/input/PageRank.txt /outputPageRank
+
+hadoop fs -cat /outputPageRank/part-r-00000

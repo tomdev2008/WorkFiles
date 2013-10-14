@@ -140,12 +140,6 @@ public class TbOrderController extends BaseController {
 	public AjaxJson save(TbOrderEntity tbOrder,TbOrderPage tbOrderPage, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
 		//判断销售订单是否唯一
-		String hqlOrder = "from TbOrderEntity where 1 = 1 AND kxOrderNo = ? ";
-	    List<TbOrderEntity> tbOrderList = systemService.findHql(hqlOrder,tbOrder.getKxOrderNo());
-	    if(tbOrderList.size()>0){
-			j.setMsg("操作失败:销售订单编号重复!");
-			return j;
-		}
 		
 		//修改合同编号
 		List<TbOrderDetailEntity> tbOrderDetailList =  tbOrderPage.getTbOrderDetailList();
@@ -166,9 +160,18 @@ public class TbOrderController extends BaseController {
 			tbOrderService.updateMain(tbOrder, tbOrderDetailList);
 			systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 		} else {
-			message = "添加成功";
-			tbOrderService.addMain(tbOrder, tbOrderDetailList);
-			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
+			String hqlOrder = "from TbOrderEntity where 1 = 1 AND kxOrderNo = ? ";
+		    List<TbOrderEntity> tbOrderList = systemService.findHql(hqlOrder,tbOrder.getKxOrderNo());
+		    if(tbOrderList.size()>0){
+				j.setMsg("操作失败:销售订单编号重复!");
+				return j;
+			}else{
+				message = "添加成功";
+				tbOrderService.addMain(tbOrder, tbOrderDetailList);
+				systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
+			}
+			
+			
 		}
 		j.setMsg(message);
 		return j;
