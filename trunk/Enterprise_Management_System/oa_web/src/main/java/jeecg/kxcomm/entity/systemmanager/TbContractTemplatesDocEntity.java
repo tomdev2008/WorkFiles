@@ -14,9 +14,9 @@ import javax.persistence.SequenceGenerator;
 
 /**   
  * @Title: Entity
- * @Description: 合同模板文件管理
+ * @Description: 合同模板文件
  * @author zhangdaihao
- * @date 2013-10-14 16:13:26
+ * @date 2013-10-15 11:10:19
  * @version V1.0   
  *
  */
@@ -24,7 +24,7 @@ import javax.persistence.SequenceGenerator;
 @Table(name = "tb_contract_templates_doc", schema = "")
 @SuppressWarnings("serial")
 public class TbContractTemplatesDocEntity implements java.io.Serializable {
-	/**templatesdocId*/
+	/**id*/
 	private java.lang.String id;
 	/**文件名称*/
 	private java.lang.String docname;
@@ -37,19 +37,20 @@ public class TbContractTemplatesDocEntity implements java.io.Serializable {
 	
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  templatesdocId
+	 *@return: java.lang.String  id
 	 */
+	
 	@Id
 	@GeneratedValue(generator = "paymentableGenerator")
 	@GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
-	@Column(name ="ID",nullable=false,precision=10,scale=0)
+	@Column(name ="ID",nullable=false,length=32)
 	public java.lang.String getId(){
 		return this.id;
 	}
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  templatesdocId
+	 *@param: java.lang.String  id
 	 */
 	public void setId(java.lang.String id){
 		this.id = id;

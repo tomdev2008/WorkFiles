@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
@@ -51,7 +52,7 @@ public class TbContractTemplatesDocVariableEntity implements java.io.Serializabl
 	 *方法: 设置java.lang.String
 	 *@param: java.lang.String  templatesDocVariableId
 	 */
-	public void setTemplatesDocVariableId(java.lang.String Id){
+	public void setId(java.lang.String Id){
 		this.Id = Id;
 	}
 	/**
@@ -59,7 +60,7 @@ public class TbContractTemplatesDocVariableEntity implements java.io.Serializabl
 	 *@return: java.lang.String  templatesdocId
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Column(name ="TEMPLATESDOC_ID",nullable=true,length=32)
+	@JoinColumn(name ="TEMPLATESDOC_ID")
 	public TbContractTemplatesDocEntity getTemplatesdocId() {
 		return templatesdocId;
 	}

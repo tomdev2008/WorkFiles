@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
@@ -27,7 +28,7 @@ import javax.persistence.SequenceGenerator;
 @SuppressWarnings("serial")
 public class TbContactTemplatesDocTypeRelationshipEntity implements java.io.Serializable {
 	/**templatesdoctype*/
-	private java.lang.String Id;
+	private java.lang.String id;
 	/**合同模板文件*/
 	private TbContractTemplatesDocEntity templatesdocId =new TbContractTemplatesDocEntity();
 	/**合同文件类型*/
@@ -42,22 +43,22 @@ public class TbContactTemplatesDocTypeRelationshipEntity implements java.io.Seri
 	@GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
 	@Column(name ="TEMPLATESDOCTYPE",nullable=false,length=32)
 	public java.lang.String getId(){
-		return this.Id;
+		return this.id;
 	}
 
 	/**
 	 *方法: 设置java.lang.String
 	 *@param: java.lang.String  templatesdoctype
 	 */
-	public void setId(java.lang.String Id){
-		this.Id = Id;
+	public void setId(java.lang.String id){
+		this.id = id;
 	}
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  templatesdocId
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Column(name ="TEMPLATESDOC_ID",nullable=true,length=32)
+	@JoinColumn(name ="TEMPLATESDOC_ID")
 	public TbContractTemplatesDocEntity getTemplatesdocId() {
 		return templatesdocId;
 	}
@@ -73,7 +74,7 @@ public class TbContactTemplatesDocTypeRelationshipEntity implements java.io.Seri
 	 *@return: java.lang.String  doctypeId
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Column(name ="DOCTYPE_ID",nullable=true,length=32)
+	@JoinColumn(name ="DOCTYPE_ID")
 	public TbContractDocTypeEntity getDoctypeId() {
 		return doctypeId;
 	}

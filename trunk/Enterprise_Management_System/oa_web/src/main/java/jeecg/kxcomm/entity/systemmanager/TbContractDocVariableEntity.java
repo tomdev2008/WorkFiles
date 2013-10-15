@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
@@ -27,7 +28,7 @@ import javax.persistence.SequenceGenerator;
 @SuppressWarnings("serial")
 public class TbContractDocVariableEntity implements java.io.Serializable {
 	/**docvariable*/
-	private java.lang.String Id;
+	private java.lang.String id;
 	/**docId*/
 	private TbContractDocEntity docId=new TbContractDocEntity();
 	/**变量名称*/
@@ -44,22 +45,22 @@ public class TbContractDocVariableEntity implements java.io.Serializable {
 	@GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
 	@Column(name ="DOCVARIABLE",nullable=false,length=32)
 	public java.lang.String getId(){
-		return this.Id;
+		return this.id;
 	}
 
 	/**
 	 *方法: 设置java.lang.String
 	 *@param: java.lang.String  docvariable
 	 */
-	public void setId(java.lang.String Id){
-		this.Id = Id;
+	public void setId(java.lang.String id){
+		this.id = id;
 	}
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  docId
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@Column(name ="DOC_ID",nullable=true,length=32)
+	@JoinColumn(name ="DOC_ID")
 	public TbContractDocEntity getDocId() {
 		return docId;
 	}

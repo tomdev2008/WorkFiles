@@ -25,7 +25,7 @@ import javax.persistence.SequenceGenerator;
 @SuppressWarnings("serial")
 public class TbContractDocTypeEntity implements java.io.Serializable {
 	/**doctypeId*/
-	private java.lang.String Id;
+	private java.lang.String id;
 	/**分类名称*/
 	private java.lang.String typename;
 	
@@ -38,15 +38,15 @@ public class TbContractDocTypeEntity implements java.io.Serializable {
 	@GenericGenerator(name = "paymentableGenerator", strategy = "uuid")
 	@Column(name ="DOCTYPE_ID",nullable=false,length=32)
 	public java.lang.String getId(){
-		return this.Id;
+		return this.id;
 	}
 
 	/**
 	 *方法: 设置java.lang.String
 	 *@param: java.lang.String  doctypeId
 	 */
-	public void setId(java.lang.String Id){
-		this.Id = Id;
+	public void setId(java.lang.String id){
+		this.id = id;
 	}
 	/**
 	 *方法: 取得java.lang.String
