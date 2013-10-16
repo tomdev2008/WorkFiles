@@ -1,0 +1,84 @@
+
+特别注意
+
+1
+hive中已存在含有数据的表
+2
+在mysql中创建空表，表结构与hive中的表结构一致
+
+
+
+导入导出数据库
+    1)列出mysql数据库中的所有数据库命令
+   #  sqoop list-databases --connect jdbc:mysql://10.1.24.210:3306/ --username root --password rootroot
+    
+   2)连接mysql并列出数据库中的表命令
+    # sqoop list-tables --connect jdbc:mysql://10.1.24.210:3306/ --username root --password rootroot
+    命令中的test为mysql数据库中的test数据库名称  username password分别为mysql数据库的用户密码
+    
+   3)将关系型数据的表结构复制到hive中
+  sqoop create-hive-table --connect jdbc:mysql://10.1.24.210:3306/test --table username --username root --password 123456 --hive-table test
+ 其中 --table username为mysql中的数据库test中的表   --hive-table test 为hive中新建的表名称
+    
+   4)从关系数据库导入文件到hive中
+ sqoop import --connect jdbc:mysql://10.1.24.210:3306/test --username root --password mysql-password --table t1 --hive-import -m 1
+ 
+   5)将hive中的表数据导入到mysql中
+ 
+ sqoop export --connect jdbc:mysql://10.1.24.210:3306/intel_test --username root --password rootroot --table test1 -export-dir /user/hive/warehouse/datademo --input-fields-terminated-by '&'
+
+
+
+
+
+
+
+
+
+
+
+3
+执行下列语句
+[root@idh05 ~]# sqoop export --connect jdbc:mysql://10.1.24.210:3306/intel_test --username root --password rootroot --table test1 -export-dir /user/hive/warehouse/datademo --input-fields-terminated-by '&'
+13/08/06 12:21:50 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+13/08/06 12:21:50 INFO manager.MySQLManager: Preparing to use a MySQL streaming resultset.
+13/08/06 12:21:50 INFO tool.CodeGenTool: Beginning code generation
+13/08/06 12:21:50 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM `test1` AS t LIMIT 1
+13/08/06 12:21:50 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop/libexec/..
+13/08/06 12:21:50 INFO orm.CompilationManager: Found hadoop core jar at: /usr/lib/hadoop/libexec/../hadoop-core.jar
+Note: /tmp/sqoop-root/compile/7c5fdf7287defccc7cc4e53b6eb63467/test1.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+13/08/06 12:21:51 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-root/compile/7c5fdf7287defccc7cc4e53b6eb63467/test1.jar
+13/08/06 12:21:51 INFO mapreduce.ExportJobBase: Beginning export of test1
+13/08/06 12:21:53 INFO input.FileInputFormat: Total input paths to process : 1
+13/08/06 12:21:53 INFO input.FileInputFormat: Total input paths to process : 1
+13/08/06 12:21:53 INFO mapred.JobClient: Running job: job_201308061013_0004
+13/08/06 12:21:54 INFO mapred.JobClient:  map 0% reduce 0%
+13/08/06 12:22:07 INFO mapred.JobClient:  map 100% reduce 0%
+13/08/06 12:22:11 INFO mapred.JobClient: Job complete: job_201308061013_0004
+13/08/06 12:22:11 INFO mapred.JobClient: Counters: 18
+13/08/06 12:22:11 INFO mapred.JobClient:   Job Counters 
+13/08/06 12:22:11 INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=13606
+13/08/06 12:22:11 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+13/08/06 12:22:11 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+13/08/06 12:22:11 INFO mapred.JobClient:     Launched map tasks=1
+13/08/06 12:22:11 INFO mapred.JobClient:     Data-local map tasks=1
+13/08/06 12:22:11 INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=0
+13/08/06 12:22:11 INFO mapred.JobClient:   File Output Format Counters 
+13/08/06 12:22:11 INFO mapred.JobClient:     Bytes Written=0
+13/08/06 12:22:11 INFO mapred.JobClient:   FileSystemCounters
+13/08/06 12:22:11 INFO mapred.JobClient:     HDFS_BYTES_READ=3509
+13/08/06 12:22:11 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=32610
+13/08/06 12:22:11 INFO mapred.JobClient:   File Input Format Counters 
+13/08/06 12:22:11 INFO mapred.JobClient:     Bytes Read=0
+13/08/06 12:22:11 INFO mapred.JobClient:   Map-Reduce Framework
+13/08/06 12:22:11 INFO mapred.JobClient:     Map input records=200
+13/08/06 12:22:11 INFO mapred.JobClient:     Physical memory (bytes) snapshot=85041152
+13/08/06 12:22:11 INFO mapred.JobClient:     Spilled Records=0
+13/08/06 12:22:11 INFO mapred.JobClient:     CPU time spent (ms)=1290
+13/08/06 12:22:11 INFO mapred.JobClient:     Total committed heap usage (bytes)=85000192
+13/08/06 12:22:11 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=1127284736
+13/08/06 12:22:11 INFO mapred.JobClient:     Map output records=200
+13/08/06 12:22:11 INFO mapred.JobClient:     SPLIT_RAW_BYTES=119
+13/08/06 12:22:11 INFO mapreduce.ExportJobBase: Transferred 3.4268 KB in 19.3174 seconds (181.6502 bytes/sec)
+13/08/06 12:22:11 INFO mapreduce.ExportJobBase: Exported 200 records.

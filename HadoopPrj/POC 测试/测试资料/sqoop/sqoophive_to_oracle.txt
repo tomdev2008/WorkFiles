@@ -1,0 +1,89 @@
+
+特别注意
+
+--username TEST
+--table HIVETABLE 
+都要大写
+
+在执行前先下载oracle驱动，将启动放在sqoop/lib下
+
+
+
+列出数据库中的所有数据库命令
+   #  sqoop list-databases --connect jdbc:oracle:thin:@10.1.24.211:1521:cupoc --username TEST --password oracle
+    
+   2)连接并列出数据库中的表命令
+    # sqoop list-tables --connect jdbc:oracle:thin:@10.1.24.211:1521:cupoc --username TEST --password oracle
+    命令中的test为mysql数据库中的handu数据库名称  username password分别为mysql数据库的用户密码
+   
+   3)从关系数据库导入文件到hive中
+ sqoop import --connect jdbc:oracle:thin:@10.1.24.211:1521:cupoc  --username TEST --password oracle --table TEST -m 1
+ 
+   4)将hive中的表数据导入到mysql中
+ 
+sqoop export  --connect jdbc:oracle:thin:@10.1.24.211:1521:cupoc --username TEST --password oracle --table TEST -export-dir /user/hive/warehouse/datademo --input-fields-terminated-by '&' 
+
+
+
+
+
+
+
+
+
+[root@idh05 ~]# sqoop export  --connect jdbc:oracle:thin:@10.1.24.211:1521:cupoc --username TEST --password oracle --table HIVETABLE -export-dir /user/hive/warehouse/datademo --input-fields-terminated-by '&'
+13/08/07 14:42:43 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+13/08/07 14:42:43 INFO manager.SqlManager: Using default fetchSize of 1000
+13/08/07 14:42:43 INFO tool.CodeGenTool: Beginning code generation
+13/08/07 14:42:49 INFO manager.OracleManager: Time zone has been set to GMT
+13/08/07 14:42:49 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM HIVETABLE t WHERE 1=0
+13/08/07 14:42:49 INFO orm.CompilationManager: HADOOP_HOME is /usr/lib/hadoop/libexec/..
+13/08/07 14:42:49 INFO orm.CompilationManager: Found hadoop core jar at: /usr/lib/hadoop/libexec/../hadoop-core.jar
+Note: /tmp/sqoop-root/compile/d235f7967ffe57c1d388ef1cbdf64b4e/HIVETABLE.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+13/08/07 14:42:50 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-root/compile/d235f7967ffe57c1d388ef1cbdf64b4e/HIVETABLE.jar
+13/08/07 14:42:50 INFO mapreduce.ExportJobBase: Beginning export of HIVETABLE
+13/08/07 14:42:51 INFO manager.OracleManager: Time zone has been set to GMT
+13/08/07 14:42:52 INFO input.FileInputFormat: Total input paths to process : 1
+13/08/07 14:42:52 INFO input.FileInputFormat: Total input paths to process : 1
+13/08/07 14:42:52 INFO mapred.JobClient: Running job: job_201308071102_0064
+13/08/07 14:42:53 INFO mapred.JobClient:  map 0% reduce 0%
+13/08/07 14:43:05 INFO mapred.JobClient:  map 100% reduce 0%
+13/08/07 14:43:09 INFO mapred.JobClient: Job complete: job_201308071102_0064
+13/08/07 14:43:09 INFO mapred.JobClient: Counters: 18
+13/08/07 14:43:09 INFO mapred.JobClient:   Job Counters 
+13/08/07 14:43:09 INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=13468
+13/08/07 14:43:09 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+13/08/07 14:43:09 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+13/08/07 14:43:09 INFO mapred.JobClient:     Launched map tasks=1
+13/08/07 14:43:09 INFO mapred.JobClient:     Data-local map tasks=1
+13/08/07 14:43:09 INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=0
+13/08/07 14:43:09 INFO mapred.JobClient:   File Output Format Counters 
+13/08/07 14:43:09 INFO mapred.JobClient:     Bytes Written=0
+13/08/07 14:43:09 INFO mapred.JobClient:   FileSystemCounters
+13/08/07 14:43:09 INFO mapred.JobClient:     HDFS_BYTES_READ=3509
+13/08/07 14:43:09 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=32567
+13/08/07 14:43:09 INFO mapred.JobClient:   File Input Format Counters 
+13/08/07 14:43:09 INFO mapred.JobClient:     Bytes Read=0
+13/08/07 14:43:09 INFO mapred.JobClient:   Map-Reduce Framework
+13/08/07 14:43:09 INFO mapred.JobClient:     Map input records=200
+13/08/07 14:43:09 INFO mapred.JobClient:     Physical memory (bytes) snapshot=88608768
+13/08/07 14:43:09 INFO mapred.JobClient:     Spilled Records=0
+13/08/07 14:43:09 INFO mapred.JobClient:     CPU time spent (ms)=1510
+13/08/07 14:43:09 INFO mapred.JobClient:     Total committed heap usage (bytes)=85000192
+13/08/07 14:43:09 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=1127329792
+13/08/07 14:43:09 INFO mapred.JobClient:     Map output records=200
+13/08/07 14:43:09 INFO mapred.JobClient:     SPLIT_RAW_BYTES=119
+13/08/07 14:43:09 INFO mapreduce.ExportJobBase: Transferred 3.4268 KB in 18.2439 seconds (192.3383 bytes/sec)
+13/08/07 14:43:09 INFO mapreduce.ExportJobBase: Exported 200 records.
+
+
+
+
+
+
+
+
+
+
+sqoop import --hive-import --connect jdbc:oracle:thin:@10.1.24.211:1521:cupoc --username test --password oracle --verbose -m 1 --table HANDU
