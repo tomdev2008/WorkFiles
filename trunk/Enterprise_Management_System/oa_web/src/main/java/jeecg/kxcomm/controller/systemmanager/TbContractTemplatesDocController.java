@@ -1,4 +1,5 @@
 package jeecg.kxcomm.controller.systemmanager;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,24 +14,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
+import org.jeecgframework.core.common.hibernate.qbc.HqlQuery;
+import org.jeecgframework.core.common.hibernate.qbc.PageList;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
-import jeecg.system.pojo.base.TSDepart;
 import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
 
-import jeecg.kxcomm.entity.systemmanager.TbContractDocTypeEntity;
 import jeecg.kxcomm.entity.systemmanager.TbContractTemplatesDocEntity;
 import jeecg.kxcomm.service.systemmanager.TbContractTemplatesDocServiceI;
 
 /**   
  * @Title: Controller
- * @Description: 合同模板文件
- * @author zhangdaihao
- * @date 2013-10-15 11:10:19
+ * @Description: 合同模板文件管理
+ * @author lizl
+ * @date 2013-10-14 16:13:25
  * @version V1.0   
  *
  */
@@ -47,6 +48,7 @@ public class TbContractTemplatesDocController extends BaseController {
 	@Autowired
 	private SystemService systemService;
 	private String message;
+	private List<TbContractTemplatesDocEntity> templatesDocEntities;
 	
 	public String getMessage() {
 		return message;
@@ -56,9 +58,17 @@ public class TbContractTemplatesDocController extends BaseController {
 		this.message = message;
 	}
 
+	public List<TbContractTemplatesDocEntity> getTemplatesDocEntities() {
+		return this.templatesDocEntities;
+	}
+
+	public void setTemplatesDocEntities(
+			List<TbContractTemplatesDocEntity> templatesDocEntities) {
+		this.templatesDocEntities = templatesDocEntities;
+	}
 
 	/**
-	 * 合同模板文件列表 页面跳转
+	 * 合同模板文件管理列表 页面跳转
 	 * 
 	 * @return
 	 */
@@ -78,6 +88,7 @@ public class TbContractTemplatesDocController extends BaseController {
 
 	@RequestMapping(params = "datagrid")
 	public void datagrid(TbContractTemplatesDocEntity tbContractTemplatesDoc,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		
 		CriteriaQuery cq = new CriteriaQuery(TbContractTemplatesDocEntity.class, dataGrid);
 		//查询条件组装器
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbContractTemplatesDoc);
@@ -86,7 +97,7 @@ public class TbContractTemplatesDocController extends BaseController {
 	}
 
 	/**
-	 * 删除合同模板文件
+	 * 删除合同模板文件管理
 	 * 
 	 * @return
 	 */
@@ -105,7 +116,7 @@ public class TbContractTemplatesDocController extends BaseController {
 
 
 	/**
-	 * 添加合同模板文件
+	 * 添加合同模板文件管理
 	 * 
 	 * @param ids
 	 * @return
@@ -134,7 +145,7 @@ public class TbContractTemplatesDocController extends BaseController {
 	}
 
 	/**
-	 * 合同模板文件列表页面跳转
+	 * 合同模板文件管理列表页面跳转
 	 * 
 	 * @return
 	 */
@@ -144,9 +155,65 @@ public class TbContractTemplatesDocController extends BaseController {
 			tbContractTemplatesDoc = tbContractTemplatesDocService.getEntity(TbContractTemplatesDocEntity.class, tbContractTemplatesDoc.getId());
 			req.setAttribute("tbContractTemplatesDocPage", tbContractTemplatesDoc);
 		}
-		//获取合同文件类型的集合
-		List<TbContractDocTypeEntity> docTyleList=systemService.getList(TbContractDocTypeEntity.class);
-		req.setAttribute("docTyleList", docTyleList);
 		return new ModelAndView("jeecg/kxcomm/systemmanager/tbContractTemplatesDoc");
+	}
+	
+	/**
+	 * easyui 获得模板下的所有DOC文件
+	 * ModelAndView
+	 * @param request
+	 * @param response
+	 * @param dataGrid
+	 * @param user
+	 */
+	@RequestMapping(params = "queryTempFiledatagrid")
+	public void queryTempFiledatagrid(TbContractTemplatesDocEntity tbContractTemplatesDoc,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		String temple_id = request.getParameter("temple_id");
+		String statsvalues = request.getParameter("statsvalues");
+		//查询条件组装器
+		HqlQuery hqlQuery = new HqlQuery("tbCheckingInstance.do?datagrid");
+		hqlQuery.setCurPage(dataGrid.getPage());
+		hqlQuery.setPageSize(dataGrid.getRows());
+		hqlQuery.setDataGrid(dataGrid);
+		PageList pagelist = this.tbContractTemplatesDocService.getPageList(hqlQuery, true,tbContractTemplatesDoc,temple_id,statsvalues);
+		this.templatesDocEntities = this.tbContractTemplatesDocService.getConTempList(hqlQuery, false, tbContractTemplatesDoc, temple_id);
+		List<TbContractTemplatesDocEntity> docEntities = new ArrayList<TbContractTemplatesDocEntity>();
+		docEntities = pagelist.getResultList();
+		for(int i = 0; i < docEntities.size(); i++) {
+			for(int j = 0; j < this.templatesDocEntities.size(); j++) {
+				if (this.templatesDocEntities.get(j).getId().trim().equals(docEntities.get(i).getId().trim())) {
+					docEntities.get(i).setPath("yes");
+				}
+			}
+		}
+		pagelist.setResultList(docEntities);
+		dataGrid.setPage(pagelist.getCurPageNO());
+		dataGrid.setTotal(pagelist.getCount());
+		dataGrid.setReaults(pagelist.getResultList());
+		TagUtil.datagrid(response, dataGrid);
+	}
+	
+	/**
+	 * 修改模板和模板文件之间的关系
+	 *
+	 * @param tbContractTemplatesDoc
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(params = "saveConTempFile")
+	public ModelAndView saveConTempFile(TbContractTemplatesDocEntity tbContractTemplatesDoc, HttpServletRequest request) {
+		String ids = request.getParameter("ids");
+		String contempIds = request.getParameter("contempIds");
+		this.tbContractTemplatesDocService.delMidTempFileEntity(contempIds);
+		if(ids.indexOf(",")>-1) {
+			String[] filesId = ids.split(",");
+			for(int i = 0; i < filesId.length; i++) {
+				this.tbContractTemplatesDocService.saveMidTempFileEntity(contempIds, filesId[i]);
+			}
+		} else {
+			this.tbContractTemplatesDocService.saveMidTempFileEntity(contempIds, ids);
+		}
+		request.setAttribute("temple_id",contempIds);
+		return new ModelAndView("jeecg/kxcomm/systemmanager/tbConTempInfoDocList");
 	}
 }

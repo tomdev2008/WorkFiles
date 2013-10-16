@@ -11,6 +11,7 @@ import jeecg.kxcomm.entity.contactm.TbPurchaseContractEntity;
 import jeecg.kxcomm.entity.contactm.TbPurchaseEntity;
 import jeecg.kxcomm.service.contactm.TbPurchaseContractServiceI;
 import jeecg.kxcomm.service.contactm.TbPurchaseServiceI;
+import jeecg.kxcomm.util.CommonUtil;
 import jeecg.system.pojo.base.TSUser;
 import jeecg.system.service.SystemService;
 
@@ -51,6 +52,7 @@ public class TbPurchaseController extends BaseController {
 	@Autowired
 	private SystemService systemService;
 	private String message;
+	private CommonUtil commonUtil =CommonUtil.getInstance();
 	
 	@Autowired
 	private TbPurchaseContractServiceI tbPurchaseContractService;
@@ -141,16 +143,28 @@ public class TbPurchaseController extends BaseController {
 					tbPurchase.setTbPurchaseContract(null);
 				}
 		
+		TbOrderDetailEntity tbOrderDetail =null;
+		//计算总和
+		int Number = 0;
+		if(tbPurchase.getNumber()!=null&&!"".equals(tbPurchase.getNumber())){
+			Number = Integer.parseInt(tbPurchase.getNumber());
+		}
+		double UnitPrice=0;
+		
+		if(tbPurchase.getUnitPrice()!=null&&!"".equals(tbPurchase.getUnitPrice())){
+			UnitPrice = Double.parseDouble(tbPurchase.getUnitPrice());
+		}
+		double TotalPrice = Number*UnitPrice;
+		tbPurchase.setTotalPrice(""+TotalPrice);
+		
 		if (StringUtil.isNotEmpty(tbPurchase.getId())) {
 			message = "更新成功";
 			TbPurchaseEntity t = tbPurchaseService.get(TbPurchaseEntity.class, tbPurchase.getId());
-			TbOrderDetailEntity tbOrderDetail = systemService.get(TbOrderDetailEntity.class, t.getTbOrderDetail().getId());	
+			tbOrderDetail = systemService.get(TbOrderDetailEntity.class, t.getTbOrderDetail().getId());	
 			//t.setTbOrderDetail(tbOrderDetail);
 			tbPurchase.setTbOrderDetail(tbOrderDetail);
-			
 			try {
 				MyBeanUtils.copyBeanNotNull2Bean(tbPurchase, t);
-				
 				tbPurchaseService.saveOrUpdate(t);
 				systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 			} catch (Exception e) {
@@ -161,10 +175,9 @@ public class TbPurchaseController extends BaseController {
 //			
 //			TbOrderDetailEntity orderDetailEntity = new TbOrderDetailEntity();
 //			orderDetailEntity.setId(id);
-			TbOrderDetailEntity t = systemService.getEntity(TbOrderDetailEntity.class, id);				
+			tbOrderDetail = systemService.getEntity(TbOrderDetailEntity.class, id);				
 			
-			tbPurchase.setTbOrderDetail(t);
-			tbPurchase.setTbPurchaseContract(null);
+			tbPurchase.setTbOrderDetail(tbOrderDetail);
 			//-------------------------------
 			message = "添加成功";
 			TSUser user= ResourceUtil.getSessionUserName();
@@ -174,6 +187,26 @@ public class TbPurchaseController extends BaseController {
 			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 		}
 		
+		//保存采购总价
+		String hql0 = "from TbPurchaseEntity where 1 = 1 AND order_detail_id = ? ";
+	    List<TbPurchaseEntity> list = systemService.findHql(hql0,tbOrderDetail.getId());
+	    double totalprice=0;
+		for(TbPurchaseEntity t:list){
+			int num = 0;
+			if(t.getNumber()!=null&&!"".equals(t.getNumber())){
+				num = Integer.parseInt(t.getNumber());
+			}
+			double price=0;
+			
+			if(t.getUnitPrice()!=null&&!"".equals(t.getUnitPrice())){
+				price = Double.parseDouble(t.getUnitPrice());
+			}
+			double sum = num*price;
+			String result = commonUtil.numberFormat(""+sum, 4, true);
+			totalprice+=Double.parseDouble(result);
+		}
+		tbOrderDetail.setPurchaseprice(""+totalprice);
+		systemService.save(tbOrderDetail);
 		return j;
 	}
 

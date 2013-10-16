@@ -14,6 +14,8 @@ import java.util.Map;
 
 import jeecg.kxcomm.service.contactm.TbContractServiceI;
 import jeecg.kxcomm.service.contactm.TbOrderServiceI;
+import jeecg.kxcomm.util.BusinessUtil;
+import jeecg.kxcomm.util.CommonUtil;
 
 import org.hibernate.SQLQuery;
 import org.jeecgframework.core.common.hibernate.qbc.HqlQuery;
@@ -34,16 +36,16 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 
 	@Autowired
 	private TbContractServiceI tbContractService;
-	
+	private CommonUtil commonUtil =CommonUtil.getInstance();
 	@Override
 	public void addMain(TbOrderEntity tbOrder,
 	        List<TbOrderDetailEntity> tbOrderDetailList){
-			//保存主信息
-			tbOrder.setTbContract(null);//有主外键关系
-			int sum=0;
+			double sum=0;
 			for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
-				if(tbOrderDetail.getTotalprice()!=null&&!"".equals(tbOrderDetail.getTotalprice())){
-					int totalPrice = Integer.parseInt(tbOrderDetail.getTotalprice());
+				double totalPrice =0;
+				if(tbOrderDetail.getTotalprice()!=null&&!"".equals(tbOrderDetail.getTotalprice().trim())){
+					String rs = commonUtil.numberFormat(tbOrderDetail.getTotalprice(), 4, true);
+					totalPrice = Double.parseDouble(rs);
 					sum+=totalPrice;
 				}
 			}
@@ -61,11 +63,12 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 	@Override
 	public void updateMain(TbOrderEntity tbOrder,
 	        List<TbOrderDetailEntity> tbOrderDetailList) {
-		int sum=0;
+		double sum=0;
 		for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
-			int totalPrice = 0;
+			double totalPrice = 0;
 			if(tbOrderDetail.getTotalprice()!=null&&!"".equals(tbOrderDetail.getTotalprice().trim())){
-				totalPrice = Integer.parseInt(tbOrderDetail.getTotalprice());
+				String rs = commonUtil.numberFormat(tbOrderDetail.getTotalprice(), 4, true);
+				totalPrice = Double.parseDouble(rs);
 			}
 			sum+=totalPrice;
 		}
@@ -103,6 +106,7 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 	    		newMap.put(tbOrderDetail.getId(), tbOrderDetail);
 	    		
 	    	}else{
+	    		tbOrderDetail.setStatus(BusinessUtil.TO_PURCHASE);
 	    		tbOrderDetail.setTbOrder(tbOrder);
 				this.save(tbOrderDetail);
 	    	}
@@ -176,7 +180,7 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 				//主干sql
 				StringBuffer hql = new StringBuffer();
 				hql.append(" select a.id,a.kx_order_no,a.project_name,a.client,a.final_client," +
-						"a.payment,a.principal,sum(b.price*b.number),a.create_time,a.remark ,a.contract_id");
+						"a.payment,a.principal,a.total_price,a.create_time,a.remark ,a.contract_id");
 				hql.append(" from tb_order a left join tb_order_detail b on a.id=b.order_id  where 1=1");
 				hql.append(whereSql.toString());
 				
@@ -220,7 +224,7 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 					vo.setPrincipal(""+obj[6]);
 					
 					if((""+obj[7]).equals("null")){
-						vo.setTotalPrice("0.0");
+						vo.setTotalPrice("0");
 					}else{
 						vo.setTotalPrice(""+obj[7]);
 					}

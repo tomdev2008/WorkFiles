@@ -2,8 +2,9 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbContractTemplatesDocList" title="合同模板文件" actionUrl="tbContractTemplatesDocController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="tbContractTemplatesDocList" title="合同模板文件管理" actionUrl="tbContractTemplatesDocController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
+   <t:dgCol title="templatesdocId" field="templatesdocId" ></t:dgCol>
    <t:dgCol title="文件名称" field="docname" ></t:dgCol>
    <t:dgCol title="路径" field="path" ></t:dgCol>
    <t:dgCol title="创建时间" field="createtime" formatter="yyyy-MM-dd"></t:dgCol>

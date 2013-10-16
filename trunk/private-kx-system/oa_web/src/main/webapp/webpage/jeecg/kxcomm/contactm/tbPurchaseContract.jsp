@@ -104,7 +104,7 @@
 	<c:if test="${fn:length(tbPurchaseList)  > 0 }">
 		<c:forEach items="${tbPurchaseList}" var="poVal" varStatus="stuts">
 			<tr>
-				<td align="center"><input style="width:20px;"  type="checkbox" name="ck"  checked="checked"/></td>
+				<td align="center"><input style="width:20px;"  type="checkbox" name="ck"  /></td>
 				<td align="left"><input name="tbPurchaseList[${stuts.index }].kxOrderNo" maxlength="16" value="${poVal.tbOrderDetail.tbOrder.kxOrderNo}" type="text" style="width:120px;" readonly="readonly"></td>
 				   <td align="left"><input name="tbPurchaseList[${stuts.index }].area" maxlength="16" value="${poVal.area }" type="text" style="width:120px;" readonly="readonly"></td>
 				   <td><input name="tbPurchaseList[${stuts.index }].id" value="${poVal.id }" type="hidden"/></td>

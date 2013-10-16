@@ -64,4 +64,8 @@ public class BusinessUtil {
 			put("C","18");
 		}
 	};
+	
+	public static final String TO_PURCHASE = "待采购"; //待采购
+	public static final String PURCHASE_ING = "采购中"; //采购中
+	public static final String END_PURCHASE = "已采购"; //已采购
 }

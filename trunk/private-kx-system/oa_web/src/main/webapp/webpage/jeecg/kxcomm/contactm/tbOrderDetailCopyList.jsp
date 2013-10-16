@@ -15,11 +15,13 @@
    <%--<t:dgCol title="单价" field="price" width="50"></t:dgCol>--%>
    <t:dgCol title="数量" field="number" width="30"></t:dgCol>
    <t:dgCol title="采购总价" field="sum" width="50"></t:dgCol>
+   <t:dgCol title="状态" field="status" width="30"></t:dgCol>
    <t:dgCol title="供应商" field="supplier" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="销售合同号" field="saleContractNo" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="采购人" field="purchaser" width="60" query="true"  hidden="false"></t:dgCol>
-   <t:dgCol title="操作" field="opt" width="50"></t:dgCol>
+   <t:dgCol title="操作" field="opt" width="70"></t:dgCol>
    <t:dgFunOpt funname="purchaseDetail(id)" title="采购清单"></t:dgFunOpt>
+   <t:dgFunOpt funname="" title="修改状态"></t:dgFunOpt>
    <t:dgToolBar title="采购" icon="icon-add" url="tbPurchaseController.do?addorupdate" funname="update1"></t:dgToolBar>
    
   </t:datagrid>

@@ -44,7 +44,35 @@ public class TbOrderDetailEntity implements java.io.Serializable {
 	private java.lang.String number;
 	/**totalprice*/
 	private java.lang.String totalprice;
+	/**
+	 * 采购价
+	 */
+	private String purchaseprice;
 	
+	/**
+	 * 采购状态,0 待采购|1 采购中|2 已采购
+	 */
+	private String status;
+	
+	
+	@Column(name ="status",nullable=true,length=20)
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@Column(name ="purchase_price",nullable=true,length=85)
+	public String getPurchaseprice() {
+		return purchaseprice;
+	}
+
+	public void setPurchaseprice(String purchaseprice) {
+		this.purchaseprice = purchaseprice;
+	}
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  id

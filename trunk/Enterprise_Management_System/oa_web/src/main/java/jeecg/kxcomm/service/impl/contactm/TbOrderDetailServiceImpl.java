@@ -89,7 +89,7 @@ public class TbOrderDetailServiceImpl extends CommonServiceImpl implements TbOrd
 		//------------------
 		StringBuffer hql = new StringBuffer();
 		hql.append(" select b.id,b.name,b.type,b.price,b.number," +
-				"a.kx_order_no,a.final_client,a.create_time,sum(c.total_price) as totalPrice,a.project_name,a.client,a.principal,a.remark");
+				"a.kx_order_no,a.final_client,a.create_time,b.purchase_price,a.project_name,a.client,a.principal,a.remark,b.status");
 		hql.append(" from tb_order_detail b left join tb_purchase c on b.id=c.order_detail_id left join tb_order a on a.id=b.order_id where b.order_id is not null ");
 		hql.append(whereSql.toString());
 		
@@ -120,7 +120,7 @@ public class TbOrderDetailServiceImpl extends CommonServiceImpl implements TbOrd
 			vo.setFinalClient(""+obj[6]);
 			
 			if((""+obj[8]).equals("null")){
-				vo.setSum("0.0");
+				vo.setSum("0");
 			}else{
 				vo.setSum(""+obj[8]);
 			}
@@ -129,6 +129,7 @@ public class TbOrderDetailServiceImpl extends CommonServiceImpl implements TbOrd
 			vo.setClient(""+obj[10]);
 			vo.setPrincipal(""+obj[11]);
 			vo.setRemark(""+obj[12]);
+			vo.setStatus(""+obj[13]);
 			volist.add(vo);
 		}
 		return new PageList(hqlQuery, volist, offset, curPageNO, allCounts);

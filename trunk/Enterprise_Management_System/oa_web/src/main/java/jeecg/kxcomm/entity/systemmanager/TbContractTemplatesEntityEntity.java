@@ -57,7 +57,7 @@ public class TbContractTemplatesEntityEntity implements java.io.Serializable {
 	 *方法: 取得java.util.Date
 	 *@return: java.util.Date  createTime
 	 */
-	@Column(name ="CREATE_TIME",nullable=false)
+	@Column(name ="CREATETIME",nullable=false)
 	public java.util.Date getCreateTime(){
 		return this.createTime;
 	}
@@ -73,7 +73,7 @@ public class TbContractTemplatesEntityEntity implements java.io.Serializable {
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  name
 	 */
-	@Column(name ="NAME",nullable=false,length=50)
+	@Column(name ="templatesName",nullable=false,length=50)
 	public java.lang.String getName(){
 		return this.name;
 	}

@@ -24,7 +24,6 @@
    		<t:dgCol title="备注" field="remark" width="50"></t:dgCol>
    		<t:dgCol title="操作" field="opt" width="50"></t:dgCol>
    		<t:dgDelOpt title="删除" url="tbPurchaseController.do?del&id={id}" />
-   
    		<t:dgToolBar title="编辑" icon="icon-edit" url="tbPurchaseController.do?addorupdate" funname="update"></t:dgToolBar>
    		<t:dgToolBar title="查看" icon="icon-search" url="tbPurchaseController.do?addorupdate" funname="detail"></t:dgToolBar>
   	</t:datagrid>

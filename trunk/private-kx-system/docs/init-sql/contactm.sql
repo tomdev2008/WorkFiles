@@ -78,6 +78,8 @@ CREATE TABLE `tb_order_detail` (
   `price` varchar(255) default NULL,
   `number` varchar(255) default NULL,
   `totalprice` varchar(255) default NULL,
+  `purchase_price` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY  (`id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `order_id` FOREIGN KEY (`order_id`) REFERENCES `tb_order` (`id`)

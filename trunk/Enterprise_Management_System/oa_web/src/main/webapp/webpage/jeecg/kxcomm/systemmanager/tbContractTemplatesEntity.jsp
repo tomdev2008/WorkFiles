@@ -13,7 +13,7 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							createTime:
+							创建时间:
 						</label>
 					</td>
 					<td class="value">
@@ -25,7 +25,7 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							name:
+							模板名称:
 						</label>
 					</td>
 					<td class="value">
@@ -37,7 +37,7 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							status:
+							状   态:
 						</label>
 					</td>
 					<td class="value">

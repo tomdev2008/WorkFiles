@@ -1,5 +1,4 @@
 package jeecg.kxcomm.controller.systemmanager;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,12 +21,13 @@ import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
 
 import jeecg.kxcomm.entity.systemmanager.TbContractTemplatesEntityEntity;
+import jeecg.kxcomm.service.systemmanager.TbContractTemplatesDocServiceI;
 import jeecg.kxcomm.service.systemmanager.TbContractTemplatesEntityServiceI;
 
 /**   
  * @Title: Controller
  * @Description: 合同模板
- * @author zhangdaihao
+ * @author lizl
  * @date 2013-10-12 11:13:56
  * @version V1.0   
  *
@@ -43,8 +43,12 @@ public class TbContractTemplatesEntityController extends BaseController {
 	@Autowired
 	private TbContractTemplatesEntityServiceI tbContractTemplatesEntityService;
 	@Autowired
+	private TbContractTemplatesDocServiceI tbContractTemplatesDocService;
+	@Autowired
 	private SystemService systemService;
 	private String message;
+	private String temple_id;
+	private String statsvalues;
 	
 	public String getMessage() {
 		return message;
@@ -54,6 +58,21 @@ public class TbContractTemplatesEntityController extends BaseController {
 		this.message = message;
 	}
 
+	public String getTemple_id() {
+		return this.temple_id;
+	}
+
+	public void setTemple_id(String temple_id) {
+		this.temple_id = temple_id;
+	}
+
+	public String getStatsvalues() {
+		return this.statsvalues;
+	}
+
+	public void setStatsvalues(String statsvalues) {
+		this.statsvalues = statsvalues;
+	}
 
 	/**
 	 * 合同模板列表 页面跳转
@@ -92,6 +111,7 @@ public class TbContractTemplatesEntityController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbContractTemplatesEntityEntity tbContractTemplatesEntity, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
+		tbContractTemplatesDocService.delMidTempFileEntity(tbContractTemplatesEntity.getId());
 		tbContractTemplatesEntity = systemService.getEntity(TbContractTemplatesEntityEntity.class, tbContractTemplatesEntity.getId());
 		message = "删除成功";
 		tbContractTemplatesEntityService.delete(tbContractTemplatesEntity);
@@ -143,5 +163,19 @@ public class TbContractTemplatesEntityController extends BaseController {
 			req.setAttribute("tbContractTemplatesEntityPage", tbContractTemplatesEntity);
 		}
 		return new ModelAndView("jeecg/kxcomm/systemmanager/tbContractTemplatesEntity");
+	}
+	
+	/**
+	 * 根绝合同模板ID查询相应的合同文件
+	 * 
+	 * @return
+	 */
+	@RequestMapping(params = "queryInfo")
+	public ModelAndView queryConFileByTemId(HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		String temple_id = request.getParameter("temple_id");
+		String statsvalues = request.getParameter("statsvalues");
+		request.setAttribute("temple_id", temple_id);
+		request.setAttribute("statsvalues", statsvalues);
+		return new ModelAndView("jeecg/kxcomm/systemmanager/tbConTempInfoDocList");
 	}
 }

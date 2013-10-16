@@ -124,20 +124,6 @@ public class TbCheckingInstanceController extends BaseController {
 		String ctBegin = request.getParameter("happenday_begin");
 		String ctEnd = request.getParameter("happenday_end");
 		String empName = request.getParameter("empId_empName");
-//		if(StringUtil.isNotEmpty(ctBegin)&& StringUtil.isNotEmpty(ctEnd)){
-//			try {
-//				cq.ge("happenday", new SimpleDateFormat("yyyy-MM-dd").parse(ctBegin));
-//				cq.le("happenday", new SimpleDateFormat("yyyy-MM-dd").parse(ctEnd));
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		} 
-//		if(StringUtil.isNotEmpty(empName)) {
-//			cq.like("TbEmployeeEntity.empName", empName);
-//		}
-//		cq.add();
-//		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbCheckingInstance);
-//		this.tbCheckingInstanceService.getDataGridReturn(cq, true);
 		//查询条件组装器
 		HqlQuery hqlQuery = new HqlQuery("tbCheckingInstance.do?datagrid");
 		hqlQuery.setCurPage(dataGrid.getPage());
