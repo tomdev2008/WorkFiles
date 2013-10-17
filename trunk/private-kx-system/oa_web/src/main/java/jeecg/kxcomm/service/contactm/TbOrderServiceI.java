@@ -25,5 +25,5 @@ public interface TbOrderServiceI extends CommonService{
 	        List<TbOrderDetailEntity> tbOrderDetailList);
 	public void delMain (TbOrderEntity tbOrder);
 	
-	public PageList getPageList(HqlQuery hqlQuery, boolean b,TbOrderEntity tbOrder, String kxOrderNo,String projectName,String contractNo,String client,String principal);
+	public PageList getPageList(HqlQuery hqlQuery, boolean b,TbOrderEntity tbOrder, String kxOrderNo,String projectName,String contractNo,String client,String principal,String status);
 }

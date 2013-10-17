@@ -2,7 +2,7 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbOrderList" fitColumns="true" title="销售订单" actionUrl="tbOrderController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="tbOrderList" fitColumns="true" title="销售订单" actionUrl="tbOrderController.do?datagrid" idField="id" fit="true" queryMode="group">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="康讯订单号" field="kxOrderNo" query="true"></t:dgCol>
    <t:dgCol title="项目名称" field="projectName" query="true"></t:dgCol>
@@ -14,6 +14,7 @@
    <t:dgCol title="创建时间" field="createTime" formatter="yyyy-MM-dd "></t:dgCol>
    <t:dgCol title="订单总价" field="totalPrice" width="50"></t:dgCol>
    <t:dgCol title="备注" field="remark" width="80"></t:dgCol>
+    <t:dgCol title="采购状态" field="status" hidden="false" query="true"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="50"></t:dgCol>
    <t:dgFunOpt funname="orderDetail(id)" title="明细"></t:dgFunOpt>
    <t:dgDelOpt title="删除" url="tbOrderController.do?del&id={id}" />

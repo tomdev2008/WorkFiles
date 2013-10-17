@@ -87,6 +87,7 @@ public class TbOrderDetailController extends BaseController {
 		String supplier = request.getParameter("supplier");
 		String saleContractNo = request.getParameter("saleContractNo");
 		String purchaser = request.getParameter("purchaser");
+		String status = request.getParameter("status");
 		
 //		
 //		cq.createAlias("tbOrder", "tbOrder");
@@ -102,7 +103,7 @@ public class TbOrderDetailController extends BaseController {
 		hqlQuery.setCurPage(dataGrid.getPage());
 		hqlQuery.setPageSize(dataGrid.getRows());
 		hqlQuery.setDataGrid(dataGrid);
-		PageList pagelist = this.tbOrderDetailService.getPageList(hqlQuery, true,tbOrderDetail,kxOrderNo, projectName , client , finalClient , principal , name, type , supplier , saleContractNo , purchaser  );
+		PageList pagelist = this.tbOrderDetailService.getPageList(hqlQuery, true,tbOrderDetail,kxOrderNo, projectName , client , finalClient , principal , name, type , supplier , saleContractNo , purchaser ,status );
 
 		dataGrid.setPage(pagelist.getCurPageNO());
 		dataGrid.setTotal(pagelist.getCount());

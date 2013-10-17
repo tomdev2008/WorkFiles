@@ -2,7 +2,7 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbOrderDetailCopyList" title="销售订单明细" actionUrl="tbOrderDetailController.do?datagrid"  idField="id" fit="true">
+  <t:datagrid name="tbOrderDetailCopyList" title="销售订单明细" actionUrl="tbOrderDetailController.do?datagrid"  idField="id" fit="true" queryMode="group">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="康讯订单号" field="kxOrderNo" query="true" width="60"></t:dgCol>
    <t:dgCol title="项目名称" field="projectName"  query="true"  width="250"></t:dgCol>
@@ -15,7 +15,7 @@
    <%--<t:dgCol title="单价" field="price" width="50"></t:dgCol>--%>
    <t:dgCol title="数量" field="number" width="30"></t:dgCol>
    <t:dgCol title="采购总价" field="sum" width="50"></t:dgCol>
-   <t:dgCol title="状态" field="status" width="30"></t:dgCol>
+   <t:dgCol title="状态" field="status" width="30" query="true"></t:dgCol>
    <t:dgCol title="供应商" field="supplier" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="销售合同号" field="saleContractNo" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="采购人" field="purchaser" width="60" query="true"  hidden="false"></t:dgCol>

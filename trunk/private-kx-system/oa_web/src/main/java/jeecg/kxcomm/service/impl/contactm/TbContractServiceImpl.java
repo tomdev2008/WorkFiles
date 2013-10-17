@@ -108,9 +108,7 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 			TbContractEntity tbContract, String contractNo) {
 		StringBuffer whereSql = new StringBuffer();
 		
-		if(null != contractNo  && "".equals(contractNo)  ) {
-			whereSql.append(" and  a.contract_no is null or trim(a.contract_no) = '' ");
-		}else if(null != contractNo){
+		if(null != contractNo   && !"".equals(contractNo)  ){
 			whereSql.append(" and a.contract_no like '%"+contractNo+"%' ");
 		}
 		

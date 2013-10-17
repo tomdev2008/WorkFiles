@@ -94,12 +94,13 @@ public class TbOrderController extends BaseController {
 		String contractNo = request.getParameter("tbContract_contractNo");
 		String client = request.getParameter("client");
 		String principal = request.getParameter("principal");
+		String status = request.getParameter("status");
 		
 		HqlQuery hqlQuery = new HqlQuery("TbOrderEntity.do?datagrid");
 		hqlQuery.setCurPage(dataGrid.getPage());
 		hqlQuery.setPageSize(dataGrid.getRows());
 		hqlQuery.setDataGrid(dataGrid);
-		PageList pagelist = this.tbOrderService.getPageList(hqlQuery, true,tbOrder,kxOrderNo,projectName,contractNo,client,principal);
+		PageList pagelist = this.tbOrderService.getPageList(hqlQuery, true,tbOrder,kxOrderNo,projectName,contractNo,client,principal,status);
 //		for(int d = 0; d < pagelist.getResultList().size(); d++) {
 //			((TbCheckingInstanceEntity) pagelist.getResultList().get(d)).setEmpName(ctBegin+","+ctEnd);
 //		}

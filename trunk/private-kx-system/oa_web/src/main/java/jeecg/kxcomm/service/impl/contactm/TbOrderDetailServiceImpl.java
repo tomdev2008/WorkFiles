@@ -22,67 +22,51 @@ import org.springframework.transaction.annotation.Transactional;
 public class TbOrderDetailServiceImpl extends CommonServiceImpl implements TbOrderDetailServiceI {
 
 	@Override
-	public PageList getPageList(HqlQuery hqlQuery, boolean b,TbOrderDetailEntity tbOrderDetail, String kxOrderNo,String projectName ,String client ,String finalClient ,String principal ,String name,String type ,String supplier ,String saleContractNo ,String purchaser ) {
+	public PageList getPageList(HqlQuery hqlQuery, boolean b,TbOrderDetailEntity tbOrderDetail, String kxOrderNo,String projectName ,String client ,String finalClient ,String principal ,String name,String type ,String supplier ,String saleContractNo ,String purchaser ,String status) {
 		StringBuffer whereSql = new StringBuffer();
 		
-		if(null != kxOrderNo  && "".equals(kxOrderNo)  ) {
-			whereSql.append(" and  a.kx_order_no is null or trim(a.kx_order_no) = '' ");
-		}else if(null != kxOrderNo){
+		if(null != kxOrderNo && !"".equals(kxOrderNo) ){
 			whereSql.append(" and a.kx_order_no like '%"+kxOrderNo+"%' ");
 		}
 		
-		if(null != projectName  && "".equals(projectName)  ) {
-			whereSql.append(" and  a.project_name is null or trim(a.project_name) = '' ");
-		}else if(null != projectName){
+		if(null != projectName && !"".equals(projectName) ){
 			whereSql.append(" and a.project_name like '%"+projectName+"%' ");
 		}
 		
-		if(null != client  && "".equals(client)  ) {
-			whereSql.append(" and  a.client is null or trim(a.client) = '' ");
-		}else if(null != client){
+		if(null != client  && !"".equals(client) ){
 			whereSql.append(" and a.client like '%"+client+"%' ");
 		}
 		
-		if(null != finalClient  && "".equals(finalClient)  ) {
-			whereSql.append(" and  a.final_client is null or trim(a.final_client) = '' ");
-		}else if(null != finalClient){
+		if(null != finalClient && !"".equals(finalClient) ){
 			whereSql.append(" and a.final_client like '%"+finalClient+"%' ");
 		}
 	
-		if(null != principal  && "".equals(principal)  ) {
-			whereSql.append(" and  a.principal is null or trim(a.principal) = '' ");
-		}else if(null != principal){
+		if(null != principal && !"".equals(principal) ){
 			whereSql.append(" and a.principal like '%"+principal+"%' ");
 		}
 		
-		if(null != name  && "".equals(name)  ) {
-			whereSql.append(" and  b.name is null or trim(b.name) = ''  or  c.product_name is null or trim( c.product_name) = '' ");
-		}else if(null != name){
+		if(null != name && !"".equals(name)){
 			whereSql.append(" and b.name like '%"+name+"%'  or c.product_name like '%"+name+"%'  ");
 		}
 		
-		if(null != type  && "".equals(type)  ) {
-			whereSql.append(" and  b.type is null or trim(b.type) = ''  or  c.model is null or trim(c.model) = ''  ");
-		}else if(null != type){
+		if(null != type && !"".equals(type) ){
 			whereSql.append(" and b.type like '%"+type+"%' or c.model like '%"+type+"%'");
 		}
 		
-		if(null != supplier  && "".equals(supplier)  ) {
-			whereSql.append(" and  c.supplier is null or trim(c.supplier) = '' ");
-		}else if(null != supplier){
+		if(null != supplier && !"".equals(supplier) ){
 			whereSql.append(" and c.supplier like '%"+supplier+"%' ");
 		}
 		
-		if(null != purchaser  && "".equals(purchaser)  ) {
-			whereSql.append(" and  c.purchaser is null or trim(c.purchaser) = '' ");
-		}else if(null != purchaser){
+		if(null != purchaser && !"".equals(purchaser)){
 			whereSql.append(" and c.purchaser like '%"+purchaser+"%' ");
 		}
 		
-		if(null != saleContractNo  && "".equals(saleContractNo)  ) {
-			whereSql.append(" and  a.contract_no is null or trim(a.contract_no) = '' ");
-		}else if(null != saleContractNo){
+		if(null != saleContractNo && !"".equals(saleContractNo)  ){
 			whereSql.append(" and a.contract_no like '%"+saleContractNo+"%' ");
+		}
+		
+		if(null != status && !"".equals(status)  ){
+			whereSql.append(" and b.status like '%"+status+"%' ");
 		}
 		
 		whereSql.append(" group by b.id order by a.create_time desc");
