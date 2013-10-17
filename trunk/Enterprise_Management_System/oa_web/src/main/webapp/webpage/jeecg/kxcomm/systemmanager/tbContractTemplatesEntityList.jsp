@@ -8,7 +8,7 @@
    <t:dgCol title="名称" field="name" ></t:dgCol>
    <t:dgCol title="状态" field="status" replace="审核中_0,未审核_1,销售审核通过_2,销售审核未通过_3,财务审核通过_4,财务审核未通过_5,经理审核通过_6,经理审核未通过_7"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
-   <t:dgDelOpt title="删除" url="tbContractTemplatesEntityController.do?del&id={id}" />
+   <t:dgDelOpt title="删除" url="tbContractTemplatesEntityController.do?del&id={id}&status={status}" />
    <t:dgFunOpt funname="detail(id,status)" title="明细"></t:dgFunOpt>
    <t:dgToolBar title="录入" icon="icon-add" url="tbContractTemplatesEntityController.do?addorupdate" funname="add"></t:dgToolBar>
    <t:dgToolBar title="编辑" icon="icon-edit" url="tbContractTemplatesEntityController.do?addorupdate" funname="update"></t:dgToolBar>

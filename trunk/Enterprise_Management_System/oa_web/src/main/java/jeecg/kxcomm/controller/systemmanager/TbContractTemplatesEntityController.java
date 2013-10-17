@@ -111,12 +111,17 @@ public class TbContractTemplatesEntityController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbContractTemplatesEntityEntity tbContractTemplatesEntity, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		tbContractTemplatesDocService.delMidTempFileEntity(tbContractTemplatesEntity.getId());
-		tbContractTemplatesEntity = systemService.getEntity(TbContractTemplatesEntityEntity.class, tbContractTemplatesEntity.getId());
-		message = "删除成功";
-		tbContractTemplatesEntityService.delete(tbContractTemplatesEntity);
-		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-		
+		if(null != tbContractTemplatesEntity.getStatus()) {
+			if(2 == tbContractTemplatesEntity.getStatus() || 4 == tbContractTemplatesEntity.getStatus() || 6 == tbContractTemplatesEntity.getStatus()) {
+				message = "合同模板正在使用中不可删除";
+			} else {
+				this.tbContractTemplatesDocService.delMidTempFileEntity(tbContractTemplatesEntity.getId());
+				tbContractTemplatesEntity = systemService.getEntity(TbContractTemplatesEntityEntity.class, tbContractTemplatesEntity.getId());
+				message = "删除成功";
+				tbContractTemplatesEntityService.delete(tbContractTemplatesEntity);
+				systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
+			}
+		}
 		j.setMsg(message);
 		return j;
 	}

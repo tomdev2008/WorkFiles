@@ -202,19 +202,26 @@ public class TbContractTemplatesDocController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(params = "saveConTempFile")
-	public ModelAndView saveConTempFile(TbContractTemplatesDocEntity tbContractTemplatesDoc, HttpServletRequest request) {
-		String ids = request.getParameter("ids");
-		String contempIds = request.getParameter("contempIds");
-		this.tbContractTemplatesDocService.delMidTempFileEntity(contempIds);
-		if(ids.indexOf(",")>-1) {
-			String[] filesId = ids.split(",");
-			for(int i = 0; i < filesId.length; i++) {
-				this.tbContractTemplatesDocService.saveMidTempFileEntity(contempIds, filesId[i]);
+	@ResponseBody
+	public String saveConTempFile(TbContractTemplatesDocEntity tbContractTemplatesDoc, HttpServletRequest request) {
+		String end = "";
+		try {
+			String ids = request.getParameter("ids");
+			String contempIds = request.getParameter("contempIds");
+			this.tbContractTemplatesDocService.delMidTempFileEntity(contempIds);
+			if(ids.indexOf(",")>-1) {
+				String[] filesId = ids.split(",");
+				for(int i = 0; i < filesId.length; i++) {
+					this.tbContractTemplatesDocService.saveMidTempFileEntity(contempIds, filesId[i]);
+				}
+			} else {
+				this.tbContractTemplatesDocService.saveMidTempFileEntity(contempIds, ids);
 			}
-		} else {
-			this.tbContractTemplatesDocService.saveMidTempFileEntity(contempIds, ids);
+			request.setAttribute("temple_id  ",contempIds);
+			end = "保存成功";
+		} catch (Exception e) {
+			end = "保存失败";
 		}
-		request.setAttribute("temple_id  ",contempIds);
-		return new ModelAndView("jeecg/kxcomm/systemmanager/tbConTempInfoDocList");
+		return end;
 	}
 }

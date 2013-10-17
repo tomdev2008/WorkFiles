@@ -124,7 +124,6 @@ public class TbContractTemplatesDocServiceImpl extends CommonServiceImpl impleme
 	@Override
 	public void saveMidTempFileEntity(String contempIds, String filesId) {
 		//重新补充新的数据
-//		String sql = "insert into tb_contract_templates_relationship value(?,?,?)";
 		TbContractTemplatesRelationshipEntity relationshipEntity = new TbContractTemplatesRelationshipEntity();
 		TbContractTemplatesDocEntity docEntity = new TbContractTemplatesDocEntity();
 		docEntity.setId(filesId);

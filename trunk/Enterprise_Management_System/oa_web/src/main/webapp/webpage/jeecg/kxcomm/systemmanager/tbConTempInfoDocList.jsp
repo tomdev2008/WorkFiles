@@ -40,12 +40,7 @@ function saveConTempFile() {
     	dataType:"json",
     	data:{'ids':ids,'contempIds':contempIds},
     	success:function(data) {
-			if(data!=null){ 	
-				alert("该产品有采购信息，不能删除");
-				return false;
-			}else{
-				alert("修改成功!");
-			}
+			alert(data);
     	}
     });
 }
