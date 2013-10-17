@@ -145,7 +145,8 @@ public class TbOrderDetailController extends BaseController {
 			message = "更新成功";
 			TbOrderDetailEntity t = tbOrderDetailService.get(TbOrderDetailEntity.class, tbOrderDetail.getId());
 			try {
-				MyBeanUtils.copyBeanNotNull2Bean(tbOrderDetail, t);
+				t.setStatus(tbOrderDetail.getStatus());
+//				MyBeanUtils.copyBeanNotNull2Bean(tbOrderDetail, t);
 				tbOrderDetailService.saveOrUpdate(t);
 				systemService.addLog(message, Globals.Log_Type_UPDATE, Globals.Log_Leavel_INFO);
 			} catch (Exception e) {

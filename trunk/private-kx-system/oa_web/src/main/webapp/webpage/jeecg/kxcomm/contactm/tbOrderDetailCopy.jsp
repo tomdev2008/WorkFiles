@@ -7,81 +7,89 @@
   <t:base type="jquery,easyui,tools,DatePicker"></t:base>
  </head>
  <body style="overflow-y: hidden" scroll="no">
-  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbOrderDetailController.do?save">
+  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table"  action="tbOrderDetailController.do?save"  refresh="true" tiptype="1">
 			<input id="id" name="id" type="hidden" value="${tbOrderDetailCopyPage.id }">
 			<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							orderId:
+							康讯订单号:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="orderId" name="orderId" ignore="ignore"
-							   value="${tbOrderDetailCopyPage.orderId}">
-						<span class="Validform_checktip"></span>
+					<label>${tbOrderDetailCopyPage.tbOrder.kxOrderNo}</label>
+					</td>
+					
+					<td align="right">
+						<label class="Validform_label">
+							项目名称:
+						</label>
+					</td>
+					<td class="value">
+					<label>${tbOrderDetailCopyPage.tbOrder.projectName}</label>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							name:
+							最终客户:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="name" name="name" ignore="ignore"
-							   value="${tbOrderDetailCopyPage.name}">
-						<span class="Validform_checktip"></span>
+					<label>${tbOrderDetailCopyPage.tbOrder.finalClient}</label>
+					</td>
+					
+					<td align="right">
+						<label class="Validform_label">
+							数量:
+						</label>
+					</td>
+					<td class="value">
+					<label>${tbOrderDetailCopyPage.number}</label>
+					</td>
+					
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							商品名称:
+						</label>
+					</td>
+					<td class="value">
+					<label>${tbOrderDetailCopyPage.name}</label>
+					</td>
+					
+					<td align="right">
+						<label class="Validform_label">
+							型号:
+						</label>
+					</td>
+					<td class="value">
+					<label>${tbOrderDetailCopyPage.type}</label>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							type:
+							负责人:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="type" name="type" ignore="ignore"
-							   value="${tbOrderDetailCopyPage.type}">
-						<span class="Validform_checktip"></span>
+					<label>${tbOrderDetailCopyPage.tbOrder.principal}</label>
 					</td>
-				</tr>
-				<tr>
+					
 					<td align="right">
 						<label class="Validform_label">
-							price:
+							状态:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="price" name="price" ignore="ignore"
-							   value="${tbOrderDetailCopyPage.price}">
-						<span class="Validform_checktip"></span>
+					<t:dictSelect field="status" typeGroupCode="status"  title="状态"  hasLabel="N" defaultVal="${tbOrderDetailCopyPage.status}"></t:dictSelect>
 					</td>
 				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							number:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="number" name="number" ignore="ignore"
-							   value="${tbOrderDetailCopyPage.number}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
-				<tr>
-					<td align="right">
-						<label class="Validform_label">
-							totalprice:
-						</label>
-					</td>
-					<td class="value">
-						<input class="inputxt" id="totalprice" name="totalprice" ignore="ignore"
-							   value="${tbOrderDetailCopyPage.totalprice}">
-						<span class="Validform_checktip"></span>
-					</td>
-				</tr>
+				
 			</table>
+			<div align="right"><button class="Validform_label"  >确定</button></div>
+			
 		</t:formvalid>
  </body>

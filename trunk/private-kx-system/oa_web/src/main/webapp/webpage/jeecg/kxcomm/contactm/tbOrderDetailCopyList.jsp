@@ -21,7 +21,7 @@
    <t:dgCol title="采购人" field="purchaser" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="70"></t:dgCol>
    <t:dgFunOpt funname="purchaseDetail(id)" title="采购清单"></t:dgFunOpt>
-   <t:dgFunOpt funname="" title="修改状态"></t:dgFunOpt>
+   <t:dgOpenOpt url="tbOrderDetailController.do?addorupdate&id={ id}" title="修改状态"  width="auto" height="auto" ></t:dgOpenOpt>
    <t:dgToolBar title="采购" icon="icon-add" url="tbPurchaseController.do?addorupdate" funname="update1"></t:dgToolBar>
    
   </t:datagrid>
@@ -124,4 +124,5 @@ function purchaseDetail(id)
 {
 	 $('#purchasePanel').panel("refresh", "tbPurchaseController.do?tbPurchase&id=" +id);
 }
+
 </script>
