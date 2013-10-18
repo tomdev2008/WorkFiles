@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE sqlMap    
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"    
+"http://www.ibatis.com/dtd/sql-map-2.dtd">   
+ <sqlMap namespace="User">       
+ <typeAlias alias="user" type="com.xdd.po.User" />   
+    <resultMap  id="userResult" class="com.xdd.po.User">   
+		<result property="id" column="ID" />   
+        <result property="name" column="NAME" />   
+        <result property="password" column="PASSWORD" />   
+    </resultMap>      
+     <select id="User.getUserList" resultMap="userResult">
+	    SELECT *  FROM gg_user
+  	</select>   
+  	<select id="User.queryUserByName" resultClass="com.xdd.po.User">
+	    SELECT * FROM gg_user where NAME=#condition#
+  	</select>
+</sqlMap>  
