@@ -37,6 +37,8 @@ public class TbPostEntity implements java.io.Serializable {
 	private java.lang.String postName;
 	/**岗位职责*/
 	private java.lang.String postDuty;
+	/**上级岗位id*/
+	private String parentId;
 	
 	/**
 	 *方法: 取得java.lang.String
@@ -100,5 +102,18 @@ public class TbPostEntity implements java.io.Serializable {
 	 */
 	public void setPostDuty(java.lang.String postDuty){
 		this.postDuty = postDuty;
+	}
+
+	/**
+	 *方法: 取得java.lang.String
+	 *@return: java.lang.String  岗位上级
+	 */
+	@Column(name ="PARENT_ID",nullable=true,length=50)
+	public String getParentId() {
+		return this.parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
 	}
 }

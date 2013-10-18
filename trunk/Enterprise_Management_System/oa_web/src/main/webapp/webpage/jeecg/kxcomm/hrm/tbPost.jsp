@@ -35,6 +35,23 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
+							上级:
+						</label>
+					</td>
+					<td class="value">
+						<select id="deptId.id"  name="deptId.id"  datatype="*">
+					       <c:forEach items="${postList}" var="postrt">
+					        <option value="${postrt.id }"  <%-- <c:if test="${depart.id==tbOrdersPage.channelId.id}">selected="selected"</c:if> --%>>
+					         ${postrt.postName}
+					        </option>
+					       </c:forEach>
+				      	</select>
+						<span class="Validform_checktip">请选择上级</span>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
 							岗位名称:
 						</label>
 					</td>
