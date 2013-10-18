@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>userLogin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="common/css/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body >
+<!-- Save for Web Slices (2登录页面.psd) -->
+<div class="logintable" align="center" style="background:url('common/images/logobg.jpg') repeat-x;">
+	<img src="common/images/logintitle1.jpg" style="background: no-repeat; "/>
+</div>
+
+<div class="loginmain" align="center" style="background:url('common/images/mainbg0.gif') repeat-x;">
+	<div class="tablemain" style="background: url('common/images/mainbg1.gif') no-repeat;">
+		<div class="tableloginiinfotop" style="background: url('common/images/loginfotop.png') no-repeat; float: left;"></div><br>
+		<div class="tableloginiinforight" style="background: url('common/images/loginforight.png') no-repeat; float: left;">
+			<div style="float: left;border: 1px solid black;">
+				<input type="text" style="background: url('common/images/shurukuang.jpg'); width: 228px; height: 34px;">
+			</div>
+		</div>
+		<div class="tableloginiinfoleft" style="background: url('common/images/loginfoleft.png') no-repeat; float: left;"></div>
+	</div>
+</div>
+
+<div class="logintable" style="background:url('common/images/footer.gif') repeat-x;">
+	<div style="background: url('common/images/footer.gif') no-repeat;"></div>
+</div>
+</body>
+</html>

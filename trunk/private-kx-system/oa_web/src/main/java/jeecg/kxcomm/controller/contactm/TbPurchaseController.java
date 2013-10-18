@@ -111,11 +111,14 @@ public class TbPurchaseController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbPurchaseEntity tbPurchase, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		tbPurchase = systemService.getEntity(TbPurchaseEntity.class, tbPurchase.getId());
-		message = "删除成功";
-		tbPurchaseService.delete(tbPurchase);
-		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-		
+		try{
+			tbPurchase = systemService.getEntity(TbPurchaseEntity.class, tbPurchase.getId());
+			message = "删除成功";
+			tbPurchaseService.delete(tbPurchase);
+			systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
+		}catch(Exception e){
+			message = "删除失败";
+		}
 		j.setMsg(message);
 		return j;
 	}

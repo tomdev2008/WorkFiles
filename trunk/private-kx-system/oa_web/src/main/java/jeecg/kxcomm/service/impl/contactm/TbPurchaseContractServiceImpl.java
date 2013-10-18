@@ -30,9 +30,11 @@ public class TbPurchaseContractServiceImpl extends CommonServiceImpl implements 
 		
 			/**保存-采购订单*/
 			for(TbPurchaseEntity tbPurchase:tbPurchaseList){
-				//外键设置
-				tbPurchase.setTbPurchaseContract(tbPurchaseContract);
-				this.updateEntitie(tbPurchase);
+				if(tbPurchase!=null){
+					//外键设置
+					tbPurchase.setTbPurchaseContract(tbPurchaseContract);
+					this.updateEntitie(tbPurchase);
+				}
 			}
 	}
 

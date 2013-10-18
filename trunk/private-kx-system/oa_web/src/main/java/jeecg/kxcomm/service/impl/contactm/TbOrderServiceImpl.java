@@ -55,6 +55,7 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 			/**保存-产品明细*/
 			for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
 				//外键设置
+				tbOrderDetail.setStatus(BusinessUtil.TO_PURCHASE);
 				tbOrderDetail.setTbOrder(tbOrder);//.setOrderId(tbOrder.getId());////
 				this.save(tbOrderDetail);
 			}

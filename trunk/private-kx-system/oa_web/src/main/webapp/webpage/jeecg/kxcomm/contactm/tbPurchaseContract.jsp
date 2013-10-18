@@ -31,7 +31,6 @@
 	    	data:{'contractNo':contractNo},
 	    	success:function(data) {
 				if(data!=null){
-					alert("采购合同编号已存在");
 					return false;
 				}
 	    	}
@@ -41,7 +40,7 @@
  </script>
  </head>
  <body style="overflow-y: hidden" scroll="no">
-  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" tiptype="1" action="tbPurchaseContractController.do?save" beforeSubmit="wantSelections();">
+  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" tiptype="1" action="tbPurchaseContractController.do?save" beforeSubmit="wantSelections();" >
 			<input id="id" name="id" type="hidden" value="${tbPurchaseContractPage.id }">
 			
 			<table cellpadding="0" cellspacing="1" class="formtable">
@@ -49,7 +48,9 @@
 			<td align="right"><label class="Validform_label">采购合同编号</label></td>
 			<td class="value">
 			<c:if test="${tbPurchaseContractPage.contractNo!=null }">
-			${tbPurchaseContractPage.contractNo}
+			<input nullmsg="请填写采购合同编号" errormsg="contrac格式不对" class="inputxt" onblur="check()" id="contractNo" name="contractNo" datatype="*"
+									   value="${tbPurchaseContractPage.contractNo}" readonly="readonly">
+								<span class="Validform_checktip"></span>
 			</c:if>
 			<c:if test="${tbPurchaseContractPage.contractNo==null }">
 				<input nullmsg="请填写采购合同编号" errormsg="contrac格式不对" class="inputxt" onblur="check()" id="contractNo" name="contractNo" datatype="*"

@@ -120,11 +120,14 @@ public class TbOrderController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbOrderEntity tbOrder, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		tbOrder = systemService.getEntity(TbOrderEntity.class, tbOrder.getId());
-		message = "删除成功";
-		tbOrderService.delMain(tbOrder);
-		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-		
+		try{
+			tbOrder = systemService.getEntity(TbOrderEntity.class, tbOrder.getId());
+			message = "删除成功";
+			tbOrderService.delMain(tbOrder);
+			systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
+		}catch(Exception e){
+			message = "删除失败";
+		}
 		j.setMsg(message);
 		return j;
 	}

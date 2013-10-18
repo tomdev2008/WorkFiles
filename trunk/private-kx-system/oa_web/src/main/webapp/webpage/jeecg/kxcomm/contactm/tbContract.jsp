@@ -51,10 +51,12 @@
 			<input id="id" name="id" type="hidden" value="${tbContractPage.id }">
 			<table cellpadding="0" cellspacing="1" class="formtable">
 			<tr>
-			<td align="right"><label class="Validform_label">合同编号:</label></td>
+			<td align="right"><label class="Validform_label" >合同编号:</label></td>
 			<td class="value">
 			<c:if test="${tbContractPage.contractNo!=null }">
-			${tbContractPage.contractNo}
+			<input onblur="check()" nullmsg="请填写合同编号" errormsg="contrac格式不对" class="inputxt" id="contractNo" name="contractNo" datatype="*"
+									   value="${tbContractPage.contractNo}" readonly="readonly">
+								<span class="Validform_checktip"></span>
 			</c:if>
 			<c:if test="${tbContractPage.contractNo==null }">
 				<input onblur="check()" nullmsg="请填写合同编号" errormsg="contrac格式不对" class="inputxt" id="contractNo" name="contractNo" datatype="*"

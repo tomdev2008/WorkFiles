@@ -2,7 +2,7 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbOrderDetailCopyList" title="销售订单明细" actionUrl="tbOrderDetailController.do?datagrid"  idField="id" fit="true" queryMode="group">
+  <t:datagrid name="tbOrderDetailCopyList" title="销售订单明细" actionUrl="tbOrderDetailController.do?datagrid"  idField="id" fit="true" queryMode="group" onClick="purchaseDetail">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="康讯订单号" field="kxOrderNo" query="true" width="60"></t:dgCol>
    <t:dgCol title="项目名称" field="projectName"  query="true"  width="250"></t:dgCol>
@@ -20,10 +20,8 @@
    <t:dgCol title="销售合同号" field="saleContractNo" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="采购人" field="purchaser" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="操作" field="opt" width="70"></t:dgCol>
-   <t:dgFunOpt funname="purchaseDetail(id)" title="采购清单"></t:dgFunOpt>
-   <t:dgOpenOpt url="tbOrderDetailController.do?addorupdate&id={ id}" title="修改状态"  width="auto" height="auto" ></t:dgOpenOpt>
    <t:dgToolBar title="采购" icon="icon-add" url="tbPurchaseController.do?addorupdate" funname="update1"></t:dgToolBar>
-   
+   <t:dgToolBar title="修改状态" icon="icon-edit"  funname="editone"></t:dgToolBar>
   </t:datagrid>
   </div>
   <div region="south"  style="height:250px;overflow: hidden;" split="true" border="false">
@@ -62,7 +60,25 @@
  </div>
  
 <script type="text/javascript">
-
+function editone(title,url, id) {
+	var rowData = $('#'+id).datagrid('getSelected');
+	if (!rowData) {
+		tip('请选择要修改');
+		return;
+	}
+	var i = rowData.id;
+	url += '&id='+rowData.id;
+	openwindow(title,'tbOrderDetailController.do?addorupdate&id='+rowData.id,'tbOrderDetailCopyList'); 
+}
+/*
+$(function() {
+	$('#tbOrderDetailCopyList').datagrid({
+		onDblClickRow:function(rowIndex, rowData){
+			purchaseDetail(rowData.id);
+		}
+	});
+});
+*/
  function update1(title,url, id) {
 	
 	//update-begin--Author:tanghong  Date:20130429 for：#75表格选中，跳转tab,无法编辑
@@ -120,9 +136,9 @@ function createwindow1(title, addurl,i) {
 	
 }
 
-function purchaseDetail(id)
+function purchaseDetail(rowIndex, rowData)
 {
-	 $('#purchasePanel').panel("refresh", "tbPurchaseController.do?tbPurchase&id=" +id);
+	 $('#purchasePanel').panel("refresh", "tbPurchaseController.do?tbPurchase&id=" +rowData.id);
 }
 
 </script>

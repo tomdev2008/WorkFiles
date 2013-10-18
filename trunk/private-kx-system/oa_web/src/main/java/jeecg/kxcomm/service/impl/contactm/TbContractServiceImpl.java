@@ -56,8 +56,7 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 	}
 
 	@Override
-	public void updateMain(TbContractEntity tbContract,
-	        List<TbOrderEntity> tbOrderList) {
+	public void updateMain(TbContractEntity tbContract, List<TbOrderEntity> tbOrderList) {
 		//保存订单主信息
 		this.saveOrUpdate(tbContract);
 		

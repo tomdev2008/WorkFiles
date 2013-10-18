@@ -2,7 +2,7 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbContractList" fitColumns="true" title="销售合同" actionUrl="tbContractController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="tbContractList" fitColumns="true" title="销售合同" actionUrl="tbContractController.do?datagrid" idField="id" fit="true" onClick="contractDetail">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="合同编号" field="contractNo" query="true"></t:dgCol>
    <t:dgCol title="合同金额" field="contractPrice" ></t:dgCol>
@@ -13,12 +13,11 @@
    <t:dgCol title="合同归档日期" field="contractFilingDate" formatter="yyyy-MM-dd "></t:dgCol>
    <t:dgCol title="合同签订日期" field="contractSigningDate" formatter="yyyy-MM-dd "></t:dgCol>
    <t:dgCol title="备注" field="remark" ></t:dgCol>
-   <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
-   <t:dgFunOpt funname="contractDetail(id)" title="产品明细"></t:dgFunOpt>
-   <t:dgDelOpt title="删除" url="tbContractController.do?del&id={id}" />
-   <t:dgToolBar title="录入" icon="icon-add" url="tbContractController.do?addorupdate" funname="add"></t:dgToolBar>
+  
+   <t:dgToolBar title="录入" icon="icon-add" url="tbContractController.do?addorupdate" funname="add"  ></t:dgToolBar>
    <t:dgToolBar title="编辑" icon="icon-edit" url="tbContractController.do?addorupdate" funname="update"></t:dgToolBar>
    <t:dgToolBar title="查看" icon="icon-search" url="tbContractController.do?addorupdate" funname="detail"></t:dgToolBar>
+   <t:dgToolBar title="删除" icon="icon-remove"  url="tbContractController.do?del"  funname="delone"></t:dgToolBar>
   </t:datagrid>
   </div>
   
@@ -29,8 +28,45 @@
   </div>
  </div>
 <script type="text/javascript">
- function contractDetail(id)
+ function contractDetail(rowIndex, rowData)
  {
-	 $('#contractDetailpanel').panel("refresh", "tbContractController.do?contractDetail&id="+id);
+	 $('#contractDetailpanel').panel("refresh", "tbContractController.do?contractDetail&id="+rowData.id);
  }
+ /*
+ $(function() {
+		$('#tbContractList').datagrid({
+			onClickRow:function(rowIndex, rowData){
+				contractDetail(rowData.id);
+			}
+		});
+		
+		$('#tbContractList').datagrid({
+			onDblClickRow:function(rowIndex, rowData){
+				openwindow('编辑','tbContractController.do?addorupdate&id='+rowData.id);
+			}
+		});
+	});
+ */
+ function delone(title,url, id) {
+		var rowData = $('#'+id).datagrid('getSelected');
+		if (!rowData) {
+			tip('请选择要删除');
+			return;
+		}
+		var i = rowData.id;
+		url += '&id='+rowData.id;
+		//弹出页面
+		//openwindow(title,'tbOrderController.do?del&id='+rowData.id);
+
+		//直接操作
+		$.ajax({
+	    	url:'tbContractController.do?del' , // 可以获取数据的接口
+	    	dataType:"json",
+	    	data:{'id':rowData.id},
+	    	success:function(data) {
+				$.dialog.tips(data.msg,2);
+				reloadTable();
+	    	}
+	    });
+	}
 </script>
