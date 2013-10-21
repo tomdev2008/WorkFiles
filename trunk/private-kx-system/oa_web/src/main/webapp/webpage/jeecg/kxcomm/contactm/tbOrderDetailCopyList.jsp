@@ -14,7 +14,7 @@
    <t:dgCol title="型号"  query="true"  field="type" width="60"></t:dgCol>
    <%--<t:dgCol title="单价" field="price" width="50"></t:dgCol>--%>
    <t:dgCol title="数量" field="number" width="30"></t:dgCol>
-   <t:dgCol title="采购总价" field="sum" width="50"></t:dgCol>
+   <t:dgCol title="采购总价" field="sum" width="50" query="true" ></t:dgCol>
    <t:dgCol title="状态" field="status" width="30" query="true"></t:dgCol>
    <t:dgCol title="供应商" field="supplier" width="60" query="true"  hidden="false"></t:dgCol>
    <t:dgCol title="销售合同号" field="saleContractNo" width="60" query="true"  hidden="false"></t:dgCol>

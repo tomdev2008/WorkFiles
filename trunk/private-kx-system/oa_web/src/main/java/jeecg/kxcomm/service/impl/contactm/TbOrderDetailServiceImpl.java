@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TbOrderDetailServiceImpl extends CommonServiceImpl implements TbOrderDetailServiceI {
 
 	@Override
-	public PageList getPageList(HqlQuery hqlQuery, boolean b,TbOrderDetailEntity tbOrderDetail, String kxOrderNo,String projectName ,String client ,String finalClient ,String principal ,String name,String type ,String supplier ,String saleContractNo ,String purchaser ,String status) {
+	public PageList getPageList(HqlQuery hqlQuery, boolean b,TbOrderDetailEntity tbOrderDetail, String kxOrderNo,String projectName ,String client ,String finalClient ,String principal ,String name,String type ,String supplier ,String saleContractNo ,String purchaser ,String status,String sum) {
 		StringBuffer whereSql = new StringBuffer();
 		
 		if(null != kxOrderNo && !"".equals(kxOrderNo) ){
@@ -72,10 +72,16 @@ public class TbOrderDetailServiceImpl extends CommonServiceImpl implements TbOrd
 		whereSql.append(" group by b.id order by a.create_time desc");
 		//------------------
 		StringBuffer hql = new StringBuffer();
+		hql.append("select * from ( ");
 		hql.append(" select b.id,b.name,b.type,b.price,b.number," +
-				"a.kx_order_no,a.final_client,a.create_time,b.purchase_price,a.project_name,a.client,a.principal,a.remark,b.status");
+				"a.kx_order_no,a.final_client,a.create_time,sum(b.purchase_price) as kk,a.project_name,a.client,a.principal,a.remark,b.status");
 		hql.append(" from tb_order_detail b left join tb_purchase c on b.id=c.order_detail_id left join tb_order a on a.id=b.order_id where b.order_id is not null ");
 		hql.append(whereSql.toString());
+		hql.append(")t ");
+		
+		if(null != sum && !"".equals(sum)  ){
+			hql.append(" where t.kk like  '%"+sum+"%' ");
+		}
 		
 		hqlQuery.setQueryString(hql.toString());
 		Map<String, Object> map = new HashMap<String, Object>();

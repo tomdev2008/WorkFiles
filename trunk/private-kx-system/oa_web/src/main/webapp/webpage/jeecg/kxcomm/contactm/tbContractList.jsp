@@ -2,7 +2,7 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbContractList" fitColumns="true" title="销售合同" actionUrl="tbContractController.do?datagrid" idField="id" fit="true" onClick="contractDetail">
+  <t:datagrid name="tbContractList" fitColumns="true" title="销售合同" actionUrl="tbContractController.do?datagrid" idField="id" fit="true" onClick="contractDetail" queryMode="group">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="合同编号" field="contractNo" query="true"></t:dgCol>
    <t:dgCol title="合同金额" field="contractPrice" ></t:dgCol>
@@ -53,20 +53,6 @@
 			tip('请选择要删除');
 			return;
 		}
-		var i = rowData.id;
-		url += '&id='+rowData.id;
-		//弹出页面
-		//openwindow(title,'tbOrderController.do?del&id='+rowData.id);
-
-		//直接操作
-		$.ajax({
-	    	url:'tbContractController.do?del' , // 可以获取数据的接口
-	    	dataType:"json",
-	    	data:{'id':rowData.id},
-	    	success:function(data) {
-				$.dialog.tips(data.msg,2);
-				reloadTable();
-	    	}
-	    });
+		delObj('tbContractController.do?del&id='+ rowData.id,'tbContractList');
 	}
 </script>

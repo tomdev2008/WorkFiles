@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/context/mytags.jsp"%>
-<div style="width: auto;height: 560px;overflow-y:auto;overflow-x:scroll;">
+<div style="width: auto;height: auto;overflow-y:auto;">
 <table border="0" cellpadding="2" cellspacing="0" id="tbOrderDetail_table" width="100%">
 	<tr bgcolor="#E6E6E6">
 				  <td align="left" bgcolor="#EEEEEE"  width="15%"  style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">名称</td>

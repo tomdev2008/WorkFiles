@@ -93,11 +93,14 @@ public class TbPurchaseContractController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbPurchaseContractEntity tbPurchaseContract, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		tbPurchaseContract = systemService.getEntity(TbPurchaseContractEntity.class, tbPurchaseContract.getId());
-		message = "删除成功";
-		tbPurchaseContractService.delMain(tbPurchaseContract);
+		try{
+			tbPurchaseContract = systemService.getEntity(TbPurchaseContractEntity.class, tbPurchaseContract.getId());
+			message = "删除成功";
+			tbPurchaseContractService.delMain(tbPurchaseContract);
+		}catch(Exception e){
+			message = "删除失败";
+		}
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-		
 		j.setMsg(message);
 		return j;
 	}

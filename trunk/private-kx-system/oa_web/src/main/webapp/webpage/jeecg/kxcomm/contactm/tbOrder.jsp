@@ -151,7 +151,7 @@
 			 <td align="center"><input style="width:20px;" type="checkbox" name="ck"/></td>
 			 <td align="center"><input name="tbOrderDetailList[#index#].id" maxlength="85" type="hidden" style="width:120px;"></td>
 				<td align="center">
-				<t:dictSelect field="tbOrderDetailList[#index#].name"  typeGroupCode="seltype" title="*"></t:dictSelect>
+				<t:dictSelect field="tbOrderDetailList[#index#].name"  typeGroupCode="seltype"   hasLabel="N"></t:dictSelect>
 							</td>
 				 <td align="center"><input name="tbOrderDetailList[#index#].type" maxlength="85" type="text" style="width:120px;"></td>
 				 <td align="center"><input name="tbOrderDetailList[#index#].price" maxlength="85" type="text" style="width:120px;"></td>

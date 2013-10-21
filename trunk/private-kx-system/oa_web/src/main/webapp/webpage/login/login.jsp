@@ -74,7 +74,7 @@ label.iPhoneCheckLabelOn span {
    <span>登陆成功!请稍后....</span>
   </div>
   <div id="login">
-   <div class="ribbon" style="background-image:url(plug-in/login/images/typelogin.png);"></div>
+  <!--  <div class="ribbon" style="background-image:url(plug-in/login/images/typelogin.png);"></div> -->
    <div class="inner">
     <div class="logo">
      <img src="plug-in/login/images/toplogo-jeecg.png"/>

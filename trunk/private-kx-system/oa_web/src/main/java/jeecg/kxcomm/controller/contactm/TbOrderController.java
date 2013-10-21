@@ -95,12 +95,13 @@ public class TbOrderController extends BaseController {
 		String client = request.getParameter("client");
 		String principal = request.getParameter("principal");
 		String status = request.getParameter("status");
+		String totalPrice = request.getParameter("totalPrice");
 		
 		HqlQuery hqlQuery = new HqlQuery("TbOrderEntity.do?datagrid");
 		hqlQuery.setCurPage(dataGrid.getPage());
 		hqlQuery.setPageSize(dataGrid.getRows());
 		hqlQuery.setDataGrid(dataGrid);
-		PageList pagelist = this.tbOrderService.getPageList(hqlQuery, true,tbOrder,kxOrderNo,projectName,contractNo,client,principal,status);
+		PageList pagelist = this.tbOrderService.getPageList(hqlQuery, true,tbOrder,kxOrderNo,projectName,contractNo,client,principal,status,totalPrice);
 //		for(int d = 0; d < pagelist.getResultList().size(); d++) {
 //			((TbCheckingInstanceEntity) pagelist.getResultList().get(d)).setEmpName(ctBegin+","+ctEnd);
 //		}
@@ -124,10 +125,10 @@ public class TbOrderController extends BaseController {
 			tbOrder = systemService.getEntity(TbOrderEntity.class, tbOrder.getId());
 			message = "删除成功";
 			tbOrderService.delMain(tbOrder);
-			systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		}catch(Exception e){
 			message = "删除失败";
 		}
+		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		j.setMsg(message);
 		return j;
 	}

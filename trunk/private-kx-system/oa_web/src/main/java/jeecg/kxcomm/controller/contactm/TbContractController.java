@@ -139,8 +139,15 @@ public class TbContractController extends BaseController {
 	@RequestMapping(params = "save")
 	@ResponseBody
 	public AjaxJson save(TbContractEntity tbContract,TbContractPage tbContractPage, HttpServletRequest request) {
-		List<TbOrderEntity> tbOrderList =  tbContractPage.getTbOrderList();
 		AjaxJson j = new AjaxJson();
+		List<TbOrderEntity> tbOrderList =  tbContractPage.getTbOrderList();
+		for(TbOrderEntity e:tbOrderList){
+			if(e.getKxOrderNo()==null ||"".equals(e.getKxOrderNo())){
+				j.setMsg("请输入正确的康讯订单号");
+				return j;
+			}
+		}
+		
 		//判断销售合同是否唯一
 		
 		if (StringUtil.isNotEmpty(tbContract.getId())) {
@@ -204,22 +211,13 @@ public class TbContractController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(params = "contractDetail")
-	public ModelAndView contractDetail(HttpServletRequest req,String id) {
-		String hql = "from TbContractEntity where 1 = 1 AND id = ? ";
-		List<TbContractEntity> tbContractEntityList = systemService.findHql(hql,id);
-		
-		String hql0 = "from TbOrderEntity where 1 = 1 AND tbContract = ? ";
-	    List<TbOrderEntity> tbOrderEntityList = systemService.findHql(hql0,tbContractEntityList.get(0));
-	    
-	    String hql1 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder = ? ";
+	public ModelAndView contractDetail(HttpServletRequest req,String id) {	    
+	    String hql1 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder.tbContract.id = ? ";
+		List<TbOrderDetailEntity> tbOrderDetailList = systemService.findHql(hql1,id);
 	    List t = new ArrayList();
-	    for(TbOrderEntity tbOrder:tbOrderEntityList){
-	    	List<TbOrderDetailEntity> tbOrderDetailList = systemService.findHql(hql1,tbOrder);
-	    	for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
-	    		t.add(tbOrderDetail);
-	    	}
-	    	
-	    }
+		for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
+    		t.add(tbOrderDetail);
+    	}
 		req.setAttribute("tbOrderDetailList", t);
 		return new ModelAndView("jeecg/kxcomm/contactm/tbContractDetail");
 	}

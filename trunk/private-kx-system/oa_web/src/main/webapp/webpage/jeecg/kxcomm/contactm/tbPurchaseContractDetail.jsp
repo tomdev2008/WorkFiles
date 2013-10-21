@@ -2,75 +2,51 @@
 <%@include file="/context/mytags.jsp"%>
 
 
-<div style="width: auto;height: 200px;overflow-y:auto;overflow-x:scroll;">
+<div style="width: auto;height: auto;overflow-y:scroll;">
 <table border="0" cellpadding="2" cellspacing="0" id="tbPurchase_table">
 	<tr bgcolor="#E6E6E6">
-		
-				  <td align="left" bgcolor="#EEEEEE">区域</td>
-				  <td align="left" bgcolor="#EEEEEE">采购合同号</td>
-				  <td align="left" bgcolor="#EEEEEE">康讯订单号</td>
-				  <td align="left" bgcolor="#EEEEEE">供应商</td>
-				  <td align="left" bgcolor="#EEEEEE">商品名称</td>
-				  <td align="left" bgcolor="#EEEEEE">型号</td>
-				  <td align="left" bgcolor="#EEEEEE">数量</td>
-				  <td align="left" bgcolor="#EEEEEE">采购单价</td>
-				  <td align="left" bgcolor="#EEEEEE">采购总价</td>
-				  <td align="left" bgcolor="#EEEEEE">采购人</td>
-				  <td align="left" bgcolor="#EEEEEE">预计到货日期</td>
-				  <td align="left" bgcolor="#EEEEEE">下单日期</td>
-				  <td align="left" bgcolor="#EEEEEE">发票日期</td>
-				  <td align="left" bgcolor="#EEEEEE">发票备注</td>
-				  <td align="left" bgcolor="#EEEEEE">付款日期</td>
-				  <td align="left" bgcolor="#EEEEEE">查询单号</td>
-				  <td align="left" bgcolor="#EEEEEE">机型服务编号</td>
-				  <td align="left" bgcolor="#EEEEEE">备注</td>
-
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">区域</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">采购合同号</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">康讯订单号</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">供应商</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">商品名称</td>
+				  <td align="left" bgcolor="#EEEEEE"     style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">型号</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">数量</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">采购单价</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">采购总价</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">采购人</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">预计到货日期</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">下单日期</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">发票日期</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">发票备注</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">付款日期</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">查询单号</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">机型服务编号</td>
+				  <td align="left" bgcolor="#EEEEEE"    style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;">备注</td>
 	</tr>
 	<tbody id="add_tbPurchase_table">	
-	<c:if test="${fn:length(tbPurchaseList)  <= 0 }">
-			<tr>
-				
-				  <td align="left"><input name="tbPurchaseList[0].area" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].purchaseContractNo" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].supplier" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].productName" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].model" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].number" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].unitPrice" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].totalPrice" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].purchaser" maxlength="85" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].predictArrivalDate" maxlength="" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].placeOrderDate" maxlength="" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].invoiceDate" maxlength="" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].invoiceRemark" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].paymentDate" maxlength="" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].inquireNo" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].typeServiceNo" maxlength="16" type="text" style="width:120px;" ></td>
-				  <td align="left"><input name="tbPurchaseList[0].remark" maxlength="33" type="text" style="width:120px;" ></td>
-   			</tr>
-	</c:if>
+	
 	<c:if test="${fn:length(tbPurchaseList)  > 0 }">
 		<c:forEach items="${tbPurchaseList}" var="poVal" varStatus="stuts">
 			<tr>
-				
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].area" maxlength="16" value="${poVal.area }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].purchaseContractNo" maxlength="16" value="${poVal.tbPurchaseContract.contractNo }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].kxOrderNo" maxlength="16" value="${poVal.tbOrderDetail.tbOrder.kxOrderNo }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].supplier" maxlength="16" value="${poVal.supplier }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].productName" maxlength="16" value="${poVal.productName }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].model" maxlength="16" value="${poVal.model }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].number" maxlength="16" value="${poVal.number }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].unitPrice" maxlength="16" value="${poVal.unitPrice }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].totalPrice" maxlength="16" value="${poVal.totalPrice }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].purchaser" maxlength="85" value="${poVal.purchaser }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].predictArrivalDate" maxlength="" value="${poVal.predictArrivalDate }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].placeOrderDate" maxlength="" value="${poVal.placeOrderDate }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].invoiceDate" maxlength="" value="${poVal.invoiceDate }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].invoiceRemark" maxlength="16" value="${poVal.invoiceRemark }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].paymentDate" maxlength="" value="${poVal.paymentDate }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].inquireNo" maxlength="16" value="${poVal.inquireNo }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].typeServiceNo" maxlength="16" value="${poVal.typeServiceNo }" type="text" style="width:120px;" readonly="readonly"></td>
-				   <td align="left"><input name="tbPurchaseList[${stuts.index }].remark" maxlength="33" value="${poVal.remark }" type="text" style="width:120px;" readonly="readonly"></td>
+				   <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.area }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.tbPurchaseContract.contractNo }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.tbOrderDetail.tbOrder.kxOrderNo }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.supplier }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.productName }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.model }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.number }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.unitPrice }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.totalPrice }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.purchaser }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.predictArrivalDate }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.placeOrderDate }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.invoiceDate }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.invoiceRemark }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.paymentDate }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.inquireNo }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.typeServiceNo }</label></td>
+				  <td align="left" style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label >${poVal.remark }</label></td>
    			</tr>
 		</c:forEach>
 	</c:if>	

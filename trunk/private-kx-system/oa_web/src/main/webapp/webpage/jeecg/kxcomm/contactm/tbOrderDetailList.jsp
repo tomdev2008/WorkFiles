@@ -55,7 +55,7 @@
 <div style="padding: 3px; height: 25px;width:auto;" class="datagrid-toolbar">
 	<a id="addTbOrderDetailBtn" href="#">添加</a> <a id="delTbOrderDetailBtn" href="#">删除</a> 
 </div>
-<div style="width: auto;height: 150px;overflow-y:auto;overflow-x:scroll;">
+<div style="width: auto;height: 250px;overflow-y:scroll;">
 <table border="0" cellpadding="2" cellspacing="0" id="tbOrderDetail_table">
 	<tr bgcolor="#E6E6E6">
 		<td align="center" bgcolor="#EEEEEE">序号</td>
@@ -72,7 +72,7 @@
 				<td align="center"><input style="width:20px;"  type="checkbox" name="ck"/></td>
 				<td align="center"><input name="tbOrderDetailList[0].id" maxlength="85" type="hidden" style="width:120px;"></td>
 				<td align="center">
-				<t:dictSelect field="tbOrderDetailList[0].name"  typeGroupCode="seltype" title="*"></t:dictSelect>
+				<t:dictSelect field="tbOrderDetailList[0].name"  typeGroupCode="seltype"  hasLabel="N"  ></t:dictSelect>
 				</td>
 				  <td align="left"><input name="tbOrderDetailList[0].type" maxlength="85" type="text" style="width:120px;" ></td>
 				  <td align="left"><input name="tbOrderDetailList[0].price" maxlength="85" type="text" style="width:120px;" ></td>

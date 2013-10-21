@@ -16,6 +16,7 @@ import jeecg.system.pojo.base.TSUser;
 import jeecg.system.service.SystemService;
 
 import org.apache.log4j.Logger;
+import org.hibernate.criterion.Restrictions;
 import org.jeecgframework.core.common.controller.BaseController;
 import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
@@ -65,6 +66,97 @@ public class TbPurchaseController extends BaseController {
 		this.message = message;
 	}
 
+	@RequestMapping(params = "projectTrackingDetail")
+	public ModelAndView projectTrackingDetail(TbPurchaseEntity tbPurchase, HttpServletRequest req) {
+		if (StringUtil.isNotEmpty(tbPurchase.getId())) {
+			tbPurchase = tbPurchaseService.getEntity(TbPurchaseEntity.class, tbPurchase.getId());
+			
+			String id = req.getParameter("id");
+			req.setAttribute("id",id);
+			req.setAttribute("tbPurchasePage", tbPurchase);
+			
+		}
+		return new ModelAndView("jeecg/kxcomm/contactm/projectTracking");
+	}
+	
+	/**
+	 * 项目跟踪列表 页面跳转
+	 * 
+	 * @return
+	 */
+	@RequestMapping(params = "projectTracking")
+	public ModelAndView projectTracking(HttpServletRequest request) {
+		return new ModelAndView("jeecg/kxcomm/contactm/projectTrackingList");
+	}
+	
+	/**
+	 * 
+	 * 项目跟踪表
+	 * 
+	 * @param tbPurchase
+	 * @param request
+	 * @param response
+	 * @param dataGrid
+	 * @author zhangjh 新增日期：2013-10-20
+	 * @since private-kx-system
+	 */
+	@RequestMapping(params = "projectTrackingDatagrid")
+	public void projectTrackingDatagrid(TbPurchaseEntity tbPurchase,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		CriteriaQuery cq = new CriteriaQuery(TbPurchaseEntity.class, dataGrid);
+		cq.createAlias("tbOrderDetail", "tbOrderDetail");	
+		cq.createAlias("tbOrderDetail.tbOrder", "tbOrder");
+		cq.createAlias("tbOrderDetail.tbOrder.tbContract", "tbContract");
+		
+		String area = request.getParameter("area");
+		if(area!=null && !"".equals(area)){
+			cq.like("area", "%"+area+"%");
+			cq.add();
+		}
+		String tbOrderDetail_price = request.getParameter("tbOrderDetail_price");
+		if(tbOrderDetail_price!=null && !"".equals(tbOrderDetail_price)){
+			cq.like("tbOrderDetail.price", "%"+tbOrderDetail_price+"%");
+			cq.add();
+		}
+		String tbOrderDetail_tbOrder_principal = request.getParameter("tbOrderDetail_tbOrder_principal");
+		if(tbOrderDetail_tbOrder_principal!=null && !"".equals(tbOrderDetail_tbOrder_principal)){
+			cq.like("tbOrder.principal", "%"+tbOrderDetail_tbOrder_principal+"%");
+			cq.add();
+		}
+		String tbOrderDetail_tbOrder_kxOrderNo = request.getParameter("tbOrderDetail_tbOrder_kxOrderNo");
+		if(tbOrderDetail_tbOrder_kxOrderNo!=null && !"".equals(tbOrderDetail_tbOrder_kxOrderNo)){
+			cq.like("tbOrder.kxOrderNo","%"+ tbOrderDetail_tbOrder_kxOrderNo+"%");
+			cq.add();
+		}
+		
+		String tbOrderDetail_tbOrder_finalClient = request.getParameter("tbOrderDetail_tbOrder_finalClient");
+		if(tbOrderDetail_tbOrder_finalClient!=null && !"".equals(tbOrderDetail_tbOrder_finalClient)){
+			cq.like("tbOrder.finalClient", "%"+tbOrderDetail_tbOrder_finalClient+"%");
+			cq.add();
+		}
+		
+		String tbOrderDetail_tbOrder_projectName = request.getParameter("tbOrderDetail_tbOrder_projectName");
+		if(tbOrderDetail_tbOrder_projectName!=null && !"".equals(tbOrderDetail_tbOrder_projectName)){
+			cq.like("tbOrder.projectName","%"+ tbOrderDetail_tbOrder_projectName+"%");
+			cq.add();
+		}
+		
+		String placeOrderDate = request.getParameter("placeOrderDate");
+		if(placeOrderDate!=null && !"".equals(placeOrderDate)){
+			cq.like("placeOrderDate", "%"+placeOrderDate+"%");
+			cq.add();
+		}
+		
+		String tbOrderDetail_tbOrder_tbContract_contractNo = request.getParameter("tbOrderDetail_tbOrder_tbContract_contractNo");
+		if(tbOrderDetail_tbOrder_tbContract_contractNo!=null && !"".equals(tbOrderDetail_tbOrder_tbContract_contractNo)){
+			
+			cq.like("tbContract.contractNo","%"+ tbOrderDetail_tbOrder_tbContract_contractNo+"%");
+			cq.add();
+		}
+		
+		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbPurchase);
+		this.tbPurchaseService.getDataGridReturn(cq, true);
+		TagUtil.datagrid(response, dataGrid);
+	}
 
 	/**
 	 * 采购订单列表 页面跳转
@@ -77,6 +169,8 @@ public class TbPurchaseController extends BaseController {
 		request.setAttribute("id",id);
 		return new ModelAndView("jeecg/kxcomm/contactm/tbPurchaseList");
 	}
+	
+	
 
 	/**
 	 * easyui AJAX请求数据
@@ -115,10 +209,10 @@ public class TbPurchaseController extends BaseController {
 			tbPurchase = systemService.getEntity(TbPurchaseEntity.class, tbPurchase.getId());
 			message = "删除成功";
 			tbPurchaseService.delete(tbPurchase);
-			systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		}catch(Exception e){
 			message = "删除失败";
 		}
+		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
 		j.setMsg(message);
 		return j;
 	}

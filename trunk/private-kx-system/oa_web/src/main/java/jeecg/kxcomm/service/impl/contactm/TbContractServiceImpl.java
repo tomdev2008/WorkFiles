@@ -45,13 +45,14 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 
 		/**保存-销售订单*/
 		for(TbOrderEntity tbOrder:tbOrderList){
-			
-			String hql = "from TbOrderEntity where 1 = 1 AND kxOrderNo = ? ";
-			List<TbOrderEntity> t = this.findHql(hql,tbOrder.getKxOrderNo());
-			
-			//t.get(0).setContractId(tbContract.getId());
-			t.get(0).setTbContract(tbContract);
-			this.updateEntitie(t.get(0));
+			System.out.println(tbOrder.getId());
+			String hql = "from TbOrderEntity where 1 = 1 AND kxOrderNo = ?  and  finalClient=?";
+			List<TbOrderEntity> t = this.findHql(hql,tbOrder.getKxOrderNo(),tbOrder.getFinalClient());
+			if(t.size()>0){
+				//t.get(0).setContractId(tbContract.getId());
+				t.get(0).setTbContract(tbContract);
+				this.updateEntitie(t.get(0));
+			}
 		}
 	}
 

@@ -31,21 +31,7 @@
 			tip('请选择要删除');
 			return;
 		}
-		var i = rowData.id;
-		url += '&id='+rowData.id;
-		//弹出页面
-		//openwindow(title,'tbOrderController.do?del&id='+rowData.id);
-
-		//直接操作
-		$.ajax({
-	    	url:'tbPurchaseContractController.do?del' , // 可以获取数据的接口
-	    	dataType:"json",
-	    	data:{'id':rowData.id},
-	    	success:function(data) {
-				$.dialog.tips(data.msg,2);
-                reloadTable();
-	    	}
-	    });
+		delObj('tbPurchaseContractController.do?del&id='+ rowData.id,'tbPurchaseContractList');
 	}
  /*
  $(function() {

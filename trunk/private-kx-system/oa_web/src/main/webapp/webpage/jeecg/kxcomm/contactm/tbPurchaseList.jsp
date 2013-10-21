@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/context/mytags.jsp"%>
+<script type="text/javascript">
+function delone(title,url, id) {
+	var rowData = $('#'+id).datagrid('getSelected');
+	if (!rowData) {
+		tip('请选择要删除');
+		return;
+	}
+	delObj('tbPurchaseController.do?del&id='+ rowData.id,'tbPurchaseList');
+}
+</script>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
   <t:datagrid name="tbPurchaseList" actionUrl="tbPurchaseController.do?datagrid&orderDetailId=${id}" idField="id" fit="true">
@@ -22,10 +32,10 @@
    		<t:dgCol title="机型服务编号" field="typeServiceNo" width="50" hidden="false"></t:dgCol>
    		<t:dgCol title="采购人" field="purchaser" width="100" hidden="false"></t:dgCol>
    		<t:dgCol title="备注" field="remark" width="50"></t:dgCol>
-   		<t:dgCol title="操作" field="opt" width="50"></t:dgCol>
-   		<t:dgDelOpt title="删除" url="tbPurchaseController.do?del&id={id}" />
    		<t:dgToolBar title="编辑" icon="icon-edit" url="tbPurchaseController.do?addorupdate" funname="update"></t:dgToolBar>
    		<t:dgToolBar title="查看" icon="icon-search" url="tbPurchaseController.do?addorupdate" funname="detail"></t:dgToolBar>
+   		<t:dgToolBar title="删除" icon="icon-remove"    funname="delone" ></t:dgToolBar>
   	</t:datagrid>
   </div>
  </div>
+ 

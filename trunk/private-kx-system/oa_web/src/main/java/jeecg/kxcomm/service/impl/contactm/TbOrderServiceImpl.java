@@ -1,9 +1,5 @@
 package jeecg.kxcomm.service.impl.contactm;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,24 +8,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jeecg.kxcomm.entity.contactm.TbContractEntity;
+import jeecg.kxcomm.entity.contactm.TbOrderDetailEntity;
+import jeecg.kxcomm.entity.contactm.TbOrderEntity;
 import jeecg.kxcomm.service.contactm.TbContractServiceI;
 import jeecg.kxcomm.service.contactm.TbOrderServiceI;
 import jeecg.kxcomm.util.BusinessUtil;
 import jeecg.kxcomm.util.CommonUtil;
+import jeecg.kxcomm.vo.contactm.TbOrderEntityVo;
 
 import org.hibernate.SQLQuery;
 import org.jeecgframework.core.common.hibernate.qbc.HqlQuery;
 import org.jeecgframework.core.common.hibernate.qbc.PageList;
 import org.jeecgframework.core.common.hibernate.qbc.PagerUtil;
 import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
-
-import jeecg.kxcomm.entity.contactm.TbContractEntity;
-import jeecg.kxcomm.entity.contactm.TbOrderEntity;
-import jeecg.kxcomm.entity.contactm.TbOrderDetailEntity;
-import jeecg.kxcomm.entity.contactm.TbPurchaseEntity;
-import jeecg.kxcomm.entity.hrm.TbCheckingInstanceEntity;
-import jeecg.kxcomm.entity.hrm.TbEmployeeEntity;
-import jeecg.kxcomm.entity.hrm.TbOrgenEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 @Service("tbOrderService")
 @Transactional
 public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServiceI {
@@ -141,7 +136,7 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 
 	@Override
 	public PageList getPageList(HqlQuery hqlQuery, boolean b,
-			TbOrderEntity tbOrder, String kxOrderNo,String projectName,String contractNo,String client,String principal,String status) {
+			TbOrderEntity tbOrder, String kxOrderNo,String projectName,String contractNo,String client,String principal,String status,String totalPrice) {
 		//条件拼接，根据登陆不同的角色，看到的订单不同
 				StringBuffer whereSql = new StringBuffer();
 				
@@ -167,6 +162,9 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 				if(null != status&& !"".equals(status) ){
 					whereSql.append(" and b.status like '%"+status+"%' ");
 				}
+				if(null != totalPrice&& !"".equals(totalPrice) ){
+					whereSql.append(" and a.total_price like '%"+totalPrice+"%' ");
+				}
 			
 				//if((null == kxOrderNo && ("").equals(kxOrderNo))&&(null == projectName && ("").equals(projectName))&&(null == contractNo && ("").equals(contractNo))&&(null == client && ("").equals(client))&&(null == principal && ("").equals(principal))){
 					whereSql.append(" group by a.id order by create_time desc");
@@ -175,6 +173,7 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 				StringBuffer hql = new StringBuffer();
 				hql.append(" select a.id,a.kx_order_no,a.project_name,a.client,a.final_client," +
 						"a.payment,a.principal,a.total_price,a.create_time,a.remark ,a.contract_id");
+				hql.append("  ,sum(b.status='"+BusinessUtil.TO_PURCHASE+"') as aa,sum(b.status='"+BusinessUtil.PURCHASE_ING+"') as bb, sum(b.status='"+BusinessUtil.END_PURCHASE+"') as cc");
 				hql.append(" from tb_order a left join tb_order_detail b on a.id=b.order_id  where 1=1");
 				hql.append(whereSql.toString());
 				
@@ -191,11 +190,10 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 				query.setFirstResult(offset);
 				query.setMaxResults(hqlQuery.getPageSize());
 			 	List list= query.list();
-				List<TbOrderEntity> volist = new ArrayList<TbOrderEntity>();
-				Object[]  obj = new Object[volist.size()];
+				List<TbOrderEntityVo> volist = new ArrayList<TbOrderEntityVo>();
 				for (int i = 0; i < list.size(); i++) {
-					obj = (Object[]) list.get(i);
-					TbOrderEntity vo = new TbOrderEntity();
+					Object[]  obj = (Object[]) list.get(i);
+					TbOrderEntityVo vo = new TbOrderEntityVo();
 					SimpleDateFormat a=new SimpleDateFormat("yyyy-MM-dd");
 					
 					try {
@@ -222,11 +220,13 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 					}else{
 						vo.setTotalPrice(""+obj[7]);
 					}
-					
+					vo.setRemark(""+obj[9]);
 					String contractId = ""+obj[10];
 					TbContractEntity c =tbContractService.getEntity(TbContractEntity.class, contractId);
 					vo.setTbContract(c);
-					vo.setRemark(""+obj[9]);
+					vo.setPurchaseNumTo(""+obj[11]);
+					vo.setPurchaseNumIng(""+obj[12]);
+					vo.setPurchaseNumEnd(""+obj[13]);
 					volist.add(vo);
 				}
 				return new PageList(hqlQuery, volist, offset, curPageNO, allCounts);

@@ -88,7 +88,7 @@ public class TbOrderDetailController extends BaseController {
 		String saleContractNo = request.getParameter("saleContractNo");
 		String purchaser = request.getParameter("purchaser");
 		String status = request.getParameter("status");
-		
+		String sum = request.getParameter("sum");
 //		
 //		cq.createAlias("tbOrder", "tbOrder");
 //		cq.isNotNull("tbOrder.kxOrderNo");	
@@ -103,7 +103,7 @@ public class TbOrderDetailController extends BaseController {
 		hqlQuery.setCurPage(dataGrid.getPage());
 		hqlQuery.setPageSize(dataGrid.getRows());
 		hqlQuery.setDataGrid(dataGrid);
-		PageList pagelist = this.tbOrderDetailService.getPageList(hqlQuery, true,tbOrderDetail,kxOrderNo, projectName , client , finalClient , principal , name, type , supplier , saleContractNo , purchaser ,status );
+		PageList pagelist = this.tbOrderDetailService.getPageList(hqlQuery, true,tbOrderDetail,kxOrderNo, projectName , client , finalClient , principal , name, type , supplier , saleContractNo , purchaser ,status,sum );
 
 		dataGrid.setPage(pagelist.getCurPageNO());
 		dataGrid.setTotal(pagelist.getCount());
@@ -122,11 +122,14 @@ public class TbOrderDetailController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbOrderDetailEntity tbOrderDetail, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		tbOrderDetail = systemService.getEntity(TbOrderDetailEntity.class, tbOrderDetail.getId());
-		message = "删除成功";
-		tbOrderDetailService.delete(tbOrderDetail);
+		try{
+			tbOrderDetail = systemService.getEntity(TbOrderDetailEntity.class, tbOrderDetail.getId());
+			message = "删除成功";
+			tbOrderDetailService.delete(tbOrderDetail);
+		}catch(Exception e){
+			message = "删除失败";
+		}
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-		
 		j.setMsg(message);
 		return j;
 	}
