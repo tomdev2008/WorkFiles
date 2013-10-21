@@ -143,3 +143,19 @@ CREATE TABLE `tb_purchase_contract` (
 -- ----------------------------
 -- Records of tb_purchase_contract
 -- ----------------------------
+
+
+CREATE TABLE `tb_contract_receive_money` (
+  `id` varchar(255) NOT NULL COMMENT '合同回款序号',
+  `contract_id` varchar(255) DEFAULT NULL COMMENT '合同编号',
+  `receive_money` varchar(255) DEFAULT NULL COMMENT '回款金额',
+  `receiveDate` date DEFAULT NULL COMMENT '回款日期',
+  `not_receive_money` varchar(255) DEFAULT NULL COMMENT '未回款金额',
+  `remark` varchar(255) DEFAULT NULL COMMENT '回款备注',
+  `money_type` varchar(255) DEFAULT NULL COMMENT '回款分类',
+  `create_time` date DEFAULT NULL COMMENT '创建时间',
+  `create_user` varchar(255) DEFAULT NULL COMMENT '创建人',
+  PRIMARY KEY (`id`),
+  KEY `contract_id` (`contract_id`),
+  CONSTRAINT `contract_id` FOREIGN KEY (`contract_id`) REFERENCES `tb_contract` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
