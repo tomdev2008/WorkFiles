@@ -13,7 +13,7 @@
     <t:dgCol title="商品名称"  field="productName"  ></t:dgCol>
     <t:dgCol title="型号"  field="model"  ></t:dgCol>
     <t:dgCol title="数量"  field="number"  ></t:dgCol>
-    <t:dgCol title="下单日期"  field="placeOrderDate" formatter="yyyy-MM-dd " width="100"  query="true"></t:dgCol>
+    <t:dgCol title="下单日期"  field="placeOrderDate" formatter="yyyy-MM-dd " width="100"  ></t:dgCol>
     <t:dgCol title="预计到货日期"  field="predictArrivalDate" formatter="yyyy-MM-dd " width="100"></t:dgCol>
  	<t:dgCol title="合同签订日期"  field="tbOrderDetail_tbOrder_tbContract_contractSigningDate" formatter="yyyy-MM-dd "></t:dgCol>
  	<t:dgCol title="合同号"  field="tbOrderDetail_tbOrder_tbContract_contractNo"  query="true"></t:dgCol>

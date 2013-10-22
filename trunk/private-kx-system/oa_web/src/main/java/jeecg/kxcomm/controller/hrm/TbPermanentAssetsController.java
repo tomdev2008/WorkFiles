@@ -1,5 +1,4 @@
 package jeecg.kxcomm.controller.hrm;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,20 +20,16 @@ import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import jeecg.system.pojo.base.TSDepart;
 import jeecg.system.service.SystemService;
-
 import org.jeecgframework.core.util.MyBeanUtils;
 
-import jeecg.kxcomm.entity.hrm.TbEmployeeEntity;
-import jeecg.kxcomm.entity.hrm.TbOrgenEntity;
 import jeecg.kxcomm.entity.hrm.TbPermanentAssetsEntity;
 import jeecg.kxcomm.service.hrm.TbPermanentAssetsServiceI;
-import jeecg.kxcomm.vo.hrm.StautsVo;
 
 /**   
  * @Title: Controller
- * @Description: 固定资产表
+ * @Description: 固定资产
  * @author zhangdaihao
- * @date 2013-07-23 14:51:00
+ * @date 2013-10-22 11:04:59
  * @version V1.0   
  *
  */
@@ -62,7 +57,7 @@ public class TbPermanentAssetsController extends BaseController {
 
 
 	/**
-	 * 固定资产表列表 页面跳转
+	 * 固定资产列表 页面跳转
 	 * 
 	 * @return
 	 */
@@ -85,13 +80,12 @@ public class TbPermanentAssetsController extends BaseController {
 		CriteriaQuery cq = new CriteriaQuery(TbPermanentAssetsEntity.class, dataGrid);
 		//查询条件组装器
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbPermanentAssets);
-		
 		this.tbPermanentAssetsService.getDataGridReturn(cq, true);
 		TagUtil.datagrid(response, dataGrid);
 	}
 
 	/**
-	 * 删除固定资产表
+	 * 删除固定资产
 	 * 
 	 * @return
 	 */
@@ -110,7 +104,7 @@ public class TbPermanentAssetsController extends BaseController {
 
 
 	/**
-	 * 添加固定资产表
+	 * 添加固定资产
 	 * 
 	 * @param ids
 	 * @return
@@ -139,7 +133,7 @@ public class TbPermanentAssetsController extends BaseController {
 	}
 
 	/**
-	 * 固定资产表列表页面跳转
+	 * 固定资产列表页面跳转
 	 * 
 	 * @return
 	 */
@@ -149,38 +143,6 @@ public class TbPermanentAssetsController extends BaseController {
 			tbPermanentAssets = tbPermanentAssetsService.getEntity(TbPermanentAssetsEntity.class, tbPermanentAssets.getId());
 			req.setAttribute("tbPermanentAssetsPage", tbPermanentAssets);
 		}
-		List<TbEmployeeEntity> employeeList = systemService.getList(TbEmployeeEntity.class);
-		req.setAttribute("employeeList", employeeList);
-		req.setAttribute("statusList", initStatus());
-		List<TbOrgenEntity> orgenList = systemService.getList(TbOrgenEntity.class);
-		req.setAttribute("orgenList", orgenList);
 		return new ModelAndView("jeecg/kxcomm/hrm/tbPermanentAssets");
-	}
-	
-	/**
-	 * 
-	* 方法用途和描述: 初始化状态
-	* @return
-	* @author chenliang 新增日期：2013-5-29
-	* @since oa
-	 */
-	private List<StautsVo> initStatus(){
-		List<StautsVo> stautsList = new ArrayList<StautsVo>();
-		StautsVo vo = new StautsVo();
-		vo.setId("1");
-		vo.setName("使用中");
-		stautsList.add(vo);
-		
-		vo = new StautsVo();
-		vo.setId("2");
-		vo.setName("损坏");
-		stautsList.add(vo);
-		
-		vo = new StautsVo();
-		vo.setId("3");
-		vo.setName("库存");
-		stautsList.add(vo);
-		
-		return stautsList;
 	}
 }

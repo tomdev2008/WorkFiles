@@ -179,18 +179,21 @@ CREATE TABLE `tb_orgen` (
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_permanent_assets`;
 CREATE TABLE `tb_permanent_assets` (
-  `id` varchar(32) NOT NULL COMMENT '固定资产主键id',
-  `emp_id` varchar(32) DEFAULT NULL COMMENT '员工id',
-  `number` varchar(100) DEFAULT NULL COMMENT '资产编号',
-  `perm_name` varchar(100) DEFAULT NULL COMMENT '员工姓名',
-  `acc_type` smallint(6) DEFAULT NULL COMMENT '资产类型',
-  `stauts` smallint(6) DEFAULT NULL COMMENT '状态\r\n        ',
-  `buy_time` date DEFAULT NULL COMMENT '购入时间',
-  `price` double DEFAULT NULL COMMENT '资产价值',
-  `remark` varchar(100) DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`),
-  KEY `FK_Relationship_11` (`emp_id`),
-  CONSTRAINT `FK_Relationship_11` FOREIGN KEY (`emp_id`) REFERENCES `tb_employee` (`id`)
+  `id` varchar(255) NOT NULL DEFAULT '' COMMENT '固定资产序号',
+  `category` varchar(255) DEFAULT NULL COMMENT '固定资产类别',
+  `name` varchar(255) DEFAULT NULL COMMENT '固定资产名称',
+  `model` varchar(255) DEFAULT NULL COMMENT '规格型号',
+  `configuration` varchar(255) DEFAULT NULL COMMENT '配置',
+  `num` varchar(20) DEFAULT NULL COMMENT '数量',
+  `unit` varchar(20) DEFAULT NULL COMMENT '单位',
+  `buyDate` date DEFAULT NULL COMMENT '购置日期',
+  `buyMoney` varchar(255) DEFAULT NULL COMMENT '购置金额',
+  `place` varchar(255) DEFAULT NULL COMMENT '所在地点',
+  `inventoryDate` date DEFAULT NULL COMMENT '盘存时间',
+  `users` varchar(255) DEFAULT NULL COMMENT '领用人',
+  `useDate` date DEFAULT NULL COMMENT '领用时间',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='固定资产';
 
 -- ----------------------------

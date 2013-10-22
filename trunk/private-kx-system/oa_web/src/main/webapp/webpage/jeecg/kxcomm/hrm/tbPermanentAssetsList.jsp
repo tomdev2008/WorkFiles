@@ -2,16 +2,20 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbPermanentAssetsList" title="固定资产表" actionUrl="tbPermanentAssetsController.do?datagrid" idField="id" fit="true">
+  <t:datagrid name="tbPermanentAssetsList" title="固定资产" actionUrl="tbPermanentAssetsController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
-   <t:dgCol title="资产编号" field="number" ></t:dgCol>
-   <t:dgCol title="资产名称" field="permName" ></t:dgCol>
-   <t:dgCol title="资产类型" field="accType" replace="计算机设备_1,办公用品_2" ></t:dgCol>
-    <t:dgCol title="状态 " field="stauts" replace="使用中_1,损坏_2,库存_3"  ></t:dgCol> 
-   <t:dgCol title="购入时间" field="buyTime" formatter="yyyy-MM-dd"></t:dgCol>
-   <t:dgCol title="资产价值" field="price" ></t:dgCol>
-   <t:dgCol title="所属机构" field="empId_orgenId_permName" ></t:dgCol>
-   <t:dgCol title="使用人" field="empId_empName" ></t:dgCol>
+   <t:dgCol title="固定资产类别" field="category" ></t:dgCol>
+   <t:dgCol title="固定资产名称" field="name" ></t:dgCol>
+   <t:dgCol title="规格型号" field="model" ></t:dgCol>
+   <t:dgCol title="配置" field="configuration" ></t:dgCol>
+   <t:dgCol title="数量" field="num" ></t:dgCol>
+   <t:dgCol title="单位" field="unit" ></t:dgCol>
+   <t:dgCol title="购置日期" field="buydate" formatter="yyyy-MM-dd"></t:dgCol>
+   <t:dgCol title="购置金额" field="buymoney" ></t:dgCol>
+   <t:dgCol title="所在地点" field="place" ></t:dgCol>
+   <t:dgCol title="盘存时间" field="inventorydate" formatter="yyyy-MM-dd"></t:dgCol>
+   <t:dgCol title="领用人" field="users" ></t:dgCol>
+   <t:dgCol title="领用时间" field="usedate" formatter="yyyy-MM-dd"></t:dgCol>
    <t:dgCol title="备注" field="remark" ></t:dgCol>
    <t:dgCol title="操作" field="opt" width="100"></t:dgCol>
    <t:dgDelOpt title="删除" url="tbPermanentAssetsController.do?del&id={id}" />

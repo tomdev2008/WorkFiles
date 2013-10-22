@@ -1,5 +1,6 @@
 package jeecg.kxcomm.controller.contactm;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -139,16 +140,23 @@ public class TbPurchaseController extends BaseController {
 			cq.like("tbOrder.projectName","%"+ tbOrderDetail_tbOrder_projectName+"%");
 			cq.add();
 		}
-		
+/*		
 		String placeOrderDate = request.getParameter("placeOrderDate");
 		if(placeOrderDate!=null && !"".equals(placeOrderDate)){
-			cq.like("placeOrderDate", "%"+placeOrderDate+"%");
+			Date date =CommonUtil.toDate(placeOrderDate, "yyyy-mm-dd");
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			calendar.set(Calendar.HOUR, 0);
+			calendar.set(Calendar.MINUTE, 0);
+			calendar.set(Calendar.MILLISECOND, 0);
+			Date rs =calendar.getTime();
+			cq.like("placeOrderDate",rs);
 			cq.add();
 		}
+		*/
 		
 		String tbOrderDetail_tbOrder_tbContract_contractNo = request.getParameter("tbOrderDetail_tbOrder_tbContract_contractNo");
 		if(tbOrderDetail_tbOrder_tbContract_contractNo!=null && !"".equals(tbOrderDetail_tbOrder_tbContract_contractNo)){
-			
 			cq.like("tbContract.contractNo","%"+ tbOrderDetail_tbOrder_tbContract_contractNo+"%");
 			cq.add();
 		}

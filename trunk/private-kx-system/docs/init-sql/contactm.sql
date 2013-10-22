@@ -32,7 +32,7 @@ CREATE TABLE `tb_contract` (
   PRIMARY KEY  (`id`),
   KEY `FKD8F770D5F7414CA0` (`zhongyan_payment_date`),
   KEY `contract_no` (`contract_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='销售合同';
 
 -- ----------------------------
 -- Records of tb_contract
@@ -57,7 +57,7 @@ CREATE TABLE `tb_order` (
   PRIMARY KEY  (`id`),
   KEY `contract_id` (`contract_id`),
   CONSTRAINT `contract_id` FOREIGN KEY (`contract_id`) REFERENCES `tb_contract` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='销售订单';
 
 -- ----------------------------
 -- Records of tb_order
@@ -83,7 +83,7 @@ CREATE TABLE `tb_order_detail` (
   PRIMARY KEY  (`id`),
   KEY `order_id` (`order_id`),
   CONSTRAINT `order_id` FOREIGN KEY (`order_id`) REFERENCES `tb_order` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='销售明细';
 
 -- ----------------------------
 -- Records of tb_order_detail
@@ -122,7 +122,7 @@ CREATE TABLE `tb_purchase` (
   KEY `purchase_contract_id` (`purchase_contract_id`),
   CONSTRAINT `order_detail_id` FOREIGN KEY (`order_detail_id`) REFERENCES `tb_order_detail` (`id`),
   CONSTRAINT `purchase_contract_id` FOREIGN KEY (`purchase_contract_id`) REFERENCES `tb_purchase_contract` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='采购清单';
 
 -- ----------------------------
 -- Records of tb_purchase
@@ -138,7 +138,7 @@ CREATE TABLE `tb_purchase_contract` (
   `contract_price` varchar(255) default NULL,
   `remark` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='采购合同';
 
 -- ----------------------------
 -- Records of tb_purchase_contract
@@ -158,4 +158,31 @@ CREATE TABLE `tb_contract_receive_money` (
   PRIMARY KEY (`id`),
   KEY `contract_id` (`contract_id`),
   CONSTRAINT `contract_id` FOREIGN KEY (`contract_id`) REFERENCES `tb_contract` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同回款';
+
+
+CREATE TABLE `tb_inventory` (
+   `id` varchar(255) NOT NULL DEFAULT '' COMMENT '库存序号',
+  `category` varchar(255) DEFAULT NULL COMMENT '固定资产类别',
+  `name` varchar(255) DEFAULT NULL COMMENT '固定资产名称',
+  `model` varchar(255) DEFAULT NULL COMMENT '规格型号',
+  `configuration` varchar(255) DEFAULT NULL COMMENT '配置',
+  `num` varchar(20) DEFAULT NULL COMMENT '数量',
+  `unit` varchar(20) DEFAULT NULL COMMENT '单位',
+  `buyDate` date DEFAULT NULL COMMENT '购置日期',
+  `buyMoney` varchar(255) DEFAULT NULL COMMENT '购置金额',
+  `contractNo` varchar(255) DEFAULT NULL COMMENT '合同号',
+  `kxorderNo` varchar(255) DEFAULT NULL COMMENT '康讯订单号',
+  `place` varchar(255) DEFAULT NULL COMMENT '所在地点',
+  `inventoryDate` date DEFAULT NULL COMMENT '盘存时间',
+  `users` varchar(255) DEFAULT NULL COMMENT '领用人',
+  `useDate` date DEFAULT NULL COMMENT '领用时间',
+  `useNum` varchar(255) DEFAULT NULL COMMENT '领用数量',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `status` varchar(255) DEFAULT NULL COMMENT '状态',
+  `outDate` date DEFAULT NULL COMMENT '出库时间',
+  `outNo` varchar(255) DEFAULT NULL COMMENT '出库编号',
+  `outDescribe` varchar(255) DEFAULT NULL COMMENT '出库用途',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品库存';
+
