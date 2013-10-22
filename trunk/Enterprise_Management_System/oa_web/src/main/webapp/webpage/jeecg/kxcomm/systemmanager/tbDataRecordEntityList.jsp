@@ -10,13 +10,13 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==1}">
 		  <div class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;height:300px;">
-			   <t:datagrid name="tbDataRecordEntityList${stuts.index }"   actionUrl="${poVal.url}" idField="id" fit="true">
+			   <t:datagrid name="tbDataRecordEntityList${stuts.index }"   actionUrl="${poVal.url}" idField="id" fit="true" onClick="detail">
 			   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
 			   <t:dgCol title="产品订货号" field="productorderno" ></t:dgCol>
 			   <t:dgCol title="产品描述" field="productdesc" ></t:dgCol>
 			   <t:dgCol title="数量" field="quantity" ></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" ></t:dgCol>
-			   <t:dgCol title="目录总价" field="heJia" ></t:dgCol>
+			   <t:dgCol title="目录合价" field="heJia" ></t:dgCol>
 			   <t:dgCol title="折扣率" field="discountrate" ></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" ></t:dgCol>
 			   <t:dgCol title="运保及其他费率" field="otherrates" ></t:dgCol>
@@ -38,13 +38,13 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==2}">
 		  <div class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;height:300px;">
-			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true">
+			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="detail">
 			   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
 			   <t:dgCol title="产品订货号" field="productorderno" ></t:dgCol>
 			   <t:dgCol title="产品描述" field="productdesc" ></t:dgCol>
 			   <t:dgCol title="数量" field="quantity" ></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" ></t:dgCol>
-			   <t:dgCol title="目录总价" field="heJia" ></t:dgCol>
+			   <t:dgCol title="目录合价" field="heJia" ></t:dgCol>
 			   <t:dgCol title="折扣率" field="discountrate" ></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" ></t:dgCol>
 			   <t:dgCol title="运保及其他费率" field="otherrates" ></t:dgCol>
@@ -66,13 +66,13 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==3}">
 		  <div class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;height:300px;">
-			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true">
+			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="detail">
 			   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
 			   <t:dgCol title="产品订货号" field="productorderno" ></t:dgCol>
 			   <t:dgCol title="产品描述" field="productdesc" ></t:dgCol>
 			   <t:dgCol title="数量" field="quantity" ></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" ></t:dgCol>
-			   <t:dgCol title="目录总价" field="heJia" ></t:dgCol>
+			   <t:dgCol title="目录合价" field="heJia" ></t:dgCol>
 			   <t:dgCol title="折扣率" field="discountrate" ></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" ></t:dgCol>
 			   <t:dgCol title="运保及其他费率" field="otherrates" ></t:dgCol>
@@ -99,4 +99,35 @@
   function fanhui(){
 	  $('#detailPanel').panel("refresh", "tbDataSourceEntityController.do?tbDataSourceEntity");
   }
+  
+  function detail(rowIndex, rowData){
+	  var url = "tbDataRecordEntityController.do?addorupdate&id="+rowData.id;
+	  createdetailwindow(url);
+  }
+  
+  function createdetailwindow(url) {
+		if(typeof(windowapi) == 'undefined'){
+			$.dialog({
+				content: 'url:'+url,
+				lock : true,
+				
+				opacity : 0.3,
+				cache:false, 
+			    cancelVal: '关闭',
+			    cancel: true /*为true等价于function(){}*/
+			});
+		}else{
+			W.$.dialog({
+				content: 'url:'+url,
+				lock : true,
+				parent:windowapi,
+				
+				opacity : 0.3,
+				cache:false, 
+			    cancelVal: '关闭',
+			    cancel: true /*为true等价于function(){}*/
+			});
+		}
+		
+	}
  </script>

@@ -29,7 +29,11 @@ import org.jeecgframework.core.common.model.common.UploadFile;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
+import org.jeecgframework.core.util.FileUtils;
+import org.jeecgframework.core.util.MyClassLoader;
+import org.jeecgframework.core.util.ReflectHelper;
 import org.jeecgframework.core.util.StringUtil;
+import org.jeecgframework.core.util.oConvertUtils;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
@@ -171,11 +175,11 @@ public class TbContractTemplatesDocController extends BaseController {
 	@ResponseBody
 	public AjaxJson uploadTemplatesDoc( HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		message = "添加成功";
 		String docname = request.getParameter("docname"); //文件名称
 		String docType=request.getParameter("docType"); //文件类型
 		String bvariable=request.getParameter("bvariable"); //是否设置变量
-		
+		String id=request.getParameter("id");  //id
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@"+id);
 		TbContractTemplatesDocEntity tbContractTemplatesDoc=new TbContractTemplatesDocEntity();
 		String fileName=null;
 		String fileNewName=null;
@@ -204,6 +208,20 @@ public class TbContractTemplatesDocController extends BaseController {
          }
          HttpSession session =  request.getSession();
          session.setAttribute("fileName", fileNewName);
+         if(StringUtil.isNotEmpty(id))
+         {
+        	 message = "更新成功";
+        	    tbContractTemplatesDoc.setId(id);
+        	    TbContractDocTypeEntity tbContractDocType=new TbContractDocTypeEntity();
+                tbContractDocType.setId(docType);
+                tbContractTemplatesDoc.setCreatetime(new Date());
+                tbContractTemplatesDoc.setBvariable(Integer.parseInt(bvariable==null?"0":bvariable));
+                tbContractTemplatesDoc.setDocname(docname);
+                tbContractTemplatesDoc.setPath(fileNewName);
+                tbContractTemplatesDoc.setDocType(tbContractDocType);
+                tbContractTemplatesDocService.saveOrUpdate(tbContractTemplatesDoc);
+         }else{
+        	 message = "添加成功";
          //保存合同模板文件
          TbContractDocTypeEntity tbContractDocType=new TbContractDocTypeEntity();
          tbContractDocType.setId(docType);
@@ -213,6 +231,7 @@ public class TbContractTemplatesDocController extends BaseController {
          tbContractTemplatesDoc.setPath(fileNewName);
          tbContractTemplatesDoc.setDocType(tbContractDocType);
          tbContractTemplatesDocService.save(tbContractTemplatesDoc);
+         }
          j.setMsg(message);
 		systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 	return j;
@@ -301,4 +320,40 @@ public class TbContractTemplatesDocController extends BaseController {
 		}
 		return end;
 	}
+	/**
+	 * 附件预览页面打开链接
+	 * 
+	 * @return
+	 */
+	@RequestMapping(params = "openViewFile")
+	public ModelAndView openViewFile(HttpServletRequest request) {
+		String fileid = request.getParameter("id");
+	//	String subclassname = oConvertUtils.getString(request.getParameter("subclassname"), "com.jeecg.base.pojo.TSAttachment");
+	//	String contentfield = oConvertUtils.getString(request.getParameter("contentfield"));
+	//	Class fileClass = MyClassLoader.getClassByScn(subclassname);// 附件的实际类
+		Object fileobj = systemService.getEntity(TbContractTemplatesDocEntity.class, fileid);
+		TbContractTemplatesDocEntity tbContractTemplatesDocEntity=systemService.getEntity(TbContractTemplatesDocEntity.class, fileid);
+		ReflectHelper reflectHelper = new ReflectHelper(fileobj);
+		String extend = oConvertUtils.getString("docx");
+		if ("dwg".equals(extend)) {
+			String realpath = oConvertUtils.getString(request.getSession().getServletContext().getRealPath("upload")+"\\"+tbContractTemplatesDocEntity.getPath());
+			request.setAttribute("realpath", realpath);
+			return new ModelAndView("common/upload/dwgView");
+		} 
+//		else if (FileUtils.isPicture(extend)) {
+//			request.setAttribute("fileid", fileid);
+//			request.setAttribute("subclassname", subclassname);
+//			request.setAttribute("contentfield", contentfield);
+//			return new ModelAndView("common/upload/imageView");
+//		}
+		else {
+			String realpath = oConvertUtils.getString(request.getSession().getServletContext().getRealPath("upload")+"\\"+tbContractTemplatesDocEntity.getPath());
+		 System.out.println("@@@@@@@@@@@@@@"+realpath);
+			String swfpath = oConvertUtils.getString(reflectHelper.getMethodValue("swfpath"));
+			request.setAttribute("swfpath", swfpath);
+			return new ModelAndView("common/upload/swfView");
+		}
+
+	}
+
 }

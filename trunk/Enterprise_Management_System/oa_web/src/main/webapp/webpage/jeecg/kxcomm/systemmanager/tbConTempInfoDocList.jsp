@@ -11,10 +11,10 @@ constatsvalues = '${statsvalues}'+"";
 //初始化时勾选上用户选择的合同模板文件
 function initCheckFile() {
 	
-	var rows = $("#tbContractTemplatesDocList").datagrid("getRows");
+	var rows = $("#tbContractTemplatesDocList1").datagrid("getRows");
 	for(var i = 0; i < rows.length; i++) {
 		if(null != rows[i].path && "yes" == rows[i].path) {
-			$("#tbContractTemplatesDocList").datagrid("selectRow",i);
+			$("#tbContractTemplatesDocList1").datagrid("selectRow",i);
 		}
 	}
 }
@@ -26,7 +26,7 @@ function saveConTempFile() {
 		return false;
 	}
 	var ids = "";
-	var rows = $("#tbContractTemplatesDocList").datagrid("getSelections");
+	var rows = $("#tbContractTemplatesDocList1").datagrid("getSelections");
 	if(0 >= rows.length) {
 		alert("请选择一个合同文件");
 		return false;
@@ -47,7 +47,7 @@ function saveConTempFile() {
 </script>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbContractTemplatesDocList" title="合同模板文件管理" pagination="false" actionUrl="tbContractTemplatesDocController.do?queryTempFiledatagrid&temple_id=${temple_id}&statsvalues=${statsvalues}" idField="id" fit="true" checkbox="true" onLoadSuccess="initCheckFile();">
+  <t:datagrid name="tbContractTemplatesDocList1" title="合同模板文件管理" pagination="false" actionUrl="tbContractTemplatesDocController.do?queryTempFiledatagrid&temple_id=${temple_id}&statsvalues=${statsvalues}" idField="id" fit="true" checkbox="true" onLoadSuccess="initCheckFile();">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="templatesdocId" field="templatesdocId" hidden="false"></t:dgCol>
    <t:dgCol title="文件名称" field="docname" ></t:dgCol>

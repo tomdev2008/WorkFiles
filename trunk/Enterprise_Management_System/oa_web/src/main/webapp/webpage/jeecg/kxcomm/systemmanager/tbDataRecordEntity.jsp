@@ -7,7 +7,7 @@
   <t:base type="jquery,easyui,tools,DatePicker"></t:base>
  </head>
  <body style="overflow-y: hidden" scroll="no">
-  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbDataRecordEntityController.do?save">
+  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" tiptype="1" action="tbDataRecordEntityController.do?save">
 			<input id="id" name="id" type="hidden" value="${tbDataRecordEntityPage.id }">
 			<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
 				<tr>
@@ -17,14 +17,7 @@
 						</label>
 					</td>
 					<td class="value">
-					<select id="dataSourceId"  name="dataSourceId"  >
-							
-					       <c:forEach items="${tbDataSourceList}" var="temp">
-					        <option value="${temp.id }" >
-					         ${temp.sourcename}
-					        </option>
-					       </c:forEach>
-				      	</select>
+						<label>${tbDataRecordEntityPage.tbDataSource.sourcename}</label>
 				     </td>
 				     
 				     <td align="right">
@@ -33,14 +26,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<select id="typeId"  name="typeId" >
-							
-					       <c:forEach items="${tbProductTypeList}" var="temp">
-					        <option value="${temp.id }" >
-					         ${temp.producttypename}
-					        </option>
-					       </c:forEach>
-				      	</select>
+						<label>${tbDataRecordEntityPage.tbProductType.producttypename}</label>
 					</td>
 				</tr>
 				<tr>
@@ -50,9 +36,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="productorderno" name="productorderno" ignore="ignore"
-							   value="${tbDataRecordEntityPage.productorderno}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.productorderno}</label>
 					</td>
 					
 					<td align="right">
@@ -61,9 +45,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="productdesc" name="productdesc" ignore="ignore"
-							   value="${tbDataRecordEntityPage.productdesc}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.productdesc}</label>
+						
 					</td>
 				</tr>
 				
@@ -75,9 +58,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input errormsg="只能填写数字" style="width:50%;" class="inputxt" id="quantity" name="quantity" ignore="ignore"
-							   value="${tbDataRecordEntityPage.quantity}" datatype="n">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.quantity}</label>
+						
 					</td>
 					
 					<td align="right">
@@ -86,33 +68,30 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="unitprice" name="unitprice" ignore="ignore"
-							   value="${tbDataRecordEntityPage.unitprice}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.unitprice}</label>
+						
 					</td>
 				</tr>
 				
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							折扣率:
+							折扣率 (%):
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="discountrate" name="discountrate" ignore="ignore"
-							   value="${tbDataRecordEntityPage.discountrate}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.discountrate}</label>
+						
 					</td>
 					
 					<td align="right">
 						<label class="Validform_label">
-							运保及其他费率:
+							运保及其他费率 (%):
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="otherrates" name="otherrates" ignore="ignore"
-							   value="${tbDataRecordEntityPage.otherrates}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.otherrates}</label>
+						
 					</td>
 				</tr>
 				
@@ -123,20 +102,18 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="installservicecharge" name="installservicecharge" ignore="ignore"
-							   value="${tbDataRecordEntityPage.installservicecharge}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.installservicecharge}</label>
+						
 					</td>
 					
 					<td align="right">
 						<label class="Validform_label">
-							第一年保修复:
+							第一年保修费:
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="firstyear" name="firstyear" ignore="ignore"
-							   value="${tbDataRecordEntityPage.firstyear}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.firstyear}</label>
+						
 					</td>
 				</tr>
 				
@@ -147,9 +124,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="secondyear" name="secondyear" ignore="ignore"
-							   value="${tbDataRecordEntityPage.secondyear}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.secondyear}</label>
+						
 					</td>
 					
 					<td align="right">
@@ -158,9 +134,8 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" id="thirdyear" name="thirdyear" ignore="ignore"
-							   value="${tbDataRecordEntityPage.thirdyear}">
-						<span class="Validform_checktip"></span>
+						<label>${tbDataRecordEntityPage.thirdyear}</label>
+						
 					</td>
 				</tr>
 				
@@ -171,7 +146,7 @@
 						</label>
 					</td>
 					<td class="value" colspan="3">
-						<textarea style="width:90%;" id="remark" name="remark" ignore="ignore">${tbDataRecordEntityPage.remark}</textarea>
+						<textarea style="width:90%;height:80px;" id="remark" name="remark" ignore="ignore" readonly="readonly">${tbDataRecordEntityPage.remark}</textarea>
 						
 						<span class="Validform_checktip"></span>
 					</td>

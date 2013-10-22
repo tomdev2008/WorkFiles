@@ -81,7 +81,7 @@
 					<td class="value">
 				 <div class="form" id="filediv">
 	                </div>
-					  <t:upload name="fiels"  view="true" auto="false" buttonText="上传文件" dialog="false" callback="openrcon" uploader="tbContractTemplatesDocController.do?uploadTemplatesDoc" extend="*.docx" id="files" formData="docname,docType,bvariable">
+					  <t:upload name="fiels"  view="true" auto="false" buttonText="上传文件" dialog="false" callback="openrcon" uploader="tbContractTemplatesDocController.do?uploadTemplatesDoc" extend="*.docx" id="files" formData="id,docname,docType,bvariable">
 					  </t:upload>
                           <span class="Validform_checktip">请选择要上传的文件</span> 
                        <!--    <input name="filedata" class="easyui-validatebox"
