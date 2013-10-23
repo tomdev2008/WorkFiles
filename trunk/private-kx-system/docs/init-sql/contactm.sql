@@ -44,20 +44,21 @@ CREATE TABLE `tb_contract` (
 DROP TABLE IF EXISTS `tb_order`;
 CREATE TABLE `tb_order` (
   `id` varchar(36) NOT NULL,
-  `contract_id` varchar(255) default NULL,
-  `kx_order_no` varchar(50) default NULL,
-  `project_name` varchar(50) default NULL,
-  `contract_no` varchar(50) default NULL,
-  `client` varchar(50) default NULL,
-  `final_client` varchar(50) default NULL,
-  `payment` varchar(100) default NULL,
-  `principal` varchar(50) default NULL,
-  `remark` varchar(255) default NULL,
+  `contract_id` varchar(255) DEFAULT NULL,
+  `kx_order_no` varchar(50) DEFAULT NULL,
+  `project_name` varchar(50) DEFAULT NULL,
+  `contract_no` varchar(50) DEFAULT NULL,
+  `client` varchar(50) DEFAULT NULL,
+  `final_client` varchar(50) DEFAULT NULL,
+  `payment` varchar(100) DEFAULT NULL,
+  `principal` varchar(50) DEFAULT NULL,
+  `total_price` varchar(255) DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `contract_id` (`contract_id`),
-  CONSTRAINT `contract_id` FOREIGN KEY (`contract_id`) REFERENCES `tb_contract` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='œ˙ €∂©µ•';
+  CONSTRAINT `tb_order_ibfk_1` FOREIGN KEY (`contract_id`) REFERENCES `tb_contract` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_order

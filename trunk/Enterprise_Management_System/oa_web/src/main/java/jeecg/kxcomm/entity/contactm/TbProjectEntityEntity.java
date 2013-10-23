@@ -5,11 +5,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
+
+import com.sun.star.lib.uno.environments.java.java_environment;
+
 import javax.persistence.SequenceGenerator;
 
 /**   
@@ -35,8 +41,8 @@ public class TbProjectEntityEntity implements java.io.Serializable {
 	/**用户ID*/
 	private java.lang.String userId;
 	/**客户ID*/
-	private java.lang.String customer;
-	
+	private TbCustomerEntityEntity customer = new TbCustomerEntityEntity();
+//	private java.lang.String customer;
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  主键ID
@@ -120,20 +126,31 @@ public class TbProjectEntityEntity implements java.io.Serializable {
 	public void setUserId(java.lang.String userId){
 		this.userId = userId;
 	}
+/*	@Column(name ="CUSTOMER",nullable=true,length=32)
+	public java.lang.String getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(java.lang.String customer) {
+		this.customer = customer;
+	}*/
+
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  客户ID
 	 */
-	@Column(name ="CUSTOMER",nullable=true,length=32)
-	public java.lang.String getCustomer(){
-		return this.customer;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name ="CUSTOMER",nullable=true)
+	public TbCustomerEntityEntity getCustomer() {
+		return customer;
 	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  客户ID
-	 */
-	public void setCustomer(java.lang.String customer){
+	public void setCustomer(TbCustomerEntityEntity customer) {
 		this.customer = customer;
 	}
+	
+	
+	
+	
 }

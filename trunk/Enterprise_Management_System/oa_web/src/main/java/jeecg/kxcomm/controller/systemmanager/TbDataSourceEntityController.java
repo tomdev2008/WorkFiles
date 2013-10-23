@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -206,8 +207,8 @@ public class TbDataSourceEntityController extends BaseController {
 			
 			
 			try {
-				HSSFWorkbook workbook = null;
-				workbook = new HSSFWorkbook(file.getInputStream());
+				XSSFWorkbook workbook = null;
+				workbook = new XSSFWorkbook(file.getInputStream());
 				
 				tbDataSourceEntityService.uploadDataSource(workbook,tbDataSource);
 				

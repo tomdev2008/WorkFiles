@@ -176,4 +176,14 @@ public class TbDataRecordEntityController extends BaseController {
 		req.setAttribute("tbProductTypeList", tbProductTypeList);
 		return new ModelAndView("jeecg/kxcomm/systemmanager/tbDataRecordEntity");
 	}
+	
+	@RequestMapping(params = "check")
+	public ModelAndView check(TbDataRecordEntityEntity tbDataRecordEntity, HttpServletRequest req) {
+		if (StringUtil.isNotEmpty(tbDataRecordEntity.getId())) {
+			tbDataRecordEntity = tbDataRecordEntityService.getEntity(TbDataRecordEntityEntity.class, tbDataRecordEntity.getId());
+			req.setAttribute("tbDataRecordEntityPage", tbDataRecordEntity);
+		}
+		
+		return new ModelAndView("jeecg/kxcomm/systemmanager/tbDataRecordCheck");
+	}
 }

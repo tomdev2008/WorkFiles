@@ -29,8 +29,10 @@ import org.jeecgframework.core.common.model.common.UploadFile;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
+import org.jeecgframework.core.extend.swftools.SwfToolsUtil;
 import org.jeecgframework.core.util.FileUtils;
 import org.jeecgframework.core.util.MyClassLoader;
+import org.jeecgframework.core.util.PinyinUtil;
 import org.jeecgframework.core.util.ReflectHelper;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.core.util.oConvertUtils;
@@ -182,10 +184,13 @@ public class TbContractTemplatesDocController extends BaseController {
 		String id=request.getParameter("id");  //id
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@"+id);
 		TbContractTemplatesDocEntity tbContractTemplatesDoc=new TbContractTemplatesDocEntity();
-		String fileName=null;
-		String fileNewName=null;
-		String savePath=null;
-		UploadFile uploadFile = new UploadFile(request);
+		String fileName="";
+		String fileNewName="";
+		String savePath="";
+		String swfName = "";
+		UploadFile uploadFile = new UploadFile(request,tbContractTemplatesDoc);
+		uploadFile.setSwfpath("swfpath");
+		ReflectHelper reflectHelper = new ReflectHelper(uploadFile.getObject());
 		 String ctxPath = request.getSession().getServletContext().getRealPath("upload");
          File file = new File(ctxPath);
          if (!file.exists()) {
@@ -196,16 +201,37 @@ public class TbContractTemplatesDocController extends BaseController {
          for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {
                  MultipartFile mf = entity.getValue();// 获取上传文件对象
                  fileName = mf.getOriginalFilename();// 获取文件名
+                 String extend = FileUtils.getExtend(fileName);// 获取文件扩展名
+                 swfName = PinyinUtil.getPinYinHeadChar(oConvertUtils.replaceBlank(FileUtils.getFilePrefix(fileName)));// 取文件名首字母作为SWF文件名
                  fileNewName = System.currentTimeMillis()+mf.getOriginalFilename().substring(mf.getOriginalFilename().lastIndexOf("."), mf.getOriginalFilename().length());// 获取文件名
-                 savePath = file.getPath() + "/" + fileNewName;// 上传后的文件绝对路径
+                 savePath = file.getPath() + "\\" + fileName;// 上传后的文件绝对路径
                 System.out.println("路径长度："+savePath.length());
                  System.out.println("上传后路径："+savePath);
                  File savefile = new File(savePath);
-                 try {
+             /*    try {
                          FileCopyUtils.copy(mf.getBytes(), savefile);
                  } catch (IOException e) {
                          e.printStackTrace();
                  }
+             	File savef = new File(savePath);
+             	try {
+					FileCopyUtils.copy(mf.getBytes(), savef);
+					// 转SWF
+					reflectHelper.setMethodValue(uploadFile.getSwfpath(), file.getPath() + "/"+ swfName + ".swf");
+					if (uploadFile.getSwfpath() != null) {
+						// 转SWF
+						//----------------------------------------------------------------
+						//update-end--Author:liutao  Date:20130506 for：修改swf文件的存储路径
+						//----------------------------------------------------------------
+						reflectHelper.setMethodValue(uploadFile.getSwfpath(), file.getPath() + "/" + FileUtils.getFilePrefix(fileNewName) + ".swf");
+						//----------------------------------------------------------------
+						//update-end--Author:liutao  Date:20130506 for：修改swf文件的存储路径
+						//----------------------------------------------------------------
+						SwfToolsUtil.convert2SWF(savePath);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}*/
          }
          HttpSession session =  request.getSession();
          session.setAttribute("fileName", fileNewName);
@@ -328,32 +354,11 @@ public class TbContractTemplatesDocController extends BaseController {
 	 */
 	@RequestMapping(params = "openViewFile")
 	public ModelAndView openViewFile(HttpServletRequest request) {
-		String fileid = request.getParameter("id");
-	//	String subclassname = oConvertUtils.getString(request.getParameter("subclassname"), "com.jeecg.base.pojo.TSAttachment");
-	//	String contentfield = oConvertUtils.getString(request.getParameter("contentfield"));
-	//	Class fileClass = MyClassLoader.getClassByScn(subclassname);// 附件的实际类
-		Object fileobj = systemService.getEntity(TbContractTemplatesDocEntity.class, fileid);
-		TbContractTemplatesDocEntity tbContractTemplatesDocEntity=systemService.getEntity(TbContractTemplatesDocEntity.class, fileid);
-		ReflectHelper reflectHelper = new ReflectHelper(fileobj);
-		String extend = oConvertUtils.getString("docx");
-		if ("dwg".equals(extend)) {
-			String realpath = oConvertUtils.getString(request.getSession().getServletContext().getRealPath("upload")+"\\"+tbContractTemplatesDocEntity.getPath());
-			request.setAttribute("realpath", realpath);
-			return new ModelAndView("common/upload/dwgView");
-		} 
-//		else if (FileUtils.isPicture(extend)) {
-//			request.setAttribute("fileid", fileid);
-//			request.setAttribute("subclassname", subclassname);
-//			request.setAttribute("contentfield", contentfield);
-//			return new ModelAndView("common/upload/imageView");
-//		}
-		else {
-			String realpath = oConvertUtils.getString(request.getSession().getServletContext().getRealPath("upload")+"\\"+tbContractTemplatesDocEntity.getPath());
-		 System.out.println("@@@@@@@@@@@@@@"+realpath);
-			String swfpath = oConvertUtils.getString(reflectHelper.getMethodValue("swfpath"));
-			request.setAttribute("swfpath", swfpath);
-			return new ModelAndView("common/upload/swfView");
-		}
+//	String fileName=(String) request.getAttribute("path");
+	//		String swfpath = request.getSession().getServletContext().getRealPath("upload")+"\\"+fileName;
+//			request.setAttribute("swfpath", swfpath);
+			return new ModelAndView("common/upload/OnlineReading");
+		
 
 	}
 

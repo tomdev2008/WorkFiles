@@ -25,6 +25,9 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import org.jeecgframework.core.common.service.impl.CommonServiceImpl;
 import org.jeecgframework.core.util.excel.ExcelUtil;
@@ -76,7 +79,7 @@ public class TbDataSourceEntityServiceImpl extends CommonServiceImpl implements 
 	}
 
 	@Override
-	public boolean uploadDataSource(HSSFWorkbook workbook,TbDataSourceEntityEntity dataSource) throws SystemException {
+	public boolean uploadDataSource(XSSFWorkbook workbook,TbDataSourceEntityEntity dataSource) throws SystemException {
 		
 
 		try {
@@ -86,8 +89,8 @@ public class TbDataSourceEntityServiceImpl extends CommonServiceImpl implements 
 			for (TbProductTypeEntity tmp : tbProductType) {
 				mapType.put(tmp.getProducttypename(), tmp);
 			}
-			HSSFSheet sheet = workbook.getSheetAt(0); // 单元表
-			HSSFRow row = null; // 行
+			XSSFSheet sheet = workbook.getSheetAt(0); // 单元表
+			XSSFRow row = null; // 行
 			String cell = null; // 列
 			
 			List<TbDataRecordEntityEntity> recordlist = new ArrayList<TbDataRecordEntityEntity>();

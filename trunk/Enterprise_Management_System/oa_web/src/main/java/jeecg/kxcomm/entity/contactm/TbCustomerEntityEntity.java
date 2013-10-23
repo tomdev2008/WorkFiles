@@ -1,16 +1,15 @@
 package jeecg.kxcomm.entity.contactm;
 
-import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.SequenceGenerator;
 
 /**   
  * @Title: Entity
@@ -38,8 +37,8 @@ public class TbCustomerEntityEntity implements java.io.Serializable {
 	private java.lang.String email;
 	/**电话*/
 	private java.lang.String phone;
-	/**收货地址ID*/
-	private java.lang.String jobPlaceId;
+	/**省份*/
+	private TbJobPlaceEntity jobPlaceId = new TbJobPlaceEntity();
 	
 	/**
 	 *方法: 取得java.lang.String
@@ -156,20 +155,19 @@ public class TbCustomerEntityEntity implements java.io.Serializable {
 	public void setPhone(java.lang.String phone){
 		this.phone = phone;
 	}
+
+
 	/**
 	 *方法: 取得java.lang.String
 	 *@return: java.lang.String  收货地址ID
 	 */
-	@Column(name ="JOB_PLACE_ID",nullable=true,length=32)
-	public java.lang.String getJobPlaceId(){
-		return this.jobPlaceId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name ="JOB_PLACE_ID",nullable=true)
+	public TbJobPlaceEntity getJobPlaceId() {
+		return jobPlaceId;
 	}
 
-	/**
-	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  收货地址ID
-	 */
-	public void setJobPlaceId(java.lang.String jobPlaceId){
+	public void setJobPlaceId(TbJobPlaceEntity jobPlaceId) {
 		this.jobPlaceId = jobPlaceId;
 	}
 }

@@ -23,7 +23,11 @@ import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
 
 import jeecg.kxcomm.entity.contactm.TbCustomerEntityEntity;
+import jeecg.kxcomm.entity.contactm.TbJobPlaceEntity;
+import jeecg.kxcomm.entity.contactm.TbProjectEntityEntity;
 import jeecg.kxcomm.service.contactm.TbCustomerEntityServiceI;
+import jeecg.kxcomm.service.contactm.TbJobPlaceServiceI;
+import jeecg.kxcomm.service.contactm.TbProjectEntityServiceI;
 
 /**   
  * @Title: Controller
@@ -42,7 +46,9 @@ public class TbCustomerEntityController extends BaseController {
 	private static final Logger logger = Logger.getLogger(TbCustomerEntityController.class);
 
 	@Autowired
-	private TbCustomerEntityServiceI tbCustomerEntityService;
+	private TbCustomerEntityServiceI tbCustomerEntityService; 
+	@Autowired
+	private TbProjectEntityServiceI tbProjectEntityService;
 	@Autowired
 	private SystemService systemService;
 	private String message;
@@ -93,11 +99,16 @@ public class TbCustomerEntityController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbCustomerEntityEntity tbCustomerEntity, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		tbCustomerEntity = systemService.getEntity(TbCustomerEntityEntity.class, tbCustomerEntity.getId());
+	   List<TbProjectEntityEntity> projectList=tbProjectEntityService.listByCustomerId(tbCustomerEntity.getId());
+	if(null!=projectList && projectList.size()>0)
+	{
+		message="有关联不能删除";
+	 }else{
+	   tbCustomerEntity = systemService.getEntity(TbCustomerEntityEntity.class, tbCustomerEntity.getId());
 		message = "删除成功";
 		tbCustomerEntityService.delete(tbCustomerEntity);
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-		
+	}
 		j.setMsg(message);
 		return j;
 	}
@@ -143,6 +154,8 @@ public class TbCustomerEntityController extends BaseController {
 			tbCustomerEntity = tbCustomerEntityService.getEntity(TbCustomerEntityEntity.class, tbCustomerEntity.getId());
 			req.setAttribute("tbCustomerEntityPage", tbCustomerEntity);
 		}
+	    List<TbJobPlaceEntity> tbJobPlaceList=systemService.getList(TbJobPlaceEntity.class);
+	    req.setAttribute("tbJobPlaceList", tbJobPlaceList);
 		return new ModelAndView("jeecg/kxcomm/contactm/tbCustomerEntity");
 	}
 }

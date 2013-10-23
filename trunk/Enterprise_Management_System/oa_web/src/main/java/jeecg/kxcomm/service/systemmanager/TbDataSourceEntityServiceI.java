@@ -12,6 +12,7 @@ import jeecg.kxcomm.entity.systemmanager.TbDataSourceEntityEntity;
 import jeecg.kxcomm.vo.systemmanager.DataBean;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jeecgframework.core.common.service.CommonService;
 
 public interface TbDataSourceEntityServiceI extends CommonService{
@@ -20,5 +21,5 @@ public interface TbDataSourceEntityServiceI extends CommonService{
 	
 	public void delMain (TbDataSourceEntityEntity tbDataSource);
 	
-	public boolean uploadDataSource(HSSFWorkbook workbook,TbDataSourceEntityEntity dataSource) throws SystemException;
+	public boolean uploadDataSource(XSSFWorkbook workbook,TbDataSourceEntityEntity dataSource) throws SystemException;
 }

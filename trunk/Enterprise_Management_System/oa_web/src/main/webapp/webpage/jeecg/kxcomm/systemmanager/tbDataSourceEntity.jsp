@@ -67,9 +67,9 @@
 					</td>
 				<td class="value">
 				<div class="form" id="filediv"></div>
-				 <t:upload name="fiels"  view="true" auto="false" buttonText="上传文件" callback="openrcon" dialog="false" uploader="tbDataSourceEntityController.do?uploadDataRecord" extend="*.xls" id="files" formData="sourcename,typeId,description">
+				 <t:upload name="fiels"  view="true" auto="false" buttonText="上传文件" callback="openrcon" dialog="false" uploader="tbDataSourceEntityController.do?uploadDataRecord" extend="*.xlsx" id="files" formData="sourcename,typeId,description">
 				</t:upload>
-	     			<span class="Validform_checktip">请选择.xls结尾的文件</span>
+	     			<span class="Validform_checktip">请选择.xlsx结尾的文件</span>
 	     		</td>
 	     		</tr>
 					

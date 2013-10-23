@@ -1,4 +1,5 @@
 package jeecg.kxcomm.controller.contactm;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +17,15 @@ import org.jeecgframework.core.common.hibernate.qbc.CriteriaQuery;
 import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
+import org.jeecgframework.core.util.ResourceUtil;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.tag.core.easyui.TagUtil;
 import jeecg.system.pojo.base.TSDepart;
+import jeecg.system.pojo.base.TSUser;
 import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
 
+import jeecg.kxcomm.entity.contactm.TbCustomerEntityEntity;
 import jeecg.kxcomm.entity.contactm.TbProjectEntityEntity;
 import jeecg.kxcomm.service.contactm.TbProjectEntityServiceI;
 
@@ -113,6 +117,7 @@ public class TbProjectEntityController extends BaseController {
 	@ResponseBody
 	public AjaxJson save(TbProjectEntityEntity tbProjectEntity, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
+		TSUser user = ResourceUtil.getSessionUserName();
 		if (StringUtil.isNotEmpty(tbProjectEntity.getId())) {
 			message = "更新成功";
 			TbProjectEntityEntity t = tbProjectEntityService.get(TbProjectEntityEntity.class, tbProjectEntity.getId());
@@ -125,6 +130,8 @@ public class TbProjectEntityController extends BaseController {
 			}
 		} else {
 			message = "添加成功";
+			tbProjectEntity.setCreateTime(new Date());
+			tbProjectEntity.setUserId(user.getId());
 			tbProjectEntityService.save(tbProjectEntity);
 			systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 		}
@@ -143,6 +150,8 @@ public class TbProjectEntityController extends BaseController {
 			tbProjectEntity = tbProjectEntityService.getEntity(TbProjectEntityEntity.class, tbProjectEntity.getId());
 			req.setAttribute("tbProjectEntityPage", tbProjectEntity);
 		}
+		List<TbCustomerEntityEntity> tbCustomerList=systemService.getList(TbCustomerEntityEntity.class);
+		req.setAttribute("tbCustomerList", tbCustomerList);
 		return new ModelAndView("jeecg/kxcomm/contactm/tbProjectEntity");
 	}
 }
