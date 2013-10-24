@@ -244,9 +244,9 @@ public class TbPostController extends BaseController {
 		for(int i= 0 ; i < comboTrees.size(); i++) {
 			for(int j =0; j < roleFunctionList.size(); j++) {
 				//如果ID相等
-				if(comboTrees.get(i).getId().equals(roleFunctionList.get(j).getCityId().getId())) {
-					comboTrees.get(i).setChecked(true);
-				}
+//				if(comboTrees.get(i).getId().equals(roleFunctionList.get(j).getCityId().getId())) {
+//					comboTrees.get(i).setChecked(true);
+//				}
 				for(int s = 0; s < comboTrees.get(i).getChildren().size(); s++) {
 					if(comboTrees.get(i).getChildren().get(s).getId().equals(roleFunctionList.get(j).getCityId().getId())) {
 						comboTrees.get(i).getChildren().get(s).setChecked(true);

@@ -10,7 +10,7 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==1}">
 		  <div class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;width:1390px;height:280px;">
-			   <t:datagrid name="tbDataRecordEntityList${stuts.index }"   actionUrl="${poVal.url}" idField="id" fit="true" onClick="detail">
+			   <t:datagrid name="tbDataRecordEntityList${stuts.index }"   actionUrl="${poVal.url}" idField="id" fit="true" onClick="check">
 			   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
 			   <t:dgCol title="产品订货号" field="productorderno" ></t:dgCol>
 			   <t:dgCol title="产品描述" field="productdesc" ></t:dgCol>
@@ -38,7 +38,7 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==2}">
 		  <div class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;width:1390px;height:280px;">
-			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="detail">
+			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="check">
 			   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
 			   <t:dgCol title="产品订货号" field="productorderno" ></t:dgCol>
 			   <t:dgCol title="产品描述" field="productdesc" ></t:dgCol>
@@ -66,7 +66,7 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==3}">
 		  <div  class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;width:1390px;height:280px;">
-			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="detail">
+			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="check">
 			   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
 			   <t:dgCol title="产品订货号" field="productorderno" ></t:dgCol>
 			   <t:dgCol title="产品描述" field="productdesc" ></t:dgCol>
@@ -100,7 +100,7 @@
 	  $('#detailPanel').panel("refresh", "tbDataSourceEntityController.do?tbDataSourceEntity");
   }
   
-  function detail(rowIndex, rowData){
+  function check(rowIndex, rowData){
 	  var url = "tbDataRecordEntityController.do?check&id="+rowData.id;
 	  createdetailwindow(url);
   }
