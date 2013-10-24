@@ -22,7 +22,7 @@
  <script type="text/javascript">
  function detail(rowIndex, rowData)
  {
-	 $('#detailpanel').panel("refresh", "tbPurchaseContractController.do?detail&id=" +rowData.id);
+	 $('#detailpanel').panel("refresh", "tbPurchaseContractController.do?purchaseContractDetail&id=" +rowData.id);
  }
  
  function delone(title,url, id) {

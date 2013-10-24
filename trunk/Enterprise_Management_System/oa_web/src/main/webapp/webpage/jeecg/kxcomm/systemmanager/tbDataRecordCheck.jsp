@@ -68,7 +68,7 @@
 				<tr>
 					<td align="right">
 						<label class="Validform_label">
-							折扣率 (%):
+							折扣率 :
 						</label>
 					</td>
 					<td align="center">
@@ -79,7 +79,7 @@
 				<tr>	
 					<td align="right">
 						<label class="Validform_label">
-							运保及其他费率 (%):
+							运保及其他费率 :
 						</label>
 					</td>
 					<td align="center">

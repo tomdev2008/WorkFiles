@@ -1,7 +1,5 @@
 package cn.com.kxcomm.systemcenter.vm.model;
 
-import java.util.Date;
-
 /**
  * 
 * 功能描述:虚拟机实体

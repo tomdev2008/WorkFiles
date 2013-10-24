@@ -177,20 +177,36 @@ public class TbPurchaseContractController extends BaseController {
 	
 	
 	/**
+	 * 采购订单列表 页面跳转
+	 * 
+	 * @return
+	 */
+	@RequestMapping(params = "purchaseContractDetail")
+	public ModelAndView purchaseContractDetail(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		request.setAttribute("id",id);
+		return new ModelAndView("jeecg/kxcomm/contactm/tbPurchaseContractDetail");
+	}
+	
+	/**
 	 * 明细列表页面跳转
 	 * 
 	 * @return
 	 */
 	@RequestMapping(params = "detail")
-	public ModelAndView detail(HttpServletRequest req,String id) {
-		String hql = "from TbPurchaseContractEntity where 1 = 1 AND id = ? ";
-		List<TbPurchaseContractEntity> tbPurchaseContractList = systemService.findHql(hql,id);
-		
-		String hql0 = "from TbPurchaseEntity  where 1 = 1 AND tbPurchaseContract = ? ";
-	    List<TbPurchaseEntity> tbPurchaseEntityList = systemService.findHql(hql0,tbPurchaseContractList.get(0));
-	   
-	    req.setAttribute("tbPurchaseList", tbPurchaseEntityList);
-		return new ModelAndView("jeecg/kxcomm/contactm/tbPurchaseContractDetail");
+	public void detail(TbPurchaseContractEntity tbPurchaseContract,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		TbPurchaseEntity tbPurchase = new TbPurchaseEntity();
+		CriteriaQuery cq = new CriteriaQuery(TbPurchaseEntity.class, dataGrid);
+		String id = request.getParameter("PurchaseContractlId");
+		cq.createAlias("tbPurchaseContract", "tbPurchaseContract");	
+		if(id!=null && !"".equals(id)){
+			cq.eq("tbPurchaseContract.id", id);
+			cq.add();
+		}
+		//查询条件组装器
+		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbPurchase);
+		this.tbPurchaseContractService.getDataGridReturn(cq, true);
+		TagUtil.datagrid(response, dataGrid);
 	}
 	
 	//------------------------------------

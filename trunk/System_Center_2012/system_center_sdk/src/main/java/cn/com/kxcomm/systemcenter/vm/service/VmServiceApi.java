@@ -1,7 +1,6 @@
 package cn.com.kxcomm.systemcenter.vm.service;
 
 import java.util.List;
-
 import cn.com.kxcomm.systemcenter.vm.model.VmModel;
 
 /**
@@ -14,26 +13,26 @@ import cn.com.kxcomm.systemcenter.vm.model.VmModel;
 * @since system_center_sdk
  */
 public interface VmServiceApi {
-
+	
 	/**
 	 * 
 	* 方法用途和描述: 启动虚拟机
-	* @param vmId
+	* @param vmname 虚拟机名称 
 	* @return
 	* @author chenliang 新增日期：2013-10-21
 	* @since system_center_sdk
 	 */
-	public boolean startVm(String vmId);
+	public boolean bootVM(String vmname)  throws Exception ;
 	
 	/**
 	 * 
 	* 方法用途和描述: 停止
-	* @param vmId
+	* @param vmname 虚拟机名称
 	* @return
 	* @author chenliang 新增日期：2013-10-21
 	* @since system_center_sdk
 	 */
-	public boolean stopVm(String vmId);
+	public boolean shutDownVM(String vmname)  throws Exception ;
 	
 	/**
 	 * 
@@ -43,5 +42,55 @@ public interface VmServiceApi {
 	* @since system_center_sdk
 	 */
 	public List<VmModel> getAllVM() throws Exception;
+	
+	/**
+	 * 
+	* 方法用途和描述: 创建虚拟机
+	* @author chenliang 新增日期：2013-10-22
+	* @since system_center_sdk
+	 */
+	public void addVM(VmModel vmModel) throws Exception;
+	
+	/**
+	 * 
+	* 方法用途和描述: 设置vm的cpu大小
+	* @param vmName vm名称
+	* @param cupCount cpu个数
+	* @author chenliang 新增日期：2013-10-23
+	 * @throws Exception 
+	* @since system_center_sdk
+	 */
+	public void setVmCPU(String vmname,Integer cpu) throws Exception;
+	
+	/**
+	 * 
+	* 方法用途和描述: 设置vm的内存
+	* @param vmname vm名称
+	* @param memory 内存大小
+	* @author chenliang 新增日期：2013-10-23
+	 * @throws Exception 
+	* @since system_center_sdk
+	 */
+	public void setVmMemory(String vmname,Integer memory) throws Exception;
+	
+	/**
+	 * 
+	* 方法用途和描述: vm重启
+	* @param vmname vm名称
+	* @author chenliang 新增日期：2013-10-23
+	 * @throws Exception 
+	* @since system_center_sdk
+	 */
+	public void restartVm(String vmname) throws Exception;
+	
+	/**
+	 * 
+	* 方法用途和描述: 删除vm
+	* @param vmname
+	* @throws Exception
+	* @author chenliang 新增日期：2013-10-23
+	* @since system_center_sdk
+	 */
+	public void deleteVm(String vmname) throws Exception;
 	
 }

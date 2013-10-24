@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +31,7 @@ import org.jeecgframework.core.common.model.json.AjaxJson;
 import org.jeecgframework.core.common.model.json.DataGrid;
 import org.jeecgframework.core.constant.Globals;
 import org.jeecgframework.core.extend.swftools.SwfToolsUtil;
+import org.jeecgframework.core.util.DataUtils;
 import org.jeecgframework.core.util.FileUtils;
 import org.jeecgframework.core.util.MyClassLoader;
 import org.jeecgframework.core.util.PinyinUtil;
@@ -37,6 +39,10 @@ import org.jeecgframework.core.util.ReflectHelper;
 import org.jeecgframework.core.util.StringUtil;
 import org.jeecgframework.core.util.oConvertUtils;
 import org.jeecgframework.tag.core.easyui.TagUtil;
+
+import jeecg.system.pojo.base.TSDocument;
+import jeecg.system.pojo.base.TSType;
+import jeecg.system.pojo.base.TSTypegroup;
 import jeecg.system.service.SystemService;
 import org.jeecgframework.core.util.MyBeanUtils;
 
@@ -204,11 +210,11 @@ public class TbContractTemplatesDocController extends BaseController {
                  String extend = FileUtils.getExtend(fileName);// 获取文件扩展名
                  swfName = PinyinUtil.getPinYinHeadChar(oConvertUtils.replaceBlank(FileUtils.getFilePrefix(fileName)));// 取文件名首字母作为SWF文件名
                  fileNewName = System.currentTimeMillis()+mf.getOriginalFilename().substring(mf.getOriginalFilename().lastIndexOf("."), mf.getOriginalFilename().length());// 获取文件名
-                 savePath = file.getPath() + "\\" + fileName;// 上传后的文件绝对路径
+                 savePath = file.getPath() + "\\" + fileNewName;// 上传后的文件绝对路径
                 System.out.println("路径长度："+savePath.length());
                  System.out.println("上传后路径："+savePath);
                  File savefile = new File(savePath);
-             /*    try {
+                 try {
                          FileCopyUtils.copy(mf.getBytes(), savefile);
                  } catch (IOException e) {
                          e.printStackTrace();
@@ -231,7 +237,7 @@ public class TbContractTemplatesDocController extends BaseController {
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
-				}*/
+				}
          }
          HttpSession session =  request.getSession();
          session.setAttribute("fileName", fileNewName);
@@ -263,6 +269,7 @@ public class TbContractTemplatesDocController extends BaseController {
 		systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 	return j;
 	}
+	
 
 	/**
 	 * 合同模板文件列表页面跳转
@@ -353,11 +360,11 @@ public class TbContractTemplatesDocController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(params = "openViewFile")
-	public ModelAndView openViewFile(HttpServletRequest request) {
-//	String fileName=(String) request.getAttribute("path");
-	//		String swfpath = request.getSession().getServletContext().getRealPath("upload")+"\\"+fileName;
-//			request.setAttribute("swfpath", swfpath);
-			return new ModelAndView("common/upload/OnlineReading");
+	public ModelAndView openViewFile(TbContractTemplatesDocEntity tbContractTemplatesDoc,HttpServletRequest request) {
+        	String fileName = request.getParameter("path");
+			String swfpath = "upload"+"\\\\"+FileUtils.getFilePrefix(fileName) + ".swf";
+			request.setAttribute("swfpath", swfpath);
+			return new ModelAndView("common/upload/swfView");
 		
 
 	}

@@ -210,7 +210,7 @@ public class TbContractController extends BaseController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(params = "contractDetail")
+/*	@RequestMapping(params = "contractDetail")
 	public ModelAndView contractDetail(HttpServletRequest req,String id) {	    
 	    String hql1 = "from TbOrderDetailEntity where 1 = 1 AND tbOrder.tbContract.id = ? ";
 		List<TbOrderDetailEntity> tbOrderDetailList = systemService.findHql(hql1,id);
@@ -220,6 +220,40 @@ public class TbContractController extends BaseController {
     	}
 		req.setAttribute("tbOrderDetailList", t);
 		return new ModelAndView("jeecg/kxcomm/contactm/tbContractDetail");
+	}*/
+	
+	/**
+	 * 销售订单列表 页面跳转
+	 * 
+	 * @return
+	 */
+	@RequestMapping(params = "contractDetail")
+	public ModelAndView orderDetailDetail(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		request.setAttribute("id",id);
+		return new ModelAndView("jeecg/kxcomm/contactm/tbContractDetail");
+	}
+	
+	/**
+	 * 明细列表页面跳转
+	 * 
+	 * @return
+	 */
+	@RequestMapping(params = "contractDetailList")
+	public void contractDetailList(TbOrderEntity tbOrderEntity,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		TbOrderDetailEntity tbOrderDetail= new TbOrderDetailEntity();
+		CriteriaQuery cq = new CriteriaQuery(TbOrderDetailEntity.class, dataGrid);
+		String id = request.getParameter("contractId");
+		cq.createAlias("tbOrder", "tbOrder");	
+		cq.createAlias("tbOrder.tbContract", "tbContract");
+		if(id!=null && !"".equals(id)){
+			cq.eq("tbOrder.tbContract.id", id);
+			cq.add();
+		}
+		//查询条件组装器
+		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbOrderDetail);
+		this.tbContractService.getDataGridReturn(cq, true);
+		TagUtil.datagrid(response, dataGrid);
 	}
 	
 	@RequestMapping(params = "getContractByContractNo")

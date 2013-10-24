@@ -2,10 +2,7 @@ package cn.com.kxcomm.systemcenter.vm.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -13,6 +10,7 @@ import cn.com.kxcomm.common.constant.BusinessConstants;
 import cn.com.kxcomm.systemcenter.Client;
 import cn.com.kxcomm.systemcenter.entity.Maps;
 import cn.com.kxcomm.systemcenter.vm.api.VmCore;
+import cn.com.kxcomm.systemcenter.vm.api.VmCore.SetVmCpu;
 import cn.com.kxcomm.systemcenter.vm.model.VmModel;
 import cn.com.kxcomm.systemcenter.vm.service.VmServiceApi;
 import cn.com.kxcomm.util.SdkUtil;
@@ -41,14 +39,28 @@ public class VmServiceApiImpl extends SdkUtil<VmModel> implements VmServiceApi {
 	
 	//开启虚拟机
 	@Override
-	public boolean startVm(String vmId) {
-		return false;
+	public boolean bootVM(String vmname) throws Exception {
+		try {
+			Client client = new Client(clientType);
+			boolean flat = client.execute(VmCore.boot(vmname));
+			return flat;
+		} catch (Exception e) {
+			LOGGER.error("BootVM Exception",e);
+			return false;
+		}
 	}
 
-	//停止虚拟机
+	//关机
 	@Override
-	public boolean stopVm(String vmId) {
-		return false;
+	public boolean shutDownVM(String vmname) throws Exception {
+		try {
+			Client client = new Client(clientType);
+			boolean flat = client.execute(VmCore.shutDown(vmname));
+			return flat;
+		} catch (Exception e) {
+			LOGGER.error("ShutDown Exception.",e);
+			return false;
+		}
 	}
 
 	//获取所有的虚拟机
@@ -71,6 +83,67 @@ public class VmServiceApiImpl extends SdkUtil<VmModel> implements VmServiceApi {
 		return modelList;
 	}
 	
+	//添加虚拟机
+	@Override
+	public void addVM(VmModel vmModel) throws Exception {
+		try {
+			
+		} catch (Exception e) {
+			LOGGER.info("Exception addVM error.",e);
+			throw e;
+		}
+	}
+	
+	
+	//设置虚拟机的cpu
+	@Override
+	public void setVmCPU(String vmname, Integer cpu) throws Exception {
+		try {
+			Client client = new Client(clientType);
+			boolean flat = client.execute(VmCore.setVmCpu(vmname, cpu));
+			LOGGER.info("setVmCpu result is "+flat);
+		} catch (Exception e) {
+			LOGGER.error("Exception setVmCpu error.",e);
+			throw e;
+		}
+	}
+
+	//设置虚拟机的内存
+	@Override
+	public void setVmMemory(String vmname, Integer memory) throws Exception {
+		try {
+			Client client = new Client(clientType);
+			boolean flat = client.execute(VmCore.setVmCpu(vmname, memory));
+			LOGGER.info("setVmMemory result is "+flat);
+		} catch (Exception e) {
+			LOGGER.error("Exception setVmMemory error.",e);
+			throw e;
+		}
+	}
+	
+	//重启
+	@Override
+	public void restartVm(String vmname) throws Exception {
+		try {
+			Client client = new Client(clientType);
+			boolean flat = client.execute(VmCore.restartVM(vmname));
+			LOGGER.info("RestartVm result is "+flat+".");
+		} catch (Exception e) {
+			LOGGER.error("Exception restartVM error.",e);
+			throw e;
+		}
+	}
+	
+	//删除vm
+	@Override
+	public void deleteVm(String vmname) throws Exception {
+		try {
+			
+		} catch (Exception e) {
+			LOGGER.error("Exception vmname error.",e);
+			throw e;
+		}
+	}
 	
 	/**
 	 * 方法用途和描述:测试
@@ -83,5 +156,7 @@ public class VmServiceApiImpl extends SdkUtil<VmModel> implements VmServiceApi {
 		VmServiceApiImpl vmApi = new VmServiceApiImpl();
 		vmApi.getAllVM();
 	}
+	
+
 	
 }

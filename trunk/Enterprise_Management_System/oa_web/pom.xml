@@ -546,6 +546,11 @@
 			<version>3.2.1</version>
 		</dependency>
 
+<dependency>
+			<groupId>com</groupId>
+			<artifactId>unoil</artifactId>
+			<version>1.1</version>
+		</dependency>
 
 		<!-- TEST begin -->
 		<!-- junit -->

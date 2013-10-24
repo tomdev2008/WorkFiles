@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import jeecg.kxcomm.entity.contactm.TbContractEntity;
 import jeecg.kxcomm.entity.contactm.TbOrderDetailEntity;
 import jeecg.kxcomm.entity.contactm.TbOrderEntity;
+import jeecg.kxcomm.entity.contactm.TbPurchaseContractEntity;
+import jeecg.kxcomm.entity.contactm.TbPurchaseEntity;
 import jeecg.kxcomm.page.contactm.TbOrderPage;
 import jeecg.kxcomm.service.contactm.TbContractServiceI;
 import jeecg.kxcomm.service.contactm.TbOrderServiceI;
@@ -216,11 +218,44 @@ public class TbOrderController extends BaseController {
 	}
 	
 	/**
-	 * 明细列表页面跳转
+	 * 销售订单列表 页面跳转
 	 * 
 	 * @return
 	 */
 	@RequestMapping(params = "orderDetail")
+	public ModelAndView orderDetailDetail(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		request.setAttribute("id",id);
+		return new ModelAndView("jeecg/kxcomm/contactm/tbOrderDetail");
+	}
+	
+	/**
+	 * 明细列表页面跳转
+	 * 
+	 * @return
+	 */
+	@RequestMapping(params = "orderDetailList")
+	public void orderDetailList(TbOrderEntity tbOrderEntity,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+		TbOrderDetailEntity tbOrderDetail= new TbOrderDetailEntity();
+		CriteriaQuery cq = new CriteriaQuery(TbOrderDetailEntity.class, dataGrid);
+		String id = request.getParameter("orderId");
+		cq.createAlias("tbOrder", "tbOrder");	
+		if(id!=null && !"".equals(id)){
+			cq.eq("tbOrder.id", id);
+			cq.add();
+		}
+		//查询条件组装器
+		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbOrderDetail);
+		this.tbOrderService.getDataGridReturn(cq, true);
+		TagUtil.datagrid(response, dataGrid);
+	}
+	
+	/**
+	 * 明细列表页面跳转
+	 * 
+	 * @return
+	 */
+	/*@RequestMapping(params = "orderDetail")
 	public ModelAndView orderDetail(HttpServletRequest req,String id) {
 		String hql = "from TbOrderEntity where 1 = 1 AND id = ? ";
 		List<TbOrderEntity> tbOrderEntityList = systemService.findHql(hql,id);
@@ -229,7 +264,7 @@ public class TbOrderController extends BaseController {
 		req.setAttribute("tbOrderDetailList", tbOrderDetailEntityList);
 		
 		return new ModelAndView("jeecg/kxcomm/contactm/tbOrderDetail");
-	} 
+	} */
 	
 	@RequestMapping(params = "getOrderByKxOrderNo")
 	@ResponseBody

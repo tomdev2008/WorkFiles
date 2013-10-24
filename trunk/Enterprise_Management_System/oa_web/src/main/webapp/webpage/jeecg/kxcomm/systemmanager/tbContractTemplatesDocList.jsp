@@ -4,7 +4,6 @@
   <div region="center" style="padding:1px;" id="docDiv">
   <t:datagrid name="tbContractTemplatesDocList" sortName="createtime" sortOrder="desc" title="合同模板文件管理" actionUrl="tbContractTemplatesDocController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="false" sortable="false"></t:dgCol>
-   <t:dgCol title="templatesdocId" field="templatesdocId" hidden="false"></t:dgCol>
    <t:dgCol title="文件名称" field="docname" ></t:dgCol>
     <t:dgCol title="文件类型" field="docType_typename" ></t:dgCol>
    <t:dgCol title="路径" field="path" hidden="false"></t:dgCol>
@@ -16,17 +15,29 @@
  	<t:dgToolBar title="删除" icon="icon-remove" url="tbContractTemplatesDocController.do?del" funname="delone"></t:dgToolBar>
  	<t:dgToolBar funname="editone" title="设置变量" icon="icon-edit"></t:dgToolBar>
  	<t:dgToolBar  icon="icon-print"  funname="downloadFlie" title="下载附件"></t:dgToolBar>
- <%-- 	<t:dgToolBar icon="icon-search" title="预览" url="tbContractTemplatesDocController.do?openViewFile" funname="viewFlie"></t:dgToolBar > --%>
+  	<t:dgToolBar icon="icon-search" title="预览" url="tbContractTemplatesDocController.do?openViewFile"  funname="reviewNow"></t:dgToolBar > 
   </t:datagrid>
   </div>
  </div>
  
   <script type="text/javascript">
- function uploadFile(title,url,id)
- {
-	 var rowData = $('#'+id).datagrid('getSelected');
-	 openuploadwin(title,'tbContractTemplatesDocController.do?addorupdate&id='+rowData.id,'tbContractTemplatesDocList');
- }
+  //在线预览
+  function reviewNow(title,url,id)
+  {
+	  var rowData = $('#tbContractTemplatesDocList').datagrid('getSelected');
+		if (!rowData) {
+			tip('请选择一个文件');
+			return;
+		}
+	openwindow(title,'tbContractTemplatesDocController.do?openViewFile&path='+rowData.path,'tbContractTemplatesDocList',width="1080px",height="700px");	
+  }
+//编辑
+  function uploadFile(title,url,id)
+  {
+ 	 var rowData = $('#'+id).datagrid('getSelected');
+ 	 openuploadwin(title,'tbContractTemplatesDocController.do?addorupdate&id='+rowData.id,'tbContractTemplatesDocList');
+  }
+  //下载
 function downloadFlie(title,url, id){
 	var rowData = $('#'+id).datagrid('getSelected');
 	if (!rowData) {
@@ -35,14 +46,6 @@ function downloadFlie(title,url, id){
 	}
 	var url1 ='${basePath}'+'upload/'+rowData.path;
 	window.open(url1, "_blank");
-}
-function viewFlie(title,url, id){
-	var rowData = $('#'+id).datagrid('getSelected');
-	if (!rowData) {
-		tip('请选择一个文件');
-		return;
-	}
-	openwindow(title,'tbContractTemplatesDocController.do?openViewFile&id='+rowData.id,'tbContractTemplatesDocList',width="auto",height="auto");
 }
 //删除
 function delone(title,url, id) {

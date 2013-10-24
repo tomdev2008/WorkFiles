@@ -6,7 +6,7 @@ import java.io.File;
 import org.apache.log4j.Logger;
 
 import cn.com.kxcomm.systemcenter.Command;
-import cn.com.kxcomm.systemcenter.ScriptCore;
+import cn.com.kxcomm.systemcenter.MapsCore;
 
 /**
  * 
@@ -17,7 +17,7 @@ import cn.com.kxcomm.systemcenter.ScriptCore;
 * @author chenliang 修改日期：2013-10-11
 * @since system_center_sdk
  */
-public class UserCore extends ScriptCore{
+public class UserCore extends MapsCore{
 	
 	private static final Logger LOGGER = Logger.getLogger(UserCore.class);
 	private static String exportPath = "domUser"; //ps脚本执行结果数据输出目录
