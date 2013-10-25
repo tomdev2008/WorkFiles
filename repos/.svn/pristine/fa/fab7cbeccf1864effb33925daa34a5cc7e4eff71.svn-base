@@ -1,0 +1,5 @@
+@echo off
+title task
+set lib=../conf/;../lib/activemq-all-5.8.0.jar;../lib/aopalliance-1.0.jar;../lib/commons-beanutils-1.8.3.jar;../lib/commons-beanutils-core-1.8.0.jar;../lib/commons-codec-1.4.jar;../lib/commons-collections-3.2.jar;../lib/commons-configuration-1.6.jar;../lib/commons-digester-1.8.jar;../lib/commons-io-1.3.2.jar;../lib/commons-lang-2.4.jar;../lib/commons-logging-1.1.1.jar;../lib/commons-transaction-1.2.jar;../lib/commons-transaction-spring-0.9.jar;../lib/fastutil-5.0.9.jar;../lib/httpclient-4.2-beta1.jar;../lib/httpcore-4.2-beta1.jar;../lib/jcl-over-slf4j-1.6.1.jar;../lib/jta-1.1.jar;../lib/log4j-1.2.17.jar;../lib/logback-classic-0.9.27.jar;../lib/logback-core-0.9.27.jar;../lib/slf4j-api-1.6.1.jar;../lib/slf4j-log4j12-1.7.5.jar;../lib/smsc-gateway-1.0-SNAPSHOT.jar;../lib/spring-aop-3.1.1.RELEASE.jar;../lib/spring-asm-3.1.1.RELEASE.jar;../lib/spring-beans-3.1.1.RELEASE.jar;../lib/spring-context-3.1.1.RELEASE.jar;../lib/spring-core-3.1.1.RELEASE.jar;../lib/spring-expression-3.1.1.RELEASE.jar;../lib/spring-jms-3.1.1.RELEASE.jar;../lib/spring-tx-3.1.1.RELEASE.jar
+java -cp %lib% -Xms512m -Xmx1024m com.unicom.mms.StartGateway
+pause

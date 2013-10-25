@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>模版明信片</title>
+	<link rel="stylesheet"  href="http://211.91.224.232:81/static_assets/mobile/css/themes/default/jquery.mobile-1.3.1.css">
+	<link rel="stylesheet"  href="http://211.91.224.232:81/static_assets/mobile/_assets/css/style.css">
+	<link rel="shortcut icon" href="../favicon.ico">
+	<script src="http://211.91.224.232:81/static_assets/mobile/js/jquery-1.9.1.min.js"></script>
+	<script src="http://211.91.224.232:81/static_assets/mobile/js/jquery.mobile-1.3.1.min.js"></script>
+	<script src="../base.js"></script>
+</head>
+<body>
+<div data-role="page" data-header-theme="b"  data-footer-theme="b" data-content-theme="c"  id="one">
+	<div data-role="header">
+    <a href="../" data-icon="back" target="_self">返回</a>
+    <h1>模版明信片</h1>
+</div>
+
+<ul data-role="listview" data-inset="true" id="list">
+</ul>
+<button data-theme="b" id="morebut" >更多</button>
+<script type="text/javascript">
+var currentPage = 0;
+var pageSize = 5;
+var userId = 1;
+
+function moreList(){
+	$.post(ctx+"a/mms/normal!page.action",{"currentPage":currentPage,"pageSize":pageSize},function(data){
+		var list = data.pageList.rows;
+		if(list!=null && list.length>0){
+			for ( var i = 0; i < list.length; i++) {
+				var m = list[i];
+				$("#list").append("<li class='ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c' data-corners='false' data-shadow='false' data-iconshadow='true' data-wrapperels='div' data-icon='arrow-r' data-iconpos='right' data-theme='c'><div class='ui-btn-inner ui-li'><div class='ui-btn-text'><a class='ui-link-inherit' href='#two' id='"+m.id+"' onclick='queryTempPicById(this.id);'><img class='ui-li-thumb' src='"+rsUrl+m.smallPic+"'><h2 class='ui-li-heading'>"+m.cardTitle+"</h2><p class='ui-li-desc'>"+m.wishWord+"</p></a></div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'> </span></div></li>");
+			}
+			$("#list").listview("refresh");
+			currentPage = (currentPage+6);
+		}
+	},"json");
+}
+var nowpicobj = null;		// 当前模板图片的对象
+//根据选择的模板ID查询模板图片
+function queryTempPicById(paramsId) {
+	var ids = paramsId;
+	$.post(ctx+"a/mms/normal!queryTempPicById.action",{"id":ids},function(data){
+		var modelEnty = data.model;
+		nowpicobj = modelEnty;
+		if(modelEnty!=null){
+			$("#twoImages").attr("src",rsUrl+"/"+modelEnty.picUrl);
+		}
+	},"json");
+}
+
+//确认生成明信片
+function affirmCreatePictrue() {
+	var usercontext = $("#textarea").val();
+	if(null == usercontext || "" == usercontext.trim()) {
+		$("#nullerror").show();
+	} else {
+		if(null != nowpicobj){
+			$.mobile.changePage("#three", { transition: "slideup" });
+			var imgPic = serverImgPic+"?json={'userId':"+userId+",'postcard':'"+nowpicobj.picUrl+"','text':{'text':'"+usercontext+"','xPos':"+nowpicobj.xPosText+",'yPos':"+nowpicobj.yPosText+",'width':"+nowpicobj.widthText+",'height':"+nowpicobj.heightText+",'fontSize':20,'fontsTTF':'systemData/fonts/COLOUR.TTF','fontsColor':'black'}}";
+			$("#threeImages").attr("src",imgPic);
+		}
+	}
+}
+
+//发送成功的号码传输
+function sendTheMassage() {
+	var thephoneNum = $("#tel").val();
+	if(null == thephoneNum || "" == thephoneNum.trim()) {
+		$("#nullerror2").show();
+	} else {
+		$.mobile.changePage("#four", { transition: "slideup" });
+		$("#wodowhart").html("彩信已成功发送给号码为"+thephoneNum+"的用户");
+	}
+}
+
+$(function(){
+	moreList();
+	$( "#morebut" ).bind( "click", function(event, ui) {
+		moreList();
+	});
+});
+</script>
+</div><!-- one page -->
+
+<!-- two -->
+<div data-role="page" id="two" data-header-theme="b"  data-footer-theme="b" data-content-theme="c" >
+<div data-role="header">
+    <a href="#one" data-icon="back">返回</a>
+    <h1>模版明信片</h1>
+     <a href="javascript:void();" onclick="affirmCreatePictrue();" data-icon="check">下一步</a>
+</div>
+<div data-role="content">
+	<img id="twoImages" src=""  class="main-image"/>
+	<label for="textarea">留言:</label>
+	<textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+	<div id='nullerror' style="display: none;float: right;"><font color="red" size="2px;">留言不能为空哦!</font></div>	
+</div><!-- /content -->
+</div><!-- two page -->
+
+<!-- three -->
+<div data-role="page" id="three" data-header-theme="b"  data-footer-theme="b" data-content-theme="c" >
+<div data-role="header">
+    <a href="#two" data-icon="back">返回</a>
+    <h1>模版明信片</h1>
+     <a href="javascript:void();" data-icon="check" onclick="sendTheMassage();">发送</a>
+</div>
+<div data-role="content">
+	<label for="tel">对方号码:</label>
+	<input type="tel" name="tel" id="tel" value="">
+	<div id='nullerror2' style="display: none;float: right;"><font color="red" size="2px;">收件人号码不能为空哦!</font></div>
+	<p>预览:</p><br/>
+	<img id="threeImages" src=""  class="main-image"/>
+</div><!-- /content -->
+</div>
+
+<!-- four -->
+<div data-role="page" data-close-btn="right" id="four" data-header-theme="b"  data-footer-theme="b" data-content-theme="c" >
+		<div data-role="header">
+			<h1>发送结果</h1>
+		</div>
+
+		<div data-role="content">
+			<h1>恭喜您发送成功</h1>
+			<p id="wodowhart"></p>
+			<a href="../"  data-role="button" data-theme="b" target="_self">关闭</a>       
+		</div>
+	</div>
+</body>
+</html>

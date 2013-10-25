@@ -1,0 +1,21 @@
+公网网站：
+MMS-WEB：http://211.91.224.232/mms/
+MMS-CMS：http://211.91.224.232/cms/
+MMS-MOBILE：http://211.91.224.232/mobile/
+MMS-RESOURCES：http://211.91.224.232/resources/
+MMS-STATIC-ASSETS:http://211.91.224.230:8080/static_assets/
+
+ 
+公网数据库：
+211.91.224.230 3306
+kxcomm/123
+ 
+公网资源服务器：
+socket方式传输:
+IP：211.91.224.230
+端口：8088
+
+ 
+ 
+SVN开发库：
+http://122.13.0.56/svn/repos/

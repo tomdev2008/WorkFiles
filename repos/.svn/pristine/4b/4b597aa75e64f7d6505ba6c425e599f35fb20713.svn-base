@@ -1,0 +1,19 @@
+#*********************************************#
+#------ application configs     --------------#
+#*********************************************#
+isFtpSync=false
+ftpHost=kxcomm
+ftpUser=upload
+ftpPasswd=123456
+ftpPort=21
+diymmsFilePath=/home/upload/mms/userData/diymmsFilePath/
+AccessoriesFilePath=/home/upload/mms/systemData/Accessories/
+MusicFilePath=/home/upload/mms/systemData/Music/
+PhotoFrameFilePath=/home/upload/mms/systemData/PhotoFrame/
+PostMarkFilePath=/home/upload/mms/systemData/PostMark/
+StampsFilePath=/home/upload/mms/systemData/Stamps/
+FontsFilePath=/home/upload/mms/fonts/
+RootFilePath=/home/upload/mms/
+TemplateCardFilePath=/home/upload/mms/systemData/templateCardPath/
+BackgroundUrlPath=/home/upload/mms/systemData/Background/
+ServerSocketPort=11111

@@ -1,0 +1,5 @@
+@echo off
+title task
+set lib=../conf/;../lib/activemq-all-5.8.0.jar;../lib/antlr-2.7.6.jar;../lib/asm-1.5.3.jar;../lib/asm-attrs-1.5.3.jar;../lib/cglib-2.1_3.jar;../lib/commons-codec-1.3.jar;../lib/commons-collections-2.1.1.jar;../lib/commons-collections-3.2.jar;../lib/commons-configuration-1.6.jar;../lib/commons-lang-2.5.jar;../lib/commons-logging-1.0.4.jar;../lib/commons-logging-1.0.jar;../lib/concurrent.jar;../lib/dom4j-1.6.1.jar;../lib/ehcache-1.2.3.jar;../lib/hibernate-3.2.1.ga.jar;../lib/hibernate-annotations-3.3.0.ga.jar;../lib/jdom.jar;../lib/jta-1.1.jar;../lib/log4j-1.2.14.jar;../lib/mm7-hn-1.0.jar;../lib/mms-share-1.0-SNAPSHOT.jar;../lib/mmsc-gateway-1.0.jar;../lib/persistence-api-1.0.jar;../lib/servlet-api.jar;../lib/vassdk_soap.jar;../lib/webservices.jar;../lib/xercesImpl.jar;../lib/xmlParserAPIs.jar
+java -cp %lib% -Xms512m -Xmx1024m com.unicom.mms.test.RunSendPostcard
+pause

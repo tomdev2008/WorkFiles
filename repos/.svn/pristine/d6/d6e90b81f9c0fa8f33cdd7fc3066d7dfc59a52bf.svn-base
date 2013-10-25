@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+  
+  <bean id="memcachedPool" class="com.danga.MemCached.SockIOPool" factory-method="getInstance" init-method="initialize" destroy-method="shutDown">
+		<constructor-arg>
+			<value>neeaMemcachedPool</value>
+		</constructor-arg>
+		<property name="servers">
+			<list>
+			<!-- 多服务器 -->
+				<value>127.0.0.1:11211</value>
+			</list>
+		</property>
+		<!--多服务器负载均衡  -->
+		<property name="weights"> <value>5,5</value> </property>
+		<property name="initConn">
+			<value>20</value>
+		</property>
+		<property name="minConn">
+			<value>10</value>
+		</property>
+		<property name="maxConn">
+			<value>500</value>
+		</property>
+		<property name="maintSleep">
+			<value>30</value>
+		</property>
+		<property name="nagle">
+			<value>false</value>
+		</property>
+		<property name="maxIdle">
+			<value>6000</value>
+		</property>
+		<property name="socketTO">
+			<value>3000</value>
+		</property>
+	</bean>
+	<!--memcached client -->
+	<bean id="memcachedClient" class="com.danga.MemCached.MemCachedClient">
+		<constructor-arg>
+			<value>neeaMemcachedPool</value>
+		</constructor-arg>
+	</bean>
+	<!--memcached 客户端***end -->
+	<!--如果换客户端或者换缓存了，修改这里即可-->
+	<bean id="cache" class="com.unicom.memcached.CacheClientImpl">
+		<property name="cacheProvider" ref="memcachedClient"/>
+	</bean>
+  </beans>

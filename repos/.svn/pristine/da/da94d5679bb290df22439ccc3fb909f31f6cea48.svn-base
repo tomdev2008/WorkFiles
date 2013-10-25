@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<label>请求地址:</label><br/>
+<input type="text"  style="width: 700px" value="http://localhost:8080/mms-resources/diymms"><br/>
+<br/>
+<label>背景图片:</label><br/>
+<input type="text"  style="width: 700px" value="systemData/Background/beijing_01.png"><br/>
+<br/>
+<label>用户的照片:</label><br/>
+<input type="text"  style="width: 700px" value="userData/002.jpg,40,0,500,696"><br/>
+<br/>
+<label>相框:</label><br/>
+<input type="text"  style="width: 700px" value="systemData/PhotoFrame/biankuang_02.png"><br/>
+<br/>
+<label>饰品、邮票、邮戳:</label><br/>
+<textarea rows="" cols=""  style="width: 700px;height: 100px">systemData/Accessories/katongxingxiang_03.png,10,400,117,165#systemData/Accessories/wenzi_01.png,100,450,200,100</textarea>
+<br/>
+<br/>
+<label>文字:</label><br/>
+<textarea rows="" cols=""  style="width: 700px;height: 100px">啊~~说来话长...那是一个风和日丽的下午，那里茫茫的大草原上有着可爱的生病的小鹿，天空中飘着白色的云彩，一会变成牛，一会变成羊.那天一只奶牛点燃了我心中的怒火,10,80,300,400,30,systemData/fonts/STCAIYUN.TTF,blue</textarea><br/>
+</body>
+</html>

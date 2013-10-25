@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mms.pushjob.model.PolicModel">
+	<resultMap type="policModel" id="resultPolicModelList">
+		<result column="Id" property="id" jdbcType="BIGINT"/>
+		<result column="polic_name" property="policName" jdbcType="VARCHAR"/>
+		<result column="mms_url" property="mmsUrl" jdbcType="VARCHAR"/>
+		<result column="content" property="content" jdbcType="VARCHAR"/>
+		<result column="msg_type" property="msgType" jdbcType="INTEGER"/>
+		<result column="stauts" property="stauts" jdbcType="INTEGER"/>
+		<result column="remark" property="remark" jdbcType="VARCHAR"/>
+		<result column="creator" property="creator" jdbcType="BIGINT"/>
+		<result column="create_time" property="createTime" /><!-- jdbcType="DATETIME" -->
+		<result column="total_num" property="totalNum" jdbcType="INTEGER"/>
+		<result column="succes_num" property="succesNum" jdbcType="INTEGER"/>
+		<result column="faild_num" property="faildNum" jdbcType="INTEGER"/>
+		<result column="last_send_time" property="lastSendTime"/><!--  jdbcType="DATETIME" -->
+		<result column="mdn_type_id" property="mdnType" jdbcType="INTEGER"/>
+		<result column="start_send_time" property="startSendTime"/><!--  jdbcType="DATETIME" -->
+		<result column="end_send_time" property="endSendTime"/><!--  jdbcType="DATETIME" -->
+	</resultMap>
+	
+    <select id="selectAll" resultMap="resultPolicModelList">
+       <![CDATA[
+        select id,polic_name,mms_url,content,msg_type,stauts,remark,creator,create_time,
+        total_num,succes_num,faild_num,last_send_time,mdn_type_id,start_send_time,end_send_time
+        from tb_polic where start_send_time<=now() and end_send_time>=now() and stauts=1
+         ]]>
+    </select>
+    
+    <select id="selectPushMdnCount" resultType="Integer" parameterType="Integer">
+    	select count(*) as count_value from tb_push_mdn a,tb_mdn_type b,tb_polic c
+		where a.mdn_type_id = b.id
+		and b.id = c.mdn_type_id
+		and c.id = #{jobId}
+    </select>
+</mapper>

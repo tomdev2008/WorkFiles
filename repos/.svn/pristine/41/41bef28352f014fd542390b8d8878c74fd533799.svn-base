@@ -1,0 +1,5 @@
+img.main-image {
+margin-top: -15px;
+width: 100%;
+display: block;
+}

@@ -1,0 +1,278 @@
+jar包地址  http://downloads.jmagick.org/6.3.9/      
+
+ 
+
+我在window下使用的是    jmagick-win-6.3.9-Q8.zip 和  ImageMagick-6.3.9-0-Q8-windows-dll.exe
+
+      linux下使用的是         JMagick-6.2.6-0.tar.gz    和 ImageMagick-x86_64-pc-linux-gnu.tar.gz             
+
+ 
+
+ 
+
+doc地址   http://downloads.jmagick.org/jmagick-doc/
+
+ 
+
+windows
+
+一 .  安装 ImageMagick-6.3.9-0-Q8-windows-dll.exe
+
+ 
+
+二 .  将 安装目录下 “C:\Program Files\ImageMagick-6.3.9-Q8\ ”(按自己所安装的目录找) 下的所有dll文件 copy 到系统盘下的 “C:\WINDOWS\system32\”文件夹里
+
+ 
+
+三 .  配置环境变量
+
+     再环境变量path里添加新的值 “C:\Program Files\ImageMagick-6.3.9-Q8”
+
+ 
+
+四 .  解压jmagick-win-6.3.9-Q8.zip 
+
+       将 jmagick.dll 复制到系统盘下的 “C:\WINDOWS\system32\”文件夹里 和 复制到jdk的bin(例“E:\Java\jdk1.5.0_10\bin”)文件里各一份 
+
+      将 jmagick.jar 复制到Tomcat下的lib文件夹里 和 所使用项目的WEB-INF下lib文件里 各一份
+
+ 然后重启计算机（注：不重启将报java.lang.UnsatisfiedLinkError: C:\WINDOWS\system32\JMagick.dll: Can't find dependent libraries）
+
+
+linux安装
+
+在用JAVA自带处理图形的工具，效果不尽人意啊，听说JMagick效果不错，在实验一番后，感觉效果还是不错的，不过在centos安装还是费尽一番周折。 
+首先安装ImageMagick，我的安装版本是：ImageMagick-6.4.0-0， 
+下载地址：http://downloads.jmagick.org/6.4.0/ImageMagick-6.4.0-0.tar.gz 
+
+编译，安装： 
+./configure -prefix=/usr/local/ImageMagick 
+make  //疯狂的等待
+make install 
+
+接下来安装jmagick： 
+下载地址：http://downloads.jmagick.org/6.2.4/JMagick-6.2.4-1.tar.gz 
+有两个版本：JMagick-6.2.4-0.tar.gz，JMagick-6.2.4-1.tar.gz，我安装过JMagick-6.2.4-0.tar.gz失败了，记得是安装JMagick-6.2.4-1.tar.gz。 
+编译，安装： 
+./configure -prefix=/usr/local/jmagick -with-magick-inc-dir=/usr/local/ImageMagick/include/ImageMagick -with-java-home=/usr/local/jdk
+make all 
+make install 
+
+编译后的输出：/usr/local/jmagick/lib
+最后，将libJMagick.so复制到/user/lib下。 
+cp /usr/local/jmagick/lib/libJMagick-6.4.0.so /usr/lib
+cp /usr/local/jmagick/lib/libJMagick.so /usr/lib
+
+将/usr/local/jmagick/lib/下make出来的jar包复制到你的项目的lib包下。 
+/usr/local/jdk/jre/lib/ext
+
+cp /usr/local/jmagick/lib/*.so /usr/local/jdk/jre/lib/amd64
+cp /usr/local/jmagick/lib/*.jar /var/lib/tomcat6/webapps/mms-resources/WEB-INF/lib
+cp /usr/local/jmagick/lib/*.jar $JAVA_HOME/jre/lib/ext
+
+cp /usr/local/jmagick/lib/*.jar  /usr/share/tomcat6/lib
+
+还要注意就是如果在tomcat下有多个项目用了jmagick,记得把jmagick.jar复制到Tomcat的lib的目录下，就不会出现已加载的错误信息。 
+
+
+ MAGICK_HOME="/usr/local/ImageMagick/"
+JAVA_HOME="/usr/local/jdk"
+CLASS_PATH="$JAVA_HOME/lib:$JAVA_HOME/jre/lib"
+PATH="$MAGICK_HOME/bin:$JAVA_HOME/bin:.:$PATH"
+LD_LIBRARY_PATH="$MAGICK_HOME/lib:/usr/local/lib:$LD_LIBRARY_PATH"
+CATALINA_HOME="/usr/local/tomcat"
+export JAVA_HOME CATALINA_HOME MAGICK_HOME PATH LD_LIBRARY_PATH
+
+ 
+chown -R root:root /usr/local/ImageMagick/
+ 
+
+ 
+
+操作范例
+Java代码  收藏代码
+
+    package com.utils;  
+      
+    import java.awt.Dimension;  
+    import java.awt.Rectangle;  
+    import java.text.SimpleDateFormat;  
+    import java.util.Date;  
+      
+      
+      
+    import magick.CompositeOperator;  
+    import magick.CompressionType;  
+    import magick.DrawInfo;  
+    import magick.ImageInfo;  
+    import magick.MagickException;  
+    import magick.MagickImage;  
+    import magick.PixelPacket;  
+    import magick.PreviewType;  
+      
+    public class Aa {  
+      
+          
+        static{  
+            //不能漏掉这个，不然jmagick.jar的路径找不到  
+            System.setProperty("jmagick.systemclassloader","no");  
+        }  
+          
+        /** 
+         * 压缩图片 
+         * @param filePath 源文件路径 
+         * @param toPath   缩略图路径 
+         */  
+        public static void createThumbnail(String filePath, String toPath) throws MagickException{  
+            ImageInfo info = null;  
+            MagickImage image = null;  
+            Dimension imageDim = null;  
+            MagickImage scaled = null;  
+            try{  
+                info = new ImageInfo(filePath);  
+                image = new MagickImage(info);  
+                imageDim = image.getDimension();  
+                int wideth = imageDim.width;  
+                int height = imageDim.height;  
+                if (wideth > height) {  
+                    height = 660 * height / wideth;  
+                    wideth = 660;  
+                }   
+                scaled = image.scaleImage(wideth, height);//小图片文件的大小.  
+                scaled.setFileName(toPath);  
+                scaled.writeImage(info);  
+            }finally{  
+                if(scaled != null){  
+                    scaled.destroyImages();  
+                }  
+            }    
+        }  
+          
+        /** 
+         * 水印(图片logo) 
+         * @param filePath  源文件路径 
+         * @param toImg     修改图路径 
+         * @param logoPath  logo图路径 
+         * @throws MagickException 
+         */  
+        public static void initLogoImg(String filePath, String toImg, String logoPath) throws MagickException {  
+            ImageInfo info = new ImageInfo();  
+            MagickImage fImage = null;  
+            MagickImage sImage = null;  
+            MagickImage fLogo = null;  
+            MagickImage sLogo = null;  
+            Dimension imageDim = null;  
+            Dimension logoDim = null;  
+            try {  
+                fImage = new MagickImage(new ImageInfo(filePath));  
+                imageDim = fImage.getDimension();  
+                int width = imageDim.width;  
+                int height = imageDim.height;  
+                if (width > 660) {  
+                    height = 660 * height / width;  
+                    width = 660;  
+                }  
+                sImage = fImage.scaleImage(width, height);  
+                  
+                fLogo = new MagickImage(new ImageInfo(logoPath));  
+                logoDim = fLogo.getDimension();  
+                int lw = width / 8;  
+                int lh = logoDim.height * lw / logoDim.width;  
+                sLogo = fLogo.scaleImage(lw, lh);  
+      
+                sImage.compositeImage(CompositeOperator.AtopCompositeOp, sLogo,  width-(lw + lh/10), height-(lh + lh/10));  
+                sImage.setFileName(toImg);  
+                sImage.writeImage(info);  
+            } finally {  
+                if(sImage != null){  
+                    sImage.destroyImages();  
+                }  
+            }  
+        }  
+          
+        /** 
+         * 水印(文字) 
+            * @param filePath 源文件路径 
+         * @param toImg    修改图路径 
+         * @param text     名字(文字内容自己随意) 
+         * @throws MagickException 
+         */  
+        public static void initTextToImg(String filePath, String toImg,  String text) throws MagickException{  
+                ImageInfo info = new ImageInfo(filePath);  
+                if (filePath.toUpperCase().endsWith("JPG") || filePath.toUpperCase().endsWith("JPEG")) {  
+                    info.setCompression(CompressionType.JPEGCompression); //压缩类别为JPEG格式  
+                    info.setPreviewType(PreviewType.JPEGPreview); //预览格式为JPEG格式  
+                    info.setQuality(95);  
+                }  
+                MagickImage aImage = new MagickImage(info);  
+                Dimension imageDim = aImage.getDimension();  
+                int wideth = imageDim.width;  
+                int height = imageDim.height;  
+                if (wideth > 660) {  
+                    height = 660 * height / wideth;  
+                    wideth = 660;  
+                }  
+                int a = 0;  
+                int b = 0;  
+                String[] as = text.split("");  
+                for (String string : as) {  
+                    if(string.matches("[\u4E00-\u9FA5]")){  
+                        a++;  
+                    }  
+                    if(string.matches("[a-zA-Z0-9]")){  
+                        b++;  
+                    }  
+                }  
+                int tl = a*12 + b*6 + 300;  
+                MagickImage scaled = aImage.scaleImage(wideth, height);  
+                if(wideth > tl && height > 5){  
+                    DrawInfo aInfo = new DrawInfo(info);  
+                    aInfo.setFill(PixelPacket.queryColorDatabase("white"));  
+                    aInfo.setUnderColor(new PixelPacket(0,0,0,100));  
+                    aInfo.setPointsize(12);  
+                    //解决中文乱码问题,自己可以去随意定义个自己喜欢字体，我在这用的微软雅黑  
+                    String fontPath = "C:/WINDOWS/Fonts/MSYH.TTF";  
+    //              String fontPath = "/usr/maindata/MSYH.TTF";  
+                    aInfo.setFont(fontPath);  
+                    aInfo.setTextAntialias(true);  
+                    aInfo.setOpacity(0);  
+                    aInfo.setText("　" + text + "于　" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + "　上传于XXXX网，版权归作者所有！");  
+                    aInfo.setGeometry("+" + (wideth-tl) + "+" + (height-5));  
+                    scaled.annotateImage(aInfo);  
+                }  
+                scaled.setFileName(toImg);  
+                scaled.writeImage(info);  
+                scaled.destroyImages();  
+        }  
+          
+          
+        /** 
+         * 切图 
+         * @param imgPath 源图路径 
+         * @param toPath  修改图路径 
+         * @param w        
+         * @param h        
+         * @param x        
+         * @param y 
+         * @throws MagickException 
+         */  
+        public static void cutImg(String imgPath, String toPath, int w, int h, int x, int y) throws MagickException {  
+            ImageInfo infoS = null;  
+            MagickImage image = null;  
+            MagickImage cropped = null;  
+            Rectangle rect = null;  
+            try {  
+                infoS = new ImageInfo(imgPath);  
+                image = new MagickImage(infoS);  
+                rect = new Rectangle(x, y, w, h);  
+                cropped = image.cropImage(rect);  
+                cropped.setFileName(toPath);  
+                cropped.writeImage(infoS);  
+                  
+            } finally {  
+                if (cropped != null) {  
+                    cropped.destroyImages();  
+                }  
+            }  
+        }  
+    }  

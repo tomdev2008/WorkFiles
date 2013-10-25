@@ -1,0 +1,245 @@
+
+
+/*创建表空间*/
+create tablespace unicom_namespace
+datafile 'data1.dbf'
+size 10m autoextend on;
+
+/*创建用户*/
+--create user unicom identified by 123456 default tablespace unicom_namespace;
+
+/*给用户付权限*/
+grant connect,dba,resource to unicom;
+
+
+/*CMS用户表id序列*/
+create sequence SEQ_CMS_USER_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*角色表id序列*/
+create sequence SEQ_ROLE_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*背景音乐表id序列*/
+create sequence SEQ_BG_MUSIC_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*背景图片表id序列*/
+create sequence SEQ_BG_PIC_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*卡片类型表id序列*/
+create sequence SEQ_CARD_TYPE_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*收藏实体表id序列*/
+create sequence SEQ_COLLECT_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*我的联系人实体表id序列*/
+create sequence SEQ_CONTACTS_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*饰品实体表id序列*/
+create sequence SEQ_DECORATION_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*饰品类型实体表id序列*/
+create sequence SEQ_DECORATION_TYPE_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*相框个元素坐标实体表id序列*/
+create sequence SEQ_FRAME_POS_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*相框类型坐标实体表id序列*/
+create sequence SEQ_FRAME_TYPE_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*分组联系人关系实体表id序列*/
+create sequence SEQ_GROUP_CONTACTS_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*分组实体表id序列*/
+create sequence SEQ_GROUP_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*最热推荐实体表id序列*/
+create sequence SEQ_HOT_BILLBOARD_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*推送号码发送结果实体表id序列*/
+create sequence SEQ_JOB_RESULT_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*号码类型实体表id序列*/
+create sequence SEQ_MDN_TYPE_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*最新推荐实体表id序列*/
+create sequence SEQ_NEW_BILLBOARD_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*相框实体表id序列*/
+create sequence SEQ_PHOTO_FRAME_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*任务策略实体表id序列*/
+create sequence SEQ_POLIC_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*邮戳实体表id序列*/
+create sequence SEQ_POST_MARK_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*推送号码实体表id序列*/
+create sequence SEQ_PUSH_MDN_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*发送队列实体表id序列*/
+create sequence SEQ_SEND_QUEUE_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*发送记录实体表id序列*/
+create sequence SEQ_SEND_RECS_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*服务记录实体表id序列*/
+create sequence SEQ_SERVICES_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*邮票实体表id序列*/
+create sequence SEQ_STAMP_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*模板实体表id序列*/
+create sequence SEQ_TEMPLATE_CARD_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*用户订购实体表id序列*/
+create sequence SEQ_USER_ORDER_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*用户照片实体表id序列*/
+create sequence SEQ_USER_PHOTO_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+/*终端用户实体表id序列*/
+create sequence SEQ_USERS_ID
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;

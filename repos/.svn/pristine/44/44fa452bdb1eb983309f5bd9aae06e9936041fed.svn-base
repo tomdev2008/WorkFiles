@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+  
+  <!-- 创建工厂连接 -->
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+	</bean>
+	
+	<bean id="batchsendmms" class="org.apache.activemq.command.ActiveMQTopic" autowire="constructor">
+        <constructor-arg index="0" value="kxcomm.gateway.batchsendmms" />
+    </bean>
+    <bean id="batchsendsms" class="org.apache.activemq.command.ActiveMQTopic" autowire="constructor">
+        <constructor-arg index="0" value="kxcomm.gateway.batchsendsms" />
+    </bean>
+     <bean id="postcardmms" class="org.apache.activemq.command.ActiveMQTopic" autowire="constructor">
+        <constructor-arg index="0" value="kxcomm.gateway.postcardmms" />
+    </bean>
+    <bean id="realtimesms" class="org.apache.activemq.command.ActiveMQTopic" autowire="constructor">
+        <constructor-arg index="0" value="kxcomm.gateway.realtimesms" />
+    </bean>
+    <bean id="msgreport" class="org.apache.activemq.command.ActiveMQTopic" autowire="constructor">
+        <constructor-arg index="0" value="kxcomm.gateway.msgreport" />
+    </bean>
+    
+    <bean id="realTimeSmsListener" class="com.unicom.mms.activemq.RealTimeSmsListener">
+    <property name="connectionFactory" ref="connectionFactory" />
+    <property name="realtimesmsTopic" ref="realtimesms" />
+    <property name="msgreportTopic" ref="msgreport" />
+    </bean>
+    
+    <bean id="batchSendSmsListener" class="com.unicom.mms.activemq.BatchSendSmsListener">
+    <property name="connectionFactory" ref="connectionFactory" />
+    <property name="batchsendsmsTopic" ref="batchsendsms" />
+    <property name="msgreportTopic" ref="msgreport" />
+    </bean>
+  </beans>

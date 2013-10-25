@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-color.css">
+    <script src="js/zy_control.js">
+    </script>
+    <script src="js/zy_click.js">
+    </script>
+    <script>
+	</script>
+	<style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #buttons {
+        position: absolute;
+        left: 10px;
+        top: 0px;
+      }
+      button {
+        margin-top: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+<body class="um-vp" ontouchstart>
+	aa<br/>
+	<div id="container"></div>
+    <div id="buttons">
+      <button id="toTop">
+        Move yellow box to top
+      </button>
+      <button id="toBottom">
+        Move yellow box to bottom
+      </button>
+      <button id="up">
+        Move yellow box up
+      </button>
+      <button id="down">
+        Move yellow box down
+      </button>
+      <button id="zIndex">
+        Set yellow box zIndex to 3
+      </button>
+    </div>
+    <script src="../js/kinetic-v4.3.0-beta2.js"></script>
+    <script>
+    	var width = document.body.clientWidth;
+            var height = document.body.clientHeight - 5;
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 1024,
+        height: 768
+      });
+      var layer = new Kinetic.Layer();
+      var offsetX = 0;
+      var offsetY = 0;
+      var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+      var yellowBox = null;
+
+      for(var n = 0; n < 6; n++) {
+        // anonymous function to induce scope
+        (function() {
+          var i = n;
+          var box = new Kinetic.Rect({
+            x: i * 30 + 210,
+            y: i * 18 + 40,
+            width: 100,
+            height: 50,
+            fill: colors[i],
+            stroke: 'black',
+            strokeWidth: 4,
+            draggable: true,
+            name: colors[i]
+          });
+
+         
+
+          layer.add(box);
+        })();
+      }
+
+      stage.add(layer);
+
+     
+    </script>
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type)
+{
+	if(!type){
+		uexWindow.setBounce("1");
+		uexWindow.showBounceView("0","#FFF","0");
+		uexWindow.showBounceView("1","#FFF","0");
+	}
+}
+</script>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="sendrecs" extends="global" namespace="/">
+		<action name="sendrecs" class="cn.com.mmsweb.action.web.SendRecsAction" method="list">
+			 <result name="success">/mySendHistory/mySendHistory.jsp</result>
+		</action>
+		 <action name="sendRecsdelete" class="cn.com.mmsweb.action.web.SendRecsAction" method="deleteById">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+	</package>
+</struts>

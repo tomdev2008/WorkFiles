@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-color.css">
+    <script src="js/zy_control.js">
+    </script>
+    <script src="js/zy_click.js">
+    </script>
+    <script>
+	</script>
+	<style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #buttons {
+        position: absolute;
+        left: 10px;
+        top: 0px;
+      }
+      button {
+        margin-top: 10px;
+        display: block;
+      }
+    </style>
+  </head>
+<body class="um-vp" ontouchstart>
+	<div id="container"></div>
+    
+    <script src="js/kinetic-v4.3.0-beta2.js"></script>
+    <script>
+    var width = document.body.clientWidth;
+    var height = document.body.clientHeight - 5;
+	
+	function loadImages(sources, callback) {
+        var assetDir = 'pic/letter/';
+        var images = {};
+        var loadedImages = 0;
+        var numImages = 0;
+        for(var src in sources) {
+          numImages++;
+        }
+        for(var src in sources) {
+          images[src] = new Image();
+          images[src].onload = function() {
+            if(++loadedImages >= numImages) {
+              callback(images);
+            }
+          };
+          images[src].src = assetDir + sources[src];
+        }
+      }
+	  
+	  function drawBackground(background, beachImg) {
+        var canvas = background.getCanvas();
+        var context = background.getContext();
+
+        context.drawImage(beachImg, 0, 0);
+      }
+	  
+	  function initStage(images){
+	  	 var stage = new Kinetic.Stage({
+          container: 'container',
+          width: width,
+          height: height
+        });
+		
+		var background = new Kinetic.Layer();
+        var animalLayer = new Kinetic.Layer();
+         // image positions
+        var animals = {
+          snake: {
+            x: 10,
+            y: 70
+          },
+          giraffe: {
+            x: 90,
+            y: 70
+          },
+          monkey: {
+            x: 275,
+            y: 70
+          },
+          lion: {
+            x: 400,
+            y: 70
+          },
+        };
+		
+		 // create draggable animals
+        for (var key in animals) {
+			// anonymous function to induce scope
+			(function(){
+				 var anim = animals[key];
+				 var animal = new Kinetic.Image({
+	              image: images[key],
+	              x: anim.x,
+	              y: anim.y,
+	              draggable: true,
+				  stroke: 'black'
+            		});
+				 animal.createImageHitRegion();
+
+	            animal.on('dragstart', function() {
+	            animalLayer.draw();
+          	  });
+			  
+			   animal.on('dbltap', function() {
+			   		animal.setScale(2);
+           	 });
+			  
+			  animalLayer.add(animal);
+			})();
+		}
+		 stage.add(background);
+		 stage.add(animalLayer);
+		 drawBackground(background, images.beach);
+	  }
+
+ 	window.onload = function() {
+        var sources = {
+          beach: 'b_biankuang_08.png',
+          snake: 'keep_02.png',
+          giraffe: 'keep_03.png',
+          monkey: 'keep_04.png',
+          lion: 'keep_05.png',
+        };
+        loadImages(sources, initStage);
+      };
+     
+    </script>
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type)
+{
+	if(!type){
+		uexWindow.setBounce("0");
+	}
+}
+</script>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="templatecard" extends="global" namespace="/">
+		<action name="templateCard" class="cn.com.mmsweb.action.web.TemplateCardAction" method="listTemplate">
+			<result name="success">/index.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="sendTemplate" class="cn.com.mmsweb.action.web.TemplateCardAction" method="findById">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">cardVo.*,msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="findAllBgMusic" class="cn.com.mmsweb.action.web.BgMusicAction" method="findAll">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">list.*,msg,success</param>
+			</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="sendCardMessage" class="cn.com.mmsweb.action.web.TemplateCardAction" method="sendCardMessage">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+		</action>
+		<action name="pageTemplateCard" class="cn.com.mmsweb.action.web.TemplateCardAction" method="pageTemplate">
+			<result name="success">/templateCard.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+</struts>

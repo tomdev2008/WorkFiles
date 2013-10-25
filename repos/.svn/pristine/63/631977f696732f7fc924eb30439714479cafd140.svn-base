@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:component-scan base-package="cn.com" />
+
+
+
+	<!-- database conection config -->
+	<bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://192.168.1.11:3306/tempDB?characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="123" />
+		<property name="maxActive" value="50" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="1000" />
+	</bean>
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+	<!--Hibernate TransactionManager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 配置事务特性，配置add，delete，update开始的方法，事务传播特性为required -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置那些类的方法进行事务管理，当前com.sy.crm.service包中的子包， 类中所有方法需要，还需要参考tx:advice的设置 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="allManagerMethod"
+			expression="execution(* cn.com.kxcomm.contractmanage.service.*Service*.*(..))" />
+		<aop:pointcut id="allActionMethod"
+			expression="execution(public String cn.com.kxcomm.contractmanage.web.action..*.*()) and
+			 !execution(* get*()) and !execution(* toString()) and !execution(* ...*$$EnhancerByCGLIB*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
+	</aop:config>
+
+
+
+	<!-- hibernate config -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="baseDataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.release_mode">after_transaction</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">30</prop>
+				<!--  启用二级缓存
+				<prop key="hibernate.cache.use_second_level_cache">false</prop> 
+				配置缓存插件
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
+				启用查询缓存 
+				<prop key="hibernate.cache.use_query_cache">false</prop> 
+				<prop key="hibernate.generate_statistics">false</prop>  -->
+				
+				<!-- 启用二级缓存 -->
+				 <prop key="hibernate.cache.use_second_level_cache">true</prop> 
+				<!--配置缓存插件--> 
+				<prop key="hibernate.cache.provider_class">com.googlecode.hibernate.memcached.MemcachedCacheProvider</prop> 
+				<!-- 设置memcache缓存服务器端口-->
+				<prop key="hibernate.memcached.servers">192.168.1.11:11211</prop> 
+				<!-- 否使用结构化的方式缓存对象  -->
+				<prop key="hibernate.cache.use_structured_entries">true</prop> 
+				<!-- 设置二级缓存的前缀名称 --> 
+				<prop key="hibernate.cache.region_prefix">quality.cache.ehcache</prop> 
+				<!--启用查询缓存  --> 
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>cn.com.kxcomm.contractmanage.entity.TbConfigModels</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContract</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractDoc</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractDocType</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractDocVariable
+				</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractTemplates
+				</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractTemplatesDoc
+				</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractTemplatesDocType
+				</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractTemplatesDocVariable
+				</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbDataRecord</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbDataSource</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbModelData</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbProductCategory</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbProductType</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbQuotations</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbQuotationsData</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbRight</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbRightRole</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbRightRoleId</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbRole</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbUser</value>
+				<value>cn.com.kxcomm.contractmanage.entity.TbContractQuotations</value>
+			</list>
+		</property>
+	</bean>
+	<!-- dao config -->
+	<bean id="commonDAO" class="cn.com.kxcomm.contractmanage.dao.CommonDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="configModelsDAO" class="cn.com.kxcomm.contractmanage.dao.ConfigModelsDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractDAO" class="cn.com.kxcomm.contractmanage.dao.ContractDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractDocDAO" class="cn.com.kxcomm.contractmanage.dao.ContractDocDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractDocTypeDAO" class="cn.com.kxcomm.contractmanage.dao.ContractDocTypeDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractDocVariableDAO" class="cn.com.kxcomm.contractmanage.dao.ContractDocVariableDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractTemplatesDAO" class="cn.com.kxcomm.contractmanage.dao.ContractTemplatesDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractTemplatesDocDAO"
+		class="cn.com.kxcomm.contractmanage.dao.ContractTemplatesDocDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractTemplatesDocTypeDAO"
+		class="cn.com.kxcomm.contractmanage.dao.ContractTemplatesDocTypeDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractTemplatesDocVariableDAO"
+		class="cn.com.kxcomm.contractmanage.dao.ContractTemplatesDocVariableDAO"
+		parent="commonDAO"></bean>
+	<bean id="dataRecordDAO" class="cn.com.kxcomm.contractmanage.dao.DataRecordDAO"
+		parent="commonDAO"></bean>
+	<bean id="dataSourceDAO" class="cn.com.kxcomm.contractmanage.dao.DataSourceDAO"
+		parent="commonDAO"></bean>
+	<bean id="modelDataDAO" class="cn.com.kxcomm.contractmanage.dao.ModelDataDAO"
+		parent="commonDAO"></bean>
+	<bean id="productCategoryDAO" class="cn.com.kxcomm.contractmanage.dao.ProductCategoryDAO"
+		parent="commonDAO"></bean>
+	<bean id="productTypeDAO" class="cn.com.kxcomm.contractmanage.dao.ProductTypeDAO"
+		parent="commonDAO"></bean>
+	<bean id="quotationsDAO" class="cn.com.kxcomm.contractmanage.dao.QuotationsDAO"
+		parent="commonDAO"></bean>
+	<bean id="quotationsDataDAO" class="cn.com.kxcomm.contractmanage.dao.QuotationsDataDAO"
+		parent="commonDAO"></bean>
+	<bean id="rightDAO" class="cn.com.kxcomm.contractmanage.dao.RightDAO"
+		parent="commonDAO"></bean>
+	<bean id="rightRoleDAO" class="cn.com.kxcomm.contractmanage.dao.RightRoleDAO"
+		parent="commonDAO"></bean>
+	<bean id="roleDAO" class="cn.com.kxcomm.contractmanage.dao.RoleDAO"
+		parent="commonDAO"></bean>
+	<bean id="userDAO" class="cn.com.kxcomm.contractmanage.dao.UserDAO"
+		parent="commonDAO"></bean>
+	<bean id="contractQuotationsDAO" class="cn.com.kxcomm.contractmanage.dao.ContractQuotationsDAO"
+		parent="commonDAO"></bean>
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- Memcached配置 -->
+	<bean id="memcachedPool" class="com.danga.MemCached.SockIOPool"
+		factory-method="getInstance" init-method="initialize" destroy-method="shutDown">
+		<constructor-arg>
+			<value>neeaMemcachedPool</value>
+		</constructor-arg>
+		<property name="servers">
+			<list>
+				<value>192.168.1.11:11211</value>
+				<!--多服务器 <value> 192.168.54.207:12346 </value> -->
+			</list>
+		</property>
+		<!--多服务器负载均衡 -->
+		<!--<property name="weights"> <value>5,5</value> </property> -->
+		<property name="initConn">
+			<value>20</value>
+		</property>
+		<property name="minConn">
+			<value>10</value>
+		</property>
+		<property name="maxConn">
+			<value>500</value>
+		</property>
+		<property name="maintSleep">
+			<value>30</value>
+		</property>
+		<property name="nagle">
+			<value>false</value>
+		</property>
+		<property name="maxIdle">
+			<value>6000</value>
+		</property>
+		<property name="socketTO">
+			<value>3000</value>
+		</property>
+	</bean>
+	<!--memcached client -->
+	<bean id="memcachedClient" class="com.danga.MemCached.MemCachedClient">
+		<constructor-arg>
+			<value>neeaMemcachedPool</value>
+		</constructor-arg>
+	</bean>
+	<!--memcached 客户端***end -->
+	<!--如果换客户端或者换缓存了，修改这里即可 -->
+	<bean id="cache" class="cn.com.kxcomm.memcached.CacheClientImpl">
+		<property name="cacheProvider" ref="memcachedClient" />
+	</bean>
+
+</beans>

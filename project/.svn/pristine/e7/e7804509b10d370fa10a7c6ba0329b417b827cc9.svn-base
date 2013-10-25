@@ -1,0 +1,5 @@
+1.讲jeecg-v3-simple工程导入myeclipse
+2.创建Mysql数据库jeecg_v3_team
+3.执行数据库脚本jeecgv3_mysql_init.sql
+   目录：jeecg-v3-simple\doc\db\jeecgv3_mysql_init.sql
+4.发布工程，启动项目

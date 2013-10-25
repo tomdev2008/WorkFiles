@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>沃爱彩信</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="http://211.91.224.232:81/static_assets/mobile/css/base.2.0.css" />
+    <!-- 页面样式表 -->
+    
+    <meta name="keywords" content="彩信，联通，沃爱彩信" />
+    <meta name="description" content="沃爱彩信是一个在线编辑修改的明信片！" />
+    <link href="http://211.91.224.232:81/static_assets/mobile/images/webapp-icon.png" rel="apple-touch-icon-precomposed" />
+    <link href="http://211.91.224.232:81/static_assets/mobile/images/webapp-start.png" rel="apple-touch-startup-image" />
+    <link rel="stylesheet" href="http://211.91.224.232:81/static_assets/mobile/css/shouye.css?v=3" />
+</head>
+<body>
+    <!-- 公共页头  -->
+    <header class="header">
+      <h1 class="logo"></h1>
+    </header>
+    <!-- 页面内容块 -->
+    
+<!-- 菜单导航 -->
+<menu class="i-menu">
+    <a href="diy/index.jsp?mdn=15502021957" ><span class="icon-hotel">DIY明信片<label class="f60">DIY明信片描述</label></span></a>
+    <a href="normal/"><span class="icon-flight">模版明信片<label class="f60">模版明信片描述</label></span></a>
+    <a href="dynamic/"><span class="icon-scenery">动态明信片<label class="f60">动态明信片描述</label></span></a>
+    <a href="system/"><span class="icon-member dh">系统设置</span></a>
+</menu>
+<!-- 客户端推广链接 -->
+<div class="app-down">
+  <p><a href="#">下载沃彩信客户端，三倍奖金优惠多</a></p>
+  <a href="#" class="down-icon"><span>Android版</span></a>
+  <a href="#" class="down-icon iphone"><span>iPhone版</span></a>
+</div>
+<div id="fixedDiv">
+</div>
+
+
+    <!-- 公共页脚  -->
+    <footer>
+        <div class="footer_link c_right">
+                <span style="display:block; padding-bottom:5px; color:#fff; line-height:20px;">24小时服务热线：<a href="tel:4007-555-555" style="color:#fff;">4007-555-555</a></span>
+ &copy;2013中国联通
+        </div>
+    </footer>
+    <script src="http://211.91.224.232:81/static_assets/mobile/js/jquery-1.9.1.min.js"></script>
+</body>
+</html>

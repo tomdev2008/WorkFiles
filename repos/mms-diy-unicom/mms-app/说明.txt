@@ -1,0 +1,8 @@
+JqueryMobile是前期开发，后来不采用的框架。
+后期选定Appcan开发套件来开发，详情查看http://www.appcan.cn
+使用Appcan的IDE打开项目
+
+Appcan环境搭建：
+到www.appcan.cn下载
+EncryptWidget_2.2.0.exe(URL加密使用)
+AppCan_SDK_Setup_02.02.0000.exe(IDE和SDK包)

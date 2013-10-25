@@ -1,0 +1,29 @@
+body {
+
+}
+
+a:link{text-decoration:none ; color:white ;}
+a:visited {text-decoration:none ; color:white;}
+a:hover {text-decoration:underline ; color:white;}
+a:active {text-decoration:none ; colorwhite;} 
+body,div,ul,li{margin:0;padding:0;}
+li{list-style-type:none;}
+a{text-decoration:none;}
+
+.masonry_page{ width:100%;  margin:0 auto; }
+.masonry_page .masonry_main{background:#FFF;height: auto; float:left; width:100%;}
+.masonry_page .masonry_main .item{  border:1px solid #EEE;float: left;display: inline;padding: 2px;margin: 10px 0px 0 14px;position: relative;}
+.masonry_page .masonry_main .item img{border: none;}
+
+#imglist { width:95%; overflow:hidden;padding: 5px;margin: 0 auto;} 
+#imglist ul{padding: 0;margin: 0 auto;text-align: center;margin-left:10px;}
+#imglist ul li span { display:block; }
+#imglist ul li {
+list-style-type: none;
+display:inline;
+margin: 0 -2 0 0;
+padding: 2px 5px;
+text-align: center;
+float:left;width:30%;}
+#imglist ul li a{display:block;text-align:center;line-height:28px;}
+#imglist ul li img { width:90%; border:0px solid #b5b5b5; }

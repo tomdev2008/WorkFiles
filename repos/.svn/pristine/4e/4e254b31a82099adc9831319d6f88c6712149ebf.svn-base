@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="stamp" extends="global" namespace="/stamp">
+		<action name="stamp" class="com.unicom.mms.cms.action.web.server.StampAction">
+			<result name="list" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">pageList.*</param>
+			</result>
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">list.*,msg,model.*</param>
+			</result>
+		</action>
+
+	</package>
+</struts>

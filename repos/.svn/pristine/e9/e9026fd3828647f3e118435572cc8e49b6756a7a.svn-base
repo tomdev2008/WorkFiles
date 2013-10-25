@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="contact" extends="global" namespace="/">
+		<action name="contact" class="cn.com.mmsweb.action.web.ContactAction" method="listContract">
+			 <result name="success">/myContacts/myContacts.jsp</result>
+			 <!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="contactGroup" class="cn.com.mmsweb.action.web.ContactAction" method="listContract">
+		<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">listContacts.*,msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="contacts" class="cn.com.mmsweb.action.web.ContactAction" method="findContactById">
+		<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">groupContactsVo.*,msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="findGroups" class="cn.com.mmsweb.action.web.GroupsAction" method="findGroups">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">groupList.*,msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="contactdelete" class="cn.com.mmsweb.action.web.ContactAction" method="deleteById">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="contactsave" class="cn.com.mmsweb.action.web.ContactAction" method="addContact">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			 <!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="contactupdate" class="cn.com.mmsweb.action.web.ContactAction" method="updateContact">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="groupsave" class="cn.com.mmsweb.action.web.ContactAction" method="addGroup">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="groupupdate" class="cn.com.mmsweb.action.web.ContactAction" method="updateGroup">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="groupdel" class="cn.com.mmsweb.action.web.ContactAction" method="delGroups">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+		<action name="getContactsByNotGroups" class="cn.com.mmsweb.action.web.ContactAction" method="getContactsByNotGroups">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">groupList.*,msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+	</package>
+</struts>

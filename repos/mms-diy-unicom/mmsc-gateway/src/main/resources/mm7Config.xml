@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<vasp:MM7Config xmlns:vasp="http://mms.chinamobile.com/mm7ConfigSchema">
+	<!--鉴权方式，1为基本鉴权，2为摘要鉴权，0为不使用鉴权-->
+	<AuthenticationMode>0</AuthenticationMode>
+	<!--设置用户名, 必须为被授权的用户（4位）-->
+	<UserName>106558898</UserName>
+	<!--设置VASP的密码（6位）-->
+	<Password>106558898</Password>
+	<!--设置允许的最大消息的大小（以字节为单位）,目前最大支持128K-->
+	<MaxMessageSize>100000</MaxMessageSize>
+	<!--设置日志路径-->
+	<LogPath>c:/temp</LogPath>
+	<!--设置日志级别，8 个级别(0)No log（1）Severe, （2）Warning, （3）Info, （4）Config, （5）Fine, （6）Finer, (7)Finest-->
+	<logLevel>0</logLevel>
+	<!--设置指定用于对消息编码的字符集（缺省值为UTF-8）-->
+	<Charset>GB2312</Charset>
+	<!--MMSC网关的URL地址-->
+	<mmscURL>/vas</mmscURL>
+	<!-- MMSC网关的IP或主机名列表-->
+	<mmscIP>61.240.233.188:2280</mmscIP>
+	<!--MMSC网关的序号-->
+	<MmscID>673101</MmscID>
+	<!--是否启用SSL加密，false：不加密，true：SSL加密-->
+	<UseSSL>true</UseSSL>
+	<!--应用程序方式的监听IP地址-->
+	<ListenIP>127.0.0.1</ListenIP>
+	<!--应用程序方式的监听端口-->
+	<ListenPort>9008</ListenPort>
+	<BackLog>50</BackLog>
+	<TimeOut>90000</TimeOut>
+	<ReSendCount>2</ReSendCount>
+	<LogNum>100</LogNum>
+	<LogInterval>120</LogInterval>
+	<LogSize>1000</LogSize>
+</vasp:MM7Config>

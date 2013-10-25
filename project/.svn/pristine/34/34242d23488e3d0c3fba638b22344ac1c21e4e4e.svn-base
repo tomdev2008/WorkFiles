@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+    version="1.8">
+    
+    <pre-processing-commands>
+        <delete-jobs-in-group>*</delete-jobs-in-group>  <!-- clear all jobs in scheduler -->
+        <delete-triggers-in-group>*</delete-triggers-in-group> <!-- clear all triggers in scheduler -->
+    </pre-processing-commands>
+    
+    <processing-directives>
+        <overwrite-existing-data>true</overwrite-existing-data>
+        <ignore-duplicates>false</ignore-duplicates> 
+    </processing-directives>
+    
+    <schedule>
+	    <job>
+	        <name>OrderQueryJob</name>
+            <group>e-track-task</group>
+            <description>Updated every hour of normal order tracking information</description>
+	        <job-class>com.etrack.quartz.OrderQueryJob</job-class>
+	    </job>
+	    <trigger>
+	        <cron>
+	            <name>OrderQueryTrigger</name>
+	            <group>e-track-task</group>
+	            <job-name>OrderQueryJob</job-name>
+	            <job-group>e-track-task</job-group>
+	            <misfire-instruction>MISFIRE_INSTRUCTION_DO_NOTHING</misfire-instruction>
+	            <cron-expression>0 * * * * ?</cron-expression>
+                <!-- 秒 分 时 日 月 星期 年 -->
+                <!-- 0 * * * * ? 每分钟 -->
+                <!-- 0 0 */1 * * ? 每小时 -->
+	        </cron>
+	    </trigger>
+	    
+	    <job>
+	        <name>PrintJobList</name>
+            <group>system</group>
+            <description>Print all of the tasks regularly</description>
+	        <job-class>com.etrack.quartz.PrintJobList</job-class>
+	        <job-data-map>
+				<entry>
+					<key>isPrint</key>
+					<value>true</value>
+				</entry>
+			</job-data-map>
+	    </job>
+	    <trigger>
+	        <cron>
+	            <name>PrintJobListTrigger</name>
+	            <group>system</group>
+	            <job-name>PrintJobList</job-name>
+	            <job-group>system</job-group>
+	            <misfire-instruction>MISFIRE_INSTRUCTION_DO_NOTHING</misfire-instruction>
+	            <cron-expression>0 * * * * ?</cron-expression>
+                <!-- 秒 分 时 日 月 星期 年 -->
+                <!-- 0 * * * * ? 每分钟 -->
+                <!-- 0 0 */1 * * ? 每小时 -->
+	        </cron>
+	    </trigger>
+    </schedule>    
+</job-scheduling-data>

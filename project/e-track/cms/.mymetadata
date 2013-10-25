@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="wuliu"
+  id="myeclipse.1339120238748"
+  context-root="/wuliu"
+  j2ee-spec="6.0"
+  archive="wuliu.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

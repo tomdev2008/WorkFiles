@@ -1,0 +1,30 @@
+登录接口
+请求地址：
+http://localhost:8080/jeecg/loginController.do?checkuser&userName=admin&password=123456
+入参：用户帐号，密码
+返回结果：
+{"attributes":null,"msg":"操作成功","obj":"40","success":true}
+
+描述："obj":"40"是用户ID
+
+---------------------------------------------------------------------------------------------------------------------
+
+查询用户的订单
+请求地址：http://localhost:8080/jeecg/tbOrdersController.do?allList&userId=40
+入参：
+String userId,用户ID 不能为空
+String key,关键字 可为空
+Integer page,页码 可为空默认0
+Integer rows 行数 可为空默认1000
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+查询订单跟踪详情
+http://localhost:8080/jeecg/tbOrderTrackingController.do?queryTrack&orderNumber=560796901922
+入参：
+orderNumber订单号
+
+
+
+

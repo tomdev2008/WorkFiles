@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.multipart.maxSize" value="1000000000" />
+	<!-- <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/jsp/" />-->
+	<constant name="struts.custom.i18n.resources" value="exceptionMessages"></constant>
+	<constant name="struts.locale" value="en_utf-8" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<package name="mms" extends="global" namespace="/a">
+	    <action name="normal" class="com.unicom.mms.web.action.TemplateCardAction" />
+	    <action name="user" class="com.unicom.mms.web.action.UserAction" />
+	    <action name="userphoto" class="com.unicom.mms.web.action.UserPhotoAction" />
+	    <action name="photoframe" class="com.unicom.mms.web.action.PhotoFrameAction" />
+	    <action name="decoration" class="com.unicom.mms.web.action.DecorationAction" />
+	    <action name="stamp" class="com.unicom.mms.web.action.StampAction" />
+	    <action name="postmark" class="com.unicom.mms.web.action.PostMarkAction" />
+	    <action name="bgpic" class="com.unicom.mms.web.action.BgPicAction" />
+	</package>
+	<package name="global" extends="json-default">
+	<global-results>
+			<result type="json"  >
+			</result>
+		</global-results>
+	</package>
+	<!-- 设置编码格式 -->
+ <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+</struts>

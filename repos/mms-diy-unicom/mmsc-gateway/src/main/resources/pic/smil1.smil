@@ -1,0 +1,15 @@
+<smil>
+ <head>aaa
+  <meta name="copyright" content="" />
+  <layout>
+   <root-layout/>
+   <region id="Image" top="0" left="0" height="50" width="100" fit="hidden"/>
+  </layout>
+ </head>
+ <body>
+ <par dur="50000ms">
+   <img src="30.gif" region="Image" />
+   <audio src="turan.amr"></audio>
+</par>
+</body>
+</smil>

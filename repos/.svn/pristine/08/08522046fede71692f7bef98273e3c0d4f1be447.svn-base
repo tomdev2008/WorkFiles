@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XML Spy v3.0.7 NT (http://www.xmlspy.com) by Mahui (huawei) -->
+<config>
+    <SGIPConnect>
+       <!-- SMG主机地址 -->
+       <host>211.91.226.106</host>
+       <!-- SMG主机端口号 -->
+       <port>8801</port>
+       <!-- 操作超时时间(单位：秒) -->
+       <transaction-timeout>10</transaction-timeout>
+       <!-- 物理连接读操作超时时间(单位：秒) -->
+       <read-timeout>15</read-timeout>
+       <!--SP…ID(最大为六位字符)-->
+       <source-addr>3028074804</source-addr>
+       <!--双方协商的版本号(大于0，小于256)-->
+       <version>1</version>
+       <!--登陆用户名(最大为六位字符)-->
+       <login-name>106558898</login-name>
+       <!--登陆密码-->
+       <login-pass>106558898</login-pass>
+       <!--是否属于调试状态,true表示属于调试状态，所有的消息被打印输出到屏幕，false表示不属于调试状态，所有的消息不被输出-->
+       <debug>false</debug>
+    </SGIPConnect>    
+</config>

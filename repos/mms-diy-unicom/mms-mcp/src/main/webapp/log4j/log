@@ -1,0 +1,231 @@
+INFO[2013-05-07 13:28:04]Start->main:mms webservice start
+INFO[2013-05-07 13:28:04]AppConfig-><init>:classPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 13:28:04]AppConfig-><init>:rootPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 13:28:04]AppConfig->readConfig:reading... config file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp//config.properties
+INFO[2013-05-07 13:28:04]AppConfig->readConfig:config loaded.
+INFO[2013-05-07 13:28:04]Start->main:webappPath=D:\work\project\myeclipse-new-project\mms-mcp\src\main\webapp,port=8083
+INFO[2013-05-07 13:28:08]ContextLoader->initWebApplicationContext:Root WebApplicationContext: initialization started
+INFO[2013-05-07 13:28:08]XmlWebApplicationContext->prepareRefresh:Refreshing Root WebApplicationContext: startup date [Tue May 07 13:28:08 CST 2013]; root of context hierarchy
+INFO[2013-05-07 13:28:08]XmlBeanDefinitionReader->loadBeanDefinitions:Loading XML bean definitions from URL [file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/WEB-INF/classes/applicationContext-server.xml]
+INFO[2013-05-07 13:28:08]XmlBeanDefinitionReader->loadBeanDefinitions:Loading XML bean definitions from class path resource [META-INF/cxf/cxf.xml]
+INFO[2013-05-07 13:28:08]XmlBeanDefinitionReader->loadBeanDefinitions:Loading XML bean definitions from class path resource [META-INF/cxf/cxf-servlet.xml]
+INFO[2013-05-07 13:28:09]DefaultListableBeanFactory->preInstantiateSingletons:Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@933bcb: defining beans [cxf,org.apache.cxf.bus.spring.BusWiringBeanFactoryPostProcessor,org.apache.cxf.bus.spring.Jsr250BeanPostProcessor,org.apache.cxf.bus.spring.BusExtensionPostProcessor,bgMusicDAO,cardTypeDAO,collectDAO,contactsDAO,decorationDAO,decorationTypeDAO,groupContactsDAO,groupsDAO,hotBillboardDAO,newBillboardDAO,photoFrameDAO,postMarkDAO,sendQueueDAO,serviceLogDAO,stampDAO,templateCardDAO,userPhotoDAO,bgMusicService,cardTypeService,collectService,contactsService,decorationService,decorationTypeService,groupsService,hotBillboardService,newBillboardService,photoFrameService,postMarkService,sendQueueService,serviceLogService,stampService,templateCardService,userPhotoService,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,mcp,org.apache.cxf.jaxws.EndpointImpl---1226869729,dataSource,sessionFactory,transactionManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,allManagerMethod,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0,exceptionLoggerInterceptor,org.springframework.aop.aspectj.AspectJPointcutAdvisor#0]; root of factory hierarchy
+INFO[2013-05-07 13:28:10]Version-><clinit>:Hibernate Annotations 3.3.0.GA
+INFO[2013-05-07 13:28:10]Environment-><clinit>:Hibernate 3.2.1
+INFO[2013-05-07 13:28:10]Environment-><clinit>:hibernate.properties not found
+INFO[2013-05-07 13:28:10]Environment->buildBytecodeProvider:Bytecode provider name : cglib
+INFO[2013-05-07 13:28:10]Environment-><clinit>:using JDK 1.4 java.sql.Timestamp handling
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbBgMusic
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbBgMusic on table tb_bg_music
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbCardType
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbCardType on table tb_card_type
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbCollect
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbCollect on table tb_collect
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbContacts
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbContacts on table tb_contacts
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbDecoration
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbDecoration on table tb_decoration
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbDecorationType
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbDecorationType on table tb_decoration_type
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbGroupContacts
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbGroupContacts on table tb_group_contacts
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbGroups
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbGroups on table tb_groups
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbHotBillboard
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbHotBillboard on table tb_hot_billboard
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbNewBillboard
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbNewBillboard on table tb_new_billboard
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbPhotoFrame
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbPhotoFrame on table tb_photo_frame
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbPostMark
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbPostMark on table tb_postmark
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbSendQueue
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbSendQueue on table tb_send_queue
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbSendRecs
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbSendRecs on table tb_send_recs
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbServices
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbServices on table tb_services
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbStamp
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbStamp on table tb_stamp
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbTemplateCard
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbTemplateCard on table tb_template_card
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbUserOrder
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbUserOrder on table tb_user_order
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbFrameType
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbFrameType on table tb_frame_type
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbUserPhoto
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbUserPhoto on table tb_user_photo
+INFO[2013-05-07 13:28:10]AnnotationBinder->bindClass:Binding entity from annotated class: com.unicom.mms.entity.TbUsers
+INFO[2013-05-07 13:28:10]EntityBinder->bindTable:Bind entity com.unicom.mms.entity.TbUsers on table tb_users
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbCardType.templateCard -> tb_template_card
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbDecorationType.decoration -> tb_decoration
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop1 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop10 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop2 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop3 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop4 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop5 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop6 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop7 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop8 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.hotBillboardTop9 -> tb_hot_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop1 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop10 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop2 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop3 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop4 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop5 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop6 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop7 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop8 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbTemplateCard.newBillBoardTop9 -> tb_new_billboard
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbFrameType.photoFrame -> tb_photo_frame
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbUsers.collect -> tb_collect
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbUsers.contacts -> tb_contacts
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbUsers.groups -> tb_groups
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbUsers.userOrder -> tb_user_order
+INFO[2013-05-07 13:28:10]CollectionBinder->bindOneToManySecondPass:Mapping collection: com.unicom.mms.entity.TbUsers.userPhoto -> tb_user_photo
+INFO[2013-05-07 13:28:10]AnnotationConfiguration->secondPassCompile:Hibernate Validator not found: ignoring
+INFO[2013-05-07 13:28:10]AnnotationSessionFactoryBean->buildSessionFactory:Building new Hibernate SessionFactory
+INFO[2013-05-07 13:28:10]AnnotationConfiguration->secondPassCompile:Hibernate Validator not found: ignoring
+INFO[2013-05-07 13:28:10]ConnectionProviderFactory->newConnectionProvider:Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+WARN[2013-05-07 13:28:10]JDBCExceptionReporter->logExceptions:SQL Error: 0, SQLState: null
+ERROR[2013-05-07 13:28:10]JDBCExceptionReporter->logExceptions:Cannot load JDBC driver class 'com.mysql.jdbc.Driver'
+WARN[2013-05-07 13:28:10]SettingsFactory->buildSettings:Could not obtain connection metadata
+org.apache.commons.dbcp.SQLNestedException: Cannot load JDBC driver class 'com.mysql.jdbc.Driver'
+	at org.apache.commons.dbcp.BasicDataSource.createConnectionFactory(BasicDataSource.java:1429)
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1371)
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044)
+	at org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider.getConnection(LocalDataSourceConnectionProvider.java:81)
+	at org.hibernate.cfg.SettingsFactory.buildSettings(SettingsFactory.java:76)
+	at org.hibernate.cfg.Configuration.buildSettings(Configuration.java:2006)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1289)
+	at org.hibernate.cfg.AnnotationConfiguration.buildSessionFactory(AnnotationConfiguration.java:915)
+	at org.springframework.orm.hibernate3.LocalSessionFactoryBean.newSessionFactory(LocalSessionFactoryBean.java:860)
+	at org.springframework.orm.hibernate3.LocalSessionFactoryBean.buildSessionFactory(LocalSessionFactoryBean.java:779)
+	at org.springframework.orm.hibernate3.AbstractSessionFactoryBean.afterPropertiesSet(AbstractSessionFactoryBean.java:211)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1479)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:518)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:455)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:293)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:290)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:192)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:848)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:790)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:707)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:431)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:409)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:541)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:156)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:84)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:297)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1073)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:455)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:293)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:290)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:192)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:585)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:425)
+	at org.springframework.web.context.ContextLoader.createWebApplicationContext(ContextLoader.java:276)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:197)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:47)
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:672)
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:403)
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:664)
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:239)
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1212)
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:610)
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:453)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:59)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:89)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:262)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:59)
+	at com.unicom.mms.mcp.Start.main(Start.java:34)
+Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.Driver
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:424)
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:377)
+	at org.apache.commons.dbcp.BasicDataSource.createConnectionFactory(BasicDataSource.java:1420)
+	... 52 more
+INFO[2013-05-07 13:28:10]Dialect-><init>:Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+INFO[2013-05-07 13:28:10]TransactionFactoryFactory->buildTransactionFactory:Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+INFO[2013-05-07 13:28:10]TransactionManagerLookupFactory->getTransactionManagerLookup:No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Automatic flush during beforeCompletion(): disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Automatic session close at end of transaction: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Scrollable result sets: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:JDBC3 getGeneratedKeys(): disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Connection release mode: auto
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Maximum outer join fetch depth: 2
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Default batch fetch size: 1
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Generate SQL with comments: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Order SQL updates by primary key: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->createQueryTranslatorFactory:Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+INFO[2013-05-07 13:28:10]ASTQueryTranslatorFactory-><init>:Using ASTQueryTranslatorFactory
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Query language substitutions: {}
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:JPA-QL strict compliance: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Second-level cache: enabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Query cache: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->createCacheProvider:Cache provider: org.hibernate.cache.NoCacheProvider
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Optimize cache for minimal puts: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Structured second-level cache entries: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Echoing all SQL to stdout
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Statistics: enabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Deleted entity synthetic identifier rollback: disabled
+INFO[2013-05-07 13:28:10]SettingsFactory->buildSettings:Default entity-mode: pojo
+INFO[2013-05-07 13:28:11]SessionFactoryImpl-><init>:building session factory
+INFO[2013-05-07 13:28:11]SessionFactoryObjectFactory->addInstance:Not binding factory to JNDI, no JNDI name configured
+INFO[2013-05-07 13:28:11]HibernateTransactionManager->afterPropertiesSet:Using DataSource [org.apache.commons.dbcp.BasicDataSource@19d9c0d] of Hibernate SessionFactory for HibernateTransactionManager
+INFO[2013-05-07 13:28:12]ReflectionServiceFactoryBean->buildServiceFromClass:Creating Service {http://webservice.mcp.mms.unicom.com}McpService from class com.unicom.mms.mcp.webservice.Mcp
+INFO[2013-05-07 13:28:13]ServerImpl->initDestination:Setting the server's publish address to be /McpService
+INFO[2013-05-07 13:28:13]ContextLoader->initWebApplicationContext:Root WebApplicationContext: initialization completed in 4992 ms
+INFO[2013-05-07 13:28:45]Start->main:mms webservice start
+INFO[2013-05-07 13:28:45]AppConfig-><init>:classPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 13:28:45]AppConfig-><init>:rootPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 13:28:45]AppConfig->readConfig:reading... config file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp//config.properties
+INFO[2013-05-07 13:28:45]AppConfig->readConfig:config loaded.
+INFO[2013-05-07 13:28:45]Start->main:webappPath=D:\work\project\myeclipse-new-project\mms-mcp\src\main\webapp,port=8083
+INFO[2013-05-07 13:28:48]ContextLoader->initWebApplicationContext:Root WebApplicationContext: initialization started
+INFO[2013-05-07 13:28:48]XmlWebApplicationContext->prepareRefresh:Refreshing Root WebApplicationContext: startup date [Tue May 07 13:28:48 CST 2013]; root of context hierarchy
+INFO[2013-05-07 13:28:49]XmlBeanDefinitionReader->loadBeanDefinitions:Loading XML bean definitions from URL [file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/WEB-INF/classes/applicationContext-server.xml]
+INFO[2013-05-07 13:28:49]XmlBeanDefinitionReader->loadBeanDefinitions:Loading XML bean definitions from class path resource [META-INF/cxf/cxf.xml]
+INFO[2013-05-07 13:28:49]XmlBeanDefinitionReader->loadBeanDefinitions:Loading XML bean definitions from class path resource [META-INF/cxf/cxf-servlet.xml]
+INFO[2013-05-07 13:29:08]Start->main:mms webservice start
+INFO[2013-05-07 13:29:08]AppConfig-><init>:classPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 13:29:08]AppConfig-><init>:rootPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 13:29:08]AppConfig->readConfig:reading... config file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp//config.properties
+INFO[2013-05-07 13:29:08]AppConfig->readConfig:config loaded.
+INFO[2013-05-07 13:29:08]Start->main:webappPath=D:\work\project\myeclipse-new-project\mms-mcp\src\main\webapp,port=8083
+INFO[2013-05-07 15:44:33]Start->main:mms webservice start
+INFO[2013-05-07 15:44:33]AppConfig-><init>:classPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 15:44:33]AppConfig-><init>:rootPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 15:44:33]AppConfig->readConfig:reading... config file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp//config.properties
+INFO[2013-05-07 15:44:33]AppConfig->readConfig:config loaded.
+INFO[2013-05-07 15:44:33]Start->main:webappPath=/liuxiaomingtest/webapp/,port=8083
+INFO[2013-05-07 15:54:56]Start->main:mms webservice start
+INFO[2013-05-07 15:54:56]AppConfig-><init>:classPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 15:54:56]AppConfig-><init>:rootPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 15:54:56]AppConfig->readConfig:reading... config file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp//config.properties
+INFO[2013-05-07 15:54:56]AppConfig->readConfig:config loaded.
+INFO[2013-05-07 15:54:56]Start->main:webappPath=/liuxiaomingtest/webapp/,port=8083
+INFO[2013-05-07 16:15:32]Start->main:mms webservice start
+INFO[2013-05-07 16:15:32]AppConfig-><init>:classPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 16:15:32]AppConfig-><init>:rootPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 16:15:32]AppConfig->readConfig:reading... config file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp//config.properties
+INFO[2013-05-07 16:15:32]AppConfig->readConfig:config loaded.
+INFO[2013-05-07 16:15:32]Start->main:webappPath=/liuxiaomingtest/webapp/,port=8083
+INFO[2013-05-07 16:15:45]Start->main:mms webservice start
+INFO[2013-05-07 16:15:45]AppConfig-><init>:classPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 16:15:45]AppConfig-><init>:rootPath:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp/
+INFO[2013-05-07 16:15:45]AppConfig->readConfig:reading... config file:/D:/work/project/myeclipse-new-project/mms-mcp/src/main/webapp//config.properties
+INFO[2013-05-07 16:15:45]AppConfig->readConfig:config loaded.
+INFO[2013-05-07 16:15:45]Start->main:webappPath=/liuxiaomingtest/webapp/,port=8083

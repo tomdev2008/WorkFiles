@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-tab.css">
+    <link rel="stylesheet" href="css/ui-img.css">
+    <link rel="stylesheet" href="css/ui-res.css">
+    <link rel="stylesheet" href="css/ui-list.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-color.css">
+    <script src="js/zy_control.js">
+    </script>
+    <script src="js/zy_click.js">
+    </script>
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.masonry.min.js"></script>
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="css/iview.css" />
+	<link rel="stylesheet" href="css/skin 5/style.css" />
+	<script type="text/javascript" src="js/raphael-min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.js"></script>
+	<script src="js/iview.js"></script>
+    <script>
+	</script>
+	<style type="text/css">
+	body{background:#eee;font-size:12px;font-family:"宋体";color:#333p;}
+	body,html,p,ul,li,dl,dt,dd,ol,h1,h2,h3,h4,h5{margin:0;padding:0;}
+	ul li{list-style:none;}
+	a{text-decoration: none;background-color: none}
+	a:hover{text-decoration: none;}
+	#page{ width:100%;  margin:0 auto; }
+	#main{background:#FFF;height: auto; float:left; width:100%;}
+	.item{  border:1px solid #EEE;float: left;display: inline;padding: 2px;margin: 10px 0px 0 14px;position: relative;}
+	.item img{border: none;}
+
+.header_border_20 {
+background: url("pic/bei.png") repeat-x;
+height: 20px;
+display: block;
+}
+</style>
+  </head>
+<body class="um-vp" ontouchstart >
+
+<div id="iview" class="iview">
+			<div data-iview:image="photos/728x90_1.jpg"></div>
+			<div data-iview:image="photos/728x90_2.jpg"></div>
+			<div data-iview:image="photos/728x90_3.jpg"></div>
+		</div>
+<div id='border' class="header_border_20"></div>
+<div id="page">
+  <div id="main">
+<div class="item"><img src="pic/letter/czdlq_small.png"/></div>
+<div class="item"><img src="pic/letter/daodao_11.png"/></div>
+<div class="item"><img src="pic/letter/fanerna_15.png"/></div>
+<div class="item"><img src="pic/letter/fangao_12.png"/></div>
+<div class="item"><img src="pic/letter/fangao_13.png"/></div>
+<div class="item"><img src="pic/letter/fangao_17.png"/></div>
+<div class="item"><img src="pic/letter/keep_01.png"/></div>
+<div class="item"><img src="pic/letter/keep_02.png"/></div>
+<div class="item"><img src="pic/letter/keep_03.png"/></div>
+<div class="item"><img src="pic/letter/keep_04.png"/></div>
+<div class="item"><img src="pic/letter/keep_05.png"/></div>
+<div class="item"><img src="pic/letter/keep_06.png"/></div>
+<div class="item"><img src="pic/letter/keep_07.png"/></div>
+<div class="item"><img src="pic/letter/keep_08.png"/></div>
+<div class="item"><img src="pic/letter/keep_10.png"/></div>
+<div class="item"><img src="pic/letter/keep_11.png"/></div>
+<div class="item"><img src="pic/letter/keep_12.png"/></div>
+<div class="item"><img src="pic/letter/mask_small.png"/></div>
+<div class="item"><img src="pic/letter/postmark_01.png"/></div>
+<div class="item"><img src="pic/letter/postmark_02.png"/></div>
+<div class="item"><img src="pic/letter/postmark_03.png"/></div>
+<div class="item"><img src="pic/letter/postmark_04.png"/></div>
+<div class="item"><img src="pic/letter/postmark_05.png"/></div>
+<div class="item"><img src="pic/letter/postmark_06.png"/></div>
+<div class="item"><img src="pic/letter/postmark_07.png"/></div>
+<div class="item"><img src="pic/letter/qrjkl_small.png"/></div>
+<div class="item"><img src="pic/letter/shengdan14.png"/></div>    
+  </div>
+</div>
+
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type)
+{
+	if(!type){
+		uexWindow.setBounce("0");
+	}
+}
+
+  $(function(){
+    var $container = $('#main');
+    $container.imagesLoaded( function(){
+      $container.masonry({
+        itemSelector : '.item'
+      });
+    });
+	
+		$('#iview').iView({
+					strips: 20,
+					blockCols: 20,
+					blockRows: 3,
+					pauseTime: 7000,
+					pauseOnHover: true,
+					directionNavHoverOpacity: 0,
+					timer: "Bar",
+					timerDiameter: 120,
+					timerPadding: 3,
+					timerStroke: 4,
+					timerBarStroke: 0,
+					timerColor: "#0F0",
+					timerPosition: "bottom-right"
+				});
+				
+  });
+</script>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="collect" extends="global" namespace="/">
+		<action name="collect" class="cn.com.mmsweb.action.web.CollectAction" method="query">
+			 <result name="success">/myShouCang/myShouCang.jsp</result>
+		</action>
+	   		 <action name="collectdelete" class="cn.com.mmsweb.action.web.CollectAction" method="deleteById">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param>
+			</result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+			<action name="myShouCang" class="cn.com.mmsweb.action.web.CollectAction" method="addShouCang">
+			<result type="json"><param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">msg,success</param></result>
+			<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+		</action>
+	</package>
+</struts>

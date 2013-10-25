@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation=" 
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+                http://www.springframework.org/schema/tx
+                http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+                 default-autowire="byName" default-lazy-init="true">
+
+
+	<context:component-scan base-package="cn.com" />
+
+	<!-- database conection config lizlContractTestForMyself-->
+	<bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://211.91.224.230:3306/unicom?characterEncoding=UTF-8" />
+		<property name="username" value="kxcomm" />
+		<property name="password" value="123" />
+		<property name="maxActive" value="50" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="1000" />
+	</bean> 
+	
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+	<!--Hibernate TransactionManager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 配置事务特性，配置add，delete，update开始的方法，事务传播特性为required -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置那些类的方法进行事务管理，当前com.sy.crm.service包中的子包， 类中所有方法需要，还需要参考tx:advice的设置 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="allManagerMethod"
+			expression="execution(* cn.com.mmsweb.service.*Service*.*(..))" />
+		<aop:pointcut id="allActionMethod"
+			expression="execution(public String cn.com.mmsweb.action.web.action..*.*()) and
+			 !execution(* get*()) and !execution(* toString()) and !execution(* ...*$$EnhancerByCGLIB*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
+	</aop:config>
+
+
+
+	<!-- hibernate config -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="baseDataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.connection.release_mode">after_transaction</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">30</prop>
+				<!-- 启用二级缓存 <prop key="hibernate.cache.use_second_level_cache">false</prop> 
+					配置缓存插件 <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop> 
+					启用查询缓存 <prop key="hibernate.cache.use_query_cache">false</prop> <prop key="hibernate.generate_statistics">false</prop> -->
+
+				<!-- 启用二级缓存 -->
+				<!-- <prop key="hibernate.cache.use_second_level_cache">true</prop>
+				配置缓存插件
+				<prop key="hibernate.cache.provider_class">com.googlecode.hibernate.memcached.MemcachedCacheProvider
+				</prop>
+				设置memcache缓存服务器端口
+				<prop key="hibernate.memcached.servers">127.0.0.1:11211</prop>
+				否使用结构化的方式缓存对象
+				<prop key="hibernate.cache.use_structured_entries">true</prop>
+				设置二级缓存的前缀名称
+				<prop key="hibernate.cache.region_prefix">quality.cache.ehcache</prop>
+				启用查询缓存
+				<prop key="hibernate.cache.use_query_cache">true</prop> -->
+
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.unicom.mms.entity.TbBgMusic</value>
+				<value>com.unicom.mms.entity.TbCardType</value>
+				<value>com.unicom.mms.entity.TbCollect</value>
+				<value>com.unicom.mms.entity.TbContacts</value>
+				<value>com.unicom.mms.entity.TbDecoration</value>
+				<value>com.unicom.mms.entity.TbDecorationType</value>
+				<value>com.unicom.mms.entity.TbGroupContacts</value>
+				<value>com.unicom.mms.entity.TbGroups</value>
+				<value>com.unicom.mms.entity.TbHotBillboard</value>
+				<value>com.unicom.mms.entity.TbNewBillboard</value>
+				<value>com.unicom.mms.entity.TbPhotoFrame</value>
+				<value>com.unicom.mms.entity.TbPostMark</value>
+				<value>com.unicom.mms.entity.TbSendMmsQueue</value>
+				<value>com.unicom.mms.entity.TbSendedMmsRecs</value>
+				<value>com.unicom.mms.entity.TbServices</value>
+				<value>com.unicom.mms.entity.TbStamp</value>
+				<value>com.unicom.mms.entity.TbTemplateCard</value>
+				<value>com.unicom.mms.entity.TbUserOrder</value>
+				<value>com.unicom.mms.entity.TbUserPhoto</value>
+				<value>com.unicom.mms.entity.TbUsers</value>
+				<value>com.unicom.mms.entity.TbFrameType</value>
+				<value>com.unicom.mms.entity.TbFramePos</value>
+				<value>com.unicom.mms.entity.TbBgPic</value>
+				<value>com.unicom.mms.entity.TbSendSmsQueue</value>
+				<value>com.unicom.mms.entity.TbSendedSmsRecs</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="commonDAO" class="cn.com.mmsweb.dao.CommonDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userDAO" class="cn.com.mmsweb.dao.UserDAO" parent="commonDAO"></bean>
+	<bean id="cardTypeDAO" class="cn.com.mmsweb.dao.CardTypeDAO" parent="commonDAO"></bean>
+	<bean id="templateCardDAO" class="cn.com.mmsweb.dao.TemplateCardDAO" parent="commonDAO"></bean>
+	<bean id="collectDAO" class="cn.com.mmsweb.dao.CollectDAO" parent="commonDAO"></bean>
+	<bean id="sendRecsDAO" class="cn.com.mmsweb.dao.SendRecsDAO" parent="commonDAO"></bean>
+	<bean id="groupContactsDAO" class="cn.com.mmsweb.dao.GroupContactsDAO" parent="commonDAO"></bean>
+	<bean id="groupsDAO" class="cn.com.mmsweb.dao.GroupsDAO" parent="commonDAO"></bean>
+	<bean id="contactDAO" class="cn.com.mmsweb.dao.ContactDAO" parent="commonDAO"></bean>
+	<bean id="bgMusicDAO" class="cn.com.mmsweb.dao.BgMusicDAO" parent="commonDAO"></bean>
+	<bean id="newBillBoardDAO" class="cn.com.mmsweb.dao.NewBillBoardDAO" parent="commonDAO"></bean>
+	<bean id="hotBillBoardDAO" class="cn.com.mmsweb.dao.HotBillBoardDAO" parent="commonDAO"></bean>
+	
+	<bean id="photoFrameDAO" class="cn.com.mmsweb.dao.PhotoFrameDAO" parent="commonDAO"></bean>
+	<bean id="userPhotoDAO" class="cn.com.mmsweb.dao.UserPhotoDAO" parent="commonDAO"></bean>
+	<bean id="postMarkDAO" class="cn.com.mmsweb.dao.PostMarkDAO" parent="commonDAO"></bean>
+	<bean id="stampDAO" class="cn.com.mmsweb.dao.StampDAO" parent="commonDAO"></bean>
+	<bean id="decorationDAO" class="cn.com.mmsweb.dao.DecorationDAO" parent="commonDAO"></bean>
+	<bean id="bgPicDAO" class="cn.com.mmsweb.dao.BgPicDAO" parent="commonDAO"></bean>
+	<bean id="decorationTypeDAO" class="cn.com.mmsweb.dao.DecorationTypeDAO" parent="commonDAO"></bean>
+	<bean id="frameTypeDAO" class="cn.com.mmsweb.dao.FrameTypeDAO" parent="commonDAO"></bean>
+	<bean id="infoDAO" class="cn.com.mmsweb.dao.TextInfoDAO" parent="commonDAO"></bean>
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

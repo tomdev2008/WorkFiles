@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- dao实现类的配置 -->
+	<bean id="commonDAO" class="com.unicom.mms.mcp.common.CommonDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--操作记录 -->
+	<bean id="serviceLogDAO" class="com.unicom.mms.mcp.dao.ServiceLogDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--联系人 -->
+	<bean id="contactsDAO" class="com.unicom.mms.mcp.dao.ContactsDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<!--模板分类 -->
+	<bean id="cardTypeDAO" class="com.unicom.mms.mcp.dao.TbCardType">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>		
+	<!--饰品分类 -->
+	<bean id="decorationTypeDAO" class="com.unicom.mms.mcp.dao.DecorationTypeDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>		
+	
+	
+</beans>

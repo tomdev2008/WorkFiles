@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connection>	
+		<!--on表示长连接，推荐为长连接-->
+		<KeepAlive>on</KeepAlive>
+		<!--最大长连接数量，推荐为30-->
+		<MaxKeepAliveRequests>30</MaxKeepAliveRequests>
+		<!--//接收投递报告最大连接数量。-->
+		<ServerMaxKeepAlive>30</ServerMaxKeepAlive>
+		<!--最小连接数数-->
+		<MinKeepAliveRequests>1</MinKeepAliveRequests>
+		<!--空闲长连接保持的时间，单位：毫秒-->
+		<KeepAliveTimeout>100</KeepAliveTimeout>
+		<!--链路增长步长-->
+		<step>1</step>
+</connection>

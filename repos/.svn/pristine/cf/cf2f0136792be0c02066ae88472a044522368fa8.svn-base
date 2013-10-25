@@ -1,0 +1,8 @@
+#*********************************************#
+#------ application configs     --------------#
+#*********************************************#
+#合同模板文件上传备份存放路径
+webapp_path =D\:\\work\\project\\myeclipse-new-project\\mms-mcp\\src\\main\\webapp
+war_path =D:/work/project/myeclipse-new-project/mms-mcp-new/target/mms-mcp.war
+context_path=/mcp
+port=8083
