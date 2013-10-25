@@ -5,13 +5,14 @@
   <t:datagrid name="tbContractList" fitColumns="true" title="销售合同" actionUrl="tbContractController.do?datagrid" idField="id" fit="true" onClick="contractDetail" queryMode="group">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="合同编号" field="contractNo" query="true"></t:dgCol>
+   <t:dgCol title="内部合同编号" field="contractNumber"></t:dgCol>
+   <t:dgCol title="合同名称" field="contractName" ></t:dgCol>
+   <t:dgCol title="客户名称" field="customer" ></t:dgCol>
    <t:dgCol title="合同金额" field="contractPrice" ></t:dgCol>
-   <t:dgCol title="开票日期" field="billingDate" formatter="yyyy-MM-dd "></t:dgCol>
-   <t:dgCol title="到货款回款日期" field="daohuoPaymentDate" formatter="yyyy-MM-dd "></t:dgCol>
-   <t:dgCol title="初验款回款日期" field="chuyanPaymentDate" formatter="yyyy-MM-dd "></t:dgCol>
-   <t:dgCol title="终验款回款日期" field="zhongyanPaymentDate" formatter="yyyy-MM-dd "></t:dgCol>
-   <t:dgCol title="合同归档日期" field="contractFilingDate" formatter="yyyy-MM-dd "></t:dgCol>
-   <t:dgCol title="合同签订日期" field="contractSigningDate" formatter="yyyy-MM-dd "></t:dgCol>
+   <t:dgCol title="负责人" field="creatorId" ></t:dgCol>
+   <t:dgCol title="合同签订日期" field="contractDate" ></t:dgCol>
+   <t:dgCol title="已回款金额" field="backMoney" ></t:dgCol>
+   <t:dgCol title="未回款金额" field="unbackMoney" ></t:dgCol>
    <t:dgCol title="备注" field="remark" ></t:dgCol>
   
    <t:dgToolBar title="录入" icon="icon-add" url="tbContractController.do?addorupdate" funname="add"  ></t:dgToolBar>
@@ -21,17 +22,17 @@
   </t:datagrid>
   </div>
   
-  <div region="south"  style="height:200px;overflow: hidden;" split="true" border="false">
+<!--   <div region="south"  style="height:200px;overflow: hidden;" split="true" border="false">
 	<div class="easyui-panel" title="产品信息" style="padding:1px;" fit="true" border="false" id="contractDetailpanel">
 		
   	</div>
-  </div>
+  </div> -->
  </div>
 <script type="text/javascript">
- function contractDetail(rowIndex, rowData)
+/*  function contractDetail(rowIndex, rowData)
  {
 	 $('#contractDetailpanel').panel("refresh", "tbContractController.do?contractDetail&id="+rowData.id);
- }
+ } */
  /*
  $(function() {
 		$('#tbContractList').datagrid({

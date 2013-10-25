@@ -3,6 +3,8 @@ package jeecg.kxcomm.service.impl.contactm;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.geom.Arc2D.Double;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 import jeecg.kxcomm.service.contactm.TbContractServiceI;
+import jeecg.kxcomm.vo.contactm.TbContractVo;
+import jeecg.kxcomm.vo.contactm.TbQuotationsVo;
 
 import org.hibernate.SQLQuery;
 import org.jeecgframework.core.common.hibernate.qbc.HqlQuery;
@@ -28,9 +32,9 @@ import jeecg.kxcomm.entity.hrm.TbOrgenEntity;
 @Transactional
 public class TbContractServiceImpl extends CommonServiceImpl implements TbContractServiceI {
 
-	@Override
+/*	@Override
 	public void addMain(TbContractEntity tbContract,
-	        List<TbOrderEntity> tbOrderList){
+	        List<TbOrderEntity> tbOrderList){*/
 //			//保存主信息
 //			this.save(tbContract);
 //		
@@ -41,9 +45,9 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 //				this.save(tbOrder);
 //			}
 		//保存主信息
-		this.save(tbContract);
+/*		this.save(tbContract);
 
-		/**保存-销售订单*/
+		*//**保存-销售订单*//*
 		for(TbOrderEntity tbOrder:tbOrderList){
 			System.out.println(tbOrder.getId());
 			String hql = "from TbOrderEntity where 1 = 1 AND kxOrderNo = ?  and  finalClient=?";
@@ -55,8 +59,8 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 			}
 		}
 	}
-
-	@Override
+*/
+/*	@Override
 	public void updateMain(TbContractEntity tbContract, List<TbOrderEntity> tbOrderList) {
 		//保存订单主信息
 		this.saveOrUpdate(tbContract);
@@ -84,9 +88,9 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 			this.updateEntitie(t.get(0));
 		}
 		
-	}
+	}*/
 
-	@Override
+/*	@Override
 	public void delMain(TbContractEntity tbContract) {
 		//===================================================================================
 		//获取参数
@@ -101,11 +105,11 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 	    }
 	  //删除主表信息
 	  	this.delete(tbContract);
-	}
+	}*/
 
 	@Override
 	public PageList getPageList(HqlQuery hqlQuery, boolean b,
-			TbContractEntity tbContract, String contractNo) {
+			TbContractVo tbContract, String contractNo) {
 		StringBuffer whereSql = new StringBuffer();
 		
 		if(null != contractNo   && !"".equals(contractNo)  ){
@@ -114,10 +118,15 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 		
 		//主干sql
 		StringBuffer hql = new StringBuffer();
-		hql.append(" select a.id,a.contract_no,a.contract_price,a.billing_date,a.daohuo_payment_date," +
-				"a.chuyan_payment_date,a.zhongyan_payment_date,a.contract_filing_date,a.contract_signing_date,a.remark ");
-		hql.append(" from tb_contract a where 1=1 ");
+		hql.append(" SELECT SUM(b.receive_money) as bsum,tt.ct,tt.aname,tt.cname,tt.adata,tt.ano,tt.anumber,tt.aremark,tt.aid "); 
+		hql.append(" FROM (SELECT a.contract_no ano,a.contract_number anumber,a.contract_date adata,a.remark aremark,"+
+				"a.contract_total_price ct,a.id aid,a.contract_name aname,c.company_name cname");
+		hql.append(" FROM tb_contract a,tb_project p,tb_customer c,t_s_user u ");
+		hql.append(" WHERE a.creator_id=u.id AND a.project_id=p.project_id AND p.customer=c.customer_id");
 		hql.append(whereSql.toString());
+		hql.append(")tt ");
+		hql.append(" LEFT JOIN tb_contract_receive_money b ON tt.aid=b.contract_id ");
+		
 		
 		hqlQuery.setQueryString(hql.toString());
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -132,54 +141,75 @@ public class TbContractServiceImpl extends CommonServiceImpl implements TbContra
 		query.setFirstResult(offset);
 		query.setMaxResults(hqlQuery.getPageSize());
 	 	List list= query.list();
-		List<TbContractEntity> volist = new ArrayList<TbContractEntity>();
+		List<TbContractVo> volist = new ArrayList<TbContractVo>();
 		Object[]  obj = new Object[volist.size()];
 		for (int i = 0; i < list.size(); i++) {
 			obj = (Object[]) list.get(i);
-			TbContractEntity vo = new TbContractEntity();
-			vo.setId(""+obj[0]);
-			vo.setContractNo(""+obj[1]);
-			vo.setContractPrice(""+obj[2]);
-			SimpleDateFormat a=new SimpleDateFormat("yyyy-MM-dd");
-			
-			try {
-				Date d1 = null;
-				Date d2 = null;
-				Date d3 = null;
-				Date d4 = null;
-				Date d5 = null;
-				Date d6 = null;
-				if(obj[3]!=null){
-					 d1 = a.parse(""+obj[3]);
-				}
-				if(obj[4]!=null){
-					 d2=a.parse(""+obj[4]);
-				}
-				if(obj[5]!=null){
-					 d3=a.parse(""+obj[5]);
-				}
-				if(obj[6]!=null){
-					 d4=a.parse(""+obj[6]);
-				}
-				
-				if(obj[7]!=null){
-					 d5=a.parse(""+obj[7]);
-				}
-				if(obj[8]!=null){
-					 d6=a.parse(""+obj[8]);
-				}
-				vo.setBillingDate(d1);
-				vo.setDaohuoPaymentDate(d2);
-				vo.setChuyanPaymentDate(d3);
-				vo.setZhongyanPaymentDate(d4);
-				vo.setContractFilingDate(d5);
-				vo.setContractSigningDate(d6);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			vo.setRemark(""+obj[9]);
+			TbContractVo vo = new TbContractVo();
+			vo.setBackMoney(obj[0]==null?"0.0":""+obj[0]);
+			vo.setContractPrice(obj[1]==null?"0.0":""+obj[1]);
+			vo.setContractName(obj[2]==null?"":""+obj[2]);
+			vo.setCustomer(obj[3]==null?"":""+obj[3]);
+			vo.setContractDate(obj[4]==null?"":""+obj[4]);
+			vo.setContractNo(obj[5]==null?"":""+obj[5]);
+			vo.setContractNumber(obj[6]==null?"":""+obj[6]);
+			vo.setRemark(obj[7]==null?"":""+obj[7]);
+			vo.setId(obj[8]==null?"":""+obj[8]);
+			double a=java.lang.Double.parseDouble(obj[1]==null?"0.0":""+obj[1]);
+			double c=java.lang.Double.parseDouble(obj[0]==null?"0.0":""+obj[0]);
+			double un=a-c;
+			vo.setUnbackMoney(""+un);
 			volist.add(vo);
+		}
+		return new PageList(hqlQuery, volist, offset, curPageNO, allCounts);
+	}
+
+	/**
+	 * 获取报价表
+	 */
+	@Override
+	public PageList getQuotationsList(HqlQuery hqlQuery, boolean b,
+			TbQuotationsVo quotationsVo) {
+		StringBuffer whereSql = new StringBuffer();
+		
+		//主干sql
+		StringBuffer hql = new StringBuffer();
+		hql.append(" select t1.quotations_id tqid,t3.title ttitle,sum(t2.after_discount_now_price*t1.quantity) as after_discount_now_price,sum(t2.after_discount_price*t1.quantity) as after_discount_price,"+
+				"sum(t2.catalog_total_price*t1.quantity) as catalog_total_price,sum(t2.total_price*t1.quantity) as total_price,t3.create_time ttime ");
+		hql.append(" from tb_quotations_data t1,tb_config_models t2,tb_quotations t3 ");
+		hql.append("  where t1.config_models_id=t2.id AND t3.id=t1.quotations_id AND t3.status=1 ");
+		hql.append(" AND t3.id not in (select quotations_id from tb_contract_quotations)");
+		hql.append(" group by t1.quotations_id ");
+		
+		
+		hqlQuery.setQueryString(hql.toString());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("1", 1);
+		hqlQuery.setMap(map);
+		hqlQuery.setClass1(TbQuotationsVo.class);
+		
+		SQLQuery query = getSession().createSQLQuery(hqlQuery.getQueryString());
+		int allCounts = query.list().size();
+		int curPageNO = hqlQuery.getCurPage();
+		int offset = PagerUtil.getOffset(allCounts, curPageNO, hqlQuery.getPageSize());
+		query.setFirstResult(offset);
+		query.setMaxResults(hqlQuery.getPageSize());
+	 	List list= query.list();
+		List<TbQuotationsVo> volist = new ArrayList<TbQuotationsVo>();
+		Object[]  obj = new Object[volist.size()];
+		for (int i = 0; i < list.size(); i++) {
+			NumberFormat nf = NumberFormat.getNumberInstance();
+			nf.setMaximumFractionDigits(2);
+			obj = (Object[]) list.get(i);
+			TbQuotationsVo vo = new TbQuotationsVo();
+		     vo.setId(obj[0]==null?"":""+obj[0]);
+		     vo.setQuotationName(obj[1]==null?"":""+obj[1]);
+		     vo.setNowPrice(obj[2]==null?"0.0":""+obj[2]);
+		     vo.setAfterPrice(obj[3]==null?"0.0":""+obj[3]);
+		     vo.setCatalogTotalPrice(obj[4]==null?"0.0":""+obj[4]);
+		     vo.setTotalPrice(obj[5]==null?"0.0":""+obj[5]);
+		     vo.setCreateTime(obj[6]==null?"":""+obj[6]);
+			 volist.add(vo);
 		}
 		return new PageList(hqlQuery, volist, offset, curPageNO, allCounts);
 	}

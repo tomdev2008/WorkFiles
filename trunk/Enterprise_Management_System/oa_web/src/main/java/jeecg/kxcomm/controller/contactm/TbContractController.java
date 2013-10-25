@@ -31,6 +31,8 @@ import jeecg.kxcomm.entity.contactm.TbContractEntity;
 import jeecg.kxcomm.entity.contactm.TbOrderDetailEntity;
 import jeecg.kxcomm.page.contactm.TbContractPage;
 import jeecg.kxcomm.service.contactm.TbContractServiceI;
+import jeecg.kxcomm.vo.contactm.TbContractVo;
+import jeecg.kxcomm.vo.contactm.TbQuotationsVo;
 import jeecg.kxcomm.entity.contactm.TbOrderEntity;
 import jeecg.kxcomm.entity.hrm.TbCheckingInstanceEntity;
 /**   
@@ -84,7 +86,7 @@ public class TbContractController extends BaseController {
 	 */
 
 	@RequestMapping(params = "datagrid")
-	public void datagrid(TbContractEntity tbContract,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+	public void datagrid(TbContractVo tbContract,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(TbContractEntity.class, dataGrid);
 		
 //		//查询条件组装器
@@ -120,11 +122,11 @@ public class TbContractController extends BaseController {
 	@ResponseBody
 	public AjaxJson del(TbContractEntity tbContract, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		tbContract = systemService.getEntity(TbContractEntity.class, tbContract.getId());
+	/*	tbContract = systemService.getEntity(TbContractEntity.class, tbContract.getId());
 		message = "删除成功";
 		tbContractService.delMain(tbContract);
 		systemService.addLog(message, Globals.Log_Type_DEL, Globals.Log_Leavel_INFO);
-		
+		*/
 		j.setMsg(message);
 		return j;
 	}
@@ -140,7 +142,7 @@ public class TbContractController extends BaseController {
 	@ResponseBody
 	public AjaxJson save(TbContractEntity tbContract,TbContractPage tbContractPage, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
-		List<TbOrderEntity> tbOrderList =  tbContractPage.getTbOrderList();
+	/*	List<TbOrderEntity> tbOrderList =  tbContractPage.getTbOrderList();
 		for(TbOrderEntity e:tbOrderList){
 			if(e.getKxOrderNo()==null ||"".equals(e.getKxOrderNo())){
 				j.setMsg("请输入正确的康讯订单号");
@@ -166,7 +168,7 @@ public class TbContractController extends BaseController {
 				systemService.addLog(message, Globals.Log_Type_INSERT, Globals.Log_Leavel_INFO);
 			}
 			
-		}
+		}*/
 		j.setMsg(message);
 		return j;
 	}
@@ -183,6 +185,35 @@ public class TbContractController extends BaseController {
 			req.setAttribute("tbContractPage", tbContract);
 		}
 		return new ModelAndView("jeecg/kxcomm/contactm/tbContract");
+	}
+	
+	/**
+	 * easyui AJAX请求数据
+	 * 查询报价表
+	 * @param request
+	 * @param response
+	 * @param dataGrid
+	 * @param user
+	 */
+
+	@RequestMapping(params = "quotations")
+	public void getQuotations(TbQuotationsVo quotationsVo,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
+	//	CriteriaQuery cq = new CriteriaQuery(TbContractEntity.class, dataGrid);
+		
+		
+		HqlQuery hqlQuery = new HqlQuery("quotationsVo.do?datagrid");
+		hqlQuery.setCurPage(dataGrid.getPage());
+		hqlQuery.setPageSize(dataGrid.getRows());
+		hqlQuery.setDataGrid(dataGrid);
+		PageList pagelist = this.tbContractService.getQuotationsList(hqlQuery, true,quotationsVo);
+//		for(int d = 0; d < pagelist.getResultList().size(); d++) {
+//			((TbCheckingInstanceEntity) pagelist.getResultList().get(d)).setEmpName(ctBegin+","+ctEnd);
+//		}
+		dataGrid.setPage(pagelist.getCurPageNO());
+		dataGrid.setTotal(pagelist.getCount());
+		dataGrid.setReaults(pagelist.getResultList());
+		TagUtil.datagrid(response, dataGrid);
+		
 	}
 	
 	

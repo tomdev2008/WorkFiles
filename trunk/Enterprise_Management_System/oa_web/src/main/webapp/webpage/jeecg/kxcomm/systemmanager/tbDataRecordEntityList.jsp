@@ -22,9 +22,9 @@
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" ></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" ></t:dgCol>
-			   <t:dgCol title="第一年保修复" field="firstyear" ></t:dgCol>
-			   <t:dgCol title="第二年保修费" field="secondyear" ></t:dgCol>
-			   <t:dgCol title="第三年保修费" field="thirdyear" ></t:dgCol>
+			   <t:dgCol title="第一年保修期费用" field="firstyear" ></t:dgCol>
+			   <t:dgCol title="第二年保修期费用" field="secondyear" ></t:dgCol>
+			   <t:dgCol title="第三年保修期费用" field="thirdyear" ></t:dgCol>
 			   <t:dgCol title="合计" field="totalPrice" width="70"></t:dgCol>
 			   <t:dgCol title="备注" field="remark" ></t:dgCol>
 			</t:datagrid>
@@ -50,9 +50,9 @@
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" ></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" ></t:dgCol>
-			   <t:dgCol title="第一年保修复" field="firstyear" ></t:dgCol>
-			   <t:dgCol title="第二年保修费" field="secondyear" ></t:dgCol>
-			   <t:dgCol title="第三年保修费" field="thirdyear" ></t:dgCol>
+			   <t:dgCol title="第一年保修期费用" field="firstyear" ></t:dgCol>
+			   <t:dgCol title="第二年保修期费用" field="secondyear" ></t:dgCol>
+			   <t:dgCol title="第三年保修期费用" field="thirdyear" ></t:dgCol>
 			   <t:dgCol title="合计" field="totalPrice" width="70"></t:dgCol>
 			   <t:dgCol title="备注" field="remark" ></t:dgCol>
 		  </t:datagrid>
@@ -78,9 +78,9 @@
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" ></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" ></t:dgCol>
-			   <t:dgCol title="第一年保修复" field="firstyear" ></t:dgCol>
-			   <t:dgCol title="第二年保修费" field="secondyear" ></t:dgCol>
-			   <t:dgCol title="第三年保修费" field="thirdyear" ></t:dgCol>
+			   <t:dgCol title="第一年保修期费用" field="firstyear" ></t:dgCol>
+			   <t:dgCol title="第二年保修期费用" field="secondyear" ></t:dgCol>
+			   <t:dgCol title="第三年保修期费用" field="thirdyear" ></t:dgCol>
 			   <t:dgCol title="合计" field="totalPrice" width="70"></t:dgCol>
 			   <t:dgCol title="备注" field="remark" ></t:dgCol>
 		  </t:datagrid>

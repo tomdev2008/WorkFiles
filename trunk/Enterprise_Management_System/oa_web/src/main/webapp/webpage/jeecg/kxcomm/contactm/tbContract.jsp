@@ -5,7 +5,15 @@
  <head>
   <title>销售合同</title>
   <t:base type="jquery,easyui,tools,DatePicker"></t:base>
-  
+    <style type="text/css">
+          #formobj{
+                  height: 65%;
+                  min-height:300px;
+                  overflow-y:auto;
+                  overflow-x:auto;
+            min-width:800px;
+          }
+  </style>
   <script type="text/javascript">
   //初始化下标
 	function resetTrNum(tableId) {
@@ -51,102 +59,147 @@
 			<input id="id" name="id" type="hidden" value="${tbContractPage.id }">
 			<table cellpadding="0" cellspacing="1" class="formtable">
 			<tr>
+					<td align="right">
+						<label class="Validform_label">
+							合同名称:
+						</label>
+					</td>
+					<td class="value">
+						<input class="inputxt" style="width: 200px" id="docname" name="docname" datatype="s1-20"
+							   value="${tbContractTemplatesDocPage.docname}">
+						<span class="Validform_checktip"></span>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							合同类型:
+						</label>
+					</td>
+					<td class="value" colspan="3">
+						<select id="bvariable" style="width: 200px"  name="bvariable"  datatype="*">
+					        <option value="1">正式合同</option>
+					        <option value="2">临时合同</option>
+				      	</select>
+					</td>
+			</tr>
+			<tr>
 			<td align="right"><label class="Validform_label" >合同编号:</label></td>
-			<td class="value">
+			<td class="value" >
 			<c:if test="${tbContractPage.contractNo!=null }">
-			<input onblur="check()" nullmsg="请填写合同编号" errormsg="contrac格式不对" class="inputxt" id="contractNo" name="contractNo" datatype="*"
+			<input onblur="check()" style="width: 200px" nullmsg="请填写合同编号" errormsg="contrac格式不对" class="inputxt" id="contractNo" name="contractNo" datatype="*"
 									   value="${tbContractPage.contractNo}" readonly="readonly">
 								<span class="Validform_checktip"></span>
 			</c:if>
 			<c:if test="${tbContractPage.contractNo==null }">
-				<input onblur="check()" nullmsg="请填写合同编号" errormsg="contrac格式不对" class="inputxt" id="contractNo" name="contractNo" datatype="*"
+				<input onblur="check()" style="width: 200px" nullmsg="请填写合同编号" errormsg="contrac格式不对" class="inputxt" id="contractNo" name="contractNo" datatype="*"
 									   value="${tbContractPage.contractNo}">
 								<span class="Validform_checktip"></span>
 			</c:if>
 			</td>
-			<td align="right"><label class="Validform_label">合同金额:</label></td>
-			<td class="value">
-				<input nullmsg="请填写合同金额" errormsg="contrac格式不对" class="inputxt" id="contractPrice" name="contractPrice" datatype="*"
-									   value="${tbContractPage.contractPrice}">
-								<span class="Validform_checktip"></span>
-			</td>
+			<td align="right">
+						<label class="Validform_label">
+							合同内部编号:
+						</label>
+					</td>
+					<td class="value" >
+						<input class="inputxt" style="width: 200px" id="docname" name="docname" datatype="s1-20"
+							   value="${tbContractTemplatesDocPage.docname}">
+						<span class="Validform_checktip"></span>
+					</td>
 			</tr>
-			<tr>
-			<td align="right"><label class="Validform_label">开票日期:</label></td>
-			<td class="value">
-				<input nullmsg="请填写billing" errormsg="billing格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="billingDate" name="billingDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.billingDate}' type="date" pattern="yyyy-MM-dd"/>">
-								<span class="Validform_checktip"></span>
-			</td>
-			<td align="right"><label class="Validform_label">到货款回款日期:</label></td>
-			<td class="value">
-				<input nullmsg="请填写daohuoP" errormsg="daohuoP格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="daohuoPaymentDate" name="daohuoPaymentDate" ignore="ignore"
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							项目名称:
+						</label>
+					</td>
+					<td class="value">
+						<select id="project" style="width: 200px"  name="project.id" >
+					       <c:forEach items="${tbCustomerList}" var="customer">
+					        <option value="${customer.id}" >
+					         ${customer.companyName}
+					        </option>
+					       </c:forEach>
+				      	</select>
+					</td>
+					<td align="right">
+						<label class="Validform_label">
+							比例:
+						</label>
+					</td>
+					<td class="value">
+						<select id="customer" style="width: 200px"  name="customer.id" >
+					        <option value="1" >
+					        80% 10% 10%
+					        </option>
+					           <option value="2" >
+					        70% 20% 10%
+					        </option>
+				      	</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							发票类型:
+						</label>
+					</td>
+					<td class="value">
+						<select id="customer" style="width: 200px"  name="customer.id" >
+					        <option value="1" >
+					        增值税专用发票
+					        </option>
+					           <option value="2" >
+					       增值税普通发票
+					        </option>
+				      	</select>
+					</td>
+					<td align="right">
+					<label class="Validform_label">合同签订日期:</label></td>
+			       <td class="value">
+				  <input class="Wdate" style="width: 200px" onClick="WdatePicker()" id="daohuoPaymentDate" name="daohuoPaymentDate" ignore="ignore"
 									     value="<fmt:formatDate value='${tbContractPage.daohuoPaymentDate}' type="date" pattern="yyyy-MM-dd"/>">
 								<span class="Validform_checktip"></span>
-			</td>
-			</tr>
-			<tr>
-			<td align="right"><label class="Validform_label">初验款回款日期:</label></td>
-			<td class="value">
-				<input nullmsg="请填写chuyanP" errormsg="chuyanP格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="chuyanPaymentDate" name="chuyanPaymentDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.chuyanPaymentDate}' type="date" pattern="yyyy-MM-dd"/>">
-								<span class="Validform_checktip"></span>
-			</td>
-			<td align="right"><label class="Validform_label">终验款回款日期:</label></td>
-			<td class="value">
-				<input nullmsg="请填写zhongya" errormsg="zhongya格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="zhongyanPaymentDate" name="zhongyanPaymentDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.zhongyanPaymentDate}' type="date" pattern="yyyy-MM-dd"/>">
-								<span class="Validform_checktip"></span>
-			</td>
-			</tr>
-			<tr>
-			<td align="right"><label class="Validform_label">合同归档日期:</label></td>
-			<td class="value">
-				<input nullmsg="请填写contrac" errormsg="contrac格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractFilingDate" name="contractFilingDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.contractFilingDate}' type="date" pattern="yyyy-MM-dd"/>">
-								<span class="Validform_checktip"></span>
-			</td>
-			<td align="right"><label class="Validform_label">合同签订日期:</label></td>
-			<td class="value">
-				<input nullmsg="请填写contrac" errormsg="contrac格式不对" class="Wdate" onClick="WdatePicker()"  style="width: 150px" id="contractSigningDate" name="contractSigningDate" ignore="ignore"
-									     value="<fmt:formatDate value='${tbContractPage.contractSigningDate}' type="date" pattern="yyyy-MM-dd"/>">
-								<span class="Validform_checktip"></span>
-			</td>
-			</tr>
-			<tr>
-			<td align="right"><label class="Validform_label">备注:</label></td>
-			<td class="value" colspan="3">
-				<textarea style="width:90%;" nullmsg="请填写remark" errormsg="remark格式不对" id="remark" name="remark" ignore="ignore">${tbContractPage.remark}</textarea>
-				<!--  <input nullmsg="请填写contrac" errormsg="contrac格式不对" class="inputxt" id="remark" name="remark" ignore="ignore"
-									   value="${tbContractPage.remark}">-->
-								<span class="Validform_checktip"></span>
-			</td>
-			
-			</tr>
-			</table>
-			<div style="width: auto;height: 200px;">
-				<%-- 增加一个div，用于调节页面大小，否则默认太小 --%>
-				<div style="width:690px;height:1px;"></div>
-				<t:tabs id="tt" iframe="false" tabPosition="top" fit="false">
-				 <t:tab href="tbContractController.do?tbOrderList&id=${tbContractPage.id}" icon="icon-search" title="销售订单" id="tbOrder"></t:tab>
-				</t:tabs>
+			   </td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							备注:
+						</label>
+					</td>
+					<td class="value" colspan="3">
+					<textarea style="width:60%;" id="description" name="description"  datatype="s0-50">${tbProjectEntityPage.description}</textarea>
+						<span class="Validform_checktip"></span>
+					</td>
+				</tr>
+				</table>
+		<div id="myTabs" class="easyui-tabs" style="height:30px;">
+				<div title="报价表" ></div>
 			</div>
-			</t:formvalid>
-			<!-- 添加 产品明细 模版 -->
-		<table style="display:none">
-		<tbody id="add_tbOrder_table_template">
-			<tr >
-			 <td align="center"><input style="width:20px;" type="checkbox" name="ck"/></td>
-				  <td align="left"><input name="tbOrderList[#index#].kxOrderNo" maxlength="16" onblur="getOrder(this)" type="text" style="width:120px;"></td>
-				  <td align="left"><input name="tbOrderList[#index#].projectName" id="dd" maxlength="16" type="text" style="width:120px;"></td>
-				  
-				  <td align="left"><input name="tbOrderList[#index#].client" maxlength="16" type="text" style="width:120px;"></td>
-				  <td align="left"><input name="tbOrderList[#index#].finalClient" maxlength="16" type="text" style="width:120px;"></td>
-				  <td align="left"><input name="tbOrderList[#index#].payment" maxlength="33" type="text" style="width:120px;"></td>
-				  <td align="left"><input name="tbOrderList[#index#].principal" maxlength="16" type="text" style="width:120px;"></td>
-				  <td align="left"><input name="tbOrderList[#index#].totalPrice" maxlength="16" type="text" style="width:120px;"></td>
-				  <td align="left"><input name="tbOrderList[#index#].remark" maxlength="85" type="text" style="width:120px;"></td>
-			</tr>
-		 </tbody>
-		</table>
+			<div  style="width: 800px;height: 300px;overflow-y:scroll;overflow-x:scroll;">
+			 <t:datagrid name="tbContractList11" pagination="false" fitColumns="true" title="销售合同" actionUrl="tbContractController.do?quotations" checkbox="true" idField="id" fit="true" onClick="contractDetail" queryMode="group">
+			    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
+  			    <t:dgCol title="报价表名称" field="quotationName" query="true"></t:dgCol>
+   			    <t:dgCol title="目录合价(元)" field="catalogTotalPrice"></t:dgCol>
+   				<t:dgCol title="折扣后价格(元)" field="afterPrice" ></t:dgCol>
+   				<t:dgCol title="折扣后现场价(元)" field="nowPrice" ></t:dgCol>
+   				<t:dgCol title="创建时间" field="createTime" ></t:dgCol>
+   				<t:dgCol title="合计" field="totalPrice" ></t:dgCol>
+			 </t:datagrid>
+	<!-- 		<table id="checkstabel">
+			<input id="hiddenids" name="ids" style="display: none;" >
+			<tr bgcolor="#E6E6E6">
+				  <td align="center" bgcolor="#EEEEEE">序号</td>
+				    <td></td>
+				  <td align="center" bgcolor="#EEEEEE">报价表名</td>
+				  <td align="center" bgcolor="#EEEEEE">目录合价(元)</td>
+				  <td align="center" bgcolor="#EEEEEE">折扣后价格(元)</td>
+				  <td align="center" bgcolor="#EEEEEE">折扣后现场价(元)</td>
+				   <td align="center" bgcolor="#EEEEEE">创建时间</td>
+				  <td align="center" bgcolor="#EEEEEE">合计(元)</td>
+				 
+	     </tr>		
+		</table> -->
+		</div>
+		</t:formvalid>
  </body>
