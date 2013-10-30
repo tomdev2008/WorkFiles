@@ -1,0 +1,10 @@
+/*创建表空间*/
+create tablespace system_center_namespace
+datafile 'data2.dbf'
+size 50m autoextend on;
+
+/*创建用户*/
+create user sys_center identified by 123456 default tablespace system_center_namespace;
+
+/*给用户付权限*/
+grant connect,dba,resource to sys_center;
