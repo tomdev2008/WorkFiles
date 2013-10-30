@@ -1,0 +1,11 @@
+#*********************************************#
+#------ application configs     --------------#
+#*********************************************#
+#域用户登陆名
+username=administrator
+#域用户登陆密码
+password=Root-admin
+#hyper主机地址
+hyperIp=192.168.7.50
+#通过命令调用powerShell脚本的输出路径,结尾必须加上斜杠
+psOutPath=E:\\powerShell\\result\\

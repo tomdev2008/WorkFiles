@@ -1,0 +1,18 @@
+1、修改添加虚拟机的powershell脚本。
+$VHD = Get-SCVirtualHardDisk -VMMServer "syscen102.syscen95.com" | where { $_.Name -eq "08-clean.vhd" -and $_.LibraryServer -eq "syscen60.syscen95.com"}
+
+$VMHost = Get-SCVMHost | where {$_.Name -match "syscen60.syscen95.com"}
+
+$HWProfile = Get-SCHardwareProfile | where {$_.Name -match "hardwarepf"}
+
+New-SCVirtualMachine -Name "VM1" -Description "New Virtual Machine by vmm script" -MemoryMB 4096 –CPUCount 2 -VirtualHardDisk $VHD -VMHost $VMHost -Path "D:\Hyper-V\" -HardwareProfile $HWProfile
+当$VHD,$VMHost,$HWProfile三个参数不为空的时候才能创建虚拟机，否则提示参数错误，创建失败。
+
+2、资源同步，目前需要同步以下数据，需要整理以下同步的powershell脚本：
+	一、虚拟机宿主机服务器同步。
+	二、lib服务器同步。
+	三、lib库中的VHDX同步。
+	四、硬件配置文件同步。
+
+
+3、网络。同一台宿主服务器上的虚拟机配置的网络能够相互连接。

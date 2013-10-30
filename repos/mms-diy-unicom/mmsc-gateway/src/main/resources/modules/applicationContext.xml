@@ -17,5 +17,5 @@
                  default-autowire="byName" default-lazy-init="true">
 
 <import resource="activemq-spring.xml"/>
-
+<import resource="memcached-spring.xml"/>
 </beans>

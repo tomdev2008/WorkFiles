@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Class-Path: system_center_share.jar mail-1.4.jar activation-1.1.jar co
+ mmons-configuration-1.6.jar commons-collections-3.2.jar commons-lang-
+ 2.1.jar commons-logging-1.0.3.jar commons-digester-1.6.jar commons-be
+ anutils-1.8.0.jar commons-beanutils-core-1.8.0.jar commons-lang3-3.1.
+ jar log4j-1.2.15.jar jms-1.1.jar jmxtools-1.2.1.jar jmxri-1.2.1.jar c
+ ommons-dbcp-1.3.jar commons-pool-1.5.4.jar mysql-connector-java-5.0.5
+ .jar sybase-1.0.jar ibatis-2.3.4.726.jar quartz-1.6.0.jar javassist-3
+ .12.1.GA.jar json-lib-2.4-jdk15.jar ezmorph-1.0.6.jar slf4j-log4j12-1
+ .6.1.jar slf4j-api-1.6.1.jar gson-2.2.2.jar spring-2.5.5.jar spring-s
+ ecurity-core-3.0.5.RELEASE.jar struts2-core-2.3.15.1.jar xwork-core-2
+ .3.15.1.jar commons-lang3-3.1.jar ognl-3.0.6.jar asm-3.3.jar asm-comm
+ ons-3.3.jar asm-tree-3.3.jar freemarker-2.3.19.jar commons-fileupload
+ -1.3.jar commons-io-2.0.1.jar struts2-spring-plugin-2.3.15.1.jar spri
+ ng-beans-3.0.5.RELEASE.jar spring-core-3.0.5.RELEASE.jar spring-asm-3
+ .0.5.RELEASE.jar spring-context-3.0.5.RELEASE.jar spring-aop-3.0.5.RE
+ LEASE.jar aopalliance-1.0.jar spring-expression-3.0.5.RELEASE.jar spr
+ ing-web-3.0.5.RELEASE.jar struts2-json-plugin-2.3.15.1.jar xwork-core
+ -2.3.15.1.jar standard-1.1.2.jar persistence-api-1.0.jar freemarker-2
+ .3.19.jar commons-validator-1.3.1.jar xml-apis-1.0.b2.jar jsonplugin-
+ 0.32.jar nutz-1.a.28-jdk6.jar cglib-nodep-2.1_3.jar commons-net-2.0.j
+ ar aspectjweaver-1.5.2a.jar dbunit-2.2.3.jar junit-addons-1.4.jar xer
+ cesImpl-2.6.2.jar xmlParserAPIs-2.6.2.jar poi-2.5.1-final-20040804.ja
+ r slf4j-nop-1.4.3.jar jstl-1.1.2.jar htmlparser-1.0.jar jta-1.1.jar p
+ agination-core-1.2-SNAPSHOT.jar jsch-0.1.49.jar commons-email-1.3.1.j
+ ar
+
