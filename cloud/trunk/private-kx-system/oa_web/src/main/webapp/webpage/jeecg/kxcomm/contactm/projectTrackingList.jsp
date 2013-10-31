@@ -40,6 +40,7 @@
  }
  
  function exportProjectTracking(rowIndex, rowData){
+	 tip('请稍等,正在导出中');
 	 $.ajax({
 	    	url:'tbPurchaseController.do?projectTrackingExport' , // 可以获取数据的接口
 	    	dataType:"json",

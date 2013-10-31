@@ -166,6 +166,7 @@ public class TbQuotationsController extends BaseController {
 			tbQuotations.setCreateTime(new Date());
 			TSUser user= ResourceUtil.getSessionUserName();
 			tbQuotations.setCreatorId(user);
+			tbQuotations.setStatus("1");
 			tbQuotationsService.save(tbQuotations);
 			
 			HttpSession session =  request.getSession();

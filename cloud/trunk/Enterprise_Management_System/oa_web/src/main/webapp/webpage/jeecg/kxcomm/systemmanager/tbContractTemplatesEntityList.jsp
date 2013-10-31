@@ -5,7 +5,7 @@
   <t:datagrid name="tbContractTemplatesEntityList" title="合同模板" actionUrl="tbContractTemplatesEntityController.do?datagrid" idField="id" fit="true" onClick="detail">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="名称" field="name" ></t:dgCol>
-   <t:dgCol title="状态" field="status" replace="审核中_0,未审核_1,销售审核通过_2,销售审核未通过_3,财务审核通过_4,财务审核未通过_5,经理审核通过_6,经理审核未通过_7"></t:dgCol>
+   <t:dgCol title="状态" field="status" replace="审核中_0,未审核_1,区域经理审核通过_2,区域经理审核未通过_3,法律人员审核通过_4,法律人员审核未通过_5,副经理审核通过_6,副经理审核未通过_7,经理审核通过_8,经理审核未通过_9"></t:dgCol>
    <t:dgCol title="创建时间" field="createTime" formatter="yyyy-MM-dd hh:mm:ss"></t:dgCol>
 <%--    <t:dgCol title="操作" field="opt" width="100"></t:dgCol> --%>
 <%--    <t:dgDelOpt title="删除" url="tbContractTemplatesEntityController.do?del&id={id}&status={status}" /> --%>

@@ -112,10 +112,9 @@ public class TbPurchaseController extends BaseController {
 	@RequestMapping(params = "projectTrackingDatagrid")
 	public void projectTrackingDatagrid(TbPurchaseEntity tbPurchase,HttpServletRequest request, HttpServletResponse response, DataGrid dataGrid) {
 		CriteriaQuery cq = new CriteriaQuery(TbPurchaseEntity.class, dataGrid);
-		cq.createAlias("tbOrderDetail", "tbOrderDetail");	
-		cq.createAlias("tbOrderDetail.tbOrder", "tbOrder");
-		cq.createAlias("tbOrderDetail.tbOrder.tbContract", "tbContract");
-		
+		boolean addtbOrderDetail = false;
+		boolean addtbOrder = false;
+		boolean addtbContract = false;
 		String area = request.getParameter("area");
 		if(area!=null && !"".equals(area)){
 			cq.like("area", "%"+area+"%");
@@ -125,30 +124,40 @@ public class TbPurchaseController extends BaseController {
 		if(tbOrderDetail_price!=null && !"".equals(tbOrderDetail_price)){
 			cq.like("tbOrderDetail.price", "%"+tbOrderDetail_price+"%");
 			cq.add();
+			addtbOrderDetail=true;
+			addtbOrderDetail = true;
 		}
 		String tbOrderDetail_tbOrder_principal = request.getParameter("tbOrderDetail_tbOrder_principal");
 		if(tbOrderDetail_tbOrder_principal!=null && !"".equals(tbOrderDetail_tbOrder_principal)){
 			cq.like("tbOrder.principal", "%"+tbOrderDetail_tbOrder_principal+"%");
 			cq.add();
+			addtbOrderDetail=true;
+			addtbOrder = true;
 		}
 		String tbOrderDetail_tbOrder_kxOrderNo = request.getParameter("tbOrderDetail_tbOrder_kxOrderNo");
 		if(tbOrderDetail_tbOrder_kxOrderNo!=null && !"".equals(tbOrderDetail_tbOrder_kxOrderNo)){
 			cq.like("tbOrder.kxOrderNo","%"+ tbOrderDetail_tbOrder_kxOrderNo+"%");
 			cq.add();
+			addtbOrderDetail=true;
+			addtbOrder = true;
 		}
 		
 		String tbOrderDetail_tbOrder_finalClient = request.getParameter("tbOrderDetail_tbOrder_finalClient");
 		if(tbOrderDetail_tbOrder_finalClient!=null && !"".equals(tbOrderDetail_tbOrder_finalClient)){
 			cq.like("tbOrder.finalClient", "%"+tbOrderDetail_tbOrder_finalClient+"%");
 			cq.add();
+			addtbOrderDetail=true;
+			addtbOrder = true;
 		}
 		
 		String tbOrderDetail_tbOrder_projectName = request.getParameter("tbOrderDetail_tbOrder_projectName");
 		if(tbOrderDetail_tbOrder_projectName!=null && !"".equals(tbOrderDetail_tbOrder_projectName)){
 			cq.like("tbOrder.projectName","%"+ tbOrderDetail_tbOrder_projectName+"%");
 			cq.add();
+			addtbOrderDetail=true;
+			addtbOrder = true;
 		}
-/*		
+/*		//有错误，还没解决
 		String placeOrderDate = request.getParameter("placeOrderDate");
 		if(placeOrderDate!=null && !"".equals(placeOrderDate)){
 			Date date =CommonUtil.toDate(placeOrderDate, "yyyy-mm-dd");
@@ -167,6 +176,18 @@ public class TbPurchaseController extends BaseController {
 		if(tbOrderDetail_tbOrder_tbContract_contractNo!=null && !"".equals(tbOrderDetail_tbOrder_tbContract_contractNo)){
 			cq.like("tbContract.contractNo","%"+ tbOrderDetail_tbOrder_tbContract_contractNo+"%");
 			cq.add();
+			addtbOrderDetail=true;
+			addtbOrder=true;
+			addtbContract = true;
+		}
+		if(addtbOrderDetail){
+			cq.createAlias("tbOrderDetail", "tbOrderDetail");	
+		}
+		if(addtbOrder){
+			cq.createAlias("tbOrderDetail.tbOrder", "tbOrder");
+		}
+		if(addtbContract){
+			cq.createAlias("tbOrderDetail.tbOrder.tbContract", "tbContract");
 		}
 		
 		org.jeecgframework.core.extend.hqlsearch.HqlGenerateUtil.installHql(cq, tbPurchase);

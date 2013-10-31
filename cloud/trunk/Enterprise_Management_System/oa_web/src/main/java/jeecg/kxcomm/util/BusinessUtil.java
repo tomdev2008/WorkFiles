@@ -68,4 +68,19 @@ public class BusinessUtil {
 	public static final String TO_PURCHASE = "待采购"; //待采购
 	public static final String PURCHASE_ING = "采购中"; //采购中
 	public static final String END_PURCHASE = "已采购"; //已采购
+	
+	/********************************OA审核状态start*********************************/
+	//审核中_0,未审核_1,销售区域经理审核通过(采购主管)_2,销售区域经理审核未通过(采购主管)_3,法律人员审核通过_4,法律人员审核未通过_5,
+	//副经理审核通过_6,副经理审核未通过_7,经理审核通过_8,经理审核未通过_9
+	public static final String OA_ADUITING = "0";
+	public static final String OA_NOADUIT = "1";
+	public static final String OA_SALEMANAGERADUIT = "2";
+	public static final String OA_SALEMANAGERNOADUIT = "3";
+	public static final String OA_LAWADUIT = "4";
+	public static final String OA_LAWNOADUIT = "5";
+	public static final String OA_SECONDMANAGERADUIT = "6";
+	public static final String OA_SECONDMANAGERNOADUIT = "7";
+	public static final String OA_MANAGERADUIT = "8";
+	public static final String OA_MANAGERNOADUIT = "9";
+	/********************************OA审核状态end**********************************/
 }

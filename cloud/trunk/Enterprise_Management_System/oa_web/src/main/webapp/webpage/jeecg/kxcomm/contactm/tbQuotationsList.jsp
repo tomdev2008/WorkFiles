@@ -6,12 +6,13 @@
   <t:datagrid  name="tbQuotationsList" title="报价表" actionUrl="tbQuotationsController.do?datagrid" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
    <t:dgCol title="路径" field="downUrl" hidden="false"></t:dgCol>
+   <t:dgCol title="创建时间" field="createTime" hidden="false"></t:dgCol>
    <t:dgCol title="报价表名称" field="quotationName" width="100"></t:dgCol>
    <t:dgCol title="目录合价（元）" field="catalogTotalPrice" width="100"></t:dgCol>
    <t:dgCol title="折扣后价格（元）" field="afterPrice" width="100"></t:dgCol>
    <t:dgCol title="折扣后现场价" field="nowPrice" width="100"></t:dgCol>
    <t:dgCol title="合计" field="totalPrice" width="100"></t:dgCol>
-   <t:dgCol title="状态" field="status" width="100"></t:dgCol>
+   <t:dgCol title="状态" replace="未审核_1" field="status" width="100"></t:dgCol>
    <%--<t:dgCol title="操作" field="opt" width="100"></t:dgCol>
    <t:dgDelOpt title="删除" url="tbQuotationsController.do?del&id={id}" /> --%>
    <t:dgToolBar title="制作报价表" icon="icon-add" url="tbQuotationsController.do?addorupdate" funname="add1"></t:dgToolBar>

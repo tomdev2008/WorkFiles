@@ -34,10 +34,10 @@ public class TbQuotationsServiceImpl extends CommonServiceImpl implements TbQuot
 		StringBuffer hql = new StringBuffer();
 		hql.append(" select q.id,q.create_time,q.down_url,q.quotation_type,q.status,q.title,q.project_id,q.creator_id," +
 						"sum(c.after_discount_now_price),sum(c.after_discount_price),sum(c.catalog_total_price),sum(c.total_price)");
-		hql.append(" from tb_quotations q left join tb_config_models c on q.id=c.quotations_id where 1=1 group by q.id");
+		hql.append(" from tb_quotations q left join tb_config_models c on q.id=c.quotations_id where 1=1 group by q.id order by q.create_time desc");
 		
 				
-		hqlQuery.setQueryString(hql.toString());
+		hqlQuery.setQueryString(hql.toString()); 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("1", 1);
 		hqlQuery.setMap(map);

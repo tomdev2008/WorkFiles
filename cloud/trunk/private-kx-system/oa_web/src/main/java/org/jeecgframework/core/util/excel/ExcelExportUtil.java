@@ -225,10 +225,13 @@ public class ExcelExportUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	private static Object getFieldBySomeMethod(List<Method> list, Object t)
-			throws Exception {
-		for (Method m : list) {
-			t = m.invoke(t, new Object[] {});
+	private static Object getFieldBySomeMethod(List<Method> list, Object t) {
+		try{
+			for (Method m : list) {
+				t = m.invoke(t, new Object[] {});
+			}
+		}catch(Exception e){
+			//e.printStackTrace();
 		}
 		return t;
 	}
