@@ -10,23 +10,25 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==1}">
 		  <div class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;width:1390px;height:280px;">
-			   <t:datagrid name="tbDataRecordEntityList${stuts.index }"   actionUrl="${poVal.url}" idField="id" fit="true" onClick="check">
+			   <t:datagrid name="tbDataRecordEntityList${stuts.index }" actionUrl="${poVal.url}" idField="id" fit="true" onClick="check">
 			  <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
-			   <t:dgCol title="产品订货号" field="productorderno" width="70"></t:dgCol>
-			   <t:dgCol title="产品名称" field="productTypeName" width="70"></t:dgCol>
+			   <t:dgCol title="产品订货号" field="productorderno" width="70" ></t:dgCol>
+			   <t:dgCol title="产品名称" field="productTypeName" width="70" ></t:dgCol>
 			   <t:dgCol title="产品描述" field="productdesc" width="80"></t:dgCol>
-			   <t:dgCol title="数量" field="quantity" width="50"></t:dgCol>
-			   <t:dgCol title="目录单价" field="unitprice" width="70"></t:dgCol>
-			   <t:dgCol title="目录合价" field="heJia" width="70"></t:dgCol>
-			   <t:dgCol title="折扣率" field="discountrate" width="70"></t:dgCol>
-			   <t:dgCol title="折扣后价格" field="discountPrice" width="70"></t:dgCol>
-			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
-			   <t:dgCol title="折扣后现场价" field="xianChangJia" width="70"></t:dgCol>
-			   <t:dgCol title="安装服务费" field="installservicecharge" width="70"></t:dgCol>
-			   <t:dgCol title="第一年保修期费用" field="firstyear" width="70"></t:dgCol>
-			   <t:dgCol title="第二年保修期费用" field="secondyear" width="70"></t:dgCol>
-			   <t:dgCol title="第三年保修期费用" field="thirdyear" width="70"></t:dgCol>
-			   <t:dgCol title="合计" field="totalPrice" width="70"></t:dgCol>
+			   <t:dgCol title="数量" field="quantity" width="50" ></t:dgCol>
+			   <t:dgCol title="目录单价" field="unitprice" width="70" ></t:dgCol>
+			   <t:dgCol title="目录合价" field="heJia" width="70" ></t:dgCol>
+			   <t:dgCol title="折扣率" field="discountrate" width="50" ></t:dgCol>
+			   <t:dgCol title="折扣后价格" field="discountPrice" width="70" ></t:dgCol>
+			   
+			   <t:dgCol title="运保及其他费率" field="otherrates" width="70" ></t:dgCol>
+			   <t:dgCol title="折扣后现场价" field="xianChangJia" width="70" ></t:dgCol>
+			   <t:dgCol title="综合汇率" field="exchangeRate" width="50"></t:dgCol>
+			   <t:dgCol title="安装服务费" field="installservicecharge" width="70" ></t:dgCol>
+			   <t:dgCol title="第一年保修期费用" field="firstyear" width="70" ></t:dgCol>
+			   <t:dgCol title="第二年保修期费用" field="secondyear" width="70" ></t:dgCol>
+			   <t:dgCol title="第三年保修期费用" field="thirdyear" width="70" ></t:dgCol>
+			   <t:dgCol title="合计" field="totalPrice" width="70" ></t:dgCol>
 			   <t:dgCol title="备注" field="remark" ></t:dgCol>
 			</t:datagrid>
 		  </div>
@@ -47,10 +49,12 @@
 			   <t:dgCol title="数量" field="quantity" width="50"></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" width="70"></t:dgCol>
 			   <t:dgCol title="目录合价" field="heJia" width="70"></t:dgCol>
-			   <t:dgCol title="折扣率" field="discountrate" width="70"></t:dgCol>
+			   <t:dgCol title="折扣率" field="discountrate" width="50"></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" width="70"></t:dgCol>
+			   
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" width="70"></t:dgCol>
+			   <t:dgCol title="综合汇率" field="exchangeRate" width="50"></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" width="70"></t:dgCol>
 			   <t:dgCol title="第一年保修期费用" field="firstyear" width="70"></t:dgCol>
 			   <t:dgCol title="第二年保修期费用" field="secondyear" width="70"></t:dgCol>
@@ -68,7 +72,7 @@
 		<c:forEach items="${volist}" var="poVal" varStatus="stuts">
 		<c:if test="${poVal.param ==3}">
 		  <div  class="easyui-panel" data-options="collapsible:true" title="${poVal.name}" style="overflow:hidden;width:1390px;height:280px;">
-			   <t:datagrid name="tbDataRecordEntityListTwo${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="check">
+			   <t:datagrid name="tbDataRecordEntityListThree${stuts.index }"  actionUrl="${poVal.url}" idField="id" fit="true" onClick="check">
 			   <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
 			   <t:dgCol title="产品订货号" field="productorderno" width="70"></t:dgCol>
 			   <t:dgCol title="产品名称" field="productTypeName" width="70"></t:dgCol>
@@ -76,10 +80,11 @@
 			   <t:dgCol title="数量" field="quantity" width="50"></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" width="70"></t:dgCol>
 			   <t:dgCol title="目录合价" field="heJia" width="70"></t:dgCol>
-			   <t:dgCol title="折扣率" field="discountrate" width="70"></t:dgCol>
+			   <t:dgCol title="折扣率" field="discountrate" width="50"></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" width="70"></t:dgCol>
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" width="70"></t:dgCol>
+			   <t:dgCol title="综合汇率" field="exchangeRate" width="50"></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" width="70"></t:dgCol>
 			   <t:dgCol title="第一年保修期费用" field="firstyear" width="70"></t:dgCol>
 			   <t:dgCol title="第二年保修期费用" field="secondyear" width="70"></t:dgCol>
@@ -100,7 +105,7 @@
  </div>
  <script type="text/javascript">
   function fanhui(){
-	  $('#detailPanel').panel("refresh", "tbDataSourceEntityController.do?tbDataSourceEntity");
+	  $('#dataSourceDetailPanel').panel("refresh", "tbDataSourceEntityController.do?tbDataSourceEntity");
   }
   
   function check(rowIndex, rowData){

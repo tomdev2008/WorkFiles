@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/context/mytags.jsp"%>
 <style>
-.bgColor{
-  background-color:red;
-}
+.selected{ background:#FFF38F;}
 </style>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;" title="配置单数据">
@@ -50,6 +48,7 @@
   			<td align="center" width="6%">折扣后价格</td>
   			<td align="center" width="6%">运保及其他费率</td>
   			<td align="center" width="6%">折扣后现场价</td>
+  			<td align="center" width="3%">综合汇率</td>
   			<td align="center" width="6%">安装服务费</td>
   			<td align="center" width="6%">第一年保修期费用</td>
   			<td align="center" width="6%">第二年保修期费用</td>
@@ -74,6 +73,7 @@
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.discountedPrice }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.tbDataRecord.otherrates }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.discountedAfterPrice }</label></td>
+	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><input type="text" name="exchangeRate" size="5" value="${poVal.exchangeRate }" /></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.tbDataRecord.installservicecharge }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.firstYear }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.secondYear }</label></td>
@@ -85,7 +85,7 @@
 	  	</c:if>
 	  	</tbody>
   		<tr id="tt" bgcolor="#F5F5F5"  height="30px">
-  			<td colspan="18"></td>
+  			<td colspan="19"></td>
   			
   		</tr>
   		<tr height="30px" >
@@ -102,6 +102,7 @@
   			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;" id="t2" align="center" width="6%">0</td>
   			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;" align="center" width="6%"></td>
   			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;" id="t3" align="center" width="6%">0</td>
+  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;" align="center" width="3%"></td>
   			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;" align="center" width="6%"></td>
   			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;" align="center" width="6%"></td>
   			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;" align="center" width="6%"></td>
@@ -127,10 +128,12 @@
 			   <t:dgCol title="数量" field="quantity" width="50"></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" width="70"></t:dgCol>
 			   <t:dgCol title="目录合价" field="heJia" width="70"></t:dgCol>
-			   <t:dgCol title="折扣率" field="discountrate" width="70"></t:dgCol>
+			   <t:dgCol title="折扣率" field="discountrate" width="50"></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" width="70"></t:dgCol>
+			   
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" width="70"></t:dgCol>
+			   <t:dgCol title="综合汇率" field="exchangeRate" width="50"></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" width="70"></t:dgCol>
 			   <t:dgCol title="第一年保修期费用" field="firstyear" width="70"></t:dgCol>
 			   <t:dgCol title="第二年保修期费用" field="secondyear" width="70"></t:dgCol>
@@ -156,10 +159,12 @@
 			   <t:dgCol title="数量" field="quantity" width="50"></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" width="70"></t:dgCol>
 			   <t:dgCol title="目录合价" field="heJia" width="70"></t:dgCol>
-			   <t:dgCol title="折扣率" field="discountrate" width="70"></t:dgCol>
+			   <t:dgCol title="折扣率" field="discountrate" width="50"></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" width="70"></t:dgCol>
+			   
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" width="70"></t:dgCol>
+			   <t:dgCol title="综合汇率" field="exchangeRate" width="50"></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" width="70"></t:dgCol>
 			   <t:dgCol title="第一年保修期费用" field="firstyear" width="70"></t:dgCol>
 			   <t:dgCol title="第二年保修期费用" field="secondyear" width="70"></t:dgCol>
@@ -185,10 +190,12 @@
 			   <t:dgCol title="数量" field="quantity" width="50"></t:dgCol>
 			   <t:dgCol title="目录单价" field="unitprice" width="70"></t:dgCol>
 			   <t:dgCol title="目录合价" field="heJia" width="70"></t:dgCol>
-			   <t:dgCol title="折扣率" field="discountrate" width="70"></t:dgCol>
+			   <t:dgCol title="折扣率" field="discountrate" width="50"></t:dgCol>
 			   <t:dgCol title="折扣后价格" field="discountPrice" width="70"></t:dgCol>
+			   
 			   <t:dgCol title="运保及其他费率" field="otherrates" width="70"></t:dgCol>
 			   <t:dgCol title="折扣后现场价" field="xianChangJia" width="70"></t:dgCol>
+			   <t:dgCol title="综合汇率" field="exchangeRate" width="50"></t:dgCol>
 			   <t:dgCol title="安装服务费" field="installservicecharge" width="70"></t:dgCol>
 			   <t:dgCol title="第一年保修期费用" field="firstyear" width="70"></t:dgCol>
 			   <t:dgCol title="第二年保修期费用" field="secondyear" width="70"></t:dgCol>
@@ -226,9 +233,9 @@
  				flag=false;
  			}
  		 });
- 		
+ 		checkAll();
  		if(flag){
- 				$('#tb tr:last').after("<tr id="+_len+"  align='center'>"
+ 				$('#tb tr:last').after("<tr  align='center'>"
  	 		 			+"<td bgcolor='#F5F5F5' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;'>"+_len+"</td>"
  	 		 			+"<td style='display:none' id='"+_len+"'>"+rowData.id+"</td>"
  	 		 			+"<td align='center'width='2%'><input type='checkbox' name='box'/> </td>"
@@ -242,6 +249,7 @@
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.discountPrice+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.otherrates+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.xianChangJia+"</label></td>"
+ 	 		 			+"<td width='3%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;'><input type='text' name='exchangeRate' size='6' value='"+rowData.exchangeRate+"' /></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.installservicecharge+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.firstyear+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.secondyear+"</label></td>"
@@ -249,10 +257,9 @@
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.totalPrice+"</label></td>"
  	 		 			+"<td style='display:none' ></td>"
  	 		 			+"</tr>"); 
- 				sum();
- 				checkAll();
- 				
+ 				sum(); 				
  			}
+ 		checkAll();
  		
  	}
  	
@@ -266,6 +273,7 @@
  		var g="";
  		var h="";
  		var j="";
+ 		var k="";
  		var id="";
  		var oid="";
  		var vo="";
@@ -281,13 +289,14 @@
  				c=$(this).children('td').eq(9).children('input').val()+",";
  				d=$(this).children('td').eq(10).text()+",";
  				e=$(this).children('td').eq(12).text()+",";
- 				f=$(this).children('td').eq(14).text()+",";
- 				g=$(this).children('td').eq(15).text()+",";
- 				h=$(this).children('td').eq(16).text()+",";
- 				j=$(this).children('td').eq(17).text()+",";
+ 				f=$(this).children('td').eq(15).text()+",";
+ 				g=$(this).children('td').eq(16).text()+",";
+ 				h=$(this).children('td').eq(17).text()+",";
+ 				j=$(this).children('td').eq(18).text()+",";
+ 				k=$(this).children('td').eq(13).children('input').val()+",";
  				id=$(this).children('td').eq(1).text()+",";
- 				oid=$(this).children('td').eq(18).text()+",";
- 				vo+=a+b+c+d+e+f+g+h+j+id+oid+configId+",";
+ 				oid=$(this).children('td').eq(19).text()+",";
+ 				vo+=a+b+c+d+e+f+g+h+j+id+oid+k+configId+",";
  				
  		 	});	
  		}
@@ -319,11 +328,11 @@
  		heJia = ($(tt.find("td")[7]).text()*1)*quantity;
 		discountPrice = heJia*(1-discountrate);
 		xianChangJia = discountPrice*($(tt.find("td")[11]).text()*1+1);
-		totalPrice = xianChangJia+($(tt.find("td")[13]).text()*1)+($(tt.find("td")[14]).text()*1)+($(tt.find("td")[15]).text()*1)+($(tt.find("td")[16]).text()*1);
+		totalPrice = xianChangJia+($(tt.find("td")[14]).text()*1)+($(tt.find("td")[15]).text()*1)+($(tt.find("td")[16]).text()*1)+($(tt.find("td")[17]).text()*1);
 		$(tt.find("td")[8]).text(heJia.toFixed(4));
 		$(tt.find("td")[10]).text(discountPrice.toFixed(4));
 		$(tt.find("td")[12]).text(xianChangJia.toFixed(4));
-		$(tt.find("td")[17]).text(totalPrice.toFixed(4));
+		$(tt.find("td")[18]).text(totalPrice.toFixed(4));
 		
 		sum();
  	}
@@ -354,11 +363,11 @@
  		heJia = ($(tt.find("td")[7]).text()*1)*quantity;
 		discountPrice = heJia*(1-discountrate);
 		xianChangJia = discountPrice*($(tt.find("td")[11]).text()*1+1);
-		totalPrice = xianChangJia+($(tt.find("td")[13]).text()*1)+($(tt.find("td")[14]).text()*1)+($(tt.find("td")[15]).text()*1)+($(tt.find("td")[16]).text()*1);
+		totalPrice = xianChangJia+($(tt.find("td")[14]).text()*1)+($(tt.find("td")[15]).text()*1)+($(tt.find("td")[16]).text()*1)+($(tt.find("td")[17]).text()*1);
 		$(tt.find("td")[8]).text(heJia.toFixed(4));
 		$(tt.find("td")[10]).text(discountPrice.toFixed(4));
 		$(tt.find("td")[12]).text(xianChangJia.toFixed(4));
-		$(tt.find("td")[17]).text(totalPrice.toFixed(4));
+		$(tt.find("td")[18]).text(totalPrice.toFixed(4));
 		
 		sum();
  	}
@@ -373,7 +382,7 @@
  				heJia += ($(this).children('td').eq(8).text())*1;
  				discountPrice += ($(this).children('td').eq(10).text())*1;
  				xianChangJia += ($(this).children('td').eq(12).text())*1;
- 				totalPrice += ($(this).children('td').eq(17).text())*1;
+ 				totalPrice += ($(this).children('td').eq(18).text())*1;
  		 	});
  		}
  		
@@ -410,36 +419,25 @@
  		
  		$("#checkAll").click(function() {
  			$('[name=box]:checkbox').attr("checked",this.checked);
+ 			$("input[name='box']").each(function(){
+ 	 			if($(this).attr("checked")){
+ 	 				$(this).parent().parent().addClass('selected');
+ 	 			}else{
+ 	 				$(this).parent().parent().removeClass('selected');
+ 	 			}
+ 	 		});
  		});
-
- 		/*$('input[name="box"]').each(function(){
- 			$(this).click(function(){
- 				$("#checkAll").attr("checked",$('input[name="box"]').length == $("input[name='box']:checked").length ? true : false);
- 			});
- 		});*/
- 		$('[name=box]:checkbox').click(function(){
-			//定义一个临时变量，避免重复使用同一个选择器选择页面中的元素，提升程序效率。
+ 		
+ 		$('tbody>tr').click(function() {
+			if ($(this).hasClass('selected')) {
+				$(this).removeClass('selected').find(':checkbox').attr('checked',false);
+			}else{
+				$(this).addClass('selected').find(':checkbox').attr('checked',true);
+			}
 			var $tmp=$('[name=box]:checkbox');
 			//用filter方法筛选出选中的复选框。并直接给CheckedAll赋值。
 			$('#checkAll').attr('checked',$tmp.length==$tmp.filter(':checked').length);
- 		});
+		});
  	}
-	/*function clickByTr(){
-		var i=1;
- 		$("#tb tr").each(function(){
- 			$(this).click(function(){
- 				if($(this).find(":checkbox").attr("checked")){
- 		          	
- 		          	$(this).find(":checkbox").attr("checked",false);
- 		      	}
- 		      	else{
- 		        	
- 		        	$(this).find(":checkbox").attr("checked",true);
- 		      	}
- 			});
- 		});
- 		
- 		
- 	}*/
  	
  </script>

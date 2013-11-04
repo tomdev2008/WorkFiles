@@ -13,29 +13,24 @@
    <t:dgCol title="折扣后现场价" field="afterDiscountNowPrice" ></t:dgCol>
    <t:dgCol title="合计" field="totalPrice" ></t:dgCol>
    
-   
-   
-   <%--<t:dgCol title="操作" field="opt" width="100"></t:dgCol>
-   <t:dgDelOpt title="删除" url="tbConfigModelsController.do?del&id={id}" /> --%>
-   
-   <t:dgToolBar title="查看配置单数据" icon="icon-search" url="tbConfigModelsController.do?detail" funname="detail"></t:dgToolBar>
-   <t:dgToolBar title="返回" icon="icon-back" url="tbQuotationsController.do?tbQuotations" funname="back"></t:dgToolBar>
+   <t:dgToolBar title="查看配置单数据" icon="icon-search" url="tbConfigModelsController.do?checkDetail" funname="checkDetail"></t:dgToolBar>
+   <t:dgToolBar title="返回" icon="icon-back" url="tbQuotationsController.do?tbQuotationsCheck" funname="back"></t:dgToolBar>
   </t:datagrid>
   </div>
  </div>
  <script type="text/javascript">
 
- function detail(title,url, id){
+ function checkDetail(title,url, id){
 	 var rowData = $('#'+id).datagrid('getSelected');
 		if (!rowData) {
 			tip('请选择查看项目');
 			return;
 		}
 	url += '&id='+rowData.id;
-	$('#tt').panel("refresh", url);
+	$('#quotationsCheck').panel("refresh", url);
  }
  function back(title,url, id){
 	 
-	$('#tt').panel("refresh", url);
+	$('#quotationsCheck').panel("refresh", url);
  }
 </script>

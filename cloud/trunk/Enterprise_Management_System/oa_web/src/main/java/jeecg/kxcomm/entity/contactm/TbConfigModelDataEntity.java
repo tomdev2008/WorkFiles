@@ -54,6 +54,8 @@ public class TbConfigModelDataEntity implements java.io.Serializable {
 	private BigDecimal quantity;
 	/**总价*/
 	private java.lang.String totalPrice;
+	/**汇率 */
+	private java.lang.String exchangeRate;
 	
 	/**
 	 *方法: 取得java.lang.String
@@ -252,5 +254,22 @@ public class TbConfigModelDataEntity implements java.io.Serializable {
 	 */
 	public void setTotalPrice(java.lang.String totalPrice){
 		this.totalPrice = totalPrice;
+	}
+	
+	/**
+	 *方法: 取得java.lang.String
+	 *@return: java.lang.String  汇率
+	 */
+	@Column(name ="EXCHANGE_RATE",nullable=true,length=50)
+	public java.lang.String getExchangeRate(){
+		return this.exchangeRate;
+	}
+
+	/**
+	 *方法: 设置java.lang.String
+	 *@param: java.lang.String  汇率
+	 */
+	public void setExchangeRate(java.lang.String exchangeRate){
+		this.exchangeRate = exchangeRate;
 	}
 }

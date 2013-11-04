@@ -39,6 +39,14 @@ public class TbCustomerEntityEntity implements java.io.Serializable {
 	private java.lang.String phone;
 	/**省份*/
 	private TbJobPlaceEntity jobPlaceId = new TbJobPlaceEntity();
+	/**纳税人识别号*/
+	private java.lang.String taxpayerRegistrationNo;
+	/**账户名称*/
+	private java.lang.String accountName;
+	/**账户号码*/
+	private java.lang.String accountNumber;
+	/**开户银行*/
+	private java.lang.String depositBank;
 	
 	/**
 	 *方法: 取得java.lang.String
@@ -169,5 +177,41 @@ public class TbCustomerEntityEntity implements java.io.Serializable {
 
 	public void setJobPlaceId(TbJobPlaceEntity jobPlaceId) {
 		this.jobPlaceId = jobPlaceId;
+	}
+	
+	@Column(name ="taxpayer_registration_no",nullable=true,length=255)
+	public java.lang.String getTaxpayerRegistrationNo(){
+		return this.taxpayerRegistrationNo;
+	}
+
+	public void setTaxpayerRegistrationNo(java.lang.String taxpayerRegistrationNo){
+		this.taxpayerRegistrationNo = taxpayerRegistrationNo;
+	}
+	
+	@Column(name ="account_name",nullable=true,length=255)
+	public java.lang.String getAccountName(){
+		return this.accountName;
+	}
+
+	public void setAccountName(java.lang.String accountName){
+		this.accountName = accountName;
+	}
+	
+	@Column(name ="account_number",nullable=true,length=255)
+	public java.lang.String getAccountNumber(){
+		return this.accountNumber;
+	}
+
+	public void setAccountNumber(java.lang.String accountNumber){
+		this.accountNumber = accountNumber;
+	}
+	
+	@Column(name ="deposit_bank",nullable=true,length=255)
+	public java.lang.String getDepositBank(){
+		return this.depositBank;
+	}
+
+	public void setDepositBank(java.lang.String depositBank){
+		this.depositBank = depositBank;
 	}
 }

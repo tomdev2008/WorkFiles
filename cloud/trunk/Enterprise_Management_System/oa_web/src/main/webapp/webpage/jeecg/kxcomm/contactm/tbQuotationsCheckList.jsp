@@ -18,7 +18,7 @@
    
    <t:dgToolBar title="查看配置" icon="icon-search" url="tbQuotationsController.do?checkDetail" funname="checkDetail"></t:dgToolBar>
    
-   <t:dgToolBar title="下载" icon="icon-print" url="tbQuotationsController.do?download" funname="down"></t:dgToolBar>
+   <%-- <t:dgToolBar title="下载" icon="icon-print" url="tbQuotationsController.do?download" funname="down"></t:dgToolBar>--%>
   </t:datagrid>
   </div>
   </div>
@@ -35,7 +35,7 @@ function check(title,url,id) {
 		}
  }
  
- function down(title,url,id) {
+ /*function down(title,url,id) {
 	 
 	 var rowData = $('#'+id).datagrid('getSelected');
 		if (!rowData) {
@@ -52,7 +52,7 @@ function check(title,url,id) {
 	    }
 	 });
 	 	
- }
+ }*/
  
  function checkDetail(title,url, id){
 	 

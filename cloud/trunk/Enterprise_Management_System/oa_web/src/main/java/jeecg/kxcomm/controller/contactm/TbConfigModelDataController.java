@@ -90,7 +90,14 @@ public class TbConfigModelDataController extends BaseController {
 		CriteriaQuery cq = new CriteriaQuery(TbConfigModelDataEntity.class, dataGrid);
 		
 		String configId = request.getParameter("configId");
-		
+		String tbProductCategoryId = request.getParameter("tbProductCategoryId");
+		if(null!=tbProductCategoryId && !("".equals(tbProductCategoryId))){
+			cq.createAlias("tbDataRecord", "tbDataRecord");
+			cq.createAlias("tbDataRecord.tbProductType", "tbProductType");
+			cq.createAlias("tbDataRecord.tbProductType.tbProductCategory", "tbProductCategory");
+			cq.eq("tbProductCategory.id",tbProductCategoryId);
+			cq.add();
+		}
 		cq.createAlias("tbConfigModels", "tbConfigModels");
 		cq.eq("tbConfigModels.id",configId);
 		cq.add();
@@ -193,7 +200,7 @@ public class TbConfigModelDataController extends BaseController {
 		List<TbConfigModelDataEntity> tbConfigModelDataOldList = systemService.findHql(hql0, tbConfigModels);
 		tbConfigModelDataService.deleteAllEntitie(tbConfigModelDataOldList);
 		
-		for(int i=0;i<primarSouce.length;i=i+12){
+		for(int i=0;i<primarSouce.length;i=i+13){
 			int n=i;
 
 			TbConfigModelDataEntity tbConfigModelData = new TbConfigModelDataEntity();
@@ -208,7 +215,7 @@ public class TbConfigModelDataController extends BaseController {
 			tbConfigModelData.setSecondYear(primarSouce[n+6]);
 			tbConfigModelData.setThirdYear(primarSouce[n+7]);
 			tbConfigModelData.setTotalPrice(primarSouce[n+8]);
-					
+			tbConfigModelData.setExchangeRate(primarSouce[n+11]);		
 			TbDataRecordEntityEntity tbDataRecord = systemService.getEntity(TbDataRecordEntityEntity.class, primarSouce[n+9]);
 			tbConfigModelData.setTbDataRecord(tbDataRecord);
 					
@@ -249,6 +256,19 @@ public class TbConfigModelDataController extends BaseController {
 	    req.setAttribute("quotation",tbConfigModels.getTbQuotations().getId());
 		
 		return new ModelAndView("jeecg/kxcomm/contactm/tbConfigModelsList");
+	}
+	
+	
+	@RequestMapping(params = "checkBack")
+	public ModelAndView checkBack(HttpServletRequest req) {
+		String id = req.getParameter("configId");
+		
+	    TbConfigModelsEntity tbConfigModels = systemService.getEntity(TbConfigModelsEntity.class, id);
+	    //systemService.getEntity(TbQuotationsEntity.class, tbConfigModels.getTbQuotations().getId());
+	   
+	    req.setAttribute("quotation",tbConfigModels.getTbQuotations().getId());
+		
+		return new ModelAndView("jeecg/kxcomm/contactm/tbConfigModelsCheckList");
 	}
 	
 	@RequestMapping(params = "getDiscountRate")

@@ -238,4 +238,20 @@ public class TbConfigModelsController extends BaseController {
 		return new ModelAndView("jeecg/kxcomm/contactm/tbConfigModelDataList");
 	}
 	
+	@RequestMapping(params = "checkDetail")
+	public ModelAndView checkDetail(HttpServletRequest req) {
+		String id = req.getParameter("id");
+		
+		String hql0 = "from TbConfigModelDataEntity where 1 = 1 AND tbConfigModels.id = ? ";
+		List<TbConfigModelDataEntity> tbConfigModelDataList = systemService.findHql(hql0, id);
+		
+	    //TbConfigModelsEntity tbConfigModels = systemService.getEntity(TbConfigModelsEntity.class, id);
+	    
+	    //List<DataBean> volist = tbDataSourceEntityService.listDetailDataRecord(tbConfigModels.getTbDataSource().getId());
+	    req.setAttribute("configId", id);
+		//req.setAttribute("volist", volist);
+		req.setAttribute("tbConfigModelDataPage", tbConfigModelDataList);
+		return new ModelAndView("jeecg/kxcomm/contactm/tbConfigModelDataCheckList");
+	}
+	
 }
