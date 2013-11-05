@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans />
+	
+	<action-mappings>
+	<!--UniformType-->
+		<action path="/listUniformType" parameter="listUniformType" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/createUniformType" parameter="createUniformType" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/editUniformType" parameter="editUniformType" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/saveUniformType" parameter="saveUniformType" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/delUniformType" parameter="delUniformType" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/uniformTree" parameter="uniformTree" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/serarchUniformType" parameter="serarchUniformType" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<!--end-->
+	<!-- Org -->
+		<action path="/listOrg" parameter="listOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/listHistory" parameter="listHistory" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/createOrg" parameter="createOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/editOrg" parameter="editOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/saveOrg" parameter="saveOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/delOrg" parameter="delOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/treeOrg" parameter="treeOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/treeAdminScopeRootOrg" parameter="treeAdminScopeRootOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/treeAdminScopeChildOrg" parameter="treeAdminScopeChildOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/listUUVOrg" parameter="listUUVOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/syncOrg" parameter="syncOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>	
+		<action path="/moveOrg" parameter="moveOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		
+		<action path="/listInvadilOrg" parameter="listInvadilOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		
+		<action path="/resumeOrg" parameter="resumeOrg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		
+		
+		<action path="/invadilOrgReporter" parameter="invadilOrgReporter" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		
+		<action path="/exportInvalidOrgReporter" parameter="exportInvalidOrgReporter" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<action path="/listOrgDuty" parameter="listOrgDuty" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/editOrgDuty" parameter="editOrgDuty" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/saveOrgDuty" parameter="saveOrgDuty" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<!-- end -->
+	
+	<!-- Position -->
+	<action path="/listPosition" parameter="listPosition" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/delPosition" parameter="delPosition" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/createPosition" parameter="createPosition" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/editPosition" parameter="editPosition" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+ 	<action path="/savePosition" parameter="savePosition" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/searchPosition" parameter="searchPosition" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<!-- end -->
+	
+	<!-- User -->
+	<action path="/listUserByOrg" parameter="listUserByOrg" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/createUser" parameter="createUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/editUser" parameter="editUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/saveUser" parameter="saveUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/delUser" parameter="delUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/queryUser" parameter="queryUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/exportUser" parameter="exportUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/exportUserTemplate" parameter="exportUserTemplate" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/implortUser" parameter="implortUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/tip" parameter="tip" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/moveUser" parameter="moveUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/sendMoveRequisition" parameter="sendMoveRequisition" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/listMoveRequisition" parameter="listMoveRequisition" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/findMoveRequisition" parameter="findMoveRequisition" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/doMoveInto" parameter="doMoveInto" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/cancelMoveRequisition" parameter="cancelMoveRequisition" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/listInvadilUsers" parameter="listInvadilUsers" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/resumeUser" parameter="resumeUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/initUser" parameter="initUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/invadilUserReport" parameter="invadilUserReport" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/exportInvadilUserReport" parameter="exportInvadilUserReport" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/batchUpdateUser" parameter="batchUpdateUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/moveRollBack" parameter="moveRollBack" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/moveUserCheckWithPre" parameter="moveUserCheckWithPre" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/findUserForAjax" parameter="findUserForAjax" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/changeLoginUserPwd" parameter="changeLoginUserPwd" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+ 	</action>
+ 	<action path="/setLeaderByOrgs" parameter="setLeaderByOrgs" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/listUserDuty" parameter="listUserDuty" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/editUserDuty" parameter="editUserDuty" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/saveUserDuty" parameter="saveUserDuty" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<!-- end -->
+	
+	<!-- Role -->
+	<action path="/treeRole" parameter="treeRole" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+		<!-- 	地址本树 	-->
+	<action path="/addressTreeRole" parameter="addressTreeRole" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/addressListChildRole" parameter="addressListChildRole" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+		<!-- 	地址本树 	-->
+	<action path="/createRole" parameter="createRole" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/editRole" parameter="editRole" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/deleteRole" parameter="deleteRole" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/saveRole" parameter="saveRole" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/viewRoleResource" parameter="viewRoleResource" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/viewRoleUser" parameter="viewRoleUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/grantResource" parameter="grantResource" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/grantRoleUser" parameter="grantRoleUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/depriveRoleUser" parameter="depriveRoleUser" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/listContorlDomain" parameter="listContorlDomain" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/saveContorlDomain" parameter="saveContorlDomain" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<!-- end -->
+
+	<!-- Group -->
+	<action path="/listGroup" parameter="listGroup" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/createGroup" parameter="createGroup" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/editGroup" parameter="editGroup" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/saveGroup" parameter="saveGroup" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/delGroup" parameter="delGroup" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<action path="/getDetails" parameter="getDetails" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+	</action>
+	<!-- end -->
+	
+	<!-- resource start add by zyf -->
+		<action parameter="deleteFunctionKey" path="/deleteFunctionKey" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="updateFunctionKey" path="/updateFunctionKey" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="createFunctionKey" path="/createFunctionKey" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="editFunctionKey" path="/editFunctionKey" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="createResource" path="/createResource" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="updateResource" path="/updateResource" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="delResource" path="/delResource" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="editResource" path="/editResource" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listResource" path="/listResource" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="getResourceTree" path="/getResourceTree" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="swapResource" path="/swapResource" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="mainHead" path="/mainHead" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- resource end -->
+	
+	<!-- Address start	add by dkm-->
+		<action parameter="org_tree" path="/org_tree" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />	
+		<action parameter="org_select" path="/org_select" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		<action parameter="org_addressTree" path="/org_addressTree" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		<action parameter="orgSelecteForm" path="/orgSelecteForm" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+		<action parameter="orgOptions" path="/orgOptions" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"></action>
+		<action path="/lineTreeForAddress" parameter="lineTreeForAddress" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/uniformPosTreeForAddress" parameter="uniformPosTreeForAddress" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/listInfoUniformType" parameter="listInfoUniformType" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	    <action parameter="org_addressTree_indicator" path="/org_addressTree_indicator" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	    <action parameter="addressSearch" path="/addressSearch" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	<!-- Address start	-->	
+	
+	
+	<!-- log -->
+		<action path="/listLog" parameter="listLog" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/listLogLevels" parameter="listLogLevels" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/updateLogLevels" parameter="updateLogLevels" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/listResourceLevel" parameter="listResourceLevel" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/updateResourceLevel" parameter="updateResourceLevel" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/queryLog" parameter="queryLog" scope="request"
+ 			type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<!-- end -->
+	
+	<!-- authPolicy -->
+		<action path="/createAuthPolicy" parameter="createAuthPolicy" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/getAuthPolicy" parameter="getAuthPolicy" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<!-- end -->
+	<!-- PersonFolder -->
+		<action path="/listPersonFolder" parameter="listPersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/treePersonFolder" parameter="treePersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/createPersonFolder" parameter="createPersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/createPersonFolder2" parameter="createPersonFolder2" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/editPersonFolder" parameter="editPersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/savePersonFolder" parameter="savePersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/delPersonFolder" parameter="delPersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/swapPersonFolder" parameter="swapPersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/movePersonFolder" parameter="movePersonFolder" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<!-- end -->	
+
+	<!-- PersonData -->
+		<action path="/listFolderData" parameter="listFolderData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/createPersonData" parameter="createPersonData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/savePersonData" parameter="savePersonData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/editPersonData" parameter="editPersonData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/swapPersonData" parameter="swapPersonData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/delPersonData" parameter="delPersonData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/movePersonData" parameter="movePersonData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/createFavorite" parameter="createFavorite" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/listAddrFolderData" parameter="listAddrFolderData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/treePersonData" parameter="treePersonData" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<!-- end -->
+	<!-- PersonQuery -->
+		<action path="/listPersonQuery" parameter="listPersonQuery" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/delPersonQuery" parameter="delPersonQuery" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>	
+		<action path="/createPersonQuery" parameter="createPersonQuery" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/editPersonQuery" parameter="editPersonQuery" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>	
+		<action path="/savePersonQuery" parameter="savePersonQuery" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/swapPersonQuery" parameter="swapPersonQuery" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>	
+		<action path="/listPersonQueryByUser" parameter="listPersonQueryByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/viewPersonQuery" parameter="viewPersonQuery" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		
+	<!-- end -->	
+	
+	<!-- logonLog -->
+		<action path="/listLogonLog" parameter="listLogonLog" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/queryLogonLog" parameter="queryLogonLog" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/refreshLogonLogBuffer" parameter="refreshLogonLogBuffer" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<!-- end -->
+	
+	
+	<!-- comment -->
+		<action path="/saveComment" parameter="saveComment" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/listComment" parameter="listComment" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/editComment" parameter="editComment" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/createComment" parameter="createComment" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/deleteComment" parameter="deleteComment" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/getContent" parameter="getContent" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<!-- end -->
+	
+	<!-- comment -->
+		<action path="/evictCache" parameter="evictCache" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+		<action path="/reloadCache" parameter="reloadCache" scope="request"
+	 		type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
+	<!-- end -->
+	</action-mappings>
+	
+</struts-config>

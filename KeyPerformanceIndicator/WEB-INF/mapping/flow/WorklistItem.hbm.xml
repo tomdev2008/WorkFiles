@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.WorklistItem" table="REC_WL_ITEM" where="flg_deleted=0">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="recNodeId" column="rec_node_id" type="string" />
+		<property name="recFlowCode" column="rec_flow_code" type="string" />
+		<property name="batch" column="batch_id" type="string" />
+		<property name="batchName" column="batch_name" type="string" />
+		<property name="groupId" column="group_id" type="string" />
+		<property name="flowCode" column="flow_id" type="string" />
+		<property name="flowName" column="FLOW_NAME" type="string" />
+		<property name="nodeCode" column="NODE_ID" type="string" />	
+		<property name="nodeName" column="NODE_NAME" type="string" />
+		<property name="boId" column="bo_id" type="string" />
+		<property name="boClass" column="bo_class" type="string" />
+		<property name="boName" column="bo_name" type="string" />	
+		<property name="boDelegate" column="bo_delegate" type="string" />
+		<property name="boDelegateType" column="bo_delegate_type" type="int" />
+		<property name="sender" column="sender" type="string" />
+		<property name="senderName" column="sender_name" type="string" />
+		<property name="srcHandler" column="src_handler" type="string" />
+		<property name="srcHandlerName" column="src_handler_name" type="string" />
+		<property name="handler" column="handler" type="string" />
+		<property name="handlerName" column="handler_name" type="string" />
+		<property name="opinion" column="opinion" type="string" />
+		<property name="limitDate" column="limit_date" type="timestamp" />	
+		<property name="genDate" column="CREATE_DATE" type="timestamp" />
+		<property name="dealDate" column="deal_date" type="timestamp" />
+		<property name="compDate" column="comp_date" type="timestamp" />
+		<property name="status" column="status" type="int" />
+		<property name="boStatus" column="bo_status" type="int" />
+		<property name="flgDeleted" column="flg_Deleted" type="int" />
+		<property name="handlerUcId" column="handler_Uc_Id" type="string" />
+		<property name="autoNextFlg" column="autoNextFlg" type="int" />
+		<property name="busiType" column="busi_type" type="string" />
+	</class>
+</hibernate-mapping>

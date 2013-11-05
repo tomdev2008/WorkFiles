@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 这部分是公用的bean，请勿修改该文件 -->
+<beans>
+    <bean id="txProxyTemplate" abstract="true"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="set*">PROPAGATION_REQUIRED</prop>
+                <prop key="del*">PROPAGATION_REQUIRED</prop>
+                <prop key="mod*">PROPAGATION_REQUIRED</prop>
+                <prop key="move*">PROPAGATION_REQUIRED</prop>
+                <prop key="save*">PROPAGATION_REQUIRES_NEW</prop>
+                <prop key="create*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="edit*">PROPAGATION_REQUIRED</prop>
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>
+                <prop key="sort*">PROPAGATION_REQUIRED</prop>
+                <prop key="swap*">PROPAGATION_REQUIRED</prop>
+                <prop key="grant*">PROPAGATION_REQUIRED</prop>
+                <prop key="deprive*">PROPAGATION_REQUIRED</prop>
+                <prop key="actionForm2Vo">PROPAGATION_REQUIRED</prop>                
+                <prop key="bind*">PROPAGATION_REQUIRED</prop>
+                <prop key="unbind*">PROPAGATION_REQUIRED</prop>
+                <prop key="cal*">PROPAGATION_REQUIRED</prop>
+				<prop key="gen*">PROPAGATION_REQUIRED,+ValidateException</prop>
+                <prop key="start*">PROPAGATION_REQUIRED</prop>
+                <prop key="auto*">PROPAGATION_REQUIRED</prop>
+                <prop key="next*">PROPAGATION_REQUIRED</prop>
+                <prop key="archive*">PROPAGATION_REQUIRED</prop>
+                <prop key="deactivate*">PROPAGATION_REQUIRED</prop>
+                <prop key="activate*">PROPAGATION_REQUIRED</prop>
+                <prop key="replace*">PROPAGATION_REQUIRED</prop>
+                <prop key="deepCopy*">PROPAGATION_REQUIRED</prop>
+                <prop key="copy*">PROPAGATION_REQUIRED</prop>
+                <prop key="paste*">PROPAGATION_REQUIRED</prop>
+                <prop key="overwrite*">PROPAGATION_REQUIRED</prop>
+                <prop key="change*">PROPAGATION_REQUIRED</prop>
+                <prop key="check*">PROPAGATION_REQUIRED</prop>
+                <prop key="imp*">PROPAGATION_REQUIRED,-ServiceException</prop>
+                <prop key="bathUpdate*">PROPAGATION_REQUIRED</prop>
+                <prop key="get*">PROPAGATION_REQUIRED</prop>
+                <prop key="modSpreadRead">PROPAGATION_REQUIRED</prop>
+                <prop key="batch*">PROPAGATION_REQUIRED</prop>
+                <prop key="spread">PROPAGATION_REQUIRED</prop>
+                <prop key="dealSeton">PROPAGATION_REQUIRED</prop>
+                <prop key="turn*">PROPAGATION_REQUIRED</prop>
+                <prop key="sync*">PROPAGATION_REQUIRED</prop>
+                <prop key="submit*">PROPAGATION_REQUIRED</prop>
+                <prop key="sleep*">PROPAGATION_REQUIRED</prop>
+                <prop key="wakeup*">PROPAGATION_REQUIRED</prop>
+                <prop key="safeDelete*">PROPAGATION_REQUIRED</prop>
+                <prop key="audit*">PROPAGATION_REQUIRED</prop>
+                <prop key="transfer*">PROPAGATION_REQUIRED</prop>
+                <prop key="import*">PROPAGATION_REQUIRED</prop>
+                <prop key="doSync*">PROPAGATION_REQUIRED</prop>
+                <prop key="switch*">PROPAGATION_REQUIRED</prop>
+                <prop key="send*">PROPAGATION_REQUIRED</prop>
+                <prop key="cancel*">PROPAGATION_REQUIRED</prop>
+                <prop key="resume*">PROPAGATION_REQUIRED</prop>
+                <prop key="archive*">PROPAGATION_REQUIRED</prop>
+                <prop key="init*">PROPAGATION_REQUIRED</prop>
+                <prop key="load*">PROPAGATION_REQUIRED</prop>
+                <prop key="excute*">PROPAGATION_REQUIRED</prop>
+                </props>
+        </property>   
+    </bean>
+	
+	<!-- Service AOP Start -->
+    <bean id="proxyFactoryBean" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames">
+            <list>
+            	<value>sessionAccessInterceptor</value>
+            </list>
+        </property>
+    </bean>    
+	
+    <bean id="InvokeAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+    	<property name="mappedNames">
+    		<list>
+                <value>add*</value>
+                <value>mod*</value>
+            </list>
+    	</property>
+    </bean>
+    
+
+    
+<!-- Service AOP End -->
+
+	<!-- quartz begin -->
+<!--	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+<!--		<property name="triggers">-->
+<!--			<list>-->
+<!--			</list>-->
+<!--		</property>-->
+<!--	</bean>	  -->
+   
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" dependency-check="none">
+        <property name="location">
+            <value>/WEB-INF/spring/jdbc.properties</value>
+        </property>
+    </bean>
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">       
+    <property name="jndiName" value="java:comp/env/jdbc/ccskpi2010"/>       
+	</bean>   
+	
+	<!--
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass"><value>${jdbc.driverClassName}</value></property>
+        <property name="jdbcUrl"><value>${jdbc.url}</value></property>
+        <property name="properties">
+            <props>
+                <prop key="c3p0.acquire_increment">5</prop>
+                <prop key="c3p0.idle_test_period">100</prop>
+                <prop key="c3p0.max_size">100</prop>
+                <prop key="c3p0.max_statements">300</prop>
+                <prop key="c3p0.min_size">10</prop>
+                <prop key="user">${jdbc.username}</prop>
+                <prop key="password">${jdbc.password}</prop>
+            </props>
+        </property>        
+    </bean>-->
+	 
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource"><ref bean="dataSource"/></property>
+        <property name="mappingDirectoryLocations">
+            <list>
+                <value>${hibernate.mappingDirectory}</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>                
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>                
+    			<prop key="hibernate.connection.autocommit">false</prop> 
+                <prop key="hibernate.connection.provider_class">${hibernate.connection.provider_class}</prop>
+                <!-- 
+    			<prop key="hibernate.c3p0.max_size">${hibernate.c3p0.max_size}</prop>
+    			<prop key="hibernate.c3p0.timeout">${hibernate.c3p0.timeout}</prop>
+    			<prop key="hibernate.c3p0.max_statements">${hibernate.c3p0.max_statements}</prop>
+    			<prop key="hibernate.c3p0.idle_test_period">${hibernate.c3p0.idle_test_period}</prop>
+    			<prop key="hibernate.c3p0.acquire_increment">${hibernate.c3p0.acquire_increment}</prop>
+    			<prop key="hibernate.c3p0.validate">${hibernate.c3p0.validate}</prop> 
+    			 -->
+				
+                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+                <prop key="hibernate.cache.provider_configuration_file_resource_path">${configuration_file}</prop>                   
+                <prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>  
+                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>      
+                 <prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
+                <prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+                
+                <prop key="memcached.servers">${memcached.servers}</prop>
+				<prop key="memcached.failover">${memcached.failover}</prop>
+				<prop key="memcached.initConn">${memcached.initConn}</prop>
+				<prop key="memcached.minConn">${memcached.minConn}</prop>
+				<prop key="memcached.maxConn">${memcached.maxConn}</prop>
+				<prop key="memcached.maintSleep">${memcached.maintSleep}</prop>
+				<prop key="memcached.nagle">${memcached.nagle}</prop>
+				<prop key="memcached.socketTO">${memcached.socketTO}</prop>
+				<prop key="memcached.aliveCheck">${memcached.aliveCheck}</prop>
+				<prop key="memcached.[region_name]">${memcached.[region_name]}</prop>
+				
+            </props>
+        </property>
+        <property name="lobHandler">
+			<ref bean="oracleLobHandler" />
+		</property>
+		<!--<property name="collectionCacheStrategies">
+			<props>
+				<prop key="com.shengdai.kpi.indicator.vo.Type.children">nonstrict-read-write</prop>	
+			</props>
+		</property>
+    --></bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory"><ref local="sessionFactory"/></property>
+        <property name="nestedTransactionAllowed"><value>true</value></property>
+    </bean>    
+
+	<!-- 所有dao的parent，这样每个dao就只要设置parent就不用设置sessionFactory -->
+    <bean name="baseDao" abstract="true">
+		<property name="sessionFactory"><ref local="sessionFactory"/></property>
+	</bean>  
+	
+	<bean id="ehcacheDao" class="com.shengdai.kpi.container.EhcacheDao" parent="baseDao" singleton="false" />
+	
+	<!-- 使用spring+hibernate处理oracle BLOB-->
+	<!--for oracle 10g-->
+	<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true"  />
+	
+	<!--<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" />
+	<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" lazy-init="true">
+		<property name="nativeJdbcExtractor">
+			<ref bean="nativeJdbcExtractor" />
+		</property>
+	</bean>
+	
+     
+--></beans>

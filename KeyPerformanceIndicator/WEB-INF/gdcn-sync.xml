@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sync>
+
+	<!-- 需要传递数据的表（目标表与源表及对应字段）
+	<table targetname="sys_org" sourcename="org_corp">
+		<column tname="id" sname="CORPCODE"/>
+		<column tname="UNIFORM_ID" sname=""/>
+		<column tname="PARENT_ID" sname="" />
+		<column tname="NAME" sname="CORPNAME" />
+		<column tname="CODE" sname="" />
+		<column tname="ORG_PROPERTY_NAME" sname="" />
+		<column tname="SATRAP_ID" sname="" />
+		<column tname="SATRAP_NAME" sname="" />
+		<column tname="PERFORMER_ID" sname="" />
+		<column tname="PERFORMER_NAME" sname="" />
+		
+		<column tname="FULL_PATH" sname="" />
+		<column tname="PRIORITY" sname="" defaultValue="10"/>
+		<column tname="FULL_NAME" sname="" />
+		<column tname="LAYER" sname="" defaultValue="1"/>
+		<column tname="ORG_LAYER" sname="" />
+		<column tname="REMARK" sname="" />
+		<column tname="VERSION" sname="" defaultValue="1"/>
+		<column tname="ORIGINAL_ID" sname="" />
+		<column tname="LAST_MOD_DATE" sname="" />
+		<column tname="LAST_MODIFIER" sname="" />
+		<column tname="LAST_MODIFIER_NAME" sname="" />
+			
+		<column tname="DEFAULT_1_ID" sname="" />
+		<column tname="DEFAULT_1_NAME" sname=""/>
+		<column tname="DEFAULT_2_ID" sname="" />
+		<column tname="DEFAULT_2_NAME" sname="" />
+		<column tname="FLG_ACTIVE" sname="FLGDELETED" defaultValue="0"/>
+		<column tname="GLOBAL_PRIORITY" sname="" />
+	</table> -->
+	<table targetname="sys_org" sourcename="org_corp_tree">
+		<column tname="id" sname="ORGBCFL"/>
+		<column tname="UNIFORM_ID" sname=""/>
+		<column tname="PARENT_ID" sname="ORGSCFL" />
+		<column tname="NAME" sname="ORGNAME" />
+		<column tname="CODE" sname="" />
+		<column tname="ORG_PROPERTY_NAME" sname="" />
+		<column tname="SATRAP_ID" sname="" />
+		<column tname="SATRAP_NAME" sname="" />
+		<column tname="PERFORMER_ID" sname="" />
+		<column tname="PERFORMER_NAME" sname="" />
+		
+		<column tname="FULL_PATH" sname="" />
+		<column tname="PRIORITY" sname="SHOWORDER" defaultValue="10"/>
+		<column tname="FULL_NAME" sname="" />
+		<column tname="LAYER" sname="" defaultValue="1"/>
+		<column tname="ORG_LAYER" sname="" />
+		<column tname="REMARK" sname="" />
+		<column tname="VERSION" sname="" defaultValue="1"/>
+		<column tname="ORIGINAL_ID" sname="" />
+		<column tname="LAST_MOD_DATE" sname="" />
+		<column tname="LAST_MODIFIER" sname="" />
+		<column tname="LAST_MODIFIER_NAME" sname="" />
+			
+		<column tname="DEFAULT_1_ID" sname="" />
+		<column tname="DEFAULT_1_NAME" sname=""/>
+		<column tname="DEFAULT_2_ID" sname="" />
+		<column tname="DEFAULT_2_NAME" sname="" />
+		<column tname="FLG_ACTIVE" sname="FLGDELETED" defaultValue="1"/>
+		<column tname="GLOBAL_PRIORITY" sname="" />
+	</table>
+		<table targetname="sys_user" sourcename="org_corp_tree ot,org_person op" where="op.personcode=ot.orgcode">
+		<column tname="id" sname="ot.ORGBCFL"/>
+		<column tname="POSITION_ID" sname=""/>
+		<column tname="ORG_ID" sname="ot.ORGSCFL" />
+		<column tname="PRIORITY" sname="ot.SHOWORDER" />
+		<column tname="USER_INFO_ID" sname="ot.ORGBCFL" />
+		<column tname="ORG_NAME" sname="" />
+		<column tname="POSITION_NAME" sname="" />
+		<column tname="EFFECT_IN_YM" sname="" defaultValue="200801" dataType="java.lang.Integer"/>
+		<column tname="EFFECT_IN_DATE" sname="" defaultValue="2008-1-1 00:00:00" dataType="java.util.Date"/>
+		<column tname="EFFECT_OUT_YM" sname="" defaultValue="999999" dataType="java.lang.Integer"/>
+		
+		<column tname="EFFECT_OUT_DATE" sname="" defaultValue="9999-12-31 00:00:00" dataType="java.util.Date"/>
+		<column tname="FLG_ACTIVE" sname="FLGDELETED" defaultValue="1"/>
+		<column tname="FLG_ACCREDIT" sname="" />
+		<column tname="UUVID" sname="" defaultValue="1"/>
+		<column tname="MODIFIER_NAME" sname="" />
+		<column tname="MODIFIER" sname="" />
+		<column tname="REMARK" sname="" defaultValue="1"/>
+		<column tname="EFFECT_IN_YQ" sname="" defaultValue="200821" dataType="java.lang.Integer"/>
+		<column tname="EFFECT_OUT_YQ" sname="" defaultValue="999999" dataType="java.lang.Integer"/>
+		<column tname="EFFECT_IN_Y" sname="" defaultValue="200800" dataType="java.lang.Integer"/>
+		<column tname="EFFECT_OUT_Y" sname="" defaultValue="999999" dataType="java.lang.Integer"/>
+			
+		<column tname="FLG_DEGREE" sname="" />
+		<column tname="PREVIOUSID" sname=""/>
+		<column tname="PRE_MANAGER_ID" sname="" />
+		<column tname="PRE_MANAGER_NAME" sname="" />
+	</table>
+</sync>

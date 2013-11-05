@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.FlwNodeExt" table="FLW_EXT">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" 
+			column="id" 
+			type="string" 
+			unsaved-value="0"> 
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="paraName" 
+			column="para_name" 
+			type="string"
+		/>
+		<property name="paraDisName" 
+			column="para_dis_name" 
+			type="string"
+		/>
+		<property name="paraType" 
+			column="para_type" 
+			type="string"
+		/>
+		<property name="listValues" 
+			column="list_values" 
+			type="string"
+		/>
+		<property name="paraValue" 
+			column="para_value" 
+			type="string"
+		/>
+		<property name="flgFlowNode" 
+			column="FLG_FLOW_NODE" 
+			type="int"
+		/>
+		<property name="flowNode" 
+			column="FLOW_NODE_ID" 
+			type="string"
+		/>
+		<!--旧版本,暂时注释
+		<property name="remark" 
+			column="remark" 
+			type="string"
+		/>
+		<property name="busiType" 
+			column="busi_type" 
+			type="string"
+		/>
+	--></class>
+</hibernate-mapping>

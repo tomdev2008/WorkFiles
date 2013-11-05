@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- 流程Dao start-->
+	<bean id="busiDao" class="com.shengdai.kpi.flow.dao.impl.BusiDaoHibernate" >
+	<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    <bean id="accreditDao" class="com.shengdai.kpi.flow.dao.impl.AccreditDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="turningItemDao" class="com.shengdai.kpi.flow.dao.impl.TurningItemDaoHibernate" >
+	<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="recBackDao" class="com.shengdai.kpi.flow.dao.impl.RecBackDaoHibernate" >
+	<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="recBackItemDao" class="com.shengdai.kpi.flow.dao.impl.RecBackItemDaoHibernate">
+	<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="recBackWorklistItemDao" class="com.shengdai.kpi.flow.dao.impl.RecBackWorklistItemDaoHibernate" >
+	<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="handleTypewayDao" class="com.shengdai.kpi.flow.dao.impl.HandleTypewayDaoHibernate">
+	<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="nodeRemineDao" class="com.shengdai.kpi.flow.dao.impl.NodeRemineDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="flowDao" class="com.shengdai.kpi.flow.dao.impl.FlowDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="nodeDao" class="com.shengdai.kpi.flow.dao.impl.NodeDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="routeDao" class="com.shengdai.kpi.flow.dao.impl.RouteDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="appDictionaryDao" class="com.shengdai.kpi.flow.dao.impl.AppDictionaryDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="appDao" class="com.shengdai.kpi.flow.dao.impl.AppDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="nodeHandlerDao" class="com.shengdai.kpi.flow.dao.impl.NodeHandlerDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="extDao" class="com.shengdai.kpi.flow.dao.impl.ExtDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="templateDao" class="com.shengdai.kpi.flow.dao.impl.TemplateDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="monitorDao" class="com.shengdai.kpi.flow.dao.impl.MonitorDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="viewDictionaryDao" class="com.shengdai.kpi.flow.dao.impl.ViewDictionaryDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="recOpinionDao" class="com.shengdai.kpi.flow.dao.impl.RecOpinionDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="recBatchLogDao" class="com.shengdai.kpi.flow.dao.impl.RecBatchLogDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="jobWorklistDao" class="com.shengdai.kpi.flow.schedule.dao.impl.JobWorklistDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="jobFlowDao" class="com.shengdai.kpi.flow.schedule.dao.impl.JobFlowDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 流程Dao end-->	
+	
+	<bean id="monitorService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.MonitorServiceImpl">
+				<property name="monitorDao" ref="monitorDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="batchDao" class="com.shengdai.kpi.flow.dao.impl.RecBatchDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="recBatchDtLimitDao" class="com.shengdai.kpi.flow.dao.impl.RecBatchDtLimitDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<bean id="busiService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.BusiServiceImpl">
+				<property name="busiDao" ref="busiDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="recBatchService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.RecBatchServiceImp">
+				<property name="batchDao" ref="batchDao" />
+				<property name="recBatchDtLimitDao" ref="recBatchDtLimitDao" />
+				<property name="worklistItemService" ref="worklistItemService" />
+				<property name="flowService" ref="flowService" />
+				<property name="recBatchLogService" ref="recBatchLogService" />
+				<property name="remineService" ref="remineService" />
+				<property name="recFlowService" ref="recFlowService" />
+				<!--
+				<property name="userService" ref="userService" />
+				<property name="messagePoolService" ref="messageService" />
+			--></bean>
+		</property>
+	</bean>
+	<bean id="flowService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.FlowServiceImpl">
+				<property name="flowDao" ref="flowDao" />
+				<property name="nodeDao" ref="nodeDao" />
+				<property name="routeDao" ref="routeDao" /><!--
+				<property name="appDictionaryDao" ref="appDictionaryDao" />
+				--><property name="appDao" ref="appDao" />
+				<property name="nodeHandlerDao" ref="nodeHandlerDao" />
+				<property name="extDao" ref="extDao" />
+				<property name="templateDao" ref="templateDao" />
+				<property name="handleTypewayDao" ref="handleTypewayDao" />
+				<property name="nodeRemineDao" ref="nodeRemineDao" /><!--
+				<property name="recBackDao" ref="recBackDao" />
+				<property name="recBackItemDao" ref="recBackItemDao" />
+				<property name="recBackWorklistItemDao" ref="recBackWorklistItemDao" />
+				--><property name="handlerService" ref="handlerService" />				
+				<property name="recFlowDao" ref="recFlowDao" />
+				<property name="monitorDao" ref="monitorDao" />
+				<property name="jobFlowDao" ref="jobFlowDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="nodeService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.NodeServiceImpl">
+				<property name="nodeDao" ref="nodeDao" />
+				<property name="flowService" ref="flowService" />
+			</bean>
+		</property>
+	</bean>
+	<bean name="parentFlowBean" abstract="true">
+		<property name="flowService" ref="flowService" />
+		<property name="monitorService" ref="monitorService" />
+		<property name="recBatchService" ref="recBatchService" />
+		<property name="recFlowService" ref="recFlowService" />
+		<property name="worklistItemService" ref="worklistItemService" />
+		<property name="flowFactory" ref="flowFactory" />
+		<property name="userService" ref="userService" />
+		<property name="jobWorklistService" ref="jobWorklistService" />
+		<property name="recOpinionService" ref="recOpinionService" />
+	</bean>
+
+	<bean id="parallelFlow" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.work.impl.ParallelFlowImpl" parent="parentFlowBean" />
+		</property>
+	</bean>
+	
+	<bean id="assembleFlow" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.work.impl.AssembleFlowImpl" parent="parentFlowBean" />
+		</property>
+	</bean>
+
+	<bean id="serialFlow" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.work.impl.SerialFlowImpl" parent="parentFlowBean" />
+		</property>
+	</bean>
+
+	<bean id="sampleFlow" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.work.impl.SampleFlowImpl" parent="parentFlowBean" />
+		</property>
+	</bean>
+
+	<bean id="gatherFlow" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.work.impl.GatherFlowImpl" parent="parentFlowBean" />
+		</property>
+	</bean>
+
+	<bean id="flowHelper" parent="txProxyTemplate" singleton="true">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.work.Flow" parent="parentFlowBean" />
+		</property>
+	</bean>
+
+	<bean id="flowFactory" class="com.shengdai.kpi.flow.FlowFactory">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="recFlowDao" class="com.shengdai.kpi.flow.dao.impl.RecFlowDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="recNodeDao" class="com.shengdai.kpi.flow.dao.impl.RecNodeDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="recFlowService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.RecFlowServiceImp">
+				<property name="recFlowDao" ref="recFlowDao" />
+				<property name="recNodeDao" ref="recNodeDao" />
+				<property name="flowService" ref="flowService" />
+				<property name="worklistItemService" ref="worklistItemService" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- 监控  --><!--
+		<bean id="monitorDao" class="com.shengdai.kpi.flow.dao.impl.MonitorDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+		<bean id="monitorService" parent="txProxyTemplate">
+		<property name="target">
+		<bean class="com.shengdai.kpi.flow.service.impl.MonitorServiceImpl">
+		<property name="monitorDao" ref="monitorDao" />
+		<property name="flowService" ref="flowService" />
+		<property name="orgService" ref="orgService" />
+		</bean>
+		</property>
+		</bean>
+		
+	-->
+	<bean id="workListDao" class="com.shengdai.kpi.flow.dao.impl.WorkListDaoImpl" parent="baseDao"></bean>
+	<bean id="workListService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.WorkListServiceImpl">
+				<property name="workListDao" ref="workListDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="worklistItemDao" class="com.shengdai.kpi.flow.dao.impl.WorklistItemDaoHibernate" parent="baseDao">
+	</bean>
+	<bean id="worklistItemService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.WorkListItemServiceImpl">
+				<property name="worklistItemDao" ref="worklistItemDao" />
+			    <property name="turningItemDao" ref="turningItemDao" />
+			   <property name="workListService" ref="workListService" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="spreadService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.SpreadServiceImpl">
+				<property name="flowService" ref="flowService" />
+				<property name="worklistItemService" ref="worklistItemService" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="flowTempletDao" class="com.shengdai.kpi.flow.dao.impl.FlowTempletDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="flowTempletService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.FlowTempletServiceImpl">
+				<property name="flowTempletDao" ref="flowTempletDao" />
+			</bean>
+		</property>
+	</bean> 
+	
+	<bean id="remineService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.flow.service.impl.RemineServiceImpl">
+				<property name="recBatchDtLimitDao" ref="recBatchDtLimitDao" />
+				<property name="nodeRemineDao" ref="nodeRemineDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="accreditService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.flow.service.impl.AccreditServiceImpl">
+                <property name="accreditDao" ref="accreditDao"/>
+                <property name="busiDao" ref="busiDao"/>
+	       </bean>
+        </property>
+    </bean>
+	<bean id="viewDictionaryService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.flow.service.impl.ViewDictionaryServiceImpl">
+                <property name="viewDictionaryDao" ref="viewDictionaryDao"/>
+	       </bean>
+        </property>
+    </bean>
+	<bean id="recOpinionService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.flow.service.impl.RecOpinionServiceImpl">
+                <property name="recOpinionDao" ref="recOpinionDao"/>
+	       </bean>
+        </property>
+    </bean>
+    <bean id="recBatchLogService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.flow.service.impl.RecBatchLogServiceImpl">
+                <property name="recBatchLogDao" ref="recBatchLogDao"/>
+	       </bean>
+        </property>
+    </bean>
+    
+    <bean id="jobWorklistService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.flow.schedule.service.impl.JobWorklistServiceImpl">
+                <property name="jobWorklistDao" ref="jobWorklistDao"/>
+                <property name="worklistItemService" ref="worklistItemService"/>
+	       </bean>
+        </property>
+    </bean>
+    <bean id="jobFlowService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.flow.schedule.service.impl.JobFlowServiceImpl">
+                <property name="jobFlowDao" ref="jobFlowDao"/>
+	       </bean>
+        </property>
+    </bean>
+    <bean id="flwFlowJobDao" class="com.shengdai.kpi.flow.dao.impl.FlwFlowJobDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    <bean id="flwFlowJobService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.flow.service.impl.FlwFlowJobServiceImpl">
+                <property name="flwFlowJobDao" ref="flwFlowJobDao"/>
+                <property name="flowHelper" ref="flowHelper"/>
+                <property name="recBatchService" ref="recBatchService"/>
+                <property name="monitorService" ref="monitorService"/>
+	       </bean>
+        </property>
+    </bean>
+</beans>

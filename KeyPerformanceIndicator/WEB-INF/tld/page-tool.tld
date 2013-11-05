@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+                        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+ <tlibversion>1.0</tlibversion>
+ <jspversion>1.1</jspversion>
+ <shortname>page</shortname>
+ <uri>http://www.shengdai.com/tags-page</uri>
+ <info>tool</info>
+ <tag>
+  <name>route</name>
+  <!-- 显示可用的路由操作，在业务提交界面 -->
+  <tagclass>com.shengdai.kpi.flow.tags.RoutesTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>style</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>flowNode</name>
+  <!-- 显示流程和相应的环节 -->
+  <tagclass>com.shengdai.kpi.flow.tags.AssessNodeTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>name</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>value</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>onlyNode</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>spread</name>
+  <!-- 显示传阅按钮 -->
+  <tagclass>com.shengdai.kpi.flow.tags.SpreadTag</tagclass>
+  <attribute>
+   <name>boId</name>
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>boClass</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>nodeCode</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>batch</name>
+  <!-- 显示复制，粘贴按钮 -->
+  <tagclass>com.shengdai.kpi.common.tag.SingleCalendarTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>batch</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>doubleMonBatch</name>
+  <!-- 显示复制，粘贴按钮 -->
+  <tagclass>com.shengdai.kpi.common.tag.DoubleDateSelectMonTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>batch1</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>batch2</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>doubleYearBatch</name>
+  <!-- 显示复制，粘贴按钮 -->
+  <tagclass>com.shengdai.kpi.common.tag.DoubleDateSelectYearTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>batch1</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>batch2</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>doubleBatch</name>
+  <!-- 显示复制，粘贴按钮 -->
+  <tagclass>com.shengdai.kpi.common.tag.DoubleDateSelectTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>batch1</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>batch2</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>singleBatch</name>
+  <!-- 显示复制，粘贴按钮 -->
+  <tagclass>com.shengdai.kpi.common.tag.SingleDateSelectTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>batch1</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>singleBatchLN</name>
+  <!-- 显示单个批次选择下拉框 -->
+  <tagclass>com.shengdai.kpi.common.tag.SingleDateSelectTagLN</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>batch1</name>
+   <!--格式： //格式 200911 -->
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>batchType</name>
+   <!--格式： 对应GLOBALS类定义周期FRE... -->
+   <required>true</required>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+ <tag>
+  <name>doubleYMBatch</name>
+  <tagclass>com.shengdai.kpi.common.tag.DoubleDateSelectYMTag</tagclass>
+  <bodycontent>empty</bodycontent>
+  <attribute>
+   <name>batch1</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+  <attribute>
+   <name>batch2</name>
+   <rtexprvalue>true</rtexprvalue>
+  </attribute>
+ </tag>
+</taglib>

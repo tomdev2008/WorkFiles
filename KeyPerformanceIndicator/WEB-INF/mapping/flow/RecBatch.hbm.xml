@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.RecBatch" table="REC_BATCH" where="flg_deleted=0" >
+		<!--<cache usage="nonstrict-read-write" />
+		--><id name="id" type="java.lang.String" unsaved-value="null">
+			<column name="id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<many-to-one name="monitor" column="monitor_id" class="com.shengdai.kpi.flow.valueobject.Monitor" />
+		<property name="batchName" column="batch_name" type="string" />
+		<property name="scopeType" column="scope_type" type="int" />
+		<property name="freqYear" column="freq_year" type="int" />
+		<property name="freqMoq" column="freq_moq" type="int" />
+		<property name="genDate" column="gen_date" type="timestamp" />
+		<property name="flgDeleted" column="FLG_DELETED" type="int" />
+		<property name="status" column="status" type="int" />
+		<property name="archiveDate" column="ARCHIVE_DATE" type="timestamp" />
+		<!--
+		旧版本的字段映射
+		<property name="genPersonId" column="gen_person_id" type="string" />
+		<many-to-one name="deletePerson" class="com.shengdai.kpi.system.valueobject.User" fetch="select">
+			<column name="delete_person" length="32" not-null="false" />
+		</many-to-one>
+		<property name="deleteDt" column="delete_dt" type="timestamp" />
+		--><set name="recFlowSet" inverse="false" cascade="none" where="flg_deleted=0">
+			<key column="batch_id" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.RecFlow" />
+		</set>
+		<set name="recBatchLimitSet" inverse="true" cascade="all" order-by="route_code">
+			<key column="batch_id" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.RecBatchDtLimit" />
+		</set>
+	</class>
+</hibernate-mapping>

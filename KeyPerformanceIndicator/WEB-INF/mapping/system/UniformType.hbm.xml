@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.system.org.vo.UniformType" table="SYS_UNIFORM_TYPE" where="FLG_DELETED = 0">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="id" type="string" > 
+			<generator class="uuid.hex"/>
+		</id>
+
+		<property name="name" 
+			column="name" 
+			type="string"
+		/>
+		<property name="priority" 
+			column="priority" 
+			type="int"
+		/>
+		<property name="remark" 
+			column="remark" 
+			type="string"
+		/>
+		<property name="typeId" 
+			column="type" 
+			type="int"
+		/>
+		<property name="oldParentId" 
+			column="parent_id" 
+			insert="false"
+			update="false"
+			type="string"
+		/>
+		<many-to-one name="parentType" 
+			column="parent_id"
+			class="com.shengdai.kpi.system.org.vo.UniformType"
+		/>
+		<property name="flgDeleted" 
+			column="FLG_DELETED" 
+			type="int"
+		/>  
+		<set name="children" cascade="save-update" inverse="true" lazy="true" where="flg_deleted=0" order-by="priority">
+			<cache usage="nonstrict-read-write" />
+            <key column="parent_id"/>
+            <one-to-many class="com.shengdai.kpi.system.org.vo.UniformType"/>
+        </set>     
+	</class>
+</hibernate-mapping>

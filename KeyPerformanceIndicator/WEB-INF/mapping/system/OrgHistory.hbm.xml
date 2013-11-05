@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.system.org.vo.OrgHistory" table="SYS_ORG_HISTORY" lazy="false" >
+		<id name="id" column="ID" type="string">
+			<generator class="uuid.hex"/>
+		</id>
+		
+		<property name="orgID" 
+			column="ORG_ID" 
+			type="string"
+		/>
+		
+		<property name="orgName" 
+			column="ORG_NAME" 
+			type="string"
+		/>
+		
+		<property name="parentID" 
+			column="PARENT_ID" 
+			type="string"
+		/>
+		
+		
+		<property name="parentName" 
+			column="PARENT_NAME" 
+			type="string"
+		/>
+		
+		<property name="fullName" 
+			column="FULL_NAME" 
+			type="string"
+		/>
+		
+		<property name="fullPath" 
+			column="FULL_PATH" 
+			type="string"
+		/>
+		
+		<property name="layer" 
+			column="LAYER" 
+			type="int"
+		/>
+		
+		<property name="priority" 
+			column="PRIORITY" 
+			type="double"
+		/>
+		
+		<property name="effectINYM" 
+			column="EFFECT_IN_YM" 
+			type="int"
+		/>
+		
+		
+		<property name="effectINDATE" 
+			column="EFFECT_IN_DATE" 
+			type="java.util.Date"
+		/>
+		
+		<property name="effectOUTYM" 
+			column="EFFECT_OUT_YM" 
+			type="int"
+		/>
+		
+		
+		<property name="effectOUTDATE" 
+			column="EFFECT_OUT_DATE" 
+			type="java.util.Date"
+		/>
+		
+		
+		<property name="effectINQ" 
+			column="EFFECT_IN_YQ" 
+			type="int"
+		/>
+		
+		<property name="effectOUTQ" 
+			column="EFFECT_OUT_YQ" 
+			type="int"
+		/>
+		
+		<property name="effectINY" 
+			column="EFFECT_IN_Y" 
+			type="int"
+		/>
+		
+		<property name="effectOUTY" 
+			column="EFFECT_OUT_Y" 
+			type="int"
+		/>
+		
+	</class>
+</hibernate-mapping>

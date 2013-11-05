@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.FlwRoute" table="FLW_ROUTE">
+		<cache usage="nonstrict-read-write" />
+		<id name="routeCode" column="id" type="string">
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="node" column="node_id" class="com.shengdai.kpi.flow.valueobject.FlwNode" not-found="ignore" lazy="false"/>
+		<many-to-one name="nextNode" column="NEXT_NODE_ID" class="com.shengdai.kpi.flow.valueobject.FlwNode" not-found="ignore" />
+		
+		<property name="nextNodeName" column="NEXT_NODE_NAME" type="string" />
+		<property name="routeFlag" column="menu_name" type="string" />
+		<property name="flgBatchSubmit" column="flg_batch_submit" type="string" />		
+		<property name="confirmTip" column="confirm_tip" type="string" />
+		<property name="priority" column="priority" type="int" />
+		<property name="bound" column="bound" type="string" />
+		<property name="routeDesc" column="memo" type="string" />		
+		<property name="flgAttribute" column="flg_Attribute" type="string" />		
+		<!--		
+		<property name="routeFlag" column="route_flag" type="string" />
+		<property name="menuId" column="menu_id" type="string" />
+		<property name="flgdefaultroute" column="flgDefaultRoute" type="string" />
+		<property name="flgDeleted" column="flg_deleted" type="int" />
+		<property name="jsFunction" column="js_function" type="string" />
+		<property name="timelimitRelateYQ" column="timelimit_relate_yq" type="int" />
+		<property name="timelimitRelate" column="timelimit_relate" type="int" />
+		<property name="timelimitDate" column="timelimit_date" type="int" />
+		<property name="timelimitTime" column="timelimit_time" type="string" />
+		<property name="timelimitFlgAuto" column="timelimit_flg_auto" type="int" />
+		<property name="timelimitFlgApply" column="timelimit_flg_apply" type="int" />
+
+		<set name="appSet" inverse="true" cascade="all">
+			<key column="route_code" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.RouteApp" />
+		</set>
+		
+	--></class>
+</hibernate-mapping>

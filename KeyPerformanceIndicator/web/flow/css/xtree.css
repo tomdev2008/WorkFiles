@@ -1,0 +1,54 @@
+BODY {
+	SCROLLBAR-FACE-COLOR: #ffffff; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #08376b; SCROLLBAR-3DLIGHT-COLOR: #08376b; SCROLLBAR-ARROW-COLOR: #08376b; SCROLLBAR-TRACK-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #ffffff; SCROLLBAR-BASE-COLOR: #ffffff
+}
+.webfx-tree-container {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: icon; PADDING-TOP: 0px; WHITE-SPACE: nowrap
+}
+.webfx-tree-item {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 9px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: icon; COLOR: black; PADDING-TOP: 0px; WHITE-SPACE: nowrap
+}
+.webfx-tree-item A {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 3px; PADDING-TOP: 1px
+}
+.webfx-tree-item A:active {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 3px; PADDING-TOP: 1px
+}
+.webfx-tree-item A:hover {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 3px; PADDING-TOP: 1px
+}
+.webfx-tree-item A {
+	COLOR: black; TEXT-DECORATION: none
+}
+.webfx-tree-item A:hover {
+	COLOR: blue; TEXT-DECORATION: underline
+}
+.webfx-tree-item A:active {
+	BACKGROUND: highlight; COLOR: highlighttext; TEXT-DECORATION: none
+}
+
+.webfx-tree-item-noAuth {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 3px; PADDING-TOP: 1px
+}
+
+.webfx-tree-item IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; VERTICAL-ALIGN: middle; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+.webfx-tree-icon {
+	WIDTH: 16px; HEIGHT: 16px
+}
+.webfx-tree-item A.selected {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+.webfx-tree-item A.selected-inactive {
+	BACKGROUND: buttonface; COLOR: windowtext
+}
+
+.node-selected{
+	background-color: #0000FF;
+}
+
+.node-unselected{
+	background-color: #ffffff;
+}
+
+

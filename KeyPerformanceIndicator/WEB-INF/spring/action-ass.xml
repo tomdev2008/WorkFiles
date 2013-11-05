@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="baseAssessmentAction"
+		class="com.shengdai.kpi.ass.BaseAssessmentAction">
+		<property name="assessmentService">
+			<ref bean="assessmentService" />
+		</property>
+		<property name="assessmentIndicatorService">
+			<ref bean="assessmentIndicatorService" />
+		</property>
+		<property name="assessmentGradeRecordService">
+			<ref bean="assessmentGradeRecordService" />
+		</property>
+		<property name="assessmentIndicatorTypeService">
+			<ref bean="assessmentIndicatorTypeService" />
+		</property>
+		<property name="assessmentIndicatorNodeGradeService">
+			<ref bean="assessmentIndicatorNodeGradeService" />
+		</property>
+		<property name="assessmentNodeHandlerGradeSumService">
+			<ref bean="assessmentNodeHandlerGradeSumService" />
+		</property>
+		<property name="assessmentNodeGradeSumService">
+			<ref bean="assessmentNodeGradeSumService" />
+		</property>
+		<property name="assessmentYearGradeScoreService">
+			<ref bean="assessmentYearGradeScoreService" />
+		</property>
+	</bean>
+	<bean name="/deleteAssessmentIndicators" parent="baseAssessmentAction"></bean>	
+	<bean name="/saveAssessmentIndicators" parent="baseAssessmentAction"></bean>	
+	<bean name="/editAssIndicatorByDlg" parent="baseAssessmentAction"></bean>	
+	<bean name="/referencePreviousBatchAssess" parent="baseAssessmentAction"></bean>	
+	<!-- 员工考核 -->
+	<bean id="assessmentUserAction"
+		class="com.shengdai.kpi.ass.web.AssessmentUserAction" parent="baseAssessmentAction">
+		<property name="assessmentDistributeGradeService">
+			<ref bean="assessmentDistributeGradeService" />
+		</property>
+	</bean>
+	<bean name="/listAssessmentNormalViewByUser" parent="assessmentUserAction"></bean>	
+	<bean name="/listAssessmentNormalCheckViewByUser" parent="assessmentUserAction"></bean>
+	<bean name="/listAssessmentNormalScoreViewByUser" parent="assessmentUserAction"></bean>	
+	<bean name="/listAssessmentGroupViewByUser" parent="assessmentUserAction"></bean>
+	<bean name="/listAssessmentGradeScoreViewByUser" parent="assessmentUserAction"></bean>
+	<bean name="/listAssessmentNodeHandlerScoreViewByUser" parent="assessmentUserAction"></bean>
+	<bean name="/listAssessmentGradeByUser" parent="assessmentUserAction"></bean>	
+	
+	<bean name="/editAssessmentPlanByUser" parent="assessmentUserAction"></bean>
+	<bean name="/editAssessmentNodeGradeByUser" parent="assessmentUserAction"></bean>
+	<bean name="/editAssessmentNodeGradeInheritByUser" parent="assessmentUserAction"></bean>
+	<bean name="/editAssessmentNotNodeGradeByUser" parent="assessmentUserAction"></bean>	
+	<bean name="/editAssessmentScoreGradeByUser" parent="assessmentUserAction"></bean>
+	<bean name="/editAssessmentGradeByUser" parent="assessmentUserAction"></bean>
+	<bean name="/editAssessmentAllByUser" parent="assessmentUserAction"></bean>
+	
+	<bean name="/saveAssessmentIndicatorsByUser" parent="assessmentUserAction"></bean>
+	<bean name="/saveAssessmentIndicatorsScoreByUser" parent="assessmentUserAction"></bean>
+	<bean name="/saveAssessmentGradeByUser" parent="assessmentUserAction"></bean>
+	<bean name="/saveAssessmentScoreGradeByUser" parent="assessmentUserAction"></bean>
+	
+	<bean name="/openStaticAssessmentByUser" parent="assessmentUserAction"></bean>	
+	<bean name="/checkAssessmentDataEfficiency" parent="assessmentUserAction"></bean>
+		
+	<!--年度考核-->
+	<bean name="/editYearAssessmentNodeGradeInheritByUser" parent="assessmentUserAction"></bean>
+	<bean name="/editYearAssessmentAllByUser" parent="assessmentUserAction"></bean>
+	<bean name="/listYearAssessmentNormalScoreViewByUser" parent="assessmentUserAction"></bean>
+	<bean name="/saveYearAssessmentIndicatorsScoreByUser" parent="assessmentUserAction"></bean>
+	<bean name="/saveYearAssessmentGradeScore" parent="assessmentUserAction"></bean>
+	<bean name="/listAssessmentYearGradeScoreByUser" parent="assessmentUserAction"></bean>
+	<bean name="/editAvgMonthScore" parent="assessmentUserAction"></bean>
+	<bean name="/saveAvgMonthScore" parent="assessmentUserAction"></bean>
+	
+	<bean id="assessmentYearGradeScoreAction" class="com.shengdai.kpi.ass.web.AssessmentYearGradeScoreAction">
+		<property name="assessmentYearGradeScoreService">
+			<ref bean="assessmentYearGradeScoreService" />
+		</property>
+	</bean>
+	
+	<!-- 组织考核 -->
+	<bean id="assessmentOrgAction" class="com.shengdai.kpi.ass.web.AssessmentOrgAction" parent="baseAssessmentAction">
+		<property name="assessmentDistributeGradeService"><ref bean="assessmentDistributeGradeService"/></property>
+	</bean>
+	<bean name="/listAssessmentNormalViewByOrg" parent="assessmentOrgAction"></bean>	
+	<bean name="/listAssessmentNormalCheckViewByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/listAssessmentNormalScoreViewByOrg" parent="assessmentOrgAction"></bean>	
+	<bean name="/listAssessmentGroupViewByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/listAssessmentGradeScoreViewByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/listAssessmentNormalFinalScoreViewByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/listAssessmentNodeHandlerScoreViewByOrg" parent="assessmentOrgAction"></bean>
+			
+	<bean name="/editAssessmentPlanByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentNodeGradeByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentNodeGradeInheritByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentNotNodeGradeByOrg" parent="assessmentOrgAction"></bean>	
+	<bean name="/editAssessmentScoreGradeByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentGradeByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentAllByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentSetHandlerByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editSetIndicatorNodeHandlerByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentDirectScoreByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentMergeScoreGradeByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/editAssessmentAuditNodeGradeInheritByOrg" parent="assessmentOrgAction"></bean>
+				
+	<bean name="/saveAssessmentIndicatorsByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/saveAssessmentIndicatorsScoreByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/saveAssessmentGradeByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/saveAssessmentScoreGradeByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/saveIndicatorNodeHandlerByOrg" parent="assessmentOrgAction"></bean>
+	
+	<bean name="/openStaticAssessmentByOrg" parent="assessmentOrgAction"></bean>
+	<bean name="/showAssIndicatorPreviousNodeHandler" parent="assessmentOrgAction"></bean>								
+	<!-- 考核指标 -->
+	<bean id="assessmentIndicatorAction" class="com.shengdai.kpi.ass.web.AssessmentIndicatorAction" >
+		<property name="assessmentService"><ref bean="assessmentService"/></property>
+		<property name="assessmentIndicatorService"><ref bean="assessmentIndicatorService"/></property>
+		<property name="assessmentIndicatorTypeService"><ref bean="assessmentIndicatorTypeService"/></property>
+	</bean>
+	<bean name="/importAssessmentIndicator" parent="assessmentIndicatorAction"></bean>
+	<bean name="/readExcelAssessmentIndicator" parent="assessmentIndicatorAction"></bean>
+	<bean name="/exportIndicatorTemplate" parent="assessmentIndicatorAction"></bean>
+		 <!-- 统计查询 -->
+	<bean id="queryAssessAction" class="com.shengdai.kpi.ass.web.QueryAssessAction" >
+		<property name="assessmentService"><ref bean="assessmentService"/></property>
+	</bean>
+	<bean name="/queryPersonAssessment" parent="queryAssessAction"/>
+	<bean name="/queryOrgAssessment" parent="queryAssessAction"/>
+	<bean name="/openStaticAssessmentYearByInfo" parent="queryAssessAction"/>
+	<bean name="/dealPersonYearStat" parent="queryAssessAction"/>
+	<bean name="/queryPersonAssessmentCheckAppeal" parent="queryAssessAction"/>
+	<bean name="/queryYearAssessment" parent="queryAssessAction"/>
+	<bean name="/queryGradeReport" parent="queryAssessAction"></bean>
+	
+		
+	<!-- 模板 -->
+	<bean id="templateAction" class="com.shengdai.kpi.template.web.TemplateAction" >
+		<property name="templateService"><ref bean="templateService"/></property>
+		<property name="templateIndicatorService"><ref bean="templateIndicatorService"/></property>
+		<property name="templateIndicatorTypeService"><ref bean="templateIndicatorTypeService"/></property>
+		<property name="templateIndiNodeHandlerDetailService"><ref bean="templateIndiNodeHandlerDetailService"/></property>
+	</bean>
+	<bean name="/listTemplate" parent="templateAction"/>
+	<bean name="/editTemplate" parent="templateAction"/>
+	<bean name="/addTemplate" parent="templateAction"/>	
+	<bean name="/saveTemplate" parent="templateAction"/>
+	<bean name="/deleteTemplate" parent="templateAction"/>	
+	<bean name="/addTemplateIndicatorType" parent="templateAction"/>
+	<bean name="/deleteTemplateIndicatorType" parent="templateAction"/>		
+	<bean name="/addTemplateIndicator" parent="templateAction"/>
+	<bean name="/deleteTemplateIndicator" parent="templateAction"/>	
+	<bean name="/editTemplateIndicator" parent="templateAction"/>			
+	<bean name="/downIndicatorTemplate" parent="templateAction"/>
+	<bean name="/removeTemplate" parent="templateAction"/>
+	<bean name="/copyTemplate" parent="templateAction"/>		
+	<bean name="/pasteTemplate" parent="templateAction"/>
+	<bean name="/editTemplateHandler" parent="templateAction"/>		
+	<bean name="/saveTemplateIndicatorNodeHandler" parent="templateAction"/>
+	<bean name="/showTemplateIndicatorPreviousNodeHandler" parent="templateAction"/>
+					
+	<!-- end -->
+</beans>

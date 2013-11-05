@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans />
+	
+	<action-mappings>
+	<!--计划表流程视图 BEGIN -->
+		<action path="/saveYearPlanIndicatorsByUser" parameter="saveYearPlanIndicatorsByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/listYearPlanNormalCheckView" parameter="listYearPlanNormalCheckView" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/editYearPlanByUser" parameter="editYearPlanByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/listYearPlanConfirmView" parameter="listYearPlanConfirmView" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/listYearPlanModifyView" parameter="listYearPlanModifyView" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/listYearPlanByUser" parameter="listYearPlanByUser" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/setYearPlanStatus" parameter="setYearPlanStatus" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/viewFlowByOrg" parameter="viewFlowByOrg" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/watchPlanMonitorStart" parameter="watchPlanMonitorStart" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/monitorStartPlanSelectOrgVo" parameter="monitorStartPlanSelectOrgVo" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/planRecBatchStart" parameter="planRecBatchStart" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/startPlanFlowSingleByOrgVo" parameter="startPlanFlowSingleByOrgVo" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/queryYearPlan" parameter="queryYearPlan" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action path="/queryYearPlans" parameter="queryYearPlans" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	
+	
+	
+	<!-- 考核指标 -->
+	
+	<action path="/editYearPlanIndicatorByDlg" parameter="editYearPlanIndicatorByDlg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/deleteYearPlanIndicators" parameter="deleteYearPlanIndicators" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/saveYearPlanIndicators" parameter="saveYearPlanIndicators" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/saveYearPlanIndicator" parameter="saveYearPlanIndicator" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/importYearPlanIndicator" parameter="importAssessmentIndicator" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/readExcelYearPlanIndicator" parameter="readExcelAssessmentIndicator" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/exportYearPlanIndicatorTemplate" parameter="exportYearPlanIndicatorTemplate" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+
+	<!-- end -->		
+	</action-mappings>
+	
+</struts-config>

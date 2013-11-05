@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.system.favorite.vo.PersonData" table="PSN_DATA" lazy="true">
+		
+		<id name="id" column="id" type="string" > 
+			<generator class="uuid.hex"/>
+		</id>
+
+		<property name="resourceId" 
+			column="resource_id" 
+			type="string"
+		/>
+		
+		<property name="resourceClass" 
+			column="resource_class" 
+			type="string"
+		/>
+		<property name="name" 
+			column="resource_name" 
+			type="string"
+		/>
+		<property name="type" 
+			column="resource_type" 
+			type="int"
+		/>
+		<property name="priority" 
+			column="priority" 
+			type="int"
+		/>
+		
+		<many-to-one name="personFolder" class="com.shengdai.kpi.system.favorite.vo.PersonFolder" fetch="select">
+            <column name="folder_id" length="32" />
+        </many-to-one>      
+		
+	</class>
+</hibernate-mapping>

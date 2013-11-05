@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.NodeRemine" table="FLW_NODE_REMIND" lazy="false">
+		<id name="id" column="id" type="string">
+			<generator class="assigned" />
+		</id>
+		<property name="formHoure" column="form_houre" type="int" />
+		<property name="toHoure" column="to_houre" type="int" />		
+		<property name="frequency" column="frequency" type="int" />
+		<property name="frequencyUnit" column="frequency_unit" type="int" />
+		<property name="way" column="way" type="int" />
+		<property name="reminder" column="reminder" type="int" />
+		<property name="flgUse" column="flg_use" type="int" />
+		<property name="remineContent" column="remine_content" type="string" />		
+		<property name="srcId" column="src_id" type="string" />								
+		<property name="nodeCode" column="FLOW_OR_NODE_ID" type="string" />
+		
+		<set name="subNodeRemineSet" lazy="true" inverse="true" cascade="none" >
+			<key column="src_id" />
+			<one-to-many not-found="ignore" class="com.shengdai.kpi.flow.valueobject.NodeRemine" />
+		</set>
+	</class>
+</hibernate-mapping>

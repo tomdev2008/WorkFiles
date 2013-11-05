@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans />
+	
+	<action-mappings>
+	
+	<!-- 指标类型 -->		
+	<action parameter="loadIndicatorTypeTree" path="/loadIndicatorTypeTree" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	<action parameter="listIndicatorType" path="/listIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   <action parameter="saveIndicatorType" path="/saveIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   <action parameter="deleteIndicatorType" path="/deleteIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   <action parameter="editIndicatorType" path="/editIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   <action parameter="initIndicatorTypeTree" path="/initIndicatorTypeTree" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	  <action parameter="listInfoIndicatorType" path="/listInfoIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   <action parameter="indicatorTypeTreeForAddress" path="/indicatorTypeTreeForAddress" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	
+	<!-- 指标 -->		
+	<action parameter="listIndicator" path="/listIndicator" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />	
+	<action parameter="listIndicatorValuesChannel" path="/listIndicatorValuesChannel" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />	
+	<action parameter="editIndicatorValuesChannel" path="/editIndicatorValuesChannel" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />	
+	<action parameter="saveIndicatorValuesChannel" path="/saveIndicatorValuesChannel" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />	
+	<action parameter="deleteIndicatorValuesChannel" path="/deleteIndicatorValuesChannel" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />	
+	</action-mappings>
+	
+	
+</struts-config>

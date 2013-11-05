@@ -1,0 +1,48 @@
+.TextStyle {
+	BORDER-RIGHT: silver 1px; BORDER-TOP: silver 1px; FONT-SIZE: 10pt; OVERFLOW: hidden; BORDER-LEFT: silver 1px; BORDER-BOTTOM: silver 1px solid; FONT-FAMILY: 宋体; BACKGROUND-COLOR: transparent
+}
+.TextStyle1 {
+	BORDER-RIGHT: silver 0px; BORDER-TOP: silver 0px; FONT-WEIGHT: bold; FONT-SIZE: 15pt; OVERFLOW: hidden; BORDER-LEFT: silver 0px; BORDER-BOTTOM: silver 1px solid; FONT-FAMILY: 宋体; BACKGROUND-COLOR: transparent
+}
+.TextStyle2 {
+	BORDER-RIGHT: silver 0px; BORDER-TOP: silver 0px; FONT-SIZE: 10pt; OVERFLOW: hidden; BORDER-LEFT: silver 0px; BORDER-BOTTOM: silver 0px solid; FONT-FAMILY: 宋体; BACKGROUND-COLOR: transparent
+}
+.GridTextStyle {
+	BORDER-RIGHT: silver 1px; BORDER-TOP: silver 1px; FONT-SIZE: 10pt; OVERFLOW: hidden; BORDER-LEFT: silver 1px; BORDER-BOTTOM: silver 0px solid; FONT-FAMILY: 宋体; BACKGROUND-COLOR: transparent
+}
+.myPop1 {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; VISIBILITY: hidden; OVERFLOW: auto; BORDER-LEFT: black 1px solid; WIDTH: 100%; BORDER-BOTTOM: black 1px solid; POSITION: absolute; HEIGHT: 100px; BACKGROUND-COLOR: white
+}
+.myTable {
+	FONT-SIZE: 13px; FONT-FAMILY: 宋体
+}
+.table1 {
+	BORDER-RIGHT: #455ca2 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #455ca2 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; BORDER-LEFT: #455ca2 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #455ca2 1px solid; BACKGROUND-COLOR: #f0f0f0
+}
+.table2 {
+	BORDER-RIGHT: #455ca2 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #455ca2 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; BORDER-LEFT: #455ca2 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #455ca2 1px solid; BACKGROUND-COLOR: #dedfde
+}
+.table3 {
+	BORDER-RIGHT: #455ca2 0px solid; PADDING-RIGHT: 0px; BORDER-TOP: #455ca2 0px solid; PADDING-LEFT: 0px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; BORDER-LEFT: #455ca2 0px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #455ca2 1px solid; BACKGROUND-COLOR: #dedfde
+}
+.tableDetail {
+	BORDER-RIGHT: #455ca2 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #455ca2 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 9pt; PADDING-BOTTOM: 0px; BORDER-LEFT: #455ca2 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #455ca2 1px solid; BACKGROUND-COLOR: #efebe7
+}
+.table4 {
+	BORDER-RIGHT: #455ca2 0px solid; PADDING-RIGHT: 0px; BORDER-TOP: #455ca2 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 14px; PADDING-BOTTOM: 0px; BORDER-LEFT: #455ca2 0px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #455ca2 0px solid; BACKGROUND-COLOR: #dedfde
+}
+.td {
+	FONT-SIZE: 11pt; FONT-FAMILY: 宋体
+}
+A:link {
+	COLOR: #2262e8; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #2262e8; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #2262e8; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #2262e8; TEXT-DECORATION: none
+}

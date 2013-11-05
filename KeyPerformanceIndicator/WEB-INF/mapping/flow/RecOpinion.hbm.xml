@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.RecOpinion" table="REC_OPINION">
+		<id name="id" 
+			column="id" 
+			type="string" 
+			unsaved-value="0"> 
+			<generator class="uuid.hex" />
+		</id>
+		<property name="resourceId" column="resource_id" type="string"/>
+		<property name="opinion" column="opinion" type="string"/>
+		<property name="nodeName" column="node_name" type="string"/>
+		<property name="nodeId" column="node_id" type="string"/>
+		<property name="creatorName" column="creator_name" type="string"/>
+		<property name="creator" column="creator" type="string"/>
+		<property name="createDate" column="create_date" type="timestamp"/>
+	</class>
+</hibernate-mapping>

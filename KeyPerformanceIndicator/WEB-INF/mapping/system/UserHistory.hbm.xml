@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.system.org.vo.UserHistory" table="sys_user_history" lazy="false" >
+		<id name="id" column="ID" type="string">
+			<generator class="uuid.hex"/>
+		</id>
+		
+		<many-to-one name="user" class="com.shengdai.kpi.system.org.vo.User" column="USER_ID"/>
+		<many-to-one name="org" class="com.shengdai.kpi.system.org.vo.Org" column="ORG_ID"/>
+		<property name="modifyDate" column="modifyDate" type="java.util.Date"/>
+		<property name="modifyName" column="modifyName" type="string"/>
+		<property name="remark" column="remark" type="string"/>
+		<property name="flag" column="flag" type="int"/>
+	</class>
+</hibernate-mapping>

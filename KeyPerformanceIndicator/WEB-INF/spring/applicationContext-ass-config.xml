@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>		
+	<!-- 主管部门配置 -->
+	<bean id="managerConfigDao" class="com.shengdai.kpi.assconfig.dao.impl.ManagerConfigDaoImpl">
+		<property name="sessionFactory"><ref bean="sessionFactory"/></property>
+	</bean>
+	<bean id="managerConfigService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.assconfig.service.impl.ManagerConfigServiceImpl">
+				<property name="managerConfigDao"><ref bean="managerConfigDao"/></property>
+			</bean>
+		</property>
+	</bean>
+	<!-- 主管专业线配置 -->
+	<bean id="departmentConfigDao" class="com.shengdai.kpi.assconfig.dao.impl.DepartmentConfigDaoImpl">
+		<property name="sessionFactory"><ref bean="sessionFactory"/></property>
+	</bean>
+	<bean id="departmentConfigService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.assconfig.service.impl.DepartmentConfigServiceImpl">
+				<property name="departmentConfigDao"><ref bean="departmentConfigDao"/></property>
+			</bean>
+		</property>
+	</bean>
+	<!-- 休假人员配置 -->
+	<bean id="holidayConfigDao" class="com.shengdai.kpi.assconfig.dao.impl.HolidayConfigDaoImpl">
+		<property name="sessionFactory"><ref bean="sessionFactory"/></property>
+	</bean>
+	<bean id="holidayConfigService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.assconfig.service.impl.HolidayConfigServiceImpl">
+				<property name="holidayConfigDao"><ref bean="holidayConfigDao"/></property>
+			</bean>
+		</property>
+	</bean>
+	<!-- 考核关系配置 -->
+	<bean id="assessRelationDao" class="com.shengdai.kpi.assconfig.dao.impl.AssessRelationDaoImpl">
+		<property name="sessionFactory"><ref bean="sessionFactory"/></property>
+	</bean>
+	<bean id="assessRelationDataDao" class="com.shengdai.kpi.assconfig.dao.impl.AssessRelationDataDaoImpl">
+		<property name="sessionFactory"><ref bean="sessionFactory"/></property>
+	</bean>
+	<bean id="assessRelationService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.assconfig.service.impl.AssessRelationServiceImpl">
+				<property name="assessRelationDao"><ref bean="assessRelationDao"/></property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="assessRelationDataService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.assconfig.service.impl.AssessRelationDataServiceImpl">
+				<property name="assessRelationDataDao"><ref bean="assessRelationDataDao"/></property>
+			</bean>
+		</property>
+	</bean>
+	<!-- 等级关系映射 -->
+		<bean id="assessmentGradeMappingDao" class="com.shengdai.kpi.assconfig.dao.impl.AssessmentGradeMappingDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentGradeMappingService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.assconfig.service.impl.AssessmentGradeMappingServiceImpl">
+					<property name="assessmentGradeMappingDao"><ref bean="assessmentGradeMappingDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+	<!-- 模板配置 -->
+		<bean id="assTemplateDao" class="com.shengdai.kpi.template.dao.impl.TemplateDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="templateService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.template.service.impl.TemplateServiceImpl">
+					<property name="assTemplateDao"><ref bean="assTemplateDao"/></property>
+					<property name="templateIndicatorService"><ref bean="templateIndicatorService"/></property>
+					<property name="templateIndicatorTypeService"><ref bean="templateIndicatorTypeService"/></property>
+				</bean>
+			</property>
+		</bean>
+		<bean id="templateIndicatorDao" class="com.shengdai.kpi.template.dao.impl.TemplateIndicatorDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="templateIndicatorService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.template.service.impl.TemplateIndicatorServiceImpl">
+					<property name="templateIndicatorDao"><ref bean="templateIndicatorDao"/></property>
+				</bean>
+			</property>
+		</bean>		
+		<bean id="templateIndicatorTypeDao" class="com.shengdai.kpi.template.dao.impl.TemplateIndicatorTypeDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="templateIndicatorTypeService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.template.service.impl.TemplateIndicatorTypeServiceImpl">
+					<property name="templateIndicatorTypeDao"><ref bean="templateIndicatorTypeDao"/></property>
+				</bean>
+			</property>
+		</bean>		
+		<bean id="templateIndiNodeHandlerDetailDao" class="com.shengdai.kpi.template.dao.impl.TemplateIndiNodeHandlerDetailDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="templateIndiNodeHandlerDetailService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.template.service.impl.TemplateIndiNodeHandlerDetailServiceImpl">
+					<property name="templateIndiNodeHandlerDetailDao"><ref bean="templateIndiNodeHandlerDetailDao"/></property>
+					<property name="templateIndicatorService"><ref bean="templateIndicatorService"/></property>
+				</bean>
+			</property>
+		</bean>	
+		
+		<!-- 等级比例控制 -->	
+		<bean id="orgAssessGradeSetDao" class="com.shengdai.kpi.assconfig.dao.impl.OrgAssessGradeSetDaoImpl" parent="baseDao" >
+		</bean>
+		<bean id="orgAssessGradeSetService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.assconfig.service.impl.OrgAssessGradeSetServiceImpl">
+					<property name="orgAssessGradeSetDao"><ref bean="orgAssessGradeSetDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+		
+		<!-- 部门考核分数配置 -->
+		<bean id="assessMarkConfigDao" class="com.shengdai.kpi.assconfig.dao.impl.AssessMarkConfigDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessMarkConfigService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.assconfig.service.impl.AssessMarkConfigServiceImpl">
+					<property name="assessMarkConfigDao"><ref bean="assessMarkConfigDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+		
+		<bean id="assessMarkDao" class="com.shengdai.kpi.assconfig.dao.impl.AssessMarkDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessMarkService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.assconfig.service.impl.AssessMarkServiceImpl">
+					<property name="assessMarkDao"><ref bean="assessMarkDao"/></property>
+				</bean>
+			</property>
+		</bean>			
+</beans>

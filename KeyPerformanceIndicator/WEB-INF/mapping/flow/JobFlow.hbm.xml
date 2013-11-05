@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.schedule.vo.JobFlow" table="JOB_FLOW">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="jobName" column="job_name" type="string" />
+		<property name="createTime" column="create_time" type="java.util.Date" />
+		<property name="flowStartTime" column="flow_start_time" type="java.util.Date" />
+		<property name="batchDate" column="batch_date" type="int" />
+		<property name="monitorId" column="monitor_Id" type="string" />
+		<property name="flgHandler" column="FLG_HANDLER" type="int" />
+		<property name="remark" column="remark" type="string" />
+		
+	</class>
+</hibernate-mapping>

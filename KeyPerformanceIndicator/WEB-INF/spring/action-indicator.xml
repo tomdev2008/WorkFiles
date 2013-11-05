@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- 指标类型 -->
+	<bean id="indicatorTypeAction" class="com.shengdai.kpi.indicator.web.IndicatorTypeAction" >
+		<property name="indicatorTypeService"><ref bean="indicatorTypeService"/></property>
+	</bean>
+	<bean name="/loadIndicatorTypeTree" parent="indicatorTypeAction"/>
+	<bean name="/listIndicatorType" parent="indicatorTypeAction"/>	
+	<bean name="/saveIndicatorType" parent="indicatorTypeAction"/>	
+	<bean name="/deleteIndicatorType" parent="indicatorTypeAction"/>
+	<bean name="/editIndicatorType" parent="indicatorTypeAction"/>		
+	<bean name="/initIndicatorTypeTree" parent="indicatorTypeAction"/>	
+	<bean name="/listInfoIndicatorType" parent="indicatorTypeAction"/>	
+	<bean name="/indicatorTypeTreeForAddress" parent="indicatorTypeAction"/>	
+	
+	<!-- 指标 -->
+	<bean id="indicatorAction" class="com.shengdai.kpi.indicator.web.IndicatorAction" >
+		<property name="indicatorService"><ref bean="indicatorService"/></property>
+		<property name="indicatorTypeService"><ref bean="indicatorTypeService"/></property>
+		<property name="indicatorValuesChannelService"><ref bean="indicatorValuesChannelService"/></property>
+	</bean>
+	<bean name="/listIndicator" parent="indicatorAction"/>
+	<bean name="/listIndicatorValuesChannel" parent="indicatorAction"/>
+	<bean name="/editIndicatorValuesChannel" parent="indicatorAction"/>
+	<bean name="/saveIndicatorValuesChannel" parent="indicatorAction"/>
+	<bean name="/deleteIndicatorValuesChannel" parent="indicatorAction"/>
+</beans>

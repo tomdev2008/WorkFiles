@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.Monitor" table="FLW_MONITOR" where="flg_DELETED=0">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="flow" class="com.shengdai.kpi.flow.valueobject.FlwFlow" not-found="ignore">
+			<column name="FLOW_ID" length="32" not-null="false" />
+		</many-to-one>
+		<property name="name" column="name" type="string" />
+		<property name="frequency" column="frequency" type="int" />
+		<property name="flgAuto" column="flg_auto" type="int" />		
+		<property name="autoYear" column="auto_year" type="int" />
+		<property name="autoMonth" column="auto_month" type="int" />
+		<property name="autoDate" column="auto_date" type="int" />
+		<property name="autoHour" column="auto_hour" type="int" />
+		<property name="autoMinitue" column="auto_minitue" type="int" />
+		<property name="flgDeleted" column="FLG_DELETED" type="int" />
+		<set name="flowJobs" cascade="all,delete-orphan" inverse="true"
+			order-by="create_date desc" where="flg_deleted=0">
+			<key column="MONITOR_ID" />
+			<one-to-many
+				class="com.shengdai.kpi.flow.valueobject.FlwFlowJob" />
+		</set>
+	</class>
+</hibernate-mapping>

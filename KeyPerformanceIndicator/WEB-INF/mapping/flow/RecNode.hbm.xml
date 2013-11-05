@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.RecNode" table="REC_NODE">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex"/>
+		</id>
+		<many-to-one name="recFlow" column="rec_flow_id" class="com.shengdai.kpi.flow.valueobject.RecFlow" />
+		<property name="batchId" column="batch_id" type="string" />
+		<property name="flowCode" column="flow_id" type="string" />
+		<property name="flowName" column="flow_name" type="string" />
+		<property name="fromNode" column="from_node" type="string" />
+		<property name="fromNodeName" column="from_node_name" type="string" />
+		<property name="toNode" column="to_node" type="string" />
+		<property name="toNodeName" column="to_node_name" type="string" />
+		<property name="route" column="route" type="string" />
+		<property name="routeName" column="route_name" type="string" />
+		<property name="createDate" column="CREATE_DATE" type="timestamp" />
+	</class>
+</hibernate-mapping>

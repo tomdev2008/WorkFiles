@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans>
+		<form-bean name="attachForm" type="com.shengdai.kpi.common.attach.web.form.AttachForm" />
+	</form-beans>
+	
+	<action-mappings>
+	
+		<action name="attachForm" parameter="uploadFile" path="/uploadFile" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="downloadFile" path="/downloadFile" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="attachList" path="/attachList" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="listResourceAttach" path="/listResourceAttach" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="deleteAttachFile" path="/deleteAttachFile" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 复制粘贴附件 -->
+		<action parameter="copyAttachAjax" path="/copyAttachAjax" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="pasteAttachAjax" path="/pasteAttachAjax" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />	
+		
+		<!-- 登陆,主要用于内部测试 start add by zyf -->
+		<action parameter="login" path="/login" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="loginAccredit" path="/loginAccredit" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="logout" path="/logout" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 登陆,主要用于内部测试 end add by zyf -->
+        <!-- 字典 -->
+		<action parameter="listDictionary" path="/listDictionary" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="viewDictionary" path="/viewDictionary" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="saveDictionary" path="/saveDictionary" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="batchDeleteDictionary" path="/batchDeleteDictionary" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="changeDictionaryOrder" path="/changeDictionaryOrder" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 文件操作相关 -->
+		<action parameter="downloadStaticFileByName" path="/downloadStaticFileByName" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 后台线程 -->
+<action parameter="showSystemAutoTaskLog" path="/showSystemAutoTaskLog" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />		
+		<!-- 邮件 
+		<action parameter="saveMail" path="/saveMail" scope="request" 
+			type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="listMail" path="/listMail" scope="request" 
+			type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="delMail" path="/delMail" scope="request" 
+			type="org.springframework.web.struts.DelegatingActionProxy" />
+		 end 
+		
+		 短信息 
+		<action parameter="saveMessage" path="/saveMessage" scope="request" 
+			type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="listMessage" path="/listMessage" scope="request" 
+			type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="delMessage" path="/delMessage" scope="request" 
+			type="org.springframework.web.struts.DelegatingActionProxy" />
+		 end 
+		
+		
+	--></action-mappings>
+	
+</struts-config>

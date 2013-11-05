@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.shengdai.kpi.system.org.vo.UserMoveRequisition" table="SYS_USER_MOVE_REQ">
+    	<cache usage="nonstrict-read-write" />
+        <id name="id" type="string">
+            <column name="id" length="32" />
+            <generator class="uuid.hex" />
+        </id>
+         <many-to-one name="user" class="com.shengdai.kpi.system.org.vo.User" column="USER_ID" fetch="select"/>
+         
+         
+         <many-to-one name="proposer" class="com.shengdai.kpi.system.org.vo.User" column="PROPOSER_ID" fetch="select"/>
+         <many-to-one name="moveToOrg" class="com.shengdai.kpi.system.org.vo.Org" column="MOVETO_ORGID" fetch="select" />
+         <property name="applyDate" column="APPLY_DATE" type="java.util.Date"/>
+         
+         <property name="isAgree" column="IS_AGREE" type="int" />
+         
+         <property name="remark" column="REMARK" type="string"/>
+    </class>
+</hibernate-mapping>

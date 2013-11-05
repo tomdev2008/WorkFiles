@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.system.favorite.vo.PersonQuery" table="PSN_QUERY" lazy="true">
+		
+		<id name="id" column="id" type="string" > 
+			<generator class="uuid.hex"/>
+		</id>
+
+		<property name="folderId" 
+			column="folder_id" 
+			type="string"
+		/>
+		
+		<property name="queryName" 
+			column="QUERY_NAME" 
+			type="string"
+		/>
+		<property name="url" 
+			column="URL" 
+			type="string"
+		/>
+		<property name="action" 
+			column="ACTION" 
+			type="string"
+		/>
+		<property name="priority" 
+			column="PRIORITY" 
+			type="int"
+		/>
+		
+		<property name="creator" 
+			column="CREATOR" 
+			type="string"
+		/>
+		
+		<property name="creatorName" 
+			column="CREATOR_NAME" 
+			type="string"
+		/>
+		
+		<property name="createDate" type="timestamp">
+            	<column name="CREATE_DATE"  />
+       		</property>
+       		
+       		
+       		<property name="lastModifier" 
+			column="LAST_MODIFIER" 
+			type="string"
+		/>
+		
+		<property name="lastModifierName" 
+			column="LAST_MODIFIER_NAME" 
+			type="string"
+		/>
+		<property name="lastModDate" type="timestamp">
+            	<column name="LAST_MOD_DATE"  />
+       		</property>
+       		
+
+        
+        <set name="queryDatas" cascade="all-delete-orphan" inverse="true" lazy="true" order-by="priority">
+        	<key column="QUERY_ID"/>
+            <one-to-many class="com.shengdai.kpi.system.favorite.vo.PersonQueryData"/>
+        </set>  
+        <set name="queryScopes" cascade="all-delete-orphan" inverse="true" lazy="true" order-by="priority">
+        	<key column="QUERY_ID"/>
+            <one-to-many class="com.shengdai.kpi.system.favorite.vo.PersonQueryScope"/>
+        </set>  
+	</class>
+</hibernate-mapping>

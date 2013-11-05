@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans />
+	
+	<action-mappings>
+	<!--考核表流程视图 BEGIN -->
+	<action path="/deleteAssessmentIndicators" parameter="deleteAssessmentIndicatorsBy" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveAssessmentIndicators" parameter="saveAssessmentIndicators" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssIndicatorByDlg" parameter="editAssIndicatorByDlg" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/referencePreviousBatchAssess" parameter="referencePreviousBatchAssess" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>	 		 	
+		<!--员工考核流程视图 -->
+	<action path="/listAssessmentNormalViewByUser" parameter="listAssessmentNormalViewByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listAssessmentNormalCheckViewByUser" parameter="listAssessmentNormalCheckViewByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listAssessmentNormalScoreViewByUser" parameter="listAssessmentNormalScoreViewByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listAssessmentGroupViewByUser" parameter="listAssessmentGroupViewByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/listAssessmentGradeScoreViewByUser" parameter="listAssessmentGradeScoreViewByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/listAssessmentNodeHandlerScoreViewByUser" parameter="listAssessmentNodeHandlerScoreViewByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/listAssessmentGradeByUser" parameter="listAssessmentGradeByUser" scope="request"
+		 	type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+		 			 			 			 	
+	<action path="/editAssessmentPlanByUser" parameter="editAssessmentPlanByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>			
+	<action path="/editAssessmentNodeGradeByUser" parameter="editAssessmentNodeGradeByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentNodeGradeInheritByUser" parameter="editAssessmentNodeGradeInheritByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentNotNodeGradeByUser" parameter="editAssessmentNotNodeGradeByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentScoreGradeByUser" parameter="editAssessmentScoreGradeByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentGradeByUser" parameter="editAssessmentGradeByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentAllByUser" parameter="editAssessmentAllByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentMergeScoreGradeByOrg" parameter="editAssessmentMergeScoreGradeByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		
+	<action path="/saveAssessmentIndicatorsByUser" parameter="saveAssessmentIndicatorsByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveAssessmentIndicatorsScoreByUser" parameter="saveAssessmentIndicatorsScoreByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveAssessmentGradeByUser" parameter="saveAssessmentGradeByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveAssessmentScoreGradeByUser" parameter="saveAssessmentScoreGradeByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+				
+	<action path="/openStaticAssessmentByUser" parameter="openStaticAssessmentByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/checkAssessmentDataEfficiency" parameter="checkAssessmentDataEfficiency" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	
+	<!-- 年度考核 -->
+	<action path="/editYearAssessmentAllByUser" parameter="editYearAssessmentAllByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listYearAssessmentNormalScoreViewByUser" parameter="listYearAssessmentNormalScoreViewByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editYearAssessmentNodeGradeInheritByUser" parameter="editYearAssessmentNodeGradeInheritByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveYearAssessmentIndicatorsScoreByUser" parameter="saveYearAssessmentIndicatorsScoreByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveYearAssessmentGradeScore" parameter="saveYearAssessmentGradeScore" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listAssessmentYearGradeScoreByUser" parameter="listAssessmentYearGradeScoreByUser" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAvgMonthScore" parameter="editAvgMonthScore" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveAvgMonthScore" parameter="saveAvgMonthScore" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+
+	<!-- 组织考核流程视图 -->
+	<action path="/listAssessmentNormalViewByOrg" parameter="listAssessmentNormalViewByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/listAssessmentNormalCheckViewByOrg" parameter="listAssessmentNormalCheckViewByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/listAssessmentNormalScoreViewByOrg" parameter="listAssessmentNormalScoreViewByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/listAssessmentGroupViewByOrg" parameter="listAssessmentGroupViewByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listAssessmentGradeScoreViewByOrg" parameter="listAssessmentGradeScoreViewByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/listAssessmentNormalFinalScoreViewByOrg" parameter="listAssessmentNormalFinalScoreViewByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/listAssessmentNodeHandlerScoreViewByOrg" parameter="listAssessmentNodeHandlerScoreViewByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+										
+	<action path="/editAssessmentPlanByOrg" parameter="editAssessmentPlanByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/editAssessmentNodeGradeByOrg" parameter="editAssessmentNodeGradeByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/editAssessmentNodeGradeInheritByOrg" parameter="editAssessmentNodeGradeInheritByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/editAssessmentNotNodeGradeByOrg" parameter="editAssessmentNotNodeGradeByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/editAssessmentScoreGradeByOrg" parameter="editAssessmentScoreGradeByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/editAssessmentGradeByOrg" parameter="editAssessmentGradeByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/editAssessmentAllByOrg" parameter="editAssessmentAllByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/editAssessmentSetHandlerByOrg" parameter="editAssessmentSetHandlerByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/editSetIndicatorNodeHandlerByOrg" parameter="editSetIndicatorNodeHandlerByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentDirectScoreByOrg" parameter="editAssessmentDirectScoreByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editAssessmentAuditNodeGradeInheritByOrg" parameter="editAssessmentAuditNodeGradeInheritByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+		
+		
+	<action path="/saveAssessmentIndicatorsByOrg" parameter="saveAssessmentIndicatorsByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/saveAssessmentIndicatorsScoreByOrg" parameter="saveAssessmentIndicatorsScoreByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/saveAssessmentGradeByOrg" parameter="saveAssessmentGradeByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/saveAssessmentScoreGradeByOrg" parameter="saveAssessmentScoreGradeByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/saveIndicatorNodeHandlerByOrg" parameter="saveIndicatorNodeHandlerByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+
+	<action path="/openStaticAssessmentByOrg" parameter="openStaticAssessmentByOrg" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/showAssIndicatorPreviousNodeHandler" parameter="showAssIndicatorPreviousNodeHandler" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<!--考核表流程视图 END -->
+	
+	<!-- 考核指标 -->
+	<action path="/importAssessmentIndicator" parameter="importAssessmentIndicator" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/readExcelAssessmentIndicator" parameter="readExcelAssessmentIndicator" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+	<action path="/exportIndicatorTemplate" parameter="exportIndicatorTemplate" scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy"></action>		
+		<!-- 统计查询 -->
+	<action parameter="queryPersonAssessment" path="/queryPersonAssessment" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	<action parameter="queryOrgAssessment" path="/queryOrgAssessment" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />   
+	<action parameter="openStaticAssessmentYearByInfo" path="/openStaticAssessmentYearByInfo" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />   
+	<action parameter="dealPersonYearStat" path="/dealPersonYearStat" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />   	
+	<action parameter="queryPersonAssessmentCheckAppeal" path="/queryPersonAssessmentCheckAppeal" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	<action parameter="queryYearAssessment" path="/queryYearAssessment" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	<action parameter="queryGradeReport" path="/queryGradeReport" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   
+	<!-- 模板 -->
+	<action parameter="listTemplate" path="/listTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="editTemplate" path="/editTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="addTemplate" path="/addTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="saveTemplate" path="/saveTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="deleteTemplate" path="/deleteTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="addTemplateIndicatorType" path="/addTemplateIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="deleteTemplateIndicatorType" path="/deleteTemplateIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="deleteTemplateIndicator" path="/deleteTemplateIndicator" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	   	<action parameter="addTemplateIndicator" path="/addTemplateIndicator" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="editTemplateIndicator" path="/editTemplateIndicator" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="downIndicatorTemplate" path="/downIndicatorTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="removeTemplate" path="/removeTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="copyTemplate" path="/copyTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="pasteTemplate" path="/pasteTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="editTemplateHandler" path="/editTemplateHandler" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="saveTemplateIndicatorNodeHandler" path="/saveTemplateIndicatorNodeHandler" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		<action parameter="showTemplateIndicatorPreviousNodeHandler" path="/showTemplateIndicatorPreviousNodeHandler" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	
+	<!--	部门考核分数配置   -->
+		<action parameter="listAssessMarkConfig" path="/listAssessMarkConfig" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		 <action parameter="addAssessMarkConfig" path="/addAssessMarkConfig" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		 <action parameter="updateAssessMarkConfig" path="/updateAssessMarkConfig" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		 <action parameter="deleteAssessMarkConfig" path="/deleteAssessMarkConfig" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		 
+		 
+		 <action parameter="listAssessMark" path="/listAssessMark" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		 <action parameter="listAssessMarkById" path="/listAssessMarkById"
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+		 <action parameter="addAssessMark" path="/addAssessMark" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		 <action parameter="updateAssessMark" path="/updateAssessMark" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		 <action parameter="deleteAssessMark" path="/deleteAssessMark" 
+		 type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	<!-- end -->		
+	</action-mappings>
+	
+</struts-config>

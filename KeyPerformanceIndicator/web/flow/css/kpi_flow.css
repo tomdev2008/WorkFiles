@@ -1,0 +1,12 @@
+/*-------------弹出对话框--------------*/
+.dialog-box{width:500px; height:400px; border:1px #4B8CE0 solid;}
+.dialog-titlebg{background:url(../../../img/dialog_03.gif) repeat-x; height:24px; color:#fff; font-weight:bold; padding-left:10px;                text-align:left; border:1px #ffffff solid;}
+.dialog-title{background:url(../../../img/dialog_06.gif) top left no-repeat; text-indent:14px; text-algin:left;}
+.dialog-text-bg{ background:#ffffff url(../../../img/dialog_11.gif) bottom repeat-x; padding:20px 30px 0px 30px;height:323px;   
+              text-algin:left; color:#000; border-top:1px #4B8CE0 solid; border-right:1px #fff solid; border-left:1px #fff solid; 
+			  border-bottom:1px #fff solid; }
+.dialog-text-box{height:294px;width:100%; text-align:left;}
+.dialog-text{padding-left:4px; text-align:right;}
+.dialog-red{color:red; padding:5px; line-height:18px; text-align:left;}
+.dialog-button2 {background: url(../../../img/button_03.gif) no-repeat;border:0;height:24px;width:61px; padding-top:2px;}/*两个字符的按钮*/
+.dialog-line{background:url(../../../img/dialog_13.gif) no-repeat;height:2px; width:467px;}

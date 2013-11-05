@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>		
+	<!-- 计划表 -->
+		<bean id="yearPlanDao" class="com.shengdai.kpi.yearplan.dao.impl.YearPlanDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="yearPlanService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.yearplan.service.impl.YearPlanServiceImpl">
+					<property name="yearPlanDao"><ref bean="yearPlanDao"/></property>
+					<property name="yearPlanIndicatorService"><ref bean="yearPlanIndicatorService"/></property>
+				</bean>
+			</property>
+		</bean>	
+		
+		
+	<!-- 考核表指标 -->
+		<bean id="yearPlanIndicatorDao" class="com.shengdai.kpi.yearplan.dao.impl.YearPlanIndicatorDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="yearPlanIndicatorService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.yearplan.service.impl.YearPlanIndicatorServiceImpl">
+					<property name="yearPlanIndicatorDao"><ref bean="yearPlanIndicatorDao"/></property>
+					<property name="yearPlanIndiNodeHandlerDetailService"><ref bean="yearPlanIndiNodeHandlerDetailService"/></property>
+				</bean>
+			</property>
+		</bean>		
+	
+		<!-- 考核表指标环节处理人 -->
+		<bean id="yearPlanIndiNodeHandlerDetailDao" class="com.shengdai.kpi.yearplan.dao.impl.YearPlanIndiNodeHandlerDetailDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="yearPlanIndiNodeHandlerDetailService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.yearplan.service.impl.YearPlanIndiNodeHandlerDetailServiceImpl">
+					<property name="yearPlanIndiNodeHandlerDetailDao"><ref bean="yearPlanIndiNodeHandlerDetailDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+	<!-- 考核表指标类型 -->
+		<bean id="yearPlanIndicatorTypeDao" class="com.shengdai.kpi.yearplan.dao.impl.YearPlanIndicatorTypeDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="yearPlanIndicatorTypeService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.yearplan.service.impl.YearPlanIndicatorTypeServiceImpl">
+					<property name="yearPlanIndicatorTypeDao"><ref bean="yearPlanIndicatorTypeDao"/></property>
+				</bean>
+			</property>
+		</bean>		
+
+	
+		
+</beans>

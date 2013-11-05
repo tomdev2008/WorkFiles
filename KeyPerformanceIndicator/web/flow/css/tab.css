@@ -1,0 +1,34 @@
+.tab-pane {
+	WIDTH: 100%; MARGIN-RIGHT: -2px; POSITION: relative
+}
+.dynamic-tab-pane-control .tab-row .tab {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 1px; BORDER-TOP: 0px; DISPLAY: inline; PADDING-LEFT: 0px; Z-INDEX: 1; FLOAT: left; BACKGROUND-IMAGE: url(define-nav_05.gif); PADDING-BOTTOM: 0px; MARGIN: 1px -1px 1px 2px; FONT: 11px Tahoma; OVERFLOW: hidden; BORDER-LEFT: 0px; WIDTH: 93px; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: 0px; WHITE-SPACE: nowrap; POSITION: relative; TOP: 0px; HEIGHT: 16px; TEXT-ALIGN: center
+}
+.dynamic-tab-pane-control .tab-row .selected {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 0px; Z-INDEX: 3; BACKGROUND-IMAGE: url(define-nav_03.gif)! important; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 1px -3px -3px 0px; FONT: 11px Tahoma; WIDTH: 93px! important; PADDING-TOP: 2px; TOP: -2px; HEIGHT: 18px! important; background-repaet: no-repeat
+}
+.dynamic-tab-pane-control .tab-row .tab A {
+	FONT: 11px Tahoma; CURSOR: default; COLOR: black; TEXT-DECORATION: none
+}
+.dynamic-tab-pane-control .tab-row .hover {
+	BACKGROUND-IMAGE: url(define-nav_03.gif); FONT: 11px Tahoma; WIDTH: 93px; HEIGHT: 16px; background-repaet: no-repeat;PADDING-RIGHT: 1px;
+}
+.dynamic-tab-pane-control .tab-page {
+	CLEAR: both; 
+	BORDER: #4B8CE0 1px solid;
+	PADDING-top: 1px;
+	PADDING-right: 2px;
+	PADDING-left: 2px;
+	PADDING-bottom: 2px;  
+	Z-INDEX: 2; 
+	BACKGROUND: #C3DBF2; 
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#fffcfcfe, EndColorStr=#fff4f3ee, GradientType=0)
+					progid:DXImageTransform.Microsoft.Shadow(Color=#ff919899, Strength=2, Direction=135); 
+ 
+	FONT: 11px Tahoma; 
+	COLOR: black;  
+	POSITION: relative; TOP: -2px
+}
+.dynamic-tab-pane-control .tab-row {
+	Z-INDEX: 1; WHITE-SPACE: nowrap
+}

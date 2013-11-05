@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.TurningItem" table="REC_WORLISTITEM_TRANSIT_HISTOR">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="workItemId" column="WORKLIST_ID" type="string"/>
+		<property name="handler" column="handler" type="string"/>
+		<property name="handlerName" column="HANDLER_NAME" type="string"/>
+		<property name="turningHandler" column="TO_HANDLER" type="string"/>
+		<property name="turningHandlerName" column="TO_HANDLER_NAME" type="string"/>
+		<property name="accreditId" column="accredit_id" type="string"/>
+		<property name="createDate" column="create_date" type="timestamp"/>
+		<property name="creator" column="CREATOR" type="string"/>
+		<property name="creatorName" column="CREATOR_NAME" type="string"/>
+
+		<!-- 旧版本中的属性 
+		<property 
+			name="flgHistory"
+			column="flg_history"
+			type="int"
+		/>
+		 -->
+	</class>
+</hibernate-mapping>

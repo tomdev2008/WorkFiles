@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- UniformType -->
+	<bean name="uniformType" class="com.shengdai.kpi.system.org.web.UniformTypeAction">
+		<property name="uniformTypeService">
+			<ref bean="uniformTypeService"/>
+		</property>
+	</bean>
+	<bean name="/createUniformType" parent="uniformType"></bean>
+	<bean name="/editUniformType" parent="uniformType"></bean>
+	<bean name="/saveUniformType" parent="uniformType"></bean>
+	<bean name="/delUniformType" parent="uniformType"></bean>
+	<bean name="/uniformTree" parent="uniformType"></bean>
+	<bean name="/listUniformType" parent="uniformType"></bean>
+	<bean name="/serarchUniformType" parent="uniformType"></bean>
+	<!-- end -->
+	
+	<!-- Org -->
+	<bean name="org" class="com.shengdai.kpi.system.org.web.OrgAction">
+		<property name="uniformTypeService">
+			<ref bean="uniformTypeService"/>
+		</property>
+		<property name="orgService">
+			<ref bean="orgService"/>
+		</property>
+	</bean>
+	<bean name="/listOrg" parent="org"></bean>
+	<bean name="/listHistory" parent="org"></bean>
+	<bean name="/createOrg" parent="org"></bean>
+	<bean name="/editOrg" parent="org"></bean>
+	<bean name="/saveOrg" parent="org"></bean>
+	<bean name="/delOrg" parent="org"></bean>
+	<bean name="/treeOrg" parent="org"></bean>
+	<bean name="/treeAdminScopeRootOrg" parent="org"></bean>
+	<bean name="/treeAdminScopeChildOrg" parent="org"></bean>
+	<bean name="/listUUVOrg" parent="org"></bean>
+	<bean name="/syncOrg" parent="org"></bean>
+	<bean name="/moveOrg" parent="org"></bean>
+	<bean name="/listInvadilOrg" parent="org"></bean>
+	<bean name="/resumeOrg" parent="org"></bean>
+	<bean name="/invadilOrgReporter" parent="org"></bean>
+	<bean name="/exportInvalidOrgReporter" parent="org"></bean>
+	<bean name="/listOrgDuty" parent="org"></bean>
+	<bean name="/editOrgDuty" parent="org"></bean>
+	<bean name="/saveOrgDuty" parent="org"></bean>
+	<!-- end -->
+	
+	<!-- position -->
+	<bean name="position" class="com.shengdai.kpi.system.org.web.PositionAction">
+		<property name="positionService">
+			<ref bean="positionService"/>
+		</property>
+		<property name="orgService">
+			<ref bean="orgService"/>
+		</property>
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+	<bean name="/delPosition" parent="position"></bean>
+	<bean name="/editPosition" parent="position"></bean>
+	<bean name="/createPosition" parent="position"></bean>
+	<bean name="/listPosition" parent="position"></bean>
+	<bean name="/savePosition" parent="position"></bean>
+	<bean name="/searchPosition" parent="position"></bean>
+	<!-- end -->	
+	
+	<!-- user -->
+	<bean name="user" class="com.shengdai.kpi.system.org.web.UserAction">
+		<property name="positionService">
+			<ref bean="positionService"/>
+		</property>
+		<property name="orgService">
+			<ref bean="orgService"/>
+		</property>
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="assValidateHelper">
+			<ref bean="assessmentService"/>
+		</property>
+	</bean>
+	<bean name="/listUserByOrg" parent="user"></bean>
+	<bean name="/createUser" parent="user"></bean>
+	<bean name="/editUser" parent="user"></bean>
+	<bean name="/saveUser" parent="user"></bean>
+	<bean name="/delUser" parent="user"></bean>
+	<bean name="/queryUser" parent="user"></bean>
+	<bean name="/exportUser" parent="user"></bean>
+	<bean name="/exportUserTemplate" parent="user"></bean>
+	<bean name="/implortUser" parent="user"></bean>
+	<bean name="/tip" parent="user"></bean>
+	<bean name="/moveUser" parent="user"></bean>
+	<bean name="/sendMoveRequisition" parent="user"></bean>
+	<bean name="/listMoveRequisition" parent="user"></bean>
+	<bean name="/findMoveRequisition" parent="user"></bean>
+	<bean name="/doMoveInto" parent="user"></bean>
+	<bean name="/cancelMoveRequisition" parent="user"></bean>
+	<bean name="/listInvadilUsers" parent="user"></bean>
+	<bean name="/resumeUser" parent="user"></bean>
+	<bean name="/initUser" parent="user"></bean>
+	<bean name="/invadilUserReport" parent="user"></bean>
+	<bean name="/exportInvadilUserReport" parent="user"></bean>
+	<bean name="/batchUpdateUser" parent="user"></bean>
+	<bean name="/moveRollBack" parent="user"></bean>
+	<bean name="/moveUserCheckWithPre" parent="user"></bean>
+	<bean name="/findUserForAjax" parent="user"></bean>
+	<bean name="/changeLoginUserPwd" parent="user"></bean>
+	<bean name="/setLeaderByOrgs" parent="user"></bean>
+	<bean name="/listUserDuty" parent="user"></bean>
+	<bean name="/editUserDuty" parent="user"></bean>
+	<bean name="/saveUserDuty" parent="user"></bean>
+	<!-- end -->
+	
+	<bean name="parentResourceAction" class="com.shengdai.kpi.system.security.web.ResourceAction" abstract="true">
+		<property name="resourceService" ref="resourceService" />
+	</bean>
+	
+	<bean name="/deleteFunctionKey" parent="parentResourceAction"/>
+	<bean name="/updateFunctionKey" parent="parentResourceAction"/>
+	<bean name="/createFunctionKey" parent="parentResourceAction"/>
+	<bean name="/editFunctionKey" parent="parentResourceAction"/>
+	<bean name="/createResource" parent="parentResourceAction"/>
+	<bean name="/updateResource" parent="parentResourceAction"/>
+	<bean name="/delResource" parent="parentResourceAction"/>
+	<bean name="/editResource" parent="parentResourceAction"/>
+	<bean name="/listResource" parent="parentResourceAction"/>
+	<bean name="/getResourceTree" parent="parentResourceAction"/>
+	<bean name="/swapResource" parent="parentResourceAction"/>
+	<bean name="/mainHead" parent="parentResourceAction"/>
+	<!-- role -->
+	<bean name="role" class="com.shengdai.kpi.system.security.web.RoleAction" abstract="true">
+		<property name="roleService" ref="roleService" />
+		<property name="resourceService" ref="resourceService" />
+		<property name="adminScopeService" ref="adminScopeService" />
+	</bean>
+	<bean name="/treeRole" parent="role"></bean>
+	
+	<bean name="/addressTreeRole" parent="role"></bean>			<!--			地址本树 	-->
+	<bean name="/addressListChildRole" parent="role"></bean>	<!--			地址本树 	-->
+	
+	<bean name="/editRole" parent="role"></bean>
+	<bean name="/deleteRole" parent="role"></bean>
+	<bean name="/createRole" parent="role"></bean>
+	<bean name="/saveRole" parent="role"></bean>
+	<bean name="/viewRoleResource" parent="role"></bean>
+	<bean name="/viewRoleUser" parent="role"></bean>
+	<bean name="/grantResource" parent="role"></bean>
+	<bean name="/grantRoleUser" parent="role"></bean>
+	<bean name="/depriveRoleUser" parent="role"></bean>
+	<bean name="/listContorlDomain" parent="role"></bean>
+	<bean name="/saveContorlDomain" parent="role"></bean>
+	<!-- end -->
+	
+	<!-- group -->
+	<bean name="group" class="com.shengdai.kpi.system.org.web.GroupAction" abstract="true">
+		<property name="groupService" ref="groupService" />
+		<property name="orgService" ref="orgService" />
+	</bean>
+	<bean name="/listGroup" parent="group"></bean>
+	<bean name="/createGroup" parent="group"></bean>
+	<bean name="/editGroup" parent="group"></bean>
+	<bean name="/saveGroup" parent="group"></bean>
+	<bean name="/delGroup" parent="group"></bean>
+	<bean name="/getDetails" parent="group"></bean>
+	<!-- end -->
+	
+	<!-- Address start -->
+    
+    
+    <bean name="/org_tree" class="com.shengdai.kpi.system.org.web.OrgAction" />
+    <bean name="/org_addressTree" class="com.shengdai.kpi.system.org.web.OrgAction">
+    <property name="uniformTypeService">
+			<ref bean="uniformTypeService"/>
+		</property>
+		<property name="orgService">
+			<ref bean="orgService"/>
+		</property>
+	</bean>
+    <bean name="/orgSelecteForm" class="com.shengdai.kpi.system.org.web.OrgAction"/>
+    <bean name="/orgOptions" class="com.shengdai.kpi.system.org.web.OrgAction">
+    <property name="uniformTypeService">
+			<ref bean="uniformTypeService"/>
+		</property>
+		<property name="orgService">
+			<ref bean="orgService"/>
+		</property>
+	</bean>
+	
+	<bean name="/org_addressTree_indicator" class="com.shengdai.kpi.system.org.web.OrgAction">
+      
+		<property name="orgService">
+			<ref bean="orgService"/>
+		</property>
+	</bean>
+
+	<bean name="/addressSearch" class="com.shengdai.kpi.system.org.web.OrgAction"></bean>
+	
+	<bean name="/lineTreeForAddress" class="com.shengdai.kpi.system.org.web.UniformTypeAction">
+		<property name="uniformTypeService">
+			<ref bean="uniformTypeService"/>
+		</property>
+	</bean>
+	<bean name="/uniformPosTreeForAddress" parent="uniformType"></bean>
+	<bean name="/listInfoUniformType" parent="uniformType"></bean>
+	
+    <!-- Address end 	-->
+	
+	<!-- log -->
+	<bean name="log" class="com.shengdai.kpi.system.security.web.LogAction" abstract="true">
+		<property name="resourceService" ref="resourceService" />
+		<property name="logService" ref="logService" />
+	</bean>
+	<bean name="/listLog" parent="log"></bean>
+	<bean name="/listLogLevels" parent="log"></bean>
+	<bean name="/updateLogLevels" parent="log"></bean>
+	<bean name="/listResourceLevel" parent="log"></bean>
+	<bean name="/updateResourceLevel" parent="log"></bean>
+	<bean name="/queryLog" parent="log"></bean>
+	<!-- end -->
+	
+	<!-- logger aop --><!--
+	<bean name="actionLogger" class="com.shengdai.kpi.common.aop.ActionLoggerInterceptor"/>
+	<bean name="autoProxy" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+	<property name="beanNames">
+		<value>/*</value>
+	</property>
+	<property name="interceptorNames">
+		<list>
+			<value>actionLogger</value>
+		</list>
+	</property>
+	</bean>
+	--><!-- end -->
+	
+	<!-- AuthorizationPolicy -->
+	<bean name="authPolicy" class="com.shengdai.kpi.system.security.web.AuthorizationPolicyAction" abstract="true">
+		<property name="authPolicyService"  ref="authPolicyService" />
+		<property name="orgService" ref="orgService"></property>
+	</bean>
+	<bean name="/getAuthPolicy" parent="authPolicy"></bean>
+	<bean name="/createAuthPolicy" parent="authPolicy"></bean>
+	<!-- end -->
+	
+	<!-- logonLog -->
+	<bean name="logonLog" class="com.shengdai.kpi.system.security.web.LogonLogAction" abstract="true">
+		<property name="logonLogService" ref="logonLogService"></property>
+	</bean>
+	<bean name="/listLogonLog" parent="logonLog"></bean>
+	<bean name="/queryLogonLog" parent="logonLog"></bean>
+	<bean name="/refreshLogonLogBuffer" parent="logonLog"></bean>
+	<!-- end -->
+	
+	<!-- PersonFolder -->
+	<bean name="personFolder" class="com.shengdai.kpi.system.favorite.web.PersonFolderAction">
+		<property name="personFolderService">
+			<ref bean="personFolderService"/>
+		</property>
+	</bean>
+	<bean name="/listPersonFolder" parent="personFolder"></bean>
+	<bean name="/treePersonFolder" parent="personFolder"></bean>
+	<bean name="/createPersonFolder" parent="personFolder"></bean>
+	<bean name="/editPersonFolder" parent="personFolder"></bean>
+	<bean name="/savePersonFolder" parent="personFolder"></bean>
+	<bean name="/delPersonFolder" parent="personFolder"></bean>
+	<bean name="/swapPersonFolder" parent="personFolder"></bean>
+	<bean name="/movePersonFolder" parent="personFolder"></bean>
+	<bean name="/createPersonFolder2" parent="personFolder"></bean>
+	<!-- end -->
+	
+	<!-- PersonData -->
+	<bean name="personData" class="com.shengdai.kpi.system.favorite.web.PersonDataAction">
+		<property name="personFolderService">
+			<ref bean="personFolderService"/>
+		</property>
+		<property name="personDataService">
+			<ref bean="personDataService"/>
+		</property>
+	</bean>
+	<bean name="/listFolderData" parent="personData"></bean>
+	<bean name="/createPersonData" parent="personData"></bean>
+	<bean name="/savePersonData" parent="personData"></bean>
+	<bean name="/editPersonData" parent="personData"></bean>
+	<bean name="/swapPersonData" parent="personData"></bean>
+	<bean name="/delPersonData" parent="personData"></bean>
+	<bean name="/movePersonData" parent="personData"></bean>
+	<bean name="/createFavorite" parent="personData"></bean>
+	<bean name="/listAddrFolderData" parent="personData"></bean>
+	<bean name="/treePersonData" parent="personData"></bean>
+	<!-- end -->
+	
+	
+	<!-- PersonQuery -->
+	<bean name="PersonQuery" class="com.shengdai.kpi.system.favorite.web.PersonQueryAction">
+		<property name="personQueryService">
+			<ref bean="personQueryService"/>
+		</property>
+	</bean>
+	<bean name="/listPersonQuery" parent="PersonQuery"></bean>
+	<bean name="/delPersonQuery" parent="PersonQuery"></bean>
+	<bean name="/createPersonQuery" parent="PersonQuery"></bean>
+	<bean name="/editPersonQuery" parent="PersonQuery"></bean>
+	<bean name="/savePersonQuery" parent="PersonQuery"></bean>
+	<bean name="/swapPersonQuery" parent="PersonQuery"></bean>
+	<bean name="/listPersonQueryByUser" parent="PersonQuery"></bean>
+	<bean name="/viewPersonQuery" parent="PersonQuery"></bean>
+	<!-- end -->
+	
+	
+	<!-- comment -->
+	<bean name="comment" class="com.shengdai.kpi.system.favorite.web.CommentAction">
+		<property name="commentService">
+			<ref bean="commentService"/>
+		</property>
+	</bean>
+	<bean name="/listComment" parent="comment"></bean>
+	<bean name="/saveComment" parent="comment"></bean>
+	<bean name="/editComment" parent="comment"></bean>
+	<bean name="/createComment" parent="comment"></bean>
+	<bean name="/deleteComment" parent="comment"></bean>
+	<bean name="/getContent" parent="comment"></bean>
+	<!-- end -->
+	
+	<bean name="ehcacheAction" class="com.shengdai.kpi.container.EhcacheAction" singleton="false">
+		<property name="ehcacheDao">
+			<ref bean="ehcacheDao"/>
+		</property>
+	</bean>
+	<bean name="/evictCache" parent="ehcacheAction"></bean>
+	<bean name="/reloadCache" parent="ehcacheAction"></bean>
+	<bean name="/testSpring" parent="ehcacheAction"></bean>	
+	
+
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.FlwFlowJob" table="FLW_FLOW_Job" where="flg_deleted=0">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="id" type="string" >
+			<generator class="uuid.hex"/>
+		</id>
+		<property name="flowId" column="flow_ID" type="string" />
+		<property name="flowName" column="flow_name" type="string" />
+		<property name="startInParams" column="START_IN_PARAMS" type="string" />
+		<many-to-one name="monitor" column="MONITOR_ID" class="com.shengdai.kpi.flow.valueobject.Monitor" not-found="ignore" />
+		<property name="recordLog" column="record_log" type="string" />
+		<property name="creator" column="creator" type="string" />
+		<property name="createName" column="create_name" type="string" />
+		<property name="createDate" column="create_date" type="timestamp" />
+		<property name="startDate" column="start_date" type="timestamp"/>
+		<property name="finishDate" column="finish_date" type="timestamp"/>
+		<property name="spendTime" column="spend_time" type="java.lang.Long"/>
+		<property name="createIp" column="create_ip" type="string" />		
+		<property name="status" column="status" type="java.lang.Integer" />	
+		<property name="flgDeleted" column="flg_deleted" type="java.lang.Integer" />
+		<property name="batchDate" column="batch_date" type="java.lang.Integer" />
+	</class>
+</hibernate-mapping>

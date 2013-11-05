@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.system.org.vo.Org" table="SYS_ORG"  lazy="false">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="id" type="string" > 
+			<generator class="uuid.hex"></generator>
+		</id>
+
+		<property name="name" 
+			column="name" 
+			type="string"
+		/>
+		<property name="code" 
+			column="code" 
+			type="string"
+		/>
+		<property name="orgPropertyName" 
+			column="org_property_name" 
+			type="string"
+		/>
+		<property name="satrapId" 
+			column="satrap_id" 
+			type="string"
+		/>
+		<property name="satrapName" 
+			column="satrap_name" 
+			type="string"
+		/>
+		<property name="performerId" 
+			column="performer_id" 
+			type="string"
+		/>
+		<property name="performerName" 
+			column="performer_name" 
+			type="string"
+		/>
+		<property name="kpiManagerId" 
+			column="KPI_MANAGER_ID" 
+			type="string"
+		/>
+		<property name="kpiManagerName"
+			column="KPI_MANAGER_NAME"
+			type="string"
+		/>
+		<property name="uniformLineName" 
+			column="uniform_line_name" 
+			type="string"
+		/>
+		<property name="fullPath" 
+			column="full_path" 
+			type="string"
+		/><!--
+		--><property name="priority" 
+			column="priority" 
+			type="int"
+		/>
+		
+		<property name="globalPriority" 
+			column="global_priority" 
+			type="int"
+		/>
+		<!--
+		--><property name="fullName" 
+			column="full_name" 
+			type="string"
+		/>
+		<property name="layer" 
+			column="layer" 
+			type="int"
+		/>
+		<property name="orgLayer" 
+			column="org_layer" 
+			type="string"
+		/>
+		<property name="remark" 
+			column="remark" 
+			type="string"
+		/>
+		<many-to-one name="uniformType" 
+			column="uniform_id"
+			class="com.shengdai.kpi.system.org.vo.UniformType"
+		/>       
+		<many-to-one name="org" 
+			column="parent_id" 
+			class="com.shengdai.kpi.system.org.vo.Org"
+			not-found="ignore"
+		/>
+		
+		
+		<property name="flgActive" 
+			column="flg_active" 
+			type="int"
+		/>  
+		<property name="lastModifier" 
+			column="LAST_MODIFIER" 
+			type="string"
+		/>
+		<property name="lastModifierName" 
+			column="LAST_MODIFIER_NAME" 
+			type="string"
+		/>
+		<property name="originalId" 
+			column="ORIGINAL_ID" 
+			type="string"
+		/>
+		<property name="default_1_id" 
+			column="default_1_id" 
+			type="string"
+		/>
+		<property name="default_1_name" 
+			column="default_1_name" 
+			type="string"
+		/>
+		<property name="default_2_id" 
+			column="default_2_id" 
+			type="string"
+		/>
+		<property name="default_2_name" 
+			column="default_2_name" 
+			type="string"
+		/>
+		<property name="lastModifyDate" 
+			column="LAST_MOD_DATE" 
+			type="java.util.Date"
+		/>
+		<property name="version" 
+			column="VERSION" 
+			type="int"
+		/>
+		<property name="oldParentId" 
+			column="parent_id" 
+			type="string"
+			update="false" insert="false"
+		/>
+		<property name="orgDuty"
+			column="ORG_DUTY"
+			type="string"
+		/>
+		
+	<set name="children" cascade="save-update" inverse="true" lazy="true"  order-by="priority" where="flg_active = 1" >
+			<cache usage="nonstrict-read-write" />
+            <key column="parent_id"/>
+            <one-to-many class="com.shengdai.kpi.system.org.vo.Org" not-found="ignore"/>
+    </set> 
+    <set name="positions" cascade="none" inverse="true" lazy="true"  order-by="priority">
+       	<cache usage="nonstrict-read-write" />
+        <key column="ORG_ID"/>
+    	  <one-to-many class="com.shengdai.kpi.system.org.vo.Position" not-found="ignore" />
+    </set>
+    <set name="users" cascade="none" inverse="true" lazy="true" order-by="priority" where="FLG_ACTIVE=1">
+        <cache usage="nonstrict-read-write" />
+        <key column="ORG_ID"/>
+        <one-to-many class="com.shengdai.kpi.system.org.vo.User" not-found="ignore"/>
+    </set>
+	</class>
+</hibernate-mapping>

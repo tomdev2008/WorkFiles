@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shengdai>
+    <tree>
+    	<root>
+    		<name><![CDATA[中国xxxxxxxxx有限公司]]></name>
+    	</root>
+    	<org>
+    		<open>org_open.gif</open>
+    		<close>org_open.gif</close>
+    	</org>
+    	<station>
+    		<open>org_open.gi</open>
+    		<close>org_open.gi</close>
+    	</station>
+    	<user>
+    		<open>org_open.gi</open>
+    		<close>org_open.gi</close>
+    	</user>
+    	<indicator_type>
+    		<open>img/org.gif</open>
+    		<close>img/org.gif</close>
+    	</indicator_type>
+    	<flow>
+    		<open>img/flow/flow.gif</open>
+    		<close>img/flow/flow.gif</close>
+    	</flow>
+    	<node>
+    		<open>img/flow/node.gif</open>
+    		<close>img/flow/node.gif</close>
+    	</node>
+    	<route>
+    		<open>img/flow/route.gif</open>
+    		<close>img/flow/route.gif</close>
+    	</route>
+    	<nodeEnd>
+    		<open>img/flow/end.gif</open>
+    		<close>img/flow/end.gif</close>
+    	</nodeEnd>
+    	
+    </tree>
+    
+    <performance>
+    
+    	<!-- filterUrl说明在有系统性能瓶颈的时候，需要过滤不准许访问的URL -->
+    	<filterUrl>/openUndoWorklist.do</filterUrl><!-- 打开待办请求 -->
+    	    	
+    	<cache>
+    		<loadOnStart>0</loadOnStart><!-- 系统缓存是否在启动的时候自动全部装载，开发机建议不启用，速度太慢了，1为装载，0为不装载 -->
+    	</cache>
+    </performance>
+    
+    <message>
+		<doSuccess>操作完成</doSuccess><!-- 操作完成，适合更广的情况，避免产生误会、歧义 -->        
+		<doFail>操作失败</doFail><!-- 操作完成，适合更广的情况，避免产生误会、歧义 -->
+    </message>
+    
+    <login>
+        <redirectPage>/login.jsp</redirectPage><!-- 操作页面如果检测到未登录(超时)页面重新定向 -->
+    </login>
+
+	<system>
+		<domain>
+			<name>http://192.168.18.21:8080/kpiWeb</name>
+		</domain>
+	</system>
+	<!-- 
+	异步处理器组件配置文件，主要管理系统中需要异步处理的动作。
+	需要异步处理的情况有以下几种：
+	1.服务器需要执行较长时间的动作；
+	2.可以在非工作时间执行的任务，如发送邮件，短信就可安排在中午和晚上执行；
+	3.系统后台扫描的任务，如定时发起流程，发送催办等；
+	组件实现类必须实现抽象类com.shengdai.kpi.common.schedule.Job
+	 -->
+	<schedules>
+	
+		<!-- 每次要加入新的异步处理器的时候，都在此加入schedule节点	 -->
+		<!--<schedule>
+			 name这里写的处理器的名称仅仅是在监控的时候显示的名字，最好用通俗易懂的名字，或者也可使用实现类名 
+			<name>测试DEMO</name>
+			
+			 处理器的实现类名 
+			<jobClass>com.shengdai.kpi.common.schedule.demo.JobDemo</jobClass>
+			
+			 定时处理类型  1，指定时间处理  0，循环处理 
+			<jobType>1</jobType>	
+			
+			 处理器的开始执行时间 
+			<timeFrom>0:00</timeFrom>
+			<timeTo>08:00</timeTo>
+			<interval>2</interval>
+			
+			 处理并发数 
+			<parallel>1</parallel>
+		</schedule>
+		
+		
+		<schedule>
+			<name>待办提交任务</name>
+			<jobClass>com.shengdai.kpi.flow.schedule.vo.JobWorklist</jobClass>
+			<jobType>1</jobType>		
+			<timeFrom>21:00</timeFrom>
+			<timeTo>32:00</timeTo>
+			<interval>5</interval>
+			<parallel>1</parallel>
+		</schedule>
+		
+		
+		<schedule>
+			<name>待办自动提交任务</name>
+			<jobClass>com.shengdai.kpi.flow.schedule.vo.JobFlowAutoSubmit</jobClass>
+			<jobType>0</jobType>		
+			<timeFrom>99:00</timeFrom>
+			<timeTo>99:00</timeTo>
+			<interval>2</interval>
+			<parallel>0</parallel>
+		</schedule>
+		
+		
+		<schedule>
+			<name>流程自动发起任务</name>
+			<jobClass>com.shengdai.kpi.flow.schedule.vo.JobFlow</jobClass>
+			<jobType>1</jobType>
+			<timeFrom>8:00</timeFrom>
+			<timeTo>18:00</timeTo>
+			<interval>5</interval>
+			<parallel>0</parallel>
+		</schedule>
+		
+		 <schedule>
+			<name>员工年度考核静态统计任务</name>
+			<jobClass>com.shengdai.kpi.ass.StatDealJobFlow</jobClass>
+			<jobType>0</jobType>
+			<timeFrom>22:00</timeFrom>
+			<timeTo>23:55</timeTo>
+			<interval>180</interval>
+			<parallel>1</parallel>
+		</schedule>-->
+	   
+		<schedule>
+			<name>邮件发送任务</name>
+			<jobClass>com.shengdai.kpi.common.message.vo.Msg</jobClass>
+			<jobType>0</jobType>
+			<timeFrom>00:00</timeFrom>
+			<timeTo>23:55</timeTo>
+			<interval>30</interval>
+			<parallel>1</parallel>
+		</schedule>
+	</schedules>
+</shengdai>
+

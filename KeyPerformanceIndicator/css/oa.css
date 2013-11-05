@@ -1,0 +1,116 @@
+@import url("main.css");
+/* OAģ����ʽ�ļ� */
+
+body{width:100%;}
+	.oabody{background:white;padding:10px;margin-left:5px;margin-right:5px;}
+		.oabody .oabox {background:white url(../img/bgSideBar.gif) repeat-y;overflow:hidden;width:100%;}
+		.oabody .oacontent {float:left;width:99%;margin-left:3px;text-align:left;}
+		.oabody .oacontent .tblOaList {border:1px solid #EDEDED;background:white url(../img/bgHClass.gif) repeat-x;}/*OAģ����ҳ�б�����ʽ*/
+		.oabody .oacontent .tblOaList h2 {height:30px;line-height:30px;float:left;width:60px;font-weight:normal;font-size:18px;font-family:  "����",Verdana, Geneva,serif;text-indent:12px}
+		.oabody .oacontent .tblOaList input.btnClass {background:white url(../img/btnOa2.gif) no-repeat;float:left;border:0;padding:0;width:56px;height:20px;text-indent:12px;color:#363;margin-top:5px;}
+		.oabody .oacontent .tblOaList table {margin-bottom:10px;clear:both;width:100%;border-bottom:1px solid #CCC;}
+		.oabody .oacontent .tblOaList table th {background:#E5EEFF;height:24px;line-height:24px;border-top:1px solid #CCC;border-bottom:1px solid #CCC;}
+		.oabody .oacontent .tblOaList table th a {color:black;text-decoration:none;display:block;text-indent:20px;}
+		.oabody .oacontent .tblOaList table th a:hover {color:gray;text-decoration:underline;background:#F1F5FD url(../img/iconDown.gif) no-repeat 0 3px;}
+		.oabody .oacontent .tblOaList table th.title {width:40%;}
+		.oabody .oacontent .tblOaList table td {text-indent:20px;height:24px;line-height:24px;}
+		.oabody .oacontent .tblOaList table td a {color:black;}
+		.oabody .oacontent .tblOaList table .btnSelect {width:80px;text-align:right;}
+		.oabody .oacontent .tblOaList table tr.menuTitle {background:#f7f7f7;}
+		
+		.oabody .oacontent .tblOaList table .menuTitle .iconRight {cursor:pointer;font-weight:bold;background-image:url(../img/iconRight.gif);background-position:1px 4px;background-repeat:no-repeat;}
+		.oabody .oacontent .tblOaList table .menuTitle .iconDown {cursor:pointer;font-weight:bold;background-image:url(../img/iconDown.gif);background-position:1px 4px;background-repeat:no-repeat;}
+				
+		.oabody .oacontent .tblOaList table td.c {font-weight:normal;background:#f7f7f7;cursor:pointer;color:gray;}
+		.oabody .oacontent .tblOaList table td.c  a {color:black;color:gray;}
+		.oabody .oacontent .tblOaList table .hidden {display:none;}
+		.oabody .oacontent2 {text-align:left}
+		.oabody .oacontent2 .oatitle {border-bottom:2px solid silver;height:30px;line-height:25px;width:100%;overflow:hidden;margin-bottom:5px;}
+		.oabody .oacontent2 .oatitle h2 {float:left;font-weight:normal;font-size:18px;font-family:  "����",Verdana, Geneva,serif;}
+		.oabody .oacontent2 .oatitle div {float:right;}
+		.oabody .oacontent2 .oatitle div.weeklink {float:left;margin-left:20px;color:gray;}
+		.oabody .oacontent2 .oatitle div a{color:gray;padding:2px 10px;}
+		.oabody .oacontent2 .oatitle div.weeklink .pre {background:white url(../img/iconPre.gif) no-repeat left 4px;}
+		.oabody .oacontent2 .oatitle div.weeklink .next {background:white url(../img/iconNext.gif) no-repeat right 4px;}
+		.oabody .oacontent2 .oaquery table{background:#999;width:100%;}
+
+		.oabody .oacontent2 .oatitle .q a.mysch {color:#f60;padding-left:15px; background:white url(../img/iconMySchedule.gif) no-repeat 0 3px;}
+		.oabody .oacontent2 .oaquery td{background:white;padding:3px;color:gray;}
+		.oabody .oacontent2 .oaquery td.t {background:#f7f7f7;color:black;}
+
+		.oabody .oacontent2 .tbldata {margin-top:10px;}
+		.oabody .oacontent2 .tbldata table {width:100%}
+		.oabody .oacontent2 .tbldata td {padding:2px;}
+		.oabody .oacontent2 .tbldata thead td {font-weight:bold;color:black;height:24px;line-height:24px;border-bottom:#CFCFCF 1px solid;}
+		.oabody .oacontent2 .tbldata tbody tr.trclass {background:#f7f7f7;}
+		.oabody .oacontent2 .tbldata tbody td {color:#333;height:20px;line-height:20px;}
+		.oabody .oacontent2 .tbldata tbody td.state1 {color:#f60;}
+		.oabody .oacontent2 .tbldata tbody td.state2 {color:#060;}
+		.oabody .oacontent2 .tbldata tbody td.state3 {color:#036;}
+		.oabody .oacontent2 .tbldata tbody td.red {color:red;}
+		.oabody .oacontent2 .tbldata a {color:#333;}
+		.oabody .oacontent2 .tblsch {text-align:left;}
+		.oabody .oacontent2 .tblsch table{width:100%;background:#999;text-align:center;}
+		.oabody .oacontent2 .tblsch th{padding:2px;background:#E4EAF6; }
+		.oabody .oacontent2 .tblsch th.thclass2 {background:#f7f7f7;}
+		.oabody .oacontent2 .tblsch .week {display:block;}
+		.oabody .oacontent2 .tblsch th.todayclass {background:#f60;}		
+		.oabody .oacontent2 .tblsch th a{color:black;}
+		.oabody .oacontent2 .tblsch td{padding:2px;background:white;height:30px; cursor:pointer;}
+		.oabody .oacontent2 .tblsch dd {display:none;padding:20px;}
+		.oabody .oacontent2 .tblsch dd.h {display:block;}
+		.oabody .oacontent2 .tblsch dt {border-bottom:1px solid silver;cursor: pointer;text-indent:24px;font-weight:bold; height:24px;line-height:24px;background-image:url(../img/iconTblsch.gif);background-repeat:no-repeat;background-position:0 3px;}
+		.oabody .oacontent2 .tblsch dt.h {background-image:url(../img/iconTblschOn.gif);}
+		.oabody .oacontent2 .tblsch td.add {background:#f7f7f7 url(../img/bgAddSch.gif) no-repeat right bottom;}
+		.oabody .oacontent2 .tblsch td.tdclass2 {background:#FFFFCC;width:100px;}
+
+	/*other*/
+#divAddSch {position:absolute;display:none; z-index:1000; top:550px;left:550px;width:300px;height:200px;border:1px solid #9CF;background:#f7f7f7;}
+#divAddSch p{clear:both; text-indent:2em;}
+#divAddSch h6{background:#036 url(../img/bgMsnTitle.gif) repeat-x;font-size:12px;color:white;height:24px; line-height:24px;border-bottom:1px solid #9CF;}
+#divAddSch h6 span{float:left;text-indent:1em;}
+#divAddSch h6 img{float:right;margin-right:3px;margin-top:3px; cursor: pointer}
+#divAddSch div{height:150px;}
+#divAddSch .c {height:26px;width:100%; overflow:hidden;}
+#divAddSch .c a {float:left;color:#0066FF;line-height:20px; text-decoration:none;background:white url(../img/btnBlack2.gif) no-repeat;border:0;height:20px;width:44px;margin:0 3px;}
+#divAddSch .c input {background:white url(../img/btnBlack2.gif) no-repeat;border:0;height:20px;width:44px;margin:0 3px;}
+
+
+#smallwin{width:100%;background:white;text-align:center;}
+	#smallwin #smallheader{height:39px; background:#36C url(../img/bgSmallHeader.gif) repeat-x;text-align:left;}
+	#smallwin #smallheader h1 {font-size:12px;height:39px;line-height:39px;background-image:url(../img/logoSmall.gif);background-repeat:no-repeat;background-position:14px 8px;color:#EEF3FD;text-indent:80px;}
+	#smallwin #smallheader h1 span{font-weight:normal;}
+	#smallwin #smallfooter{height:20px;background:#E1E9F9 url(../img/bgSmallFooter.gif) repeat-x;}
+
+
+
+/*new window*/
+	#smallwin #sbody {background:white;text-align:left;}
+	#smallwin .sform {width:500px;background:white;text-align:left;margin:0 auto;}
+	#smallwin .sform form{border-left:1px solid #989CA5;border-right:1px solid #989CA5;background:#F2F3F5;}
+	#smallwin .sform h2,#smallwin #sbody h2 {text-indent:2em;border-bottom:1px solid gray;margin-bottom:10px;height:40px;line-height:40px;font-weight:normal;font-size:18px;font-family:  "����",Verdana, Geneva,serif;letter-spacing:4px;}
+	#smallwin .sform h3{clear:both;font-size:12px;color:#036;text-indent:2em;border-top:1px solid #989CA5;background:silver url(../img/bgOaFormTitle.gif) repeat-x;height:26px;line-height:26px;}
+	#smallwin .sform h4 {font-size:12px;font-weight:normal;text-indent:4px;color:#036;height:24px;line-height:24px;background:#C8D7EA;}
+	/*#smallwin .sform h3.step1 {background-image:url(../img/bgNumber1.gif);background-position:4px 1px;background-repeat:no-repeat;}*/
+	#smallwin .sform div {padding:10px;}
+	#smallwin .sform div div {padding:0;}
+	#smallwin .sform .selectarthor,#smallwin .sform .writetxt {overflow:hidden;width:100%;}
+	#smallwin .sform  .fleft{width:260px;border:1px solid silver;background:white;}
+	#smallwin .sform .selectarthor .fleft div,#smallwin .sform .selectarthor .fright ul {height:200px; overflow:auto;}
+	#smallwin .sform .writetxt .fleft ul {height:130px; overflow:auto;}
+	#smallwin .sform .writetxt .ulinline {text-align:center;padding:2px 0;}
+	#smallwin .sform .writetxt textarea {width:190px;height:100px;}
+	#smallwin .sform .selectarthor li,#smallwin .sform .writetxt li{margin:1px 2px;}
+	#smallwin .sform  .fright {background:white;width:210px;margin-left:8px;border:1px solid silver;}
+	#smallwin .sform .subdiv {clear:both;text-align:center;height:20px;border-top:1px solid #989CA5;border-bottom:1px solid #989CA5;}
+	#smallwin #oatoolbar {margin-bottom:4px;height:24px;line-height:24px;background:#E7ECF7 url(../img/bgOaToolBar.gif) repeat-x;}
+	#smallwin #sbody .sTblClass {width:500px;margin:auto;background:gray;}
+	#smallwin #sbody .sTblClass th ,#smallwin #sbody td {background:#F2F3F5;padding:4px;}
+	#smallwin #sbody .sTblClass th {background:#C8D7EA;}	
+	#smallwin #sbody .sTblClass td input {margin:0 4px;border:1px solid gray; height:21px;line-height:21px;text-indent:3px;}
+	#smallwin #sbody .sTblClass td textarea {width:400px;height:300px;}
+	#smallwin #sbody .sTblClass input.date {background:white url(../img/iconDate.gif) no-repeat right 3px;}
+	#smallwin #sbody .sTblClass input.time	{background:white url(../img/iconTime.gif) no-repeat right 3px;}
+
+	#smallwin #sbody .sTblClass input.button2 {background:white url(../img/btnBlack2.gif) no-repeat;border:0;height:20px;width:44px;}
+	#smallwin #sbody .sTblClass input.button4 {background:white url(../img/btnBlack4.gif) no-repeat;border:0;height:20px;width:65px;}

@@ -1,0 +1,82 @@
+/* _lcid="2052" _version="11.0.5531"
+    _LocalBinding */
+body, form {
+    margin: 0;
+}
+body,td {
+	font-family: "宋体";
+	color: #666666;
+	font-size: 9pt;
+}
+tr {
+	height:18;
+}
+strong {
+	font-size: 10pt;
+}
+span {
+	height:20;
+	cursor:hand;
+}
+.td01{
+	font-family: "宋体";
+	color: #0045CE;
+	font-size: 9pt;
+	font-weight: bold;
+
+}
+.tdplace {
+	font-family: "宋体";
+	color: #153371;
+	font-size: 9pt;
+	font-weight: bold;
+
+}
+.td02 {
+	color: 09007C;
+	font-family: "宋体";
+	font-size: 9pt;
+	font-weight: bold;
+
+}
+.stedit { 
+background-color: #e2e2e2; color: #000000; font-size: 10pt; font-family: 宋体; border: 2 groove #FFFFFF; padding-top: 1; background-position: center 50%
+}
+.tdbulef {
+	color: 09007C;
+}
+.fontblack {
+	color: #000000;
+}
+a:link {
+	color: #ff0000;
+	text-decoration: none;
+}
+a:visited {
+	color: #003399;
+	text-decoration: none;
+}
+a:hover {
+	color: #ff0000;
+	text-decoration: none;
+}
+a:active {
+	color: #003399;
+	text-decoration: none;
+}
+.buttonOvr {
+	BORDER-RIGHT: #808080 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; WIDTH: 23px; BORDER-BOTTOM: #808080 1px solid; POSITION: relative; TOP: 1px; HEIGHT: 23px; BACKGROUND-COLOR: menu
+}
+.buttonPress {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #808080 1px solid; BORDER-LEFT: #808080 1px solid; WIDTH: 23px; BORDER-BOTTOM: #ffffff 1px solid; POSITION: relative; TOP: 1px; HEIGHT: 23px; BACKGROUND-COLOR: menu
+}
+.buttonNor {
+	BORDER-RIGHT: menu 1px solid; BORDER-TOP: menu 1px solid; BORDER-LEFT: menu 1px solid; WIDTH: 23px; BORDER-BOTTOM: menu 1px solid; POSITION: relative; TOP: 1px; HEIGHT: 23px; BACKGROUND-COLOR: menu
+}
+.buttonSep {
+	BORDER-RIGHT: buttonhighlight 1px solid; FONT-SIZE: 0px; BORDER-LEFT: buttonshadow 1px solid; WIDTH: 1px; TOP: 1px; HEIGHT: 23px
+}
+.Toolbar {
+	BORDER-RIGHT: #808080 1px solid; BORDER-TOP: #ffffff 1px solid; LEFT: 0px; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #808080 1px solid; POSITION: relative; TOP: 0px; HEIGHT: 25px; BACKGROUND-COLOR: menu
+}
+

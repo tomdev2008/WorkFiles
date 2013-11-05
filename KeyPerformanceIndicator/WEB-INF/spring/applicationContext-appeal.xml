@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>		
+	<!-- 复核申诉表 -->
+		<bean id="assCheckAppealDao" class="com.shengdai.kpi.appeal.dao.impl.AssCheckAppealDaoImpl" parent="baseDao">
+		</bean>
+		<bean id="assCheckAppealService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.appeal.service.impl.AssCheckAppealServiceImpl">
+					<property name="assCheckAppealDao"><ref bean="assCheckAppealDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+		<bean id="assCheckAppealResultDao" class="com.shengdai.kpi.appeal.dao.impl.AssCheckAppealResultDaoImpl" parent="baseDao">
+		</bean>
+		<bean id="assCheckAppealResultService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.appeal.service.impl.AssCheckAppealResultServiceImpl">
+					<property name="assCheckAppealResultDao"><ref bean="assCheckAppealResultDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+</beans>

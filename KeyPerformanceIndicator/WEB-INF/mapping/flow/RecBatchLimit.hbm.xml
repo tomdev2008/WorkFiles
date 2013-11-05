@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.RecBatchDtLimit" table="REC_DT_LIMIT" >
+		<id name="id" type="java.lang.String">
+        <column name="id" length="32" />
+        <generator class="uuid.hex" />
+    </id>
+	<many-to-one name="recBatch" column="batch_id"	class="com.shengdai.kpi.flow.valueobject.RecBatch"/>  
+	<property name="owner" column="owner" type="string"/>
+	<property name="ownerType" column="owner_type" type="int"/>
+	<property name="flowCode" column="FLOW_ID" type="string"/>
+	<many-to-one name="routeNode" column="route_code" class="com.shengdai.kpi.flow.valueobject.FlwRoute" not-found="ignore"/>		
+	<property name="limitDate" column="limit_date" type="timestamp"/>
+	<property name="flgAuto" column="flg_auto" type="int"/>
+		
+	<!-- 旧版本中的属性映射 
+	<property name="nodeCode" 
+			column="node_code" 
+			type="string"
+		/>
+	 -->	
+     
+	</class>
+</hibernate-mapping>

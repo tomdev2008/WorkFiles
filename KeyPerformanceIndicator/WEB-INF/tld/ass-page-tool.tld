@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE taglib PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+    "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>pageln</shortname>
+	<uri>http://www.shengdai.com/tags-page</uri>
+	<info>ln-tool</info>
+	<tag>
+		<name>indicatorNodeGrade</name><!-- 指标在指标环节评分信息 -->
+		<tagclass>com.shengdai.kpi.common.tag.PageForIndicatorNodeGrade</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>nodeId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>rowIndex</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>indicatorId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>viewType</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>className</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>maxScale</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>valueChannel</name><!-- 指标取值方式下拉框 -->
+		<tagclass>com.shengdai.kpi.common.tag.IndicatorValueChannelTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>selectedId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>assGradeMapping</name><!-- 考核表等级分数映射 -->
+		<tagclass>com.shengdai.kpi.common.tag.AssessGradeMappingTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>selectedId</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>attrExtends</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
+

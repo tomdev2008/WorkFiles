@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+<!-- 页面分页拦截器 -->
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="proxyTargetClass">
+			<value>true</value>
+		</property>
+		<property name="beanNames">
+			<list>
+				<value>/list*</value>
+				<value>/search*</value>
+				<value>/swap*</value>
+				<value>/query*</value>
+				<value>/open*</value>
+				<value>/view*</value>
+				<value>/watch*</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>pageAdvisor</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="pageAdvice" class="com.shengdai.kpi.common.page.aop.PageAdvice" />
+	<bean id="pageAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="pageAdvice" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 文件上传 -->
+	<bean id="AttachAction" class="com.shengdai.kpi.common.attach.web.action.AttachAction" singleton="true">
+	 	<property name="attachFactory" ref="attachFactory" />
+	 	<property name="attachService" ref="attachService" />
+	</bean>
+	<bean name="/uploadFile" parent="AttachAction" />
+	<bean name="/downloadFile" parent="AttachAction" />
+	<bean name="/attachList" parent="AttachAction" />
+	<bean name="/deleteAttachFile" parent="AttachAction" />
+	<bean name="/listResourceAttach" parent="AttachAction" />
+	<!-- 复制粘贴附件 -->
+	<bean name="/copyAttachAjax" parent="AttachAction" />
+	<bean name="/pasteAttachAjax" parent="AttachAction" />
+	
+	<!-- 登陆,主要用于内部测试 start add by zyf -->
+	<bean name="/login" class="com.shengdai.kpi.system.security.web.LogonAction" singleton="true">
+		<property name="userService" ref="userService"/>
+	</bean>
+	<!-- 退出系统 -->
+	<bean name="/logout" class="com.shengdai.kpi.system.security.web.LogoutAction" singleton="true"></bean>
+	<!-- 登陆,主要用于内部测试 end add by zyf -->
+	<!-- 用于统一待办 start add by zyf -->
+	<bean name="/loginAccredit" class="com.shengdai.kpi.system.security.web.LogonAction" singleton="true">
+	</bean>
+	<!-- 用于统一待办 end add by zyf -->
+	<!-- 字典 -->
+	<bean name="DictionaryAction" class="com.shengdai.kpi.common.dictionary.web.DictionaryAction" singleton="true">
+		<property name="dictionaryService"><ref bean="dictionaryService"/></property>
+	</bean>		
+    <bean name="/listDictionary" parent="DictionaryAction" />
+    <bean name="/viewDictionary" parent="DictionaryAction" />
+    <bean name="/saveDictionary" parent="DictionaryAction" />
+    <bean name="/batchDeleteDictionary" parent="DictionaryAction" />
+    <bean name="/changeDictionaryOrder" parent="DictionaryAction" />
+    
+    <bean name="filesAction" class="com.shengdai.kpi.common.file.web.FilesAction" singleton="true"/>
+    <bean name="/downloadStaticFileByName" parent="filesAction" />
+    
+    <!-- 后台线程 -->
+    <bean name="scheduleAction" class="com.shengdai.kpi.common.schedule.web.ScheduleAction" singleton="true">
+		<property name="taskJobsService"><ref bean="taskJobsService"/></property>
+		<property name="taskJobsArchiveService"><ref bean="taskJobsArchiveService"/></property>
+	</bean>		
+    <bean name="/showSystemAutoTaskLog" parent="scheduleAction" />
+</beans>

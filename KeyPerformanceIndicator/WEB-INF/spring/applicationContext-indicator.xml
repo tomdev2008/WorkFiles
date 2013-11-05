@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+	<!--指标类型 -->
+		<bean id="indicatorTypeDao" class="com.shengdai.kpi.indicator.dao.impl.IndicatorTypeDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="indicatorTypeService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.indicator.service.impl.IndicatorTypeServiceImpl">
+					<property name="indicatorTypeDao"><ref bean="indicatorTypeDao"/></property>
+				</bean>
+			</property>
+		</bean>		
+	<!--指标 -->
+		<bean id="indicatorDao" class="com.shengdai.kpi.indicator.dao.impl.IndicatorDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="indicatorService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.indicator.service.impl.IndicatorServiceImpl">
+					<property name="indicatorDao"><ref bean="indicatorDao"/></property>
+				</bean>
+			</property>
+		</bean>		
+	<!--指标取值方式 -->
+		<bean id="indicatorValuesChannelDao" class="com.shengdai.kpi.indicator.dao.impl.IndicatorValuesChannelDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="indicatorValuesChannelService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.indicator.service.impl.IndicatorValuesChannelServiceImpl">
+					<property name="indicatorValuesChannelDao"><ref bean="indicatorValuesChannelDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans />
+	<action-mappings>
+	
+		<action parameter="listAppealCheck" path="/listAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="saveAppealCheck" path="/saveAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="deleteAppealCheck" path="/deleteAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="editAppealCheck" path="/editAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 申诉环节视图 -->
+		<action parameter="editApplyAppealCheck" path="/editApplyAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="editLeaderAppealCheck" path="/editLeaderAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="editApplyConfirmAppealCheck" path="/editApplyConfirmAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="editOfficeAppealCheck" path="/editOfficeAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="editOfficeConfirmAppealCheck" path="/editOfficeConfirmAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action parameter="saveOpinionAppealCheck" path="/saveOpinionAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 查询 -->
+		<action parameter="openStaticAppealCheck" path="/openStaticAppealCheck" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" />
+	</action-mappings>
+	
+</struts-config>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.common.attach.model.Attach" table="COMM_ATTACH">
+		<id name="id" 
+			column="id" 
+			type="string" 
+			unsaved-value="0"> 
+			<generator class="uuid.hex"/>
+		</id>
+
+       <property name="name" 
+			column="name" 
+			type="string"
+		/>
+		
+		<property name="resourceId" 
+			column="resource_id" 
+			type="string"
+		/>
+<!--		<property name="resourceName" -->
+<!--			column="resouce_name" -->
+<!--			type="string"-->
+<!--		/>-->
+		<property name="fileName" 
+			column="file_name" 
+			type="string"
+		/>
+		<property name="extendName" 
+			column="extend_name" 
+			type="string"
+		/>
+		<property name="fileSize" 
+			column="file_size" 
+			type="long"
+		/>
+		<property name="genPersonId" 
+			column="CREATOR" 
+			type="string"
+		/>
+		<property name="genPersonName" 
+			column="CREATOR_NAME" 
+			type="string"
+		/>
+		
+		<!-- 流程信息 -->
+		<property name="nodeId" 
+			column="NODE_ID" 
+			type="string"
+		/>
+		<property name="nodeName" 
+			column="NODE_NAME" 
+			type="string"
+		/>
+		
+		<property name="genDate" 
+			column="create_date" 
+			type="timestamp"
+		/>
+		<property name="remark" 
+			column="remark" 
+			type="string"
+		/>
+		
+		
+		<property name="fileContent" 
+			column="file_content" 
+			type="org.springframework.orm.hibernate3.support.BlobByteArrayType"
+		/>
+		
+		<property name="parentAttachId" 
+			column="parentAttachId" 
+			type="string"
+		/>
+		
+		
+<!--		<set name="attachAuthSet"-->
+<!--			inverse="true" cascade="all">-->
+<!--			<key column="attach_id" />-->
+<!--			<one-to-many class="com.shengdai.kpi.common.attach.model.AttachAuth" />-->
+<!--		</set>-->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="yearPlanAction"
+		class="com.shengdai.kpi.yearplan.web.YearPlanAction">
+		<property name="yearPlanService">
+			<ref bean="yearPlanService" />
+		</property>
+		<property name="flowService" ref="flowService" />
+		<property name="worklistItemService" ref="worklistItemService" />
+		<property name="flowHelper" ref="flowHelper" />
+		<property name="yearPlanIndicatorService">
+			<ref bean="yearPlanIndicatorService" />
+		</property>		
+		<property name="yearPlanIndicatorTypeService">
+			<ref bean="yearPlanIndicatorTypeService" />
+		</property>
+		<property name="monitorService" ref="monitorService"></property>
+	</bean>
+	<bean name="/saveYearPlanIndicatorsByUser" parent="yearPlanAction"></bean>
+	<bean name="/listYearPlanNormalCheckView" parent="yearPlanAction"></bean>
+	<bean name="/editYearPlanByUser" parent="yearPlanAction"></bean>
+	<bean name="/listYearPlanConfirmView" parent="yearPlanAction"></bean>
+	<bean name="/listYearPlanModifyView" parent="yearPlanAction"></bean>
+	<bean name="/listYearPlanByUser" parent="yearPlanAction"></bean>
+	<bean name="/editYearPlanIndicatorByDlg" parent="yearPlanAction"></bean>
+	<bean name="/deleteYearPlanIndicators" parent="yearPlanAction"></bean>
+	<bean name="/saveYearPlanIndicators" parent="yearPlanAction"></bean>
+	<bean name="/setYearPlanStatus" parent="yearPlanAction"></bean>
+	<bean name="/viewFlowByOrg" parent="yearPlanAction"></bean>
+	<bean name="/watchPlanMonitorStart" parent="yearPlanAction"></bean>
+	<bean name="/monitorStartPlanSelectOrgVo" parent="yearPlanAction"></bean>
+	<bean name="/planRecBatchStart" parent="yearPlanAction"></bean>
+	<bean name="/startPlanFlowSingleByOrgVo" parent="yearPlanAction"></bean>
+	<bean name="/queryYearPlan" parent="yearPlanAction"></bean>
+	<bean name="/queryYearPlans" parent="yearPlanAction"></bean>
+	
+	
+	<bean id="yearPlanIndicatorAction" class="com.shengdai.kpi.yearplan.web.YearPlanIndicatorAction" >
+		<property name="yearPlanService"><ref bean="yearPlanService"/></property>
+		<property name="yearPlanIndicatorService"><ref bean="yearPlanIndicatorService"/></property>
+		<property name="yearPlanIndicatorTypeService"><ref bean="yearPlanIndicatorTypeService"/></property>
+	</bean>
+	<bean name="/saveYearPlanIndicator" parent="yearPlanIndicatorAction"></bean>
+	<bean name="/importYearPlanIndicator" parent="yearPlanIndicatorAction"></bean>
+	<bean name="/readExcelYearPlanIndicator" parent="yearPlanIndicatorAction"></bean>
+	<bean name="/exportYearPlanIndicatorTemplate" parent="yearPlanIndicatorAction"></bean>
+	
+		
+					
+	<!-- end -->
+</beans>

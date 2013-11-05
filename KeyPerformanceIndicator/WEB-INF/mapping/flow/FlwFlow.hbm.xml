@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.FlwFlow" table="FLW_FLOW" where="flg_deleted=0">
+		<cache usage="nonstrict-read-write" />
+		<id name="flowCode" column="id" type="string" >
+			<generator class="assigned"/>
+		</id>
+		<property name="orgId" column="org_Id" type="string"/>
+		<property name="flowName" column="flow_name" type="string" />
+		<property name="memo" column="memo" type="string" />
+		<many-to-one name="commBusi" column="busi_type" class="com.shengdai.kpi.flow.valueobject.Busi" not-found="ignore" />
+		<property name="flgAllowModify" column="FLG_ALLOW_MODIFY" type="int" />
+		<property name="boId" column="bo_id" type="string"/>
+		<property name="endNotice" column="end_notice" type="int" />
+		<property name="flgFree" column="flg_free" type="int" />
+		<property name="priority" column="priority" type="int" />
+		<many-to-one name="parentFlow" column="parent_flow" class="com.shengdai.kpi.flow.valueobject.FlwFlow" not-found="ignore" />
+		<property name="parentNode" column="parent_node" type="string"/>
+		<property name="genDate" column="create_date" type="timestamp" />		
+		<property name="genPersonName" column="CREATOR_NAME" type="string" />
+		<property name="genPersonId" column="CREATOR" type="string" />		
+		<property name="flgDeleted" column="flg_deleted" type="int" />
+		<property name="bound" column="bound" type="string" />
+		<property name="cycleType" column="CYCLE_TYPE" type="int" />
+		<property name="gradeScale" column="grade_scale" type="int" />
+	
+		<!--待办自动提交-->
+			<property name="flg_AutoSubmitTodo" column="flg_AutoSubmitTodo" type="int" />		
+			<property name="submitTodoMonth" column="submitTodoMonth" type="int" />
+			<property name="submitTodoDate" column="submitTodoDate" type="int" />
+			<property name="submitTodoHour" column="submitTodoHour" type="int" />
+			<property name="submitTodoMinute" column="submitTodoMinute" type="int" />
+		<!--待办自动提交-->
+
+		<set name="nodeSet" inverse="true" cascade="all,delete-orphan" order-by="priority" where="flg_deleted=0"> 
+			<cache usage="nonstrict-read-write" />
+			<key column="FLOW_ID" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.FlwNode" not-found="ignore" />
+		</set>
+		<set name="childrenFlows" inverse="false" cascade="all">
+			<key column="parent_flow" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.FlwFlow" />
+		</set>
+		<!-- 该级连主要是为了读出扩展属性而不是为了更新的 -->
+		<set name="extSet" cascade="delete">
+			<cache usage="nonstrict-read-write" />
+			<key column="FLOW_NODE_ID" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.FlwNodeExt" />
+		</set>
+		<set name="templetSet" inverse="false" cascade="all,delete-orphan">
+			<key column="FLOW_ID" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.FlowTemplet" />
+		</set>
+		
+		
+		
+	</class>
+</hibernate-mapping>

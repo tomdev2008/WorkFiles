@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.shengdai.kpi.ass.vo.AssessmentGradeRecord" table="ASS_GRADE_RECORD" >
+        <id name="id" type="string">
+            <column name="ID" length="32" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="groupId" type="string">
+        	<column name="group_id"/>
+        </property>   
+         <property name="busiType" type="string">
+        	<column name="busi_type"/>
+        </property>   
+        <property name="batchDate" type="int">
+        	<column name="batchDate"/>
+        </property>            
+        <property name="gradeValue" type="string">
+        	<column name="GRADE_VALUE"/>
+        </property>
+        <property name="gradeNumber" type="int">
+        	<column name="GRADE_NUMBER"/>
+        </property>
+        <property name="realGradeNumber" type="int">
+        	<column name="real_GRADE_NUMBER"/>
+        </property>
+        <property name="remainGradeNumber" type="int">
+        	<column name="remain_grade_number"/>
+        </property>
+    </class>
+</hibernate-mapping>

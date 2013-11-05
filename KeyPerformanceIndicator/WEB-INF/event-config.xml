@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system-config>
+<!-- 流程事件[流程绑定模板] -->
+	<event name="com.shengdai.kpi.flow.valueobject.FlowTemplet">
+		<listeners>
+			<listener>com.shengdai.kpi.template.listener.BindedFlowListener</listener>
+		</listeners>
+	</event>
+</system-config>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 主管部门配置 -->
+	<bean id="managerConfigAction" class="com.shengdai.kpi.assconfig.web.ManagerConfigAction">
+		<property name="managerConfigService"><ref bean="managerConfigService"/></property>		
+		<property name="orgService"><ref bean="orgService"/></property>
+		<property name="userService"><ref bean="userService"/></property>
+	</bean>
+	<bean name="/listManagerConfig" parent="managerConfigAction"/>
+	<bean name="/addManagerConfigOpen" parent="managerConfigAction"/>
+	<bean name="/addManagerConfig" parent="managerConfigAction"/>
+	<bean name="/editManagerConfigOpen" parent="managerConfigAction"/>
+	<bean name="/editManagerConfig" parent="managerConfigAction"/>
+	<bean name="/delManagerConfig" parent="managerConfigAction"/>
+	<bean name="/delManagerConfigBatch" parent="managerConfigAction"/>
+	<!-- 主管专业线配置 -->
+	<bean id="departmentConfigAction" class="com.shengdai.kpi.assconfig.web.DepartmentConfigAction">
+		<property name="departmentConfigService"><ref bean="departmentConfigService"/></property>		
+		<property name="orgService"><ref bean="orgService"/></property>
+	</bean>
+	<bean name="/listDepartmentConfig" parent="departmentConfigAction"/>
+	<bean name="/addDepartmentConfigOpen" parent="departmentConfigAction"/>
+	<bean name="/addDepartmentConfig" parent="departmentConfigAction"/>
+	<bean name="/editDepartmentConfigOpen" parent="departmentConfigAction"/>
+	<bean name="/editDepartmentConfig" parent="departmentConfigAction"/>
+	<bean name="/delDepartmentConfig" parent="departmentConfigAction"/>
+	<bean name="/delDepartmentConfigBatch" parent="departmentConfigAction"/>
+	<!-- 休假人员配置 -->
+	<bean id="holidayConfigAction" class="com.shengdai.kpi.assconfig.web.HolidayConfigAction">
+		<property name="holidayConfigService"><ref bean="holidayConfigService"/></property>
+	</bean>
+	<bean name="/listHolidayConfig" parent="holidayConfigAction"/>
+	<bean name="/addHolidayConfigOpen" parent="holidayConfigAction"/>
+	<bean name="/addHolidayConfig" parent="holidayConfigAction"/>
+	<bean name="/editHolidayConfigOpen" parent="holidayConfigAction"/>
+	<bean name="/editHolidayConfig" parent="holidayConfigAction"/>
+	<bean name="/delHolidayConfig" parent="holidayConfigAction"/>
+	<bean name="/delHolidayConfigBatch" parent="holidayConfigAction"/>
+	<!-- 考核关系配置 -->
+	<bean id="assessRelationAction" class="com.shengdai.kpi.assconfig.web.AssessRelationAction">
+		<property name="assessRelationService"><ref bean="assessRelationService"/></property>
+		<property name="assessRelationDataService"><ref bean="assessRelationDataService"/></property>
+	</bean>
+	<bean name="/listAssessRelation" parent="assessRelationAction"/>
+	<bean name="/listEditAssessRelation" parent="assessRelationAction"/>
+	<bean name="/queryAssessRelation" parent="assessRelationAction"/>
+	<bean name="/addAssessRelation" parent="assessRelationAction"/>
+	<bean name="/updateAssessRelation" parent="assessRelationAction"/>
+	<bean name="/delAssessRelation" parent="assessRelationAction"/>
+	<bean name="/addAssessRelationData" parent="assessRelationAction"/>
+	<bean name="/delAssessRelationData" parent="assessRelationAction"/>
+	<bean name="/loadAssessRelationTreeForAddress" parent="assessRelationAction"/>
+	<bean name="/listInfoAssessRelationGroup" parent="assessRelationAction"/>
+	<!-- 等级比例映射配置 -->
+	<bean id="assGradeMappingAction" class="com.shengdai.kpi.assconfig.web.AssessmentGradeMappingAction">
+		<property name="assessmentGradeMappingService"><ref bean="assessmentGradeMappingService"/></property>
+		<property name="orgAssessGradeSetService"><ref bean="orgAssessGradeSetService"/></property>		
+	</bean>
+	<bean name="/listAssessmentGradeMapping" parent="assGradeMappingAction"/>
+	<bean name="/saveAssessmentGradeMapping" parent="assGradeMappingAction"/>
+	<bean name="/listAssessmentGradeSet" parent="assGradeMappingAction"/>
+	<bean name="/saveAssessmentGradeSet" parent="assGradeMappingAction"/>
+	<bean name="/editAssessmentGradeSet" parent="assGradeMappingAction"/>
+	<bean name="/deleteAssessmentGradeSet" parent="assGradeMappingAction"/>
+	<!-- 模板 -->
+	<bean id="templateAction" class="com.shengdai.kpi.template.web.TemplateAction" >
+		<property name="templateService"><ref bean="templateService"/></property>
+		<property name="templateIndicatorService"><ref bean="templateIndicatorService"/></property>
+		<property name="templateIndicatorTypeService"><ref bean="templateIndicatorTypeService"/></property>
+		<property name="templateIndiNodeHandlerDetailService"><ref bean="templateIndiNodeHandlerDetailService"/></property>
+	</bean>
+	<bean name="/listTemplate" parent="templateAction"/>
+	<bean name="/editTemplate" parent="templateAction"/>
+	<bean name="/addTemplate" parent="templateAction"/>	
+	<bean name="/saveTemplate" parent="templateAction"/>
+	<bean name="/deleteTemplate" parent="templateAction"/>	
+	<bean name="/addTemplateIndicatorType" parent="templateAction"/>
+	<bean name="/deleteTemplateIndicatorType" parent="templateAction"/>		
+	<bean name="/addTemplateIndicator" parent="templateAction"/>
+	<bean name="/deleteTemplateIndicator" parent="templateAction"/>	
+	<bean name="/editTemplateIndicator" parent="templateAction"/>			
+	<bean name="/downIndicatorTemplate" parent="templateAction"/>
+	<bean name="/removeTemplate" parent="templateAction"/>
+	<bean name="/copyTemplate" parent="templateAction"/>		
+	<bean name="/pasteTemplate" parent="templateAction"/>
+	<bean name="/editTemplateHandler" parent="templateAction"/>		
+	<bean name="/saveTemplateIndicatorNodeHandler" parent="templateAction"/>
+	<bean name="/showTemplateIndicatorPreviousNodeHandler" parent="templateAction"/>	
+	
+		<!-- 部门考核分数配置 -->
+	<bean id="assessMarkConfigAction" class="com.shengdai.kpi.assconfig.web.AssessMarkConfigAction" >
+		<property name="assessMarkConfigService"><ref bean="assessMarkConfigService"/></property>
+	</bean>
+
+	<bean name="/listAssessMarkConfig" parent="assessMarkConfigAction"/>
+	<bean name="/addAssessMarkConfig" parent="assessMarkConfigAction"/>	
+	<bean name="/updateAssessMarkConfig" parent="assessMarkConfigAction"/>
+	<bean name="/deleteAssessMarkConfig" parent="assessMarkConfigAction"/>
+	
+	<bean id="assessMarkAction" class="com.shengdai.kpi.assconfig.web.AssessMarkAction" >
+	<property name="assessMarkService"><ref bean="assessMarkService"/></property>
+	</bean>
+	<bean name="/listAssessMark" parent="assessMarkAction"/>
+	<bean name="/listAssessMarkById" parent="assessMarkAction"/>
+	<bean name="/addAssessMark" parent="assessMarkAction"/>	
+	<bean name="/updateAssessMark" parent="assessMarkAction"/>
+	<bean name="/deleteAssessMark" parent="assessMarkAction"/>					
+	<!-- end -->
+</beans>

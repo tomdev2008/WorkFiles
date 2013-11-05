@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.system.favorite.vo.PersonFolder" table="PSN_FOLDER" lazy="true">
+		
+		<id name="id" column="id" type="string" > 
+			<generator class="uuid.hex"/>
+		</id>
+
+		<property name="name" 
+			column="name" 
+			type="string"
+		/>
+		
+		<property name="owner" 
+			column="owner" 
+			type="string"
+		/>
+		<property name="ownerType" 
+			column="owner_type" 
+			type="int"
+		/>
+		<property name="layer" 
+			column="layer" 
+			type="int"
+		/>
+		<property name="priority" 
+			column="priority" 
+			type="int"
+		/>
+		<property name="remark" 
+			column="remark" 
+			type="string"
+		/>
+		      
+		<many-to-one name="personFolder" 
+			column="parent_id" 
+			class="com.shengdai.kpi.system.favorite.vo.PersonFolder"
+			not-found="ignore"
+		/>
+		<set name="children" cascade="all-delete-orphan" inverse="true" lazy="true"  order-by="priority">
+			
+            <key column="parent_id"/>
+            <one-to-many class="com.shengdai.kpi.system.favorite.vo.PersonFolder"/>
+        </set> 
+        
+        <set name="personDatas" cascade="all-delete-orphan" inverse="true" lazy="true" order-by="priority">
+        	<key column="folder_id"/>
+            <one-to-many class="com.shengdai.kpi.system.favorite.vo.PersonData"/>
+        </set>  
+	</class>
+</hibernate-mapping>

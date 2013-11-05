@@ -1,0 +1,144 @@
+UNKNOWN {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; FONT-FAMILY: "宋体"
+}
+SELECT {
+	BORDER-RIGHT: #a0a0a0 1px solid; BORDER-TOP: #a0a0a0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #a0a0a0 1px solid; BORDER-BOTTOM: #a0a0a0 1px solid; BACKGROUND-COLOR: transparent
+}
+TABLE {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 12pt; FONT-FAMILY: "宋体"
+}
+TEXTAREA {
+	BORDER-RIGHT: #a0a0a0 1px solid; BORDER-TOP: #a0a0a0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #a0a0a0 1px solid; BORDER-BOTTOM: #a0a0a0 1px solid; BACKGROUND-COLOR: transparent
+}
+.bigfont {
+	FONT-SIZE: 12pt; LINE-HEIGHT: 16pt; FONT-FAMILY: "宋体"
+}
+A {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+.table1 {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #555576
+}
+.doc {
+	FONT-SIZE: 14px; LINE-HEIGHT: 16pt; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #fffff4
+}
+.bigfont {
+	FONT-SIZE: 14px; LINE-HEIGHT: 16pt; FONT-FAMILY: "宋体"
+}
+.content {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: whitesmoke
+}
+.content1 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: whitesmoke
+}
+.content2 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff
+}
+.content3 {
+	FONT-SIZE: 10.5pt; LINE-HEIGHT: 16pt; FONT-FAMILY: Arial,宋体; BACKGROUND-COLOR: #ffffff
+}
+.editline {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 12px; BORDER-LEFT: medium none; BORDER-BOTTOM: #a0a0a0 1px solid; BACKGROUND-COLOR: transparent
+}
+.no_editline {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 12px; BORDER-LEFT: medium none; BORDER-BOTTOM: #a0a0a0 0px solid; BACKGROUND-COLOR: transparent
+}
+.error_editline {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 12px; BORDER-LEFT: medium none; COLOR: #ff0000; BORDER-BOTTOM: #a0a0a0 1px solid; BACKGROUND-COLOR: transparent
+}
+.editline_hidden {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 12px; BORDER-LEFT: medium none; COLOR: #cccccc; BORDER-BOTTOM: #cccccc 1px solid
+}
+.edlinedisable {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 12px; BORDER-LEFT: medium none; COLOR: #555555; BORDER-BOTTOM: #aaaaaa 1px solid; BACKGROUND-COLOR: transparent
+}
+.header {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; LINE-HEIGHT: 13pt; FONT-STYLE: normal; FONT-FAMILY: "宋体"
+}
+.Colheader1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #f8ffac; LINE-HEIGHT: 13pt; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #666696
+}
+.Colheader3 {
+	FONT-SIZE: 9pt; COLOR: #000000; LINE-HEIGHT: 13pt; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffe8
+}
+.Colheader2 {
+	FONT-SIZE: 9pt; COLOR: #000000; LINE-HEIGHT: 13pt; FONT-STYLE: normal; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #efefef
+}
+.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 10.5pt; LINE-HEIGHT: 16pt; FONT-STYLE: normal; FONT-FAMILY: "宋体"
+}
+.label {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; FONT-STYLE: normal; FONT-FAMILY: "宋体"
+}
+.form {
+	FONT-SIZE: 9pt; COLOR: #000000; LINE-HEIGHT: 13pt; FONT-STYLE: normal; FONT-FAMILY: "宋体"
+}
+.box {
+	BORDER-RIGHT: #4B8CE0 1px solid; PADDING-RIGHT: 2px; 
+	BORDER-TOP: #4B8CE0 1px solid; PADDING-LEFT: 10px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; 
+	BORDER-LEFT: #4B8CE0 1px solid; PADDING-TOP: 2px; 
+	BORDER-BOTTOM: #4B8CE0 1px solid; BACKGROUND-COLOR: #fff;
+}
+.btnHidden {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; WIDTH: 40px; CURSOR: hand; BORDER-BOTTOM: 1px solid; HEIGHT: 20px
+}
+.btnhref {
+	BORDER-RIGHT: 0px solid; BORDER-TOP: 0px solid; FONT-SIZE: 9pt; BORDER-LEFT: 0px solid; WIDTH: 32px; CURSOR: hand; COLOR: blue; BORDER-BOTTOM: 0px solid; HEIGHT: 18px; BACKGROUND-COLOR: #fffff4
+}
+.btn {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; CURSOR: hand; BORDER-BOTTOM: 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #dfdfdf
+}
+.btn2 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; WIDTH: 40px; CURSOR: hand; BORDER-BOTTOM: 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #ffffe8
+}
+.menuBar {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 12px; Z-INDEX: 1000; LEFT: 0px; PADDING-BOTTOM: 2px; WIDTH: 100%; COLOR: #002020; LINE-HEIGHT: 15px; PADDING-TOP: 2px; TOP: 0px
+}
+.menuItem {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; CURSOR: hand; LINE-HEIGHT: 20px; PADDING-TOP: 0px
+}
+.menuRoot {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 1px; CURSOR: hand; PADDING-TOP: 3px
+}
+.tabhead {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; VERTICAL-ALIGN: bottom; COLOR: white
+}
+.tx1 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; WIDTH: 300px; BORDER-BOTTOM: 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #ffffff
+}
+.tx2 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; WIDTH: 300px; BORDER-BOTTOM: 1px solid; HEIGHT: 200px
+}
+.tx3 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; WIDTH: 100px; BORDER-BOTTOM: 1px solid; HEIGHT: 20px
+}
+.tx4 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; WIDTH: 400px; BORDER-BOTTOM: 1px solid; HEIGHT: 200px
+}
+.tx5 {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; WIDTH: 30px; BORDER-BOTTOM: 1px solid; HEIGHT: 20px
+}
+.white {
+	COLOR: #eeeeee
+}
+.customButton {
+	BEHAVIOR: url(/css/custombutton.htc)
+}
+.ButtonTable {
+	DISPLAY: inline; CURSOR: hand; HEIGHT: 24px
+}
+.ButtonTable_td {
+	BORDER-TOP: #8596ca 1pt solid; BACKGROUND-IMAGE: url(/img/custombutton/botton002.gif); CURSOR: hand; COLOR: #5a6ca2; PADDING-TOP: 0px; BORDER-BOTTOM: #5a6da5 1pt solid; BACKGROUND-REPEAT: repeat-x
+}
+.ButtonDisable {
+	FILTER: dropshadow(color=#FFFFFF,offx=1,offy=1); CURSOR: default; COLOR: #a0b0c9
+}
+.ButtonValue {
+	COLOR: #5a6ca2
+}
+.toolBar1 {
+	BORDER-RIGHT: 2px groove; BORDER-TOP: 2px groove; FONT-SIZE: 12px; MARGIN: 2px; BORDER-LEFT: 2px groove; BORDER-BOTTOM: 2px groove; FONT-FAMILY: "宋体"
+}

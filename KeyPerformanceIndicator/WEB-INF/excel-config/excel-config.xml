@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="GBK"?>
+<excel-mapping>
+	<!--
+		合计：active="total"
+		小计：active="subtotal" 
+		计算列active="sum"  
+		标题行合并数：titleRow="2" 
+		1表示需要合计，0表示不需要 
+		判断是否要合计：needTotal="1"  
+		判断是否要小计：needSubTotal="0"   
+		父级标题(横向合并):parentTile="商品库存"    
+		需要纵向合并的分类数：colNum
+	-->
+	
+	<excel id="gradereport">
+		<sheet id="sheet1" name="等级分布情况查询" >
+			<data>
+				<property title="等级分布情况"  merge="rowNumber:2;colNumber:12" headerStyle="alignment:centre;verticalalignment:centre;bold:true;size:15"/>
+			</data>
+				<data>
+				<property title="" merge="rowNumber:1;colNumber:9" headerStyle="border:top;borderlinestyle:2;bordercolor:23"/>
+			</data>
+			<data>
+				<property title="部门： ${orgName}" merge="rowNumber:1;colNumber:12" />
+			</data>
+			<data>
+				<property title="说明：总人数：考核周期当年能使用的等级的数量；已使用：全年到当前月份为止已使用的等级的数量；未使用：全年还可以使用的等级的数量。" merge="rowNumber:1;colNumber:12" />
+			</data>
+			<data id="list"  classname="com.shengdai.kpi.ass.web.form.GradeReport" needIndex="true" >
+				<property name="orgId" position="1"  title="序号" columnWith="8" dataStyle="alignment:left;verticalalignment:centre" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="orgName"   title="部门" columnWith="25"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="batchDateDesc"   title="考核周期" columnWith="12"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="amount_P1"   title="优秀总人数" columnWith="12"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="hasUsed_P1"   title="已使用" columnWith="10" dataStyle="alignment:left;verticalalignment:centre"   headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="unUsed_P1"   title="未使用" columnWith="10"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="amount_P2"   title="良好总人数" columnWith="12"  dataStyle="alignment:left;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="hasUsed_P2"   title="已使用" columnWith="10" dataStyle="alignment:left;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="unUsed_P2"   title="未使用" columnWith="10" dataStyle="alignment:left;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="amount_P3"   title="称职总人数" columnWith="15"  dataStyle="alignment:left;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="amount_P4"   title="基本称职总人数" columnWith="15"  dataStyle="alignment:left;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="amount_P5"   title="不称职总人数" columnWith="15"  dataStyle="alignment:left;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+			</data>
+		</sheet>
+	</excel>
+	 <!-- 员工成绩查询 -->
+	<excel id="assessment">
+		<sheet id="sheet1" name="员工成绩查询" >
+			<data>
+				<property title="员工成绩查询"  merge="rowNumber:2;colNumber:9" headerStyle="alignment:centre;verticalalignment:centre;bold:true;size:15"/>
+			</data>
+				<data>
+				<property title="" merge="rowNumber:1;colNumber:9" headerStyle="border:top;borderlinestyle:2;bordercolor:23"/>
+			</data>
+			<data>
+				<property title="部门/人员： ${orgName}" merge="rowNumber:1;colNumber:9" />
+			</data>
+			<data>
+				<property title="查询时间范围： ${batchRing}" merge="rowNumber:1;colNumber:9"/>
+			</data>
+			<data>
+				<property title="考 核 类 型： ${assessTypeName}" merge="rowNumber:1;colNumber:9"/>
+			</data>
+			<data>
+				<property title="绩 效 等 级： ${showGrade}" merge="rowNumber:1;colNumber:9" displayRow="${showGrade}"/>
+		
+			</data>
+			<data>
+				<property title="岗 位 信 息： ${positionName}" merge="rowNumber:1;colNumber:9" displayRow="${positionName}"/>
+			</data>
+			<data>
+				<property title="岗 位 层 级： ${positionLayer}" merge="rowNumber:1;colNumber:9" displayRow="${positionLayer}"/>
+			</data>
+			<data id="assessmentData"  classname="com.shengdai.kpi.ass.vo.Assessment" needIndex="true" >
+				<property name="id" position="1"  title="序号" columnWith="5" dataStyle="alignment:centre;verticalalignment:centre" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="historyGroupName"   title="部门-科室" columnWith="40"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="assessedObjectName"   title="员工姓名" columnWith="10"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="userPositionName"   title="岗位信息" columnWith="16"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="userPositionLayer"   title="岗位层级" columnWith="10" dataStyle="alignment:left;verticalalignment:centre"   headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="userMssCode"   title="员工编号" columnWith="10"  dataStyle="alignment:left;verticalalignment:centre"  headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="batchAndFlowName"   title="考核批次" columnWith="40"  dataStyle="alignment:left;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="outScore"   title="绩效分数" columnWith="10" dataStyle="alignment:right;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+				<property name="htmlGrade"   title="绩效等级" columnWith="10" dataStyle="alignment:right;verticalalignment:centre;wrap:true" headerStyle="alignment:centre;verticalalignment:centre;bold:true"/>
+			</data>
+		</sheet>
+	</excel>
+	
+	
+		
+</excel-mapping>

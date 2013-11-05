@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>		
+	<!-- 考核表 -->
+		<bean id="assessmentDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentServiceImpl">
+					<property name="assessmentDao"><ref bean="assessmentDao"/></property>
+					<property name="assessmentIndicatorService"><ref bean="assessmentIndicatorService"/></property>
+				</bean>
+			</property>
+		</bean>	
+		<bean id="assessmentScoreService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentSummaryScoreServiceImpl">
+					<property name="assessmentService"><ref bean="assessmentService"/></property>
+					<property name="assessmentNodeGradeSumService"><ref bean="assessmentNodeGradeSumService"/></property>
+					<property name="assessmentIndicatorNodeGradeService"><ref bean="assessmentIndicatorNodeGradeService"/></property>
+				</bean>
+			</property>
+		</bean>	
+		<bean id="assessmentDistributeGradeService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.distribute.AssessmentDistributeGradeService">
+					<property name="assessmentService"><ref bean="assessmentService"/></property>
+					<property name="assessmentGradeRecordService"><ref bean="assessmentGradeRecordService"/></property>
+					<property name="assessmentGradeMappingService"><ref bean="assessmentGradeMappingService"/></property>
+					<property name="orgAssessGradeSetService"><ref bean="orgAssessGradeSetService"/></property>
+				</bean>
+			</property>
+		</bean>	
+		
+	<!-- 考核表指标 -->
+		<bean id="assessmentIndicatorDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentIndicatorDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentIndicatorService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentIndicatorServiceImpl">
+					<property name="assessmentIndicatorDao"><ref bean="assessmentIndicatorDao"/></property>
+					<property name="assessmentNodeHandlerGradeSumDao"><ref bean="assessmentNodeHandlerGradeSumDao"/></property>
+					<property name="assessmentIndicatorNodeGradeService"><ref bean="assessmentIndicatorNodeGradeService"/></property>
+					<property name="assessmentIndiNodeHandlerDetailService"><ref bean="assessmentIndiNodeHandlerDetailService"/></property>
+				</bean>
+			</property>
+		</bean>		
+	<!-- 考核表环节汇总 -->
+		<bean id="assessmentNodeGradeSumDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentNodeGradeSumDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentNodeGradeSumService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentNodeGradeSumServiceImpl">
+					<property name="assessmentNodeGradeSumDao"><ref bean="assessmentNodeGradeSumDao"/></property>
+				</bean>
+			</property>
+		</bean>
+	<!-- 考核表环节处理人汇总 -->
+		<bean id="assessmentNodeHandlerGradeSumDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentNodeHandlerGradeSumDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentNodeHandlerGradeSumService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentNodeHandlerGradeSumServiceImpl">
+					<property name="assessmentNodeHandlerGradeSumDao"><ref bean="assessmentNodeHandlerGradeSumDao"/></property>
+					<property name="assessmentIndicatorNodeGradeDao"><ref bean="assessmentIndicatorNodeGradeDao"/></property>
+				</bean>
+			</property>
+		</bean>
+	<!-- 考核表环节评分详细 -->
+		<bean id="assessmentIndicatorNodeGradeDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentIndicatorNodeGradeDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentIndicatorNodeGradeService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentIndicatorNodeGradeServiceImpl">
+					<property name="assessmentIndicatorNodeGradeDao"><ref bean="assessmentIndicatorNodeGradeDao"/></property>
+					<property name="assessmentNodeHandlerGradeSumService"><ref bean="assessmentNodeHandlerGradeSumService"/></property>
+					<property name="assessmentIndicatorNodeSumService"><ref bean="assessmentIndicatorNodeSumService"/></property>
+				</bean>
+			</property>
+		</bean>
+		<!-- 考核表指标环节处理人 -->
+		<bean id="assessmentIndiNodeHandlerDetailDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentIndiNodeHandlerDetailDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentIndiNodeHandlerDetailService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentIndiNodeHandlerDetailServiceImpl">
+					<property name="assessmentIndiNodeHandlerDetailDao"><ref bean="assessmentIndiNodeHandlerDetailDao"/></property>
+				</bean>
+			</property>
+		</bean>	
+	<!-- 考核表指标类型 -->
+		<bean id="assessmentIndicatorTypeDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentIndicatorTypeDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentIndicatorTypeService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentIndicatorTypeServiceImpl">
+					<property name="assessmentIndicatorTypeDao"><ref bean="assessmentIndicatorTypeDao"/></property>
+				</bean>
+			</property>
+		</bean>		
+		<!-- 指标环节汇总分 -->
+		<bean id="assessmentIndicatorNodeSumDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentIndicatorNodeSumDaoImpl" parent="baseDao"></bean>
+		<bean id="assessmentIndicatorNodeSumService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentIndicatorNodeSumServiceImpl">
+					<property name="assessmentIndicatorNodeSumDao"><ref bean="assessmentIndicatorNodeSumDao"/></property>
+				</bean>
+			</property>
+		</bean>				
+		<!-- 考核等级分布 -->
+		<bean id="assessmentGradeRecordDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentGradeRecordDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentGradeRecordService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentGradeRecordServiceImpl">
+					<property name="assessmentGradeRecordDao"><ref bean="assessmentGradeRecordDao"/></property>
+					<property name="assessmentGradeMappingService"><ref bean="assessmentGradeMappingService"/></property>
+				</bean>
+			</property>
+		</bean>			
+	<!-- 公共计算方法 -->
+	<!-- 环节汇总 -->
+	<bean id="nodeSummaryScore"
+		class="com.shengdai.kpi.common.score.AbstractAssessNodeSummaryScore" abstract="true">
+			<property name="assessmentService"><ref bean="assessmentService"/></property>
+			<property name="assessmentNodeGradeSumService"><ref bean="assessmentNodeGradeSumService"/></property>
+			<property name="assessmentIndicatorNodeGradeService"><ref bean="assessmentIndicatorNodeGradeService"/></property>
+			<property name="assessmentIndicatorNodeSumService"><ref bean="assessmentIndicatorNodeSumService"/></property>
+	</bean>
+	<bean id="assembleGradeNodeSummary" class="com.shengdai.kpi.ass.service.nodescore.AssembleGradeSummary" parent="nodeSummaryScore"></bean>
+	<bean id="directGradeNodeSummary" class="com.shengdai.kpi.ass.service.nodescore.DirectGradeSummary" parent="nodeSummaryScore"></bean>
+	<bean id="indicatorGradeNodeSummary" class="com.shengdai.kpi.ass.service.nodescore.IndicatorGradeSummary" parent="nodeSummaryScore"></bean>
+	<bean id="nodeGradeNodeSummary" class="com.shengdai.kpi.ass.service.nodescore.NodeGradeSummary" parent="nodeSummaryScore"></bean>
+	<!-- 考核最终得分 -->
+	<bean id="assessSummaryScore"
+		class="com.shengdai.kpi.common.score.AbstractAssessSummaryScore" abstract="true">
+			<property name="assessmentIndicatorNodeSumService"><ref bean="assessmentIndicatorNodeSumService"/></property>
+			<property name="assessmentService"><ref bean="assessmentService"/></property>
+			<property name="assessmentNodeGradeSumService"><ref bean="assessmentNodeGradeSumService"/></property>
+			<property name="assessmentIndicatorNodeGradeService"><ref bean="assessmentIndicatorNodeGradeService"/></property>
+	</bean>
+	<bean id="orgMonthAssessSummary" class="com.shengdai.kpi.ass.service.score.OrgMonthSummary" parent="assessSummaryScore"></bean>
+	<bean id="orgQuarterAssessSummary" class="com.shengdai.kpi.ass.service.score.OrgQuarterSummary" parent="assessSummaryScore"></bean>
+	<bean id="orgYearAssessSummary" class="com.shengdai.kpi.ass.service.score.OrgYearSummary" parent="assessSummaryScore"></bean>
+	<bean id="userMonthAssessSummary" class="com.shengdai.kpi.ass.service.score.UserMonthSummary" parent="assessSummaryScore"></bean>
+	<bean id="userQuarterAssessSummary" class="com.shengdai.kpi.ass.service.score.UserQuarterSummary" parent="assessSummaryScore"></bean>
+	<bean id="userYearAssessSummary" class="com.shengdai.kpi.ass.service.score.UserYearSummary" parent="assessSummaryScore">
+		
+	</bean>
+	
+	
+	<!-- 年度考核 -->
+		<bean id="assessmentYearGradeScoreDao" class="com.shengdai.kpi.ass.dao.impl.AssessmentYearGradeScoreDaoImpl" >
+			<property name="sessionFactory">
+				<ref bean="sessionFactory"/>
+			</property>
+		</bean>
+		<bean id="assessmentYearGradeScoreService" parent="txProxyTemplate">
+			<property name="target">
+				<bean class="com.shengdai.kpi.ass.service.impl.AssessmentYearGradeScoreServiceImpl">
+					<property name="assessmentYearGradeScoreDao"><ref bean="assessmentYearGradeScoreDao"/></property>
+				</bean>
+			</property>
+		</bean>		
+		
+</beans>

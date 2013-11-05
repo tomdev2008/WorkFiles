@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="flowForm"
+			type="com.shengdai.kpi.flow.web.form.FlowForm" />
+		<form-bean name="nodeForm"
+			type="com.shengdai.kpi.flow.web.form.NodeForm" />
+		<form-bean name="routeForm"
+			type="com.shengdai.kpi.flow.web.form.RouteForm" />
+		<form-bean name="extForm"
+			type="com.shengdai.kpi.flow.web.form.ExtForm" />
+		<form-bean name="monitorForm"
+			type="com.shengdai.kpi.flow.web.form.MonitorForm" />
+		<form-bean name="monitorForm"
+			type="com.shengdai.kpi.flow.web.form.MonitorForm" />
+		<form-bean name="accreditForm" type="com.shengdai.kpi.flow.web.form.AccreditForm" />
+	</form-beans>
+	<action-mappings>
+	<!-- RecBatchAction.java start -->
+		<action parameter="deleteBatch" path="/deleteBatch" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listFlowSingle" path="/listFlowSingle" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listbosInBatch" path="/listbosInBatch" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="startFlowSingle" path="/startFlowSingle"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="deleteInBatch" path="/deleteInBatch"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="startFlowSingleByOrgVo" path="/startFlowSingleByOrgVo"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="startFlowSingleAddOrgVo" path="/startFlowSingleAddOrgVo"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- RecBatchAction.java end -->
+	<!-- BatchFlowAction.java start -->
+		<!-- 加流程的组织树和流程列表 start add by zyf -->
+		<action parameter="listFlowByOrg" path="/listFlowByOrg" type="org.springframework.web.struts.DelegatingActionProxy"></action>
+		<action parameter="listMainFlowByOrgBusiId" path="/listMainFlowByOrgBusiId" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<!-- 加流程的组织树和流程列表 end add by zyf -->
+		<action parameter="listFlowsByOrgIdBusiId" path="/listFlowsByOrgIdBusiId" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="flowForm" parameter="listFlowPage" path="/listFlowPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="extForm" parameter="addBusiParam"	path="/addBusiParam" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="extForm" parameter="busiParamEditPage" path="/busiParamEditPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="extForm" parameter="editBusiParam" path="/editBusiParam" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="extForm" parameter="deleteBusiParam" path="/deleteBusiParam" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="flowForm" parameter="addFlow" path="/addFlow" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="flowForm" parameter="flowEditPage" path="/flowEditPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="flowForm" parameter="editFlow" path="/editFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="flowForm" parameter="deleteFlow" path="/deleteFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>					
+		<action parameter="listFlowByBusi" path="/listFlowByBusi" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="flowForm" parameter="listFlowNode" path="/listFlowNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>			
+		<action parameter="listFlowTree" path="/listFlowTree" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="flowTreeShow" path="/flowTreeShow" type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />		
+		<action parameter="listFlowTreeForTemplate" path="/listFlowTreeForTemplate"	scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listJobFlowByMonitor" path="/listJobFlowByMonitor"	scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		
+		<!-- 复制/粘贴 start -->
+		<action parameter="copyData" path="/copyData" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="loadCopyData" path="/loadCopyData" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="pasteData" path="/pasteData"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<!-- 复制/粘贴 end -->
+		<!-- 流程引用 start -->
+		<action parameter="pasteToJunior" path="/pasteToJunior" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		
+		<action parameter="bindFlowTemplate" path="/bindFlowTemplate" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<!-- 流程引用 end -->
+	<!-- BatchFlowAction.java end -->
+	<!-- FlowAction start -->
+		<action parameter="editFlowFA" path="/editFlowFA" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- FlowAction end -->
+	<!-- NodeAction.java start -->
+		<action name="nodeForm" parameter="sortNode" path="/sortNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="listNode" path="/listNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="nodeAddPage"	path="/nodeAddPage" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="addNode" path="/addNode"	scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="nodeEditPage" path="/nodeEditPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="deleteNodeMine" path="/deleteNodeMine" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="editNodeForRoot"	path="/editNodeForRoot" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="editNode" path="/editNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="deleteNode" path="/deleteNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="selectDefaultViewPage" path="/selectDefaultViewPage" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="addNodeTemplate" path="/addNodeTemplate" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="editNodeTemplate" path="/editNodeTemplate" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="delNodeTemplate" path="/delNodeTemplate" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="getNodeTemplate" path="/getNodeTemplate" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="getNodeTemplateList" path="/getNodeTemplateList" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="editFlowGradeNodeScaleSet" path="/editFlowGradeNodeScaleSet" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="saveFlowGradeNodeScaleSet" path="/saveFlowGradeNodeScaleSet" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- NodeAction.java end -->
+	<!-- RouteAction.java start -->
+		<action name="routeForm" parameter="routeAddPage" path="/routeAddPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="routeForm" parameter="addRoute" path="/addRoute" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="routeForm" parameter="routeEditPage" path="/routeEditPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="routeForm" parameter="editRoute" path="/editRoute" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="routeForm" parameter="deleteRoute" path="/deleteRoute" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- RouteAction.java end -->
+	<!-- MonitorAction.java start -->
+		<action name="monitorForm" parameter="watchMonitor"	path="/watchMonitor" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="watchMonitorStart" path="/watchMonitorStart" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="monitorForm" parameter="nextRecBatchStart" path="/nextRecBatchStart" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="monitorStartLog" path="/monitorStartLog" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="monitorStartSelectOrgVo" path="/monitorStartSelectOrgVo" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="startNextRecBatchWithThread" path="/startNextRecBatchWithThread" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="undoFlowStartJob" path="/undoFlowStartJob" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="viewFlowStartJob" path="/viewFlowStartJob" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="monitorStartOrgVoLog" path="/monitorStartOrgVoLog" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="queryFlowInstance" path="/queryFlowInstance" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="loadFlowInstanceHandlerDetail" path="/loadFlowInstanceHandlerDetail" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="showFlowMonitorByAll" path="/showFlowMonitorByAll" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- MonitorAction.java end -->
+	<!-- SpreadAction.java start -->
+		<action parameter="spread" path="/spread" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listSpread" path="/listSpread" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="changeSpread" path="/changeSpread" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="openSpread" path="/openSpread" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="changeSpreadStatus" path="/changeSpreadStatus" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- SpreadAction.java end -->	
+	<!-- ViewDictionaryAction.java start -->
+		<action parameter="listViewDictionary" path="/listViewDictionary" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+		<action parameter="saveViewDictionary" path="/saveViewDictionary" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+		<action parameter="delViewDictionary" path="/delViewDictionary" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+		<action parameter="showViewDictionary" path="/showViewDictionary" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+	<!-- ViewDictionaryAction.java end -->
+	<!-- WorklistAction.java start -->	
+		<action parameter="listUndoWorklist" path="/listUndoWorklist" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listDoneWorklist" path="/listDoneWorklist" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="openDoneWorklist" path="/openDoneWorklist" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="openUndoWorklist" path="/openUndoWorklist" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="monitorForm" parameter="listWorklistForRecBatch" path="/listWorklistForRecBatch" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listFlowNodeDetailForDelegate" path="/listFlowNodeDetailForDelegate" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="submitNext" path="/submitNext" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="submitNextSync" path="/submitNextSync" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="submitFreeFlowNext" path="/submitFreeFlowNext" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="submitBack" path="/submitBack" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="submitOptionsPage" path="/submitOptionsPage" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="batchSubmitNext" path="/batchSubmitNext"	scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="submitArchive" path="/submitArchive"	scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="submitArchiveSync" path="/submitArchiveSync"	scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="startFreeFlow" path="/startFreeFlow"	scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="transferWorklistItem" path="/transferWorklistItem" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="backFreeNode" path="/backFreeNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="turningItem" path="/turningItem"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="openWorkFlowBusiness" path="/openWorkFlowBusiness"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<!-- 待办 -->
+		<!-- new version add by zyf start -->
+		<action parameter="undoMain" path="/undoMain" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="getUndoForBusiAjax" path="/getUndoForBusiAjax" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="getSpreadForBusiAjax" path="/getSpreadForBusiAjax" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		
+		<!-- ln user version -->
+		<action parameter="undoMainByBusiType" path="/undoMainByBusiType" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="commentByBusiType" path="/commentByBusiType" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<!-- new version add by zyf end -->
+		<!-- 退出自由流 add by zyf -->
+		<action parameter="deleteFreeFlow" path="/deleteFreeFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="findWorklistInfoAjax" path="/findWorklistInfoAjax" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- WorklistAction.java end -->
+	<!-- AccreditAction.java start -->
+		<!-- 授权 start -->
+		
+		<action parameter="listAccredits" path="/listAccredits" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="viewAccredit" path="/viewAccredit" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="saveAccredit" path="/saveAccredit" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="delAccredit" path="/delAccredit" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listAccreditUndo" path="/listAccreditUndo" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="callbackAccreditUndo" path="/callbackAccreditUndo" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="isExistAccredit" path="/isExistAccredit" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="getUndoForOA" path="/getUndoForOA" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<!-- 授权 end -->
+	<!-- AccreditAction.java end -->	
+	<!-- FreeFlowAction.java start -->
+		<action name="nodeForm" parameter="listFreeFlow" path="/listFreeFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="createFreePrivateSubFlow" path="/createFreePrivateSubFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="createFreePrivateFlow" path="/createFreePrivateFlow"	scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="viewFreeFlow" path="/viewFreeFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<!-- 流程监控 -->
+		<action parameter="checkHandler" path="/checkHandler" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="addFreeNode"	path="/addFreeNode" scope="request"	type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="editFreeNode" path="/editFreeNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="deleteFreeNode" path="/deleteFreeNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="freeeNodeEditPage" path="/freeeNodeEditPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="freeeNodeAddPage" path="/freeeNodeAddPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="sortFreeNode" path="/sortFreeNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="listBackPage" path="/listBackPage" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="monitorForm" parameter="copyDefinedFlowNode" path="/copyDefinedFlowNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action name="nodeForm" parameter="updateDefinedFlowNode" path="/updateDefinedFlowNode" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- FreeFlowAction.java end -->
+	<!-- RecOpinionAction.java start -->
+		<!-- 意见 start -->
+		<action parameter="listOpinions" path="/listOpinions" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+		<action parameter="listFlowOpinions" path="/listFlowOpinions" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>
+		<action parameter="createOpinion" path="/createOpinion" type="org.springframework.web.struts.DelegatingActionProxy" scope="request"/>		
+		<!-- 意见 end -->
+	<!-- RecOpinionAction.java end -->
+	<!-- SingleFlowAction.java start -->
+		<action parameter="deleteRecFlow" path="/deleteRecFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="archiveRecFlow" path="/archiveRecFlow" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action parameter="listFlowsByBusi" path="/listFlowsByBusi" scope="request" type="org.springframework.web.struts.DelegatingActionProxy"/>
+	<!-- SingleFlowAction.java end -->
+	</action-mappings>
+</struts-config>

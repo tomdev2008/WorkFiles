@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- dao start -->
+	<bean id="logLevelDao" class="com.shengdai.kpi.system.security.dao.impl.LogLevelDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="resourceDao" class="com.shengdai.kpi.system.security.dao.impl.ResourceDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- dao end -->
+	<!-- service start -->
+	<bean id="resourceService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.kpi.system.security.service.impl.ResourceServiceImpl">
+	 			<property name="logLevelDao"><ref bean="logLevelDao"/></property>
+	 			<property name="resourceDao"><ref bean="resourceDao"/></property>
+	 			<property name="userDao"><ref bean="userDao"/></property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<!-- service end -->
+	<!-- UniformTypeServcie -->
+	<bean id="uniformTypeService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.kpi.system.org.service.impl.UniformTypeServiceImpl">
+	 			<property name="uniformTypeDao">
+	 				<ref bean="uniformTypeDao"/>
+	 			</property>
+	 			<property name="orgDao">
+	 				<ref bean="orgDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="uniformTypeDao" class="com.shengdai.kpi.system.org.dao.impl.UniformTypeDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- OrgService -->
+	<bean id="orgService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.kpi.system.org.service.impl.OrgServiceImpl">
+	 			<property name="orgDao">
+	 				<ref bean="orgDao"/>
+	 			</property>
+	 			<property name="userDao">
+	 				<ref bean="userDao"/>
+	 			</property>
+	 			<property name="orgHistoryDao">
+	 				<ref bean="orgHistoryDao"/>
+	 			</property>
+				<property name="assValidateHelper">
+					<ref bean="assessmentService"/>
+				</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="orgDao" class="com.shengdai.kpi.system.org.dao.impl.OrgDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="orgHistoryDao" class="com.shengdai.kpi.system.org.dao.impl.OrgHistoryDaoImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- AppFunctionService -->
+	<bean id="appFunctionService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.wfengine.ws.app.impl.AppFuntionServiceImpl">
+	 			<property name="orgDao">
+	 				<ref bean="orgDao"/>
+	 			</property>
+	 			<property name="userDao">
+	 				<ref bean="userDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- PositionService -->
+	<bean id="positionService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.kpi.system.org.service.impl.PositionServiceImpl">
+	 			<property name="positionDao">
+	 				<ref bean="positionDao"/>
+	 			</property>
+	 			<property name="userDao">
+	 				<ref bean="userDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="positionDao" class="com.shengdai.kpi.system.org.dao.impl.PositionDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- UserService -->
+	<bean id="userService"  parent="txProxyTemplate">
+		<property name="target">
+	 		<bean class="com.shengdai.kpi.system.org.service.impl.UserServiceImpl">
+	 			<property name="userDao">
+	 				<ref bean="userDao"/>
+	 			</property>
+				<property name="orgDao">
+					<ref bean="orgDao"/>
+				</property>
+				<property name="userCommonInfoDao">
+	 				<ref bean="userCommonInfoDao"/>
+	 			</property>
+	 			<property name="userMoveDao">
+	 				<ref bean="userMoveDao"/>
+	 			</property>
+	 			<property name="userHistoryDao">
+	 				<ref bean="userHistoryDao"/>
+	 			</property>
+	 			<property name="assValidateHelper">
+					<ref bean="assessmentService"/>
+				</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="userDao" class="com.shengdai.kpi.system.org.dao.impl.UserDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="userCommonInfoDao" class="com.shengdai.kpi.system.org.dao.impl.UserCommonInfoDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="userMoveDao" class="com.shengdai.kpi.system.org.dao.impl.UserMoveDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="userHistoryDao" class="com.shengdai.kpi.system.org.dao.impl.UserHistoryDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<!-- end -->
+	
+	<!-- RoleService -->
+	<bean id="roleService"  parent="txProxyTemplate">
+		<property name="target">
+	 		<bean class="com.shengdai.kpi.system.security.service.impl.RoleServiceImpl">
+	 			<property name="userDao">
+	 				<ref bean="userDao"/>
+	 			</property>
+			 	<property name="roleDao">
+					<ref bean="roleDao"/>
+				</property>
+				<property name="resourceDao">
+					<ref bean="resourceDao"/>
+				</property>
+				<property name="adminScopeService">
+					<ref bean="adminScopeService"/>
+				</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="roleDao" class="com.shengdai.kpi.system.security.dao.impl.RoleDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- adminScopeService -->
+	<bean id="adminScopeService"  parent="txProxyTemplate">
+		<property name="target">
+	 		<bean class="com.shengdai.kpi.system.security.service.impl.AdminScopeServiceImpl">
+	 			<property name="adminDao">
+	 				<ref bean="adminDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="adminDao" class="com.shengdai.kpi.system.security.dao.impl.AdminScopeDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- groupService -->
+	<bean id="groupService"  parent="txProxyTemplate">
+		<property name="target">
+	 		<bean class="com.shengdai.kpi.system.org.service.impl.GroupServiceImpl">
+	 			<property name="orgService">
+	 				<ref bean="orgService"/>
+	 			</property>
+	 			<property name="groupDao">
+	 				<ref bean="groupDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="groupDao" class="com.shengdai.kpi.system.org.dao.impl.GroupDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- logService -->
+	<bean id="logService"  parent="txProxyTemplate">
+		<property name="target">
+	 		<bean class="com.shengdai.kpi.system.security.service.impl.LogServiceImpl">
+	 			<property name="logDao">
+	 				<ref bean="logDao"/>
+	 			</property>
+	 			<property name="logLevelDao">
+	 				<ref bean="logLevelDao"/>
+	 			</property>
+	 			<property name="resourceDao">
+	 				<ref bean="resourceDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="logDao" class="com.shengdai.kpi.system.security.dao.impl.LogDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	
+	<!-- authPolicy -->
+	<bean id="authPolicyService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.system.security.service.impl.AuthorizationPolicyServiceImpl">
+				<property name="authorizationPolicyDao">
+					<ref bean="authorizationPolicyDao"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="authorizationPolicyDao" class="com.shengdai.kpi.system.security.dao.impl.AuthorizationPolicyDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- logonLog -->
+	<bean id="logonLogService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.system.security.service.impl.LogonLogService">
+				<property name="logonLogDao">
+					<ref bean="logonLogDao"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="logonLogDao" class="com.shengdai.kpi.system.security.dao.impl.LogonLogDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	
+	<!-- personFolderService -->
+	<bean id="personFolderService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.kpi.system.favorite.service.impl.PersonFolderServiceImpl">
+	 			<property name="personFolderDao">
+	 				<ref bean="personFolderDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="personFolderDao" class="com.shengdai.kpi.system.favorite.dao.impl.PersonFolderDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->	
+	<!-- personDataService -->
+	<bean id="personDataService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.kpi.system.favorite.service.impl.PersonDataServiceImpl">
+	 			<property name="personDataDao">
+	 				<ref bean="personDataDao"/>
+	 			</property>
+	 			<property name="personFolderDao">
+	 				<ref bean="personFolderDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="personDataDao" class="com.shengdai.kpi.system.favorite.dao.impl.PersonDataDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->
+	
+	<!-- PersonQueryService -->
+	<bean id="personQueryService" parent="txProxyTemplate">
+	 	<property name="target">
+	 		<bean class="com.shengdai.kpi.system.favorite.service.impl.PersonQueryServiceImpl">
+	 			<property name="personQueryDao">
+	 				<ref bean="personQueryDao"/>
+	 			</property>
+	 			<property name="personQueryDataDao">
+	 				<ref bean="personQueryDataDao"/>
+	 			</property>
+	 			<property name="personQueryScopeDao">
+	 				<ref bean="personQueryScopeDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="personQueryDao" class="com.shengdai.kpi.system.favorite.dao.impl.PersonQueryDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="personQueryDataDao" class="com.shengdai.kpi.system.favorite.dao.impl.PersonQueryDataDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="personQueryScopeDao" class="com.shengdai.kpi.system.favorite.dao.impl.PersonQueryScopeDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<!-- end -->	
+	
+	<!-- commnet -->
+	<bean id="commentService" parent="txProxyTemplate">
+		<property name="target">
+	 		<bean class="com.shengdai.kpi.system.favorite.service.impl.CommentServiceImpl">
+	 			<property name="commentDao">
+	 				<ref bean="commentDao"/>
+	 			</property>
+	 		</bean>
+	 	</property>
+	</bean>
+	<bean id="commentDao" class="com.shengdai.kpi.system.favorite.dao.impl.CommentDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>	
+	<!-- end -->
+	
+	<!-- UUV同步相关配置 -->
+	<!-- <bean id="syncService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.shengdai.kpi.bj.uuv.UUVSyncService">
+				<property name="syncDao">
+					<ref bean="syncDao"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="syncDao" class="com.shengdai.kpi.bj.uuv.UUVSyncDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>	 -->
+	<!-- end -->
+
+</beans>

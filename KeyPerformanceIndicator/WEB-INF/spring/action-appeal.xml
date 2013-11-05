@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+<!-- 申诉复核 -->
+	<bean name="baseAppealAction" class="com.shengdai.kpi.appeal.BaseAppealAction">
+		<property name="assCheckAppealService"><ref bean="assCheckAppealService"/></property>
+		<property name="assCheckAppealResultService"><ref bean="assCheckAppealResultService"/></property>
+	</bean>
+	<!-- 申诉复核流程 -->
+	<bean name="appealAction" class="com.shengdai.kpi.appeal.web.AppealAction" parent="baseAppealAction">
+	</bean>		
+    <bean name="/listAppealCheck" parent="appealAction" />
+    <bean name="/saveAppealCheck" parent="appealAction" />    
+    <bean name="/deleteAppealCheck" parent="appealAction" />
+    <bean name="/editAppealCheck" parent="appealAction" />
+    <!-- 申诉环节视图 -->
+    <bean name="/editApplyAppealCheck" parent="appealAction" />
+    <bean name="/editLeaderAppealCheck" parent="appealAction" />
+    <bean name="/editApplyConfirmAppealCheck" parent="appealAction" />
+    <bean name="/editOfficeAppealCheck" parent="appealAction" />
+    <bean name="/editOfficeConfirmAppealCheck" parent="appealAction" />
+        <bean name="/saveOpinionAppealCheck" parent="appealAction" />
+        <!-- 查询 -->
+        <bean name="/openStaticAppealCheck" parent="appealAction" />
+</beans>

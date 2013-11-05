@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.FlowTemplet" table="FLW_TEMPLATED">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<many-to-one name="flwFlow" column="FLOW_ID" class="com.shengdai.kpi.flow.valueobject.FlwFlow" />
+		<property name="templetId" column="templet_id" type="string" />
+		<property name="typeName" column="type_name" type="string" />
+		<property name="typeClass" column="type_class" type="string" />
+		<property name="status" column="status" type="int" />
+	</class>
+</hibernate-mapping>

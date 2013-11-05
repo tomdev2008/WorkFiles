@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 模板指标属性控制类 -->
+<table name="com.shengdai.kpi.template.vo.TemplateIndicator">
+	<field name="指标类型" code="indiType">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>1</isShow>
+		<isEdit>1</isEdit>
+		<required>true</required>
+		<validateCheck></validateCheck>
+		<showExtType>4</showExtType>
+		<editExtType>1</editExtType>
+		<priority>1</priority>
+		<showWidth>2</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="序号" code="priority">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.Integer</returnValueType>
+		<paramValueType>java.lang.Integer</paramValueType>
+		<isShow>1</isShow>
+		<isEdit>1</isEdit>
+		<validateCheck>check="notBlank;isInt('+')" required="true"</validateCheck>
+		<showExtType>1</showExtType>
+		<editExtType>2</editExtType>
+		<priority>2</priority>
+		<showWidth>2</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="目标" code="name">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>1</isShow>
+		<isEdit>1</isEdit>
+		<validateCheck>check="notBlank;isString('#',100)" required="true"</validateCheck>
+		<showExtType>2</showExtType>
+		<editExtType>0</editExtType>
+		<priority>3</priority>
+		<showWidth>5</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="目标值" code="baseValue">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>1</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>0</showExtType>
+		<editExtType>0</editExtType>
+		<priority>4</priority>
+		<showWidth>5</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="挑战目标值" code="defyValue">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>1</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>0</showExtType>
+		<editExtType>0</editExtType>
+		<priority>5</priority>
+		<showWidth>10</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="是否量化" code="quantized">
+		<describe></describe>
+		<defaultValue>1</defaultValue>
+		<returnValueType>java.lang.Boolean</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.Boolean</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck></validateCheck>
+		<showExtType>6</showExtType>
+		<editExtType>3</editExtType>
+		<priority>6</priority>
+		<showWidth>5</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="考核标准" code="standard">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>0</showExtType>
+		<editExtType>0</editExtType>
+		<priority>7</priority>
+		<showWidth>10</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="考核内容" code="defined">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>0</showExtType>
+		<editExtType>0</editExtType>
+		<priority>8</priority>
+		<showWidth>10</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="数据来源" code="dateSource">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>0</showExtType>
+		<editExtType>0</editExtType>
+		<priority>9</priority>
+		<showWidth>10</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="考核方式" code="assWay">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>0</showExtType>
+		<editExtType>0</editExtType>
+		<priority>10</priority>
+		<showWidth>10</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="工作描述" code="calWay">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>2</showExtType>
+		<editExtType>0</editExtType>
+		<priority>10</priority>
+		<showWidth>10</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="目标进度安排" code="assOrgName">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>0</isEdit>
+		<validateCheck>check="isString('#',500)" required="nullable"</validateCheck>
+		<showExtType>0</showExtType>
+		<editExtType>0</editExtType>
+		<priority>11</priority>
+		<showWidth>10</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="考核分值" code="scale">
+		<describe></describe>
+		<defaultValue></defaultValue>
+		<returnValueType>java.lang.Integer</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.Integer</paramValueType><!-- 多个用;分隔 -->
+		<isShow>1</isShow>
+		<isEdit>1</isEdit>
+		<validateCheck>check="notBlank;isInt()" required="true"</validateCheck>
+		<showExtType>3</showExtType>
+		<editExtType>2</editExtType>
+		<priority>12</priority>
+		<showWidth>2</showWidth>
+		<styleName></styleName>
+	</field>
+	<field name="取值渠道" code="refResourceId">
+		<describe>默认值为系统默认取值方式</describe>
+		<defaultValue>系统默认取值</defaultValue>
+		<returnValueType>java.lang.String</returnValueType><!-- 返回值只有一个 -->
+		<paramValueType>java.lang.String</paramValueType><!-- 多个用;分隔 -->
+		<isShow>0</isShow>
+		<isEdit>1</isEdit>
+		<required>false</required>
+		<validateCheck></validateCheck>
+		<showExtType>5</showExtType>
+		<editExtType>5</editExtType>
+		<priority>13</priority>
+		<showWidth>5</showWidth>
+		<styleName></styleName>
+	</field>
+</table>

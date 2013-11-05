@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.shengdai.kpi.flow.valueobject.FlwNode" table="FLW_NODE" where="flg_deleted=0" lazy="true" >
+		<cache usage="nonstrict-read-write" />
+		<id name="nodeCode" column="id" type="string">
+			<generator class="assigned"/>
+		</id>
+		<many-to-one name="flow" column="flow_id" class="com.shengdai.kpi.flow.valueobject.FlwFlow" not-found="exception" />
+		<property name="nodeName" column="node_name" type="string" />
+		<property name="flgFullScreen" column="WINDOW_TYPE" type="int" />
+		<property name="viewId" column="view_id" type="string" />
+		<property name="viewName" column="view_name" type="string" />
+		<many-to-one name="handleTypeway" column="HANDLE_WAY" class="com.shengdai.kpi.flow.valueobject.HandleTypeway" not-found="ignore" />
+		<!-- HANDLE_WAY_CLASS ,暂时先不映射,可能会删除此字段 -->
+		<many-to-one 
+			name="nodeHandler" 
+			column="HANDLER" 
+			class="com.shengdai.kpi.common.handler.vo.Handler" 
+			lazy="proxy"
+			not-found="ignore" />
+		<!--<property name="spreadWindowType" column="SPREAD_WINDOW_TYPE" type="int" />
+		--><many-to-one 
+			name="spreadHandler" 
+			column="spread_handler" 
+			class="com.shengdai.kpi.common.handler.vo.Handler" 
+			lazy="proxy"
+			not-found="ignore" />
+		<property name="flgSpread" column="flg_spread" type="int" />
+		<property name="flgSpreadAllow" column="flg_spread_allow" type="int" />
+		<property name="priority" column="priority" type="int" />
+		<property name="flgPrevOver" column="flg_prev_over" type="int" />
+		<property name="flgHead" column="flg_head" type="int" />
+		<property name="flgRoot" column="flg_root" type="int" />
+		<property name="flgDeleted" column="flg_deleted" type="int" />
+        <property name="flgAllowDelete" column="FLG_ALLOW_DELETE" type="int" />
+		<property name="flgAllowModify" column="FLG_ALLOW_MODIFY" type="int" />
+		<property name="gradeScale" column="grade_scale" type="int" />
+        <property name="timelimitRelateYq" type="int">
+            <column name="timelimit_relate_yq"/>
+        </property>
+        <property name="timelimitRelate" type="int">
+            <column name="timelimit_relate"/>
+        </property>
+        <property name="timelimitDate" type="int">
+            <column name="timelimit_date"/>
+        </property>
+        <property name="timelimitTime" type="java.lang.String">
+            <column name="timelimit_time"/>
+        </property>
+        <property name="timelimitFlgApply" type="int">
+            <column name="timelimit_flg_apply"/>
+        </property>
+        <property name="timellimtHouse" type="int">
+            <column name="timellimt_house"/>
+        </property>
+		<property name="memo" column="memo" type="string" />
+		<property name="bound" column="bound" type="string" />
+		<set name="routeSet" lazy="true" inverse="true" cascade="all" order-by="priority">
+			<cache usage="nonstrict-read-write" />
+			<key column="node_id" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.FlwRoute" />
+		</set>
+		<!-- 该级连主要是为了读出扩展属性而不是为了更新的 -->
+		<set name="extSet" cascade="all,delete-orphan">
+			<key column="FLOW_NODE_ID" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.FlwNodeExt" />
+		</set>
+		<set name="nodeRemineSet" inverse="true" lazy="true" cascade="all" order-by="form_houre">
+			<key column="FLOW_OR_NODE_ID" />
+			<one-to-many class="com.shengdai.kpi.flow.valueobject.NodeRemine" />
+		</set>
+		<many-to-one 
+			name="parentNode" 
+			column="parent_node_code" 
+			class="com.shengdai.kpi.flow.valueobject.FlwNode" 
+			not-found="ignore" />
+<!-- 
+		<property name="nodeFlag" column="node_flag" type="string" />
+
+		<property name="encyclicView" column="encyclic_view" type="string" />
+		<property name="msgTitle" column="msg_title" type="string" />
+		<property name="urgencyDays" column="urgency_days" type="int" />
+		<property name="specialPerson" column="special_person" type="string" />
+		<property name="skipDays" column="skip_days" type="int" />
+		<property name="canUpload" column="can_upload" type="int" />
+		
+		
+		<property name="flgDuplicate" column="flg_duplicate" type="int" />
+		<property name="flgModify" column="flg_modify" type="int" />
+-->
+		<property name="busiId" type="string">
+            <column name="busi_id"/>
+        </property>
+        
+        <!--待办自动提交-->
+			<property name="submitType" column="submitType" type="int" />
+			<property name="submitDate" column="submitDate" type="int" />
+			<property name="submitHour" column="submitHour" type="int" />
+			<property name="submitMinute" column="submitMinute" type="int" />
+		<!--待办自动提交-->
+	</class>
+</hibernate-mapping>

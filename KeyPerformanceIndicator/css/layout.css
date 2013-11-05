@@ -1,0 +1,227 @@
+﻿@charset "utf-8";
+body  {margin: 0; padding: 0;text-align: center;background-attachment: fixed; font-family:"宋体";
+	font-size:12px; background:#466FD6; color:#494949;}
+img {border:none;}
+p,td{font-family:Arial, Helvetica, sans-serif;font-size: 12px; color:#494949;}
+a:link,a:visited{font-size: 12px;color: #000;text-decoration: none;}/*<!--默认链接开始*/
+a:hover,a:active {font-size: 12px;color: #1447CA;text-decoration:none;}/*默认链接结束--!>*/
+
+a.LN_BlueLink:link,a.LN_BlueLink:visited{color:#1447CA; text-decoration:none; font-size:12px;}/*<!--(1p)上传附件文件链接样式开始*/
+a.LN_BlueLink:hover,a.LN_BlueLink:active{color:#0000FF; text-decoration:underline; font-size:12px;}/*(1p)上传附件文件链接样式结束--!>*/
+
+a.LN_RedLink:link,a.LN_RedLink:visited{color:#ff0000; text-decoration:none; font-size:12px;}/*<!--(1p)上传附件文件链接样式开始*/
+a.LN_RedLink:hover,a.LN_RedLink:active{color:#ff0000; text-decoration:underline; font-size:12px;}/*(1p)上传附件文件链接样式结束--!>*/
+
+
+.LN_colorRed{color:#ff0000;}/*评分数字*/
+.LN_colorOrange{color:#ff6600;}/*评分数字*/
+/*------TOP样式-------*/
+.LN_TopLink{background:#E6E6E6; height:21px; line-height:21px;font-weight: bold;}/*顶部快捷链接开始*/
+.LN_topleftnav{padding-left:26px; text-align:left; background:url(../images/index1_03.gif) 10px 4px no-repeat; }
+.LN_toprightnav{padding-right:10px; text-align:right;}/*顶部快捷链接结束*/
+
+.LN_TopBox{width:1002px; margin:0px auto;}
+.LN_TopInfor{background:#E6E6E6; height:27px; line-height:27px;}/*显示用户信息*/
+.LN_TopImg{background:url(../images/top_02.gif) left top no-repeat; width:1002px; height:108px; text-align:left;}
+
+.LN_Nav{width:600px; height:34px; padding:74px 0px 0px 42px;}/*<!--顶部导航栏开始*/
+.LN_Nav ul{padding:0px; margin:0px; height:34px; width:880px; font-family:"微软雅黑"; font-size:12px;}
+.LN_Nav li{float:left; list-style:none; width:87px;}
+.LN_Nav a{display:block; height:34px; width:87px; background:url(../images/nav-off_05.gif) left top no-repeat; text-decoration:none; text-align:center; line-height:34px; color:#fff; font-family:"微软雅黑"; font-size:14px;}
+
+   /*默认链接状态*/
+   .LN_Nav a.TP1{background-position:0px 0px;font-family:"微软雅黑"; color:#fff; font-size:14px;}
+   .LN_Nav a.TP2{background-position:-87px 0px;font-family:"微软雅黑"; color:#fff; font-size:14px;}
+   .LN_Nav a.TP3{background-position:-174px 0px;font-family:"微软雅黑"; color:#fff; font-size:14px;}
+   .LN_Nav a.TP4{background-position:-261px 0px;font-family:"微软雅黑"; color:#fff; font-size:14px;}
+   .LN_Nav a.TP5{background-position:-348px 0px;font-family:"微软雅黑"; color:#fff; font-size:14px;}
+
+   /*移动链接状态*/
+   .LN_Nav a.TP1:hover{background-position:0px -34px;}
+   .LN_Nav a.TP2:hover{background-position:-87px -34px;}
+   .LN_Nav a.TP3:hover{background-position:-174px -34px;}
+   .LN_Nav a.TP4:hover{background-position:-261px -34px;}
+   .LN_Nav a.TP5:hover{background-position:-348px -34px;}
+   
+   /*选中状态*/
+   .LN_Nav li.c a.TP1{background-position:0px -34px;}
+   .LN_Nav li.c a.TP2{background-position:-87px -34px;}
+   .LN_Nav li.c a.TP3{background-position:-174px -34px;}
+   .LN_Nav li.c a.TP4{background-position:-261px -34px;}
+   .LN_Nav li.c a.TP5{background-position:-348px -34px;}/*顶部导航栏结束--!>*/
+   
+   /*二级菜单样式*/
+#apDiv1,#apDiv2,#apDiv3,#apDiv4,#apDiv5,#apDiv6,#apDiv7{
+	position:absolute;
+	width:0;
+	height:0;
+	z-index:1000;
+	margin-top:33px;
+	visibility: hidden;
+	top: 95px;
+}
+#apDiv11,#apDiv21,#apDiv31,#apDiv41,#apDiv51,#apDiv61,#apDiv71{
+	position:absolute;
+	width:100px;
+	z-index:1000;
+	left:0px;
+	top: 0px;
+	margin:0px;
+}
+
+  /*二级菜单列表样式*/
+.LN_popdivbox{width:100px;text-align: center;position: absolute;background: #f3f4f4; height:auto; border:1px #B3B3B3 solid; padding:2px;}
+.LN_popdivbox ul {list-style-type: none;width:100px; padding:0px; margin:0px; height:auto; text-align:center;}
+.LN_popdivbox li {width:100px; margin:0px;padding:1px;}
+.LN_popdivbox li a{display:block; width:95px; text-decoration:none; text-align:center; height:25px; line-height:25px; font-family:"宋体";font-size:12px; border-bottom: 1px dashed #B3B3B3; padding:1px;}
+.LN_popdivbox li a:link,.LN_popdivbox li a:visited {margin:-1px 0px;text-align:center;color:#002a2a;background: #f3f4f4;}
+.LN_popdivbox li a:hover,.LN_popdivbox li a:active {margin:-1px 0px;text-align:center;color:#ff6600;background: #f3f4f4;}
+
+
+/*---------主体页面---------*/
+  
+      /*左侧样式*/
+.LN_boxboder{border:1px #DDDDDD solid; padding-top:2px; padding-bottom:2px;table-layout:fixed; margin-bottom:10px;}/**/
+.LN_boxtext{padding:5px; color:#828581; text-align:left; line-height:16px;}
+.LN_boxtitlebg{background:url(../images/index1_28.gif) bottom repeat-x;cursor:hand; height:25px; text-align:left;padding-top:2px; padding-left:5px; color:#3459A8; font-weight:bold;}
+
+   /*右侧样式*/ 
+.LN_mainright{width:100%; text-align:left; border-top:1px solid #EDEDED; border-right:1px solid #EDEDED;
+           border-left:1px solid #EDEDED;}/*列表框*/
+.LN_right-field{background:#e5eeff;height:24px;line-height:24px;border-bottom:1px solid #ededed;}/*<!--列表字段标题*/
+.LN_right-field a {color:#515151; text-decoration:none; display:block; padding-left:10px; font-weight:bold;}
+.LN_right-field a:hover, .LN_right-field a:visited{color:gray;  background:#E5EEFF; text-decoration:none;}/*列表字段标题--!>*/
+.LN_press{padding:6px; text-align:left;}
+.LN_font{font-size:14px;  line-height:22px;}
+.LN_OAtitbg{color:#ffffff; width:90px; height:20px;line-height:20px; border:0px; padding:5px 4px 0px 0px; cursor:hand; background: url(../images/oatable_titbg.gif) no-repeat bottom; text-align:center; float:left;}/*标签背景文字*/
+
+   /*(index)第一种表格样式*/
+.LN_infbox-border{border-left:1px #DADADA solid; border-right:1px #DADADA solid; border-bottom:1px #DADADA solid;}/*表格框*/
+.LN_right-color1{background-color:#fff;}/*列表间隔白颜色*/
+.LN_right-color2{background-color:#F6F6F7;}/*列表间隔灰颜色*/
+.LN_right-text{padding:6px 10px 3px 10px; line-height:17px; border-bottom:1px #ededed solid; color:#515151;}/*单元格样式*/
+.LN_right-text-red{padding:6px 10px 3px 10px; line-height:17px; border-bottom:1px #ededed solid; color:#515151;}/*单元格样式*/
+.LN_right-text-red a{font-size: 12px;color: red;text-decoration: none;}
+
+
+.LN_path{height:26px; line-height:26px; color:#4E4E4E; text-align:left; padding-left:10px; width:98%; margin:0px auto 10px 3px; background:#E4E4E4;}/*(28p)当前路径*/
+.LN_Title2{background-color:#E4E4E4; color:#3459A8; text-align:left; padding:3px; margin-bottom:10px;}
+
+   /*“更多”链接样式*/
+.LN_morelink{color:#DF7F0A; text-align:right; padding-right:5px; width:100px; float:right; line-height:25px; font-weight:normal;}
+.LN_morelink a:link,.LN_morelink a:hover,.LN_morelink a:visited{color:#DF7F0A; text-decoration:underline;}
+
+/*---------弹出窗口样式--------*/
+.LN_body{background:#fff;}/*弹出窗口body背景*/
+.LN_popupsBox{width:100%; background:#fff; padding-bottom:10px;}/*弹出窗口框*/
+.LN_popupsTop{background:#5594E6 url(../images/top.gif) left top no-repeat; height:40px; width:100%}/*logo顶部图片*/
+
+.LN_formBox{width:auto; padding:20px; text-align:left; height:auto;}/*表单显示区*/
+.LN_formTitle{font-size:16px; font-weight:bold; text-align:center;padding:15px 0px;}/*页面表单大标题*/
+.LN_formSubTitle{font-size:12px; font-weight:bold; text-align:right;padding:0px 15px;}/*页面表单2级标题*/    
+	/*(1p)第二种表格样式*/
+.LN_tableBox{background-color:#E4E4E4;}
+.LN_tableBoxText{background-color:#fff; padding:2px; line-height:17px; text-align:left; color:#828181;}
+.LN_tableBoxtitle{background-color:#F8F8F8; color:#333; height:22px;  padding:2px 2px 0px 5px;}
+
+    /*(1p)第三种表格样式*/
+.LN_tableBox2{background-color:#E4E4E4;}
+.LN_tableBoxText2{background-color:#fff; padding:6px 5px 3px 5px; line-height:17px; color:#333;}
+.LN_tableBoxText22{background-color:#F6F6F7; padding:6px 5px 3px 5px; line-height:17px; color:#333;}
+.LN_tableBoxtitle2{background:#e5eeff;height:17px;color:#706F6F;  padding:6px 5px 3px 5px; line-height:17px; color:#333; font-weight:bold;}
+	
+.LN_lineR{border-right:1px #E4E4E4 solid;}/*表格右边线条*/
+
+.LN_button{background:url(../images/button_03.gif) no-repeat; color:#ffffff;width:30px; height:15px;border:0px;cursor:hand;line-height:15px;}/*2个字按钮*/
+.LN_button2{background:url(../images/button_03.gif) no-repeat; color:#DCDCDC;width:30px; height:15px;border:0px;cursor:hand;line-height:15px;}/*2个字按钮(说明按钮不可点)*/
+.LN_big_button3{background:url(../images/button_04.gif) no-repeat; color:#ffffff;width:72px; height:20px;border:0px;cursor:hand;line-height:20px;}/*4个字按钮*/
+.LN_big_button2{background:url(../images/button_03.gif) no-repeat; color:#ffffff;width:45px; height:20px;border:0px;cursor:hand;line-height:20px;}/*2个字按钮*/
+
+.LN_Input{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px; width:200px;background-color:transparent;}/*输入框*/
+.LN_InputNoWidth{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px;background-color:transparent;}/*输入框*/
+.LN_explanation{text-align:left; padding:10px 0px 0px 0px; line-height:18px;}/*说明框*/
+.LN_inquiry{text-align:left; padding-bottom:5px; color:#3459A8;}/*查询框*/
+
+
+     /*操作按钮框*/
+.LN_Append{background:url(../images/bg_11.gif) left top repeat-x; width:auto; height:20px; font-weight:bold; color:#3459A8; text-align:left; padding-top:10px;}
+.LN_Append a:link,.LN_Append a:visited{color:#333; font-weight:normal; text-decoration:none;}
+.LN_Append a:hover,.LN_Append a:active{color:#ff6600; font-weight:normal; text-decoration:none;}
+     /*操作按钮*/
+.LN_popupsSubmit{background:url(../images/submit.gif) left 40% no-repeat; text-align:left; padding-left:17px; width:40px; float:right; margin-left:5px;line-height:17px;}/*提交*/
+.LN_popupsSafe{background:url(../images/icon3.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; width:60px;float:right; margin-left:5px;}/*保存*/
+.LN_popupsSafe-C{background:url(../images/icon4.gif) left 30% no-repeat; line-height:17px; text-align:left; text-indent:20px;width:100px;float:right; margin-left:5px;}/*保存并关闭*/
+.LN_popupsSearch{background:url(../images/search.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:20px;float:right; margin-left:5px; width:60px;}/*查询*/
+.LN_popupsClose{background:url(../images/icon9.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:15px;float:right; margin-left:5px; width:60px;}/*关闭*/
+.LN_popupsAdd{background:url(../images/page_add.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:60px;}/*增加*/
+.LN_popupsLeading-In{background:url(../images/ico_03.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:60px;}/*导入*/
+.LN_popupsExport{background:url(../images/ico_05.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:60px;}/*导出*/
+.LN_popupsPrint{background:url(../images/ico_10.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:60px;}/*打印*/
+.LN_popupsPrintBrowse{background:url(../images/ico_11.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:85px;}/*打印浏览*/
+
+
+  /*翻页样式*/
+.LN_colorblue{color:#388FD1; font-weight:bold;}/*翻页数字颜色*/
+.LN_pageBox{width:90%; margin-right:3px; text-align:right; float:right; line-height:22px;}/*翻页表格*/
+.LN_pageInput{width:20px; font-size:12px;}/*翻页输入框*/
+
+/*----------底部版权样式---------*/
+.LN_bottomtext{background-color:#E6E6E6; text-align:center; color:#706F6F; padding-left:5px; height:21px;}
+
+/*----------登录页面样式---------*/
+.LN_LoginBody{background-color:#E6E6E6; text-align:center;}
+.LN_LoginTop{background:url(../images/logintop.gif) left top no-repeat; width:1002px; margin:0px auto; height:106px;}
+.LN_LoginBox{background-color:#fff; margin:20px auto 0px auto; width:1002px; height:420px!important; height:380px; text-align:center; padding-top:20px;}
+.LN_LoginBg{background:url(../images/login_05bak.jpg) left top no-repeat;  width:612px; height:368px; margin:0px auto;text-align:left;}
+.LN_LoginCopyRight{text-align:center; color:#494949; line-height:30px;}
+.LN_LoginTable{width:580px; padding:140px 0px 0px 210px; color:#706F6F; line-height:35px; text-align:left;}
+
+.LN_colorf{background-color:#F1F1FA;}
+
+/**--------------单独添加扩展样式-----------------------*/
+/************-----------------------第四种表格样式---------------------------**/
+.LN_infbox-all-border{border:1px #DADADA solid;}/*表格框*/
+.LN_boxtitlebg-all{background:url(../images/index1_28.gif) bottom repeat-x; height:25px; text-align:left;padding-top:2px; padding-left:5px; color:#3459A8;}
+
+.LN_popupsAdd{background:url(../img/edit.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; width:80px;float:right; margin-left:5px;}/*保存*/
+.LN_popupsClose{background:url(../img/iconClose.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; width:80px;float:right; margin-left:5px;}/*保存*/
+.LN_popupsDelete{background:url(../images/delete-1.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; width:80px;float:right; margin-left:5px;}/*保存*/
+.LN_Input20{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px; width:20px;background-color:transparent;}
+.LN_Input30{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px; width:30px;background-color:transparent;}
+.LN_Input50{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px; width:50px;background-color:transparent;}
+.LN_Input100{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px; width:100px;background-color:transparent;}
+.LN_Input150{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px; width:150px;background-color:transparent;}
+.LN_Input300{border-bottom:1px #7F9DB9 solid; border-top:none; border-right:none; border-left:none; color:#333; font-size:12px; width:300px;background-color:transparent;}
+.LN_InputBorder{border:1px #7F9DB9 solid;color:#333; font-size:12px; width:200px;background-color:transparent;}
+.LN_tableBoxText3{background-color:#fff; line-height:17px; color:#333;}
+.LN_tableBoxtitle3{background:#e5eeff;color:#706F6F; line-height:17px; color:#333; font-weight:bold;}
+.LN_popupsRouteSubmit{background:url(../images/submit.gif) left 40% no-repeat; text-align:left; padding-left:17px;padding-right:17px;width:40px; float:right; margin-left:5px;line-height:17px;}/*提交*/
+
+.LN_popupsName{text-align:left; float:left; margin-left:5px;}/*列表名*/
+.LN_popupsQuery60{background:url(../images/search.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:60px;}/*查询*/
+.LN_popupsAdd60{background:url(../images/page_add.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:60px;}/*新增*/
+.LN_popupsAdd80{background:url(../images/page_add.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:80px;}/*新增*/
+.LN_popupsEdit60{background:url(../img/edit.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:60px;}/*修改*/
+.LN_popupsDelete60{background:url(../images/delete-1.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:60px;}/*删除*/
+.LN_popupsDelete80{background:url(../images/delete-1.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:80px;}/*删除*/
+.LN_popupsReset60{background:url(../img/user.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:60px;}/*重置*/
+.LN_popupsLeading-In100{background:url(../images/ico_03.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px;float:right; width:100px;}/*导入*/
+.LN_popupsExport100{background:url(../images/ico_05.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:100px;}/*导出*/
+.LN_bottomSave60{background:url(../images/icon3.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; margin-left:5px;float:right; width:60px;}/*确定*/
+.LN_bottomReset60{background:url(../img/user.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; margin-left:5px; float:right; width:60px;}/*重置*/
+.LN_popupsCopy60{background:url(../images/copy_01.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:60px;}/*复制*/
+.LN_popupsPaste60{background:url(../images/paste_01.gif) left top no-repeat; line-height:17px; text-align:left; text-indent:20px; float:right; margin-left:5px; width:60px;}/*粘贴*/
+.LN_popupsTrace100{background:url(../img/iconDate.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:100px;}/*导出*/
+.LN_popupstransmit100{background:url(../img/transmit.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:100px;}/*取值*/
+.LN_popupsRef100{background:url(../img/button/box1.gif) left 45% no-repeat; line-height:17px; text-align:left; text-indent:22px;float:right; margin-left:5px; width:100px;}/*取值*/
+
+/**--------------st 添加如有冲突概不负责-----------------------*/
+.LN_popdivbox{width:105px;text-align: center;position: absolute;background: #f3f4f4; height:auto; border:1px #B3B3B3 solid; padding:2px;}
+.LN_popdivbox ul {list-style-type: none;width:105px; padding:0px; margin:0px; height:auto; text-align:center;}
+.LN_popdivbox li {width:105px; margin:0px;padding:1px;}
+.LN_popdivbox li a{display:block; width:96px; text-decoration:none; text-align:center; height:25px; line-height:25px; font-family:"瀹嬩綋";font-size:12px; border-bottom: 1px dashed #B3B3B3; padding:1px;}
+
+.LN_formTitle2{font-size:16px; font-weight:bold; text-align:center;padding:5px 0px;}/*椤甸潰琛ㄥ崟澶ф爣棰? 杈硅窛灏忎竴浜?*/    
+
+.LN_tableBoxtitle3{background-color:#F8F8F8; font-weight:bold;  color:#333; height:22px;  padding:2px 2px 0px 5px;}
+/**--------------st 添加如有冲突概不负责-----------------------*/

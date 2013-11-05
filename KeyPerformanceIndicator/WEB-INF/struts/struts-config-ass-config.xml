@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans />
+	
+	<action-mappings>
+	<!-- 主管部门配置 -->
+	<action path="/listManagerConfig" parameter="listManagerConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addManagerConfigOpen" parameter="addManagerConfigOpen" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addManagerConfig" parameter="addManagerConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editManagerConfigOpen" parameter="editManagerConfigOpen" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editManagerConfig" parameter="editManagerConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delManagerConfig" parameter="delManagerConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delManagerConfigBatch" parameter="delManagerConfigBatch" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<!-- 主管专业线配置 -->
+	<action path="/listDepartmentConfig" parameter="listDepartmentConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addDepartmentConfigOpen" parameter="addDepartmentConfigOpen" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addDepartmentConfig" parameter="addDepartmentConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editDepartmentConfigOpen" parameter="editDepartmentConfigOpen" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editDepartmentConfig" parameter="editDepartmentConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delDepartmentConfig" parameter="delDepartmentConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delDepartmentConfigBatch" parameter="delDepartmentConfigBatch" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<!-- 休假人员配置 -->
+	<action path="/listHolidayConfig" parameter="listHolidayConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addHolidayConfigOpen" parameter="addHolidayConfigOpen" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addHolidayConfig" parameter="addHolidayConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editHolidayConfigOpen" parameter="editHolidayConfigOpen" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/editHolidayConfig" parameter="editHolidayConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delHolidayConfig" parameter="delHolidayConfig" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delHolidayConfigBatch" parameter="delHolidayConfigBatch" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<!-- 考核关系配置 -->
+	<action path="/listAssessRelation" parameter="listAssessRelation" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listEditAssessRelation" parameter="editAssessRelation" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addAssessRelation" parameter="addAssessRelation" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/updateAssessRelation" parameter="updateAssessRelation" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delAssessRelation" parameter="delAssessRelation" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/addAssessRelationData" parameter="addAssessRelationData" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/delAssessRelationData" parameter="delAssessRelationData" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/loadAssessRelationTreeForAddress" parameter="loadAssessRelationTreeForAddress" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listInfoAssessRelationGroup" parameter="listInfoAssessRelationGroup" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/queryAssessRelation" parameter="queryAssessRelation" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<!-- 等级比例映射配置 -->
+	<action path="/listAssessmentGradeMapping" parameter="listAssessmentGradeMapping" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveAssessmentGradeMapping" parameter="saveAssessmentGradeMapping" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/listAssessmentGradeSet" parameter="listAssessmentGradeSet" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>
+	<action path="/saveAssessmentGradeSet" parameter="saveAssessmentGradeSet" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/editAssessmentGradeSet" parameter="editAssessmentGradeSet" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<action path="/deleteAssessmentGradeSet" parameter="deleteAssessmentGradeSet" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy"></action>	
+	<!-- 模板 -->
+	<action parameter="listTemplate" path="/listTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="editTemplate" path="/editTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="addTemplate" path="/addTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="saveTemplate" path="/saveTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="deleteTemplate" path="/deleteTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="addTemplateIndicatorType" path="/addTemplateIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="deleteTemplateIndicatorType" path="/deleteTemplateIndicatorType" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="deleteTemplateIndicator" path="/deleteTemplateIndicator" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	   	<action parameter="addTemplateIndicator" path="/addTemplateIndicator" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="editTemplateIndicator" path="/editTemplateIndicator" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="downIndicatorTemplate" path="/downIndicatorTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="removeTemplate" path="/removeTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="copyTemplate" path="/copyTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="pasteTemplate" path="/pasteTemplate" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="editTemplateHandler" path="/editTemplateHandler" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	   	<action parameter="saveTemplateIndicatorNodeHandler" path="/saveTemplateIndicatorNodeHandler" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+		<action parameter="showTemplateIndicatorPreviousNodeHandler" path="/showTemplateIndicatorPreviousNodeHandler" 
+	   type="org.springframework.web.struts.DelegatingActionProxy" scope="request" />
+	<!-- end -->		
+	</action-mappings>
+	
+	
+</struts-config>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 附件 -->
+	<bean id="attachDao" class="com.shengdai.kpi.common.attach.dao.hibernate.AttachDaoImp" >
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="attachAuthDao" class="com.shengdai.kpi.common.attach.dao.hibernate.AttachAuthDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="attachFactory" class="com.shengdai.kpi.common.attach.AttachFactory">
+		<property name="attachService" ref="attachService"/>
+	</bean>
+		
+	<bean id="attachService" parent="txProxyTemplate">
+        <property name="target">
+           <bean class="com.shengdai.kpi.common.attach.service.spring.AttachServiceImp">
+                <property name="attachDao" ref="attachDao"/>
+	            <property name="attachAuthDao" ref="attachAuthDao"/>
+	       </bean>
+        </property>
+    </bean>
+    
+    <!-- 字典 -->
+   	<bean id="dictionaryDao" class="com.shengdai.kpi.common.dictionary.dao.impl.DictionaryDaoImpl" parent="baseDao" />
+    <bean id="dictionaryService" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.shengdai.kpi.common.dictionary.service.impl.DictionaryServiceImpl">
+                <property name="dictionaryDao"><ref bean="dictionaryDao"/></property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="handlerDao" class="com.shengdai.kpi.common.handler.dao.impl.HandlerDaoImpl" parent="baseDao" />
+    <bean id="handlerInstanceDao" class="com.shengdai.kpi.common.handler.dao.impl.HandlerInstanceDaoImpl" parent="baseDao" />
+    <bean id="handlerRuleDao" class="com.shengdai.kpi.common.handler.dao.impl.HandlerRuleDaoImpl" parent="baseDao" />
+    <bean id="handlerRuleForAddressDao" class="com.shengdai.kpi.common.handler.dao.impl.HandlerRuleForAddressDaoImpl" parent="baseDao" />
+    <bean id="handlerService" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.shengdai.kpi.common.handler.service.HandlerServiceImpl">
+                <property name="handlerDao"><ref bean="handlerDao"/></property>
+                <property name="handlerRuleDao"><ref bean="handlerRuleDao"/></property>
+            </bean>
+        </property>
+    </bean>
+    <!-- 一个公用的DAO -->
+    <bean id="commonDaoFactory" class="com.shengdai.kpi.common.hibernate.CommonDaoFactory">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    
+    <!-- 邮件短信消息 -->
+    <bean id="msgDao" class="com.shengdai.kpi.common.message.dao.impl.MsgDaoImpl" parent="baseDao" />
+    <bean id="msgService" parent="txProxyTemplate">
+    	<property name="target">
+    		<bean class="com.shengdai.kpi.common.message.service.impl.MsgServiceImpl">
+    			<property name="msgDao"><ref bean="msgDao"/></property>
+    			<property name="msgArchiveService"><ref bean="msgArchiveService"/></property>
+    		</bean>
+    	</property>
+    </bean>
+    <bean id="msgArchiveDao" class="com.shengdai.kpi.common.message.dao.impl.MsgArchiveDaoImpl" parent="baseDao" />
+    <bean id="msgArchiveService" parent="txProxyTemplate">
+    	<property name="target">
+    		<bean class="com.shengdai.kpi.common.message.service.impl.MsgArchiveServiceImpl">
+    			<property name="msgArchiveDao"><ref bean="msgArchiveDao"/></property>
+    		</bean>
+    	</property>
+    </bean>    
+    <!-- 后台线程任务 -->
+    <bean id="taskDAO" class="com.shengdai.kpi.common.schedule.dao.impl.TasksDAOImpl" parent="baseDao" />
+    <bean id="taskService" parent="txProxyTemplate" >
+    	<property name="target">
+    		<bean class="com.shengdai.kpi.common.schedule.service.impl.TasksServiceImpl">
+    			<property name="taskDAO"><ref bean="taskDAO"/></property>
+    		</bean>
+    	</property>
+    </bean>
+    <bean id="taskJobsDAO" class="com.shengdai.kpi.common.schedule.dao.impl.TaskJobsDAOImpl" parent="baseDao" />
+    <bean id="taskJobsService" parent="txProxyTemplate" >
+    	<property name="target">
+    		<bean class="com.shengdai.kpi.common.schedule.service.impl.TaskJobsServiceImpl">
+    			<property name="taskJobsDAO"><ref bean="taskJobsDAO"/></property>
+    			<property name="taskJobsArchiveService"><ref bean="taskJobsArchiveService"/></property>
+    		</bean>
+    	</property>
+    </bean>
+    <bean id="taskJobsArchiveDAO" class="com.shengdai.kpi.common.schedule.dao.impl.TaskJobsArchiveDAOImpl" parent="baseDao" />
+    <bean id="taskJobsArchiveService" parent="txProxyTemplate" >
+    	<property name="target">
+    		<bean class="com.shengdai.kpi.common.schedule.service.impl.TaskJobsArchiveServiceImpl">
+    			<property name="taskJobsArchiveDAO"><ref bean="taskJobsArchiveDAO"/></property>
+    		</bean>
+    	</property>
+    </bean>
+    <!-- end -->
+</beans>

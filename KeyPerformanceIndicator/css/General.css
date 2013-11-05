@@ -1,0 +1,153 @@
+/*HEADER*/
+
+ul.TabBarLevel1{
+	list-style:none;
+	margin:0;
+	padding:0;
+	height:29px;
+}
+ul.TabBarLevel1 li{
+	float:left;
+	padding:0;
+	height:29px;
+	width:78px;
+	background:url(../img/menu_n_left.jpg) left top no-repeat;
+}
+ul.TabBarLevel1 li a{
+	display:block;
+	line-height:29px;
+	color:#0066B3;
+	text-align:center;
+	background:url(../img/menu_n_right.jpg) right top no-repeat;
+	white-space: nowrap;
+}
+ul.TabBarLevel1 li.Selected{
+	background:url(../img/menu_s_left.jpg) left top no-repeat;
+}
+ul.TabBarLevel1 li.Selected a{
+	background:url(../img/menu_s_right.jpg) right top no-repeat;
+}
+
+ul.TabBarLevel1 li a:link,ul.TabBarLevel1 li a:visited{
+	color:#0066B3;
+	font-weight:bold;
+	text-decoration:none;
+}
+ul.TabBarLevel1 li a:hover,ul.TabBarLevel1 li a:active{
+	color:#0066B3;
+	text-decoration:none;
+	font-weight:bold;
+}
+ul.TabBarLevel1 li.Selected a:link,ul.TabBarLevel1 li.Selected a:visited{
+	color:#ffffff;
+	font-weight:bold;
+	text-decoration:none;
+}
+ul.TabBarLevel1 li.Selected a:hover,ul.TabBarLevel1 li.Selected a:active{
+	color:#ffffff;
+	text-decoration:none;
+	font-weight:bold;
+}
+div.HackBox {
+	line-height:26px;
+	display:none;
+}
+.titleStyle1b {
+    background-image:url(../img/sideTitleBg.gif);
+	background-repeat:repeat-x;
+	height:25px;
+	line-height:25px;
+	text-indent:15px;
+}
+
+/*SSO-HEADER*/
+ul.TabBarLevel2{
+	list-style:none;
+	margin:0;
+	padding:0;
+	height:29px;
+}
+ul.TabBarLevel2 li{
+	float:left;
+	padding:0;
+	height:29px;
+	width:88px;
+	background:url(../img/menu_n_left.jpg) left top no-repeat;
+}
+ul.TabBarLevel2 li a{
+	display:block;
+	line-height:29px;
+	color:#0066B3;
+	text-align:center;
+	background:url(../img/menu_n_right.jpg) right top no-repeat;
+	white-space: nowrap;
+}
+ul.TabBarLevel2 li.Selected{
+	background:url(../img/menu_s_left.jpg) left top no-repeat;
+}
+ul.TabBarLevel2 li.Selected a{
+	background:url(../img/menu_s_right.jpg) right top no-repeat;
+}
+
+ul.TabBarLevel2 li a:link,ul.TabBarLevel2 li a:visited{
+	color:#0066B3;
+	font-weight:bold;
+	text-decoration:none;
+}
+ul.TabBarLevel2 li a:hover,ul.TabBarLevel2 li a:active{
+	color:#0066B3;
+	text-decoration:none;
+	font-weight:bold;
+}
+ul.TabBarLevel2 li.Selected a:link,ul.TabBarLevel2 li.Selected a:visited{
+	color:#ffffff;
+	font-weight:bold;
+	text-decoration:none;
+}
+ul.TabBarLevel2 li.Selected a:hover,ul.TabBarLevel2 li.Selected a:active{
+	color:#ffffff;
+	text-decoration:none;
+	font-weight:bold;
+}
+div.HackBox {
+	line-height:26px;
+	display:none;
+}
+.titleStyle1b {
+    background-image:url(../img/sideTitleBg.gif);
+	background-repeat:repeat-x;
+	height:25px;
+	line-height:25px;
+	text-indent:15px;
+}
+/*OA*/
+.tableTitleRed {
+    border:1px solid;
+	border-top-color: #ffffff;
+	border-right-color: #ecc7ac;
+	border-bottom-color: #ecc7ac;
+	border-left-color: #ffffff;
+	background-color:#F8E7DF;
+	font-weight:bold;
+	color:#EC8D4E;
+}
+.tableTitleblue {
+    border:1px solid;
+	border-top-color: #ffffff;
+	border-right-color: #A5B5C0;
+	border-bottom-color: #A5B5C0;
+	border-left-color: #ffffff;
+	background-color:#E0EBF2;
+	font-weight:bold;
+	color:#0065B5;
+}
+.trRed {
+	background-color:#fdf6f3;
+}
+.trBlue {
+    background-color:#f0f8fb;
+}
+.txyjTable a:hover {
+    display:block;
+	background-color:#E8F7FF;
+}

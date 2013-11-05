@@ -1,0 +1,105 @@
+.coolButton {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #eceae6
+}
+.coolButtonHover {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #eceae6
+}
+.coolButtonActiveHover {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #eceae6
+}
+.coolButtonActive {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #eceae6
+}
+.coolButtonActiveDisabled {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #eceae6
+}
+.coolButtonDisabled {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #eceae6
+}
+.coolButtonUpDisabled {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #eceae6
+}
+.coolButton IMG {
+	FILTER: gray()
+}
+.coolButtonHover {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 4px; PADDING-LEFT: 4px; BORDER-LEFT-WIDTH: 1px; BORDER-LEFT-COLOR: buttonhighlight; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: buttonshadow; PADDING-BOTTOM: 1px; CURSOR: hand; BORDER-TOP-COLOR: buttonhighlight; PADDING-TOP: 1px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: buttonshadow
+}
+.coolButtonActiveHover {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 3px; PADDING-LEFT: 5px; BORDER-LEFT-WIDTH: 1px; BORDER-LEFT-COLOR: buttonshadow; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: buttonhighlight; PADDING-BOTTOM: 0px; CURSOR: hand; BORDER-TOP-COLOR: buttonshadow; PADDING-TOP: 2px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: buttonhighlight
+}
+.coolButtonActive {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 3px; PADDING-LEFT: 5px; BORDER-LEFT-WIDTH: 1px; BORDER-LEFT-COLOR: buttonshadow; BACKGROUND-IMAGE: url(../common/images/cbback.gif); BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: buttonhighlight; PADDING-BOTTOM: 0px; CURSOR: hand; BORDER-TOP-COLOR: buttonshadow; PADDING-TOP: 2px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: buttonhighlight
+}
+.coolButtonUpDisabled {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 2px; COLOR: graytext; PADDING-TOP: 2px; BORDER-RIGHT-WIDTH: 0px
+}
+.coolButtonActiveDisabled {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 2px; COLOR: graytext; PADDING-TOP: 2px; BORDER-RIGHT-WIDTH: 0px
+}
+.coolButtonDisabled {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 2px; COLOR: graytext; PADDING-TOP: 2px; BORDER-RIGHT-WIDTH: 0px
+}
+.coolButtonActiveDisabled {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 3px; PADDING-LEFT: 5px; BORDER-LEFT-WIDTH: 1px; BORDER-LEFT-COLOR: buttonshadow; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: buttonhighlight; PADDING-BOTTOM: 0px; CURSOR: hand; BORDER-TOP-COLOR: buttonshadow; PADDING-TOP: 2px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: buttonhighlight
+}
+.coolButtonUpDisabled {
+	BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; BORDER-LEFT-COLOR: buttonhighlight; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: buttonshadow; CURSOR: hand; BORDER-TOP-COLOR: buttonhighlight; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: buttonshadow
+}
+.coolButtonUpDisabled IMG {
+	moz-opacity: 0.5
+}
+.coolButtonActiveDisabled IMG {
+	moz-opacity: 0.5
+}
+.coolButtonDisabled IMG {
+	moz-opacity: 0.5
+}
+.coolButtonUpDisabled .coolButtonDisabledContainer {
+	DISPLAY: block; BACKGROUND: graytext; FILTER: chroma(color=#010101) dropshadow(color=ButtonHighlight, offx=1, offy=1); WIDTH: 100%; HEIGHT: 100%
+}
+.coolButtonActiveDisabled .coolButtonDisabledContainer {
+	DISPLAY: block; BACKGROUND: graytext; FILTER: chroma(color=#010101) dropshadow(color=ButtonHighlight, offx=1, offy=1); WIDTH: 100%; HEIGHT: 100%
+}
+.coolButtonDisabled .coolButtonDisabledContainer {
+	DISPLAY: block; BACKGROUND: graytext; FILTER: chroma(color=#010101) dropshadow(color=ButtonHighlight, offx=1, offy=1); WIDTH: 100%; HEIGHT: 100%
+}
+.coolButtonUpDisabled .coolButtonDisabledContainer .coolButtonDisabledContainer {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: gray()
+						
+						chroma(color=#ffffff) chroma(color=#fefefe) chroma(color=#fdfdfd)
+						chroma(color=#fcfcfc) chroma(color=#fbfbfb) chroma(color=#fafafa)
+						chroma(color=#f9f9f9) chroma(color=#f8f8f8) chroma(color=#f7f7f7)
+						chroma(color=#f6f6f6) chroma(color=#f5f5f5) chroma(color=#f4f4f4)
+						chroma(color=#f3f3f3)
+						mask(color=#010101)
+}
+.coolButtonActiveDisabled .coolButtonDisabledContainer .coolButtonDisabledContainer {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: gray()
+						
+						chroma(color=#ffffff) chroma(color=#fefefe) chroma(color=#fdfdfd)
+						chroma(color=#fcfcfc) chroma(color=#fbfbfb) chroma(color=#fafafa)
+						chroma(color=#f9f9f9) chroma(color=#f8f8f8) chroma(color=#f7f7f7)
+						chroma(color=#f6f6f6) chroma(color=#f5f5f5) chroma(color=#f4f4f4)
+						chroma(color=#f3f3f3)
+						mask(color=#010101)
+}
+.coolButtonDisabled .coolButtonDisabledContainer .coolButtonDisabledContainer {
+	BACKGROUND: none transparent scroll repeat 0% 0%; FILTER: gray()
+						
+						chroma(color=#ffffff) chroma(color=#fefefe) chroma(color=#fdfdfd)
+						chroma(color=#fcfcfc) chroma(color=#fbfbfb) chroma(color=#fafafa)
+						chroma(color=#f9f9f9) chroma(color=#f8f8f8) chroma(color=#f7f7f7)
+						chroma(color=#f6f6f6) chroma(color=#f5f5f5) chroma(color=#f4f4f4)
+						chroma(color=#f3f3f3)
+						mask(color=#010101)
+}
+.toolBar1 {
+	BORDER-RIGHT: 2px groove; BORDER-TOP: 2px groove; FONT-SIZE: 12px; MARGIN: 2px; BORDER-LEFT: 2px groove; BORDER-BOTTOM: 2px groove; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #eceae6
+}
+.btnMessage2 {
+	BORDER-RIGHT: buttonface 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: buttonface 0px solid; PADDING-LEFT: 5px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: buttonface 0px solid; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: buttonface 0px solid; FONT-FAMILY: "宋体"; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #dcdcdc
+}
+.btnMessage {
+	BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #666666; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #666666; CURSOR: hand; BORDER-TOP-COLOR: #666666; PADDING-TOP: 3px; BACKGROUND-COLOR: #f8f8ff; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #666666
+}

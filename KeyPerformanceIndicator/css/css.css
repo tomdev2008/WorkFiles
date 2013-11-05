@@ -1,0 +1,40 @@
+
+body,td {
+font-family: "ËÎÌו";
+color: #000000;
+font-size: 9pt;
+}
+
+body, form {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+ 
+td{
+	height:18px;
+}
+
+.indicator_query .list_type{
+	color:#CC3300;
+}
+
+.button{
+	background:white url(../img/btnOa2.gif) no-repeat;border:0;padding:0;width:56px;height:20px;text-indent:12px;color:#363;margin-top:5px;CURSOR: hand;
+}
+
+.editline
+{
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    FONT-SIZE: 12px;
+    BORDER-LEFT: medium none;
+    BORDER-BOTTOM: #a0a0a0 1px solid;
+    BACKGROUND-COLOR: transparent
+}
+.title{
+	font-size:18px;
+	font-weight:bold;
+	text-decoration:underline;
+}
