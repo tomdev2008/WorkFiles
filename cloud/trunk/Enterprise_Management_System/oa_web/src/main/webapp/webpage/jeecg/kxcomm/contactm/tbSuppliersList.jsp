@@ -2,7 +2,7 @@
 <%@include file="/context/mytags.jsp"%>
 <div class="easyui-layout" fit="true">
   <div region="center" style="padding:1px;">
-  <t:datagrid name="tbCustomerEntityList" title="客户" actionUrl="tbCustomerEntityController.do?datagrid&type=1" idField="id" fit="true">
+  <t:datagrid name="tbSuppliersList" title="供应商" actionUrl="tbCustomerEntityController.do?datagrid&type=2" idField="id" fit="true">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
     <t:dgCol title="公司名称" field="companyName" ></t:dgCol>
    <t:dgCol title="地址" field="address" width="70"></t:dgCol>
@@ -20,9 +20,9 @@
     <t:dgCol title="营业执照号" field="businessLicenseNo" ></t:dgCol>
     <t:dgCol title="企业法定代表人" field="legalRepresentative" width="70"></t:dgCol>
    <t:dgCol title="描述" field="description" ></t:dgCol>
-   <t:dgToolBar title="录入" icon="icon-add" url="tbCustomerEntityController.do?addorupdate" funname="add"></t:dgToolBar>
-   <t:dgToolBar title="编辑" icon="icon-edit" url="tbCustomerEntityController.do?addorupdate" funname="update"></t:dgToolBar>
-   <t:dgToolBar title="查看" icon="icon-search" url="tbCustomerEntityController.do?addorupdate" funname="detail"></t:dgToolBar>
+   <t:dgToolBar title="录入" icon="icon-add" url="tbCustomerEntityController.do?suppliersAddorupdate" funname="add"></t:dgToolBar>
+   <t:dgToolBar title="编辑" icon="icon-edit" url="tbCustomerEntityController.do?suppliersAddorupdate" funname="update"></t:dgToolBar>
+   <t:dgToolBar title="查看" icon="icon-search" url="tbCustomerEntityController.do?suppliersAddorupdate" funname="detail"></t:dgToolBar>
    <t:dgToolBar title="删除" icon="icon-remove" url="tbCustomerEntityController.do?del" funname="delone"></t:dgToolBar>
   </t:datagrid>
   </div>

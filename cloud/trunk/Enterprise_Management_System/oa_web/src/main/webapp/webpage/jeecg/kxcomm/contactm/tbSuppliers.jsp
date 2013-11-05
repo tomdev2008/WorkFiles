@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>客户</title>
+  <title>供应商</title>
   <t:base type="jquery,easyui,tools,DatePicker"></t:base>
    <script type="text/javascript">
  function checkAddOrUpdate()
@@ -18,7 +18,7 @@
  </head>
 
  <body style="overflow-y: hidden" scroll="no">
-  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbCustomerEntityController.do?save&type=1">
+  <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbCustomerEntityController.do?save&type=2">
 			<input id="id" name="id" type="hidden" value="${tbCustomerEntityPage.id }">
 			<table style="width: 700px;" cellpadding="0" cellspacing="1" class="formtable">
 				<tr>
@@ -148,7 +148,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" style="width: 200px" id="shopCard" name="shopCard" 
+						<input class="inputxt" style="width: 200px" id="shopCard" name="shopCard" datatype="*"
 							   value="${tbCustomerEntityPage.shopCard}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -158,7 +158,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" style="width: 200px" id="billingInformation" name="billingInformation" 
+						<input class="inputxt" style="width: 200px" id="billingInformation" name="billingInformation" datatype="*"
 							   value="${tbCustomerEntityPage.billingInformation}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -171,7 +171,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" style="width: 200px" id="threeCards" name="threeCards" 
+						<input class="inputxt" style="width: 200px" id="threeCards" name="threeCards" datatype="*"
 							   value="${tbCustomerEntityPage.threeCards}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -181,7 +181,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" style="width: 200px" id="businessLicenseNo" name="businessLicenseNo" 
+						<input class="inputxt" style="width: 200px" id="businessLicenseNo" name="businessLicenseNo" datatype="*"
 							   value="${tbCustomerEntityPage.businessLicenseNo}">
 						<span class="Validform_checktip"></span>
 					</td>
@@ -193,7 +193,7 @@
 						</label>
 					</td>
 					<td class="value">
-						<input class="inputxt" style="width: 200px" id="legalRepresentative" name="legalRepresentative" 
+						<input class="inputxt" style="width: 200px" id="legalRepresentative" name="legalRepresentative" datatype="*"
 							   value="${tbCustomerEntityPage.legalRepresentative}">
 						<span class="Validform_checktip"></span>
 					</td>
