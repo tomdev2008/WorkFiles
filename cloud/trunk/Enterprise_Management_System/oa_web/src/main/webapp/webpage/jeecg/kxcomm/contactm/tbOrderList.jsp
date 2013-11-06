@@ -4,6 +4,7 @@
   <div region="center" style="padding:1px;">
   <t:datagrid name="tbOrderList"  fitColumns="true" title="销售订单" actionUrl="tbOrderController.do?datagrid" idField="id" fit="true" queryMode="group"  onClick="orderDetail"  width="auto">
    <t:dgCol title="编号" field="id" hidden="false"></t:dgCol>
+   <t:dgCol title="合同ID" field="tbContract_id" hidden="false"></t:dgCol>
    <t:dgCol title="康讯订单号" field="kxOrderNo" query="true"  width="30"></t:dgCol>
    <t:dgCol title="项目名称" field="projectName" query="true"  ></t:dgCol>
    <t:dgCol title="合同编号" field="tbContract_contractNo" query="true" width="25"></t:dgCol>
@@ -19,8 +20,8 @@
    <t:dgCol title="备注" field="remark"  hidden="false"></t:dgCol>
     <t:dgCol title="采购状态" field="status" hidden="false" query="true"></t:dgCol>
 <%--    <t:dgToolBar title="录入" icon="icon-add" url="tbOrderController.do?addorupdate" funname="add"></t:dgToolBar> --%>
-   <t:dgToolBar title="编辑" icon="icon-edit" url="tbOrderController.do?addorupdate" funname="update" ></t:dgToolBar>
-   <t:dgToolBar title="查看" icon="icon-search" url="tbOrderController.do?addorupdate" funname="detail"></t:dgToolBar>
+<%--    <t:dgToolBar title="编辑" icon="icon-edit" url="tbOrderController.do?addorupdate" funname="update" ></t:dgToolBar> --%>
+<%--    <t:dgToolBar title="查看" icon="icon-search" url="tbOrderController.do?addorupdate" funname="detail"></t:dgToolBar> --%>
    <t:dgToolBar title="删除" icon="icon-remove"  funname="delone"></t:dgToolBar>
   </t:datagrid>
  </div>
@@ -62,4 +63,13 @@
 		}
 		delObj('tbOrderController.do?del&id='+ rowData.id,'tbOrderList');
 	}
+	
+// function update(rowIndex, rowData) {
+// 	var rowData = $('#tbOrderList').datagrid('getSelected');
+// 	if (!rowData) {
+// 		tip('请选择要修改');
+// 		return;
+// 	}  
+// 	createwindow('修改订单','tbOrderController.do?addorupdate&id='+rowData.tbContract_id,'tbOrderList');
+//  }
 </script>

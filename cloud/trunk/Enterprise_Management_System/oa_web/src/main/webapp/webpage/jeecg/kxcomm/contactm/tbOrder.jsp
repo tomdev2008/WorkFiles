@@ -33,6 +33,12 @@
 		 var tt = $("input[name='"+object.name+"']").parent().parent();
 		 var price = $(tt.find("input")[6]).val();
 		 var num = $(tt.find("input")[7]).val();
+		 var order = $(tt.find("input")[5]).val();
+		 var totle = $(tt.find("input")[4]).val();
+		 if(totle < ((order*1)+(num*1))) {
+			 tip('下单数和已下单数不能超过总数');
+			 return;
+		 }
 		 var totalprice = price*num;
 		 $(object).val(totalprice);
 		     

@@ -73,7 +73,7 @@
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.discountedPrice }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.tbDataRecord.otherrates }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.discountedAfterPrice }</label></td>
-	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><input type="text" name="exchangeRate" size="5" value="${poVal.exchangeRate }" /></td>
+	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><input type="text" name="exchangeRate" size="5" readonly="readonly" value="${poVal.exchangeRate }" /></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.tbDataRecord.installservicecharge }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.firstYear }</label></td>
 	  			<td style="border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;"><label>${poVal.secondYear }</label></td>
@@ -249,7 +249,7 @@
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.discountPrice+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.otherrates+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.xianChangJia+"</label></td>"
- 	 		 			+"<td width='3%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;'><input type='text' name='exchangeRate' size='5' value='"+rowData.exchangeRate+"' /></td>"
+ 	 		 			+"<td width='3%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;'><input type='text' name='exchangeRate' size='5' readonly='readonly' value='"+rowData.exchangeRate+"' /></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.installservicecharge+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.firstyear+"</label></td>"
  	 		 			+"<td width='6%' style='border-style: dotted;border-color: #ccc;border-width: 0 1px 1px 0;' ><label>"+rowData.secondyear+"</label></td>"

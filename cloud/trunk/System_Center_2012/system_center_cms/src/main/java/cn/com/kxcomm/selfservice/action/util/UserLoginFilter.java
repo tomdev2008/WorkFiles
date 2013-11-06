@@ -2,7 +2,6 @@ package cn.com.kxcomm.selfservice.action.util;
 
 import java.util.List;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;

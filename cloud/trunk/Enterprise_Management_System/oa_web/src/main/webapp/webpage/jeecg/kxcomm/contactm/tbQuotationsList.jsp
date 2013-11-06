@@ -76,13 +76,24 @@
 			    ok: function(){
 			    	
 			    	iframe = this.iframe.contentWindow;
-			    	var end = s();
+			    	var name = $('#title', iframe.document).val();
+					$.ajax({
+				    	url:'tbQuotationsController.do?save' , // 可以获取数据的接口
+				    	dataType:"json",
+				    	data:{'name':name},
+				    	success:function(data) {
+				    		$.dialog.tips(data.msg,2);
+				    		$('#quotations').panel("refresh", "tbConfigModelsController.do?changePageById");
+				    	}
+				    });
+			    	/*var end = s();
 			    	if(end){
 						var timer_alert = setTimeout(function() {	
 							$('#quotations').panel("refresh", "tbConfigModelsController.do?changePageById");
 						}, 2000);
-			    	}
-					return false;
+			    	}*/
+			    	
+					return true;
 			    },
 			    cancelVal: '关闭',
 			    cancel: true
@@ -98,13 +109,24 @@
 				cache:false,
 			    ok: function(){
 			    	iframe = this.iframe.contentWindow;
-			    	var end = s();
+			    	var name = $('#title', iframe.document).val();
+					$.ajax({
+				    	url:'tbQuotationsController.do?save' , // 可以获取数据的接口
+				    	dataType:"json",
+				    	data:{'name':name},
+				    	success:function(data) {
+				    		$.dialog.tips(data.msg,2);
+				    		$('#quotations').panel("refresh", "tbConfigModelsController.do?changePageById");
+				    	}
+				    });
+					/*var end = s();
 			    	if(end){
 						var timer_alert = setTimeout(function() {	
 							$('#quotations').panel("refresh", "tbConfigModelsController.do?changePageById");
 						}, 2000);
-			    	}
-					return false;
+			    	}*/
+			    	
+					return true;
 			    },
 			    cancelVal: '关闭',
 			    cancel: true 

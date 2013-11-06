@@ -92,8 +92,8 @@
 				<td align="center"><input name="tbOrderDetailList[${stuts.index }].number" maxlength="85" value="${poVal.number }" type="text" style="width:80px;" readonly="readonly"/></td>
 				<td align="center"><input name="tbOrderDetailList[${stuts.index }].purchaseprice"  maxlength="85" value="${poVal.purchaseprice }" type="text" style="width:80px;" readonly="readonly"></td>
 				<td align="center"><input name="tbOrderDetailList[${stuts.index }].price" maxlength="85" value="${poVal.price }" type="text" readonly="readonly" style="width:80px;" ></td>
-				<td align="center"><input name="tbOrderDetailList[${stuts.index }].number" maxlength="85" value="${poVal.number }" type="text" style="width:80px;" /></td>
-				<td align="center"><input name="tbOrderDetailList[${stuts.index }].totalprice" maxlength="85" value="${poVal.totalprice }" type="text" readonly="readonly" style="width:80px;" onfocus="getSum(this);"/></td>
+				<td align="center"><input name="tbOrderDetailList[${stuts.index }].number" maxlength="85" value="${poVal.number }" type="text" style="width:60px;" /></td>
+				<td align="center"><input name="tbOrderDetailList[${stuts.index }].totalprice" maxlength="85" value="${poVal.totalprice }" type="text" readonly="readonly" style="width:100px;" onfocus="getSum(this);"/></td>
    			</tr>
    			
 		</c:forEach>

@@ -52,12 +52,24 @@
 				
 			    ok: function(){
 			    	iframe = this.iframe.contentWindow;
-					saveObj();
+			    	var name = $('#name', iframe.document).val();
+			    	var dataSourceId = $('#dataSourceId', iframe.document).val();
+			    	var quotationId = $('#quotationId', iframe.document).val();
+			    	alert(name);alert(dataSourceId);alert(quotationId);
+					$.ajax({
+				    	url:'tbConfigModelsController.do?save' , // 可以获取数据的接口
+				    	dataType:"json",
+				    	data:{'name':name,'dataSourceId':dataSourceId,'quotationId':quotationId},
+				    	success:function(data) {
+				    		$.dialog.tips(data.msg,2);
+				    		$('#quotations').panel("refresh", "tbConfigModelDataController.do?changePageById");
+				    	}
+				    });
+					/*saveObj();
 					var timer_alert = setTimeout(function() {	
 						$('#quotations').panel("refresh", "tbConfigModelDataController.do?changePageById");
-					}, 2000);
-					
-					return false;
+					}, 2000);*/
+					return true;
 			    },
 			    cancelVal: '关闭',
 			    cancel: true
@@ -73,11 +85,24 @@
 				cache:false,
 			    ok: function(){
 			    	iframe = this.iframe.contentWindow;
-					saveObj();
+			    	var name = $('#name', iframe.document).val();
+			    	var dataSourceId = $('#dataSourceId', iframe.document).val();
+			    	var quotationId = $('#quotationId', iframe.document).val();
+			    	alert(name);alert(dataSourceId);alert(quotationId);
+					$.ajax({
+				    	url:'tbConfigModelsController.do?save' , // 可以获取数据的接口
+				    	dataType:"json",
+				    	data:{'name':name,'dataSourceId':dataSourceId,'quotationId':quotationId},
+				    	success:function(data) {
+				    		$.dialog.tips(data.msg,2);
+				    		$('#quotations').panel("refresh", "tbConfigModelDataController.do?changePageById");
+				    	}
+				    });
+					/*saveObj();
 					var timer_alert = setTimeout(function() {	
 						$('#quotations').panel("refresh", "tbConfigModelDataController.do?changePageById");
-					}, 2000);
-					return false;
+					}, 2000);*/
+					return true;
 			    },
 			    cancelVal: '关闭',
 			    cancel: true 

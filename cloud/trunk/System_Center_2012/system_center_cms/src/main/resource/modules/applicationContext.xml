@@ -10,15 +10,27 @@
 	
 	<context:component-scan base-package="cn.com.kxcomm" />
 	<!-- database conection config -->
-	<bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<!-- <bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@192.168.7.145:1521:orcl" /> 
+			<property name="url" value="jdbc:oracle:thin:@192.168.7.154:1521:orcl" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.7.155:1521:ORCL" />
+			<property name="username" value="syscen" />
 		<property name="username" value="sys_center" />
 		<property name="password" value="123456" />
 		<property name="maxActive" value="50" />
 		<property name="maxIdle" value="30" />
 		<property name="maxWait" value="1000" />
-	</bean> 
+	</bean>  -->
+	
+	<bean id="baseDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/syscen?characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+		<property name="maxActive" value="50" />
+		<property name="maxIdle" value="30" />
+		<property name="maxWait" value="1000" />
+	</bean>
 	
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 	
@@ -42,9 +54,9 @@
 	<aop:config>
 		<aop:pointcut id="allManagerMethod"
 			expression="execution(* cn.com.kxcomm.selfservice.service.impl.*Service*.*(..))" />
-		<aop:pointcut id="allActionMethod"
+		<!-- <aop:pointcut id="allActionMethod"
 			expression="execution(public String cn.com.kxcomm.selfservice.action..*.*()) and
-			 !execution(* get*()) and !execution(* toString()) and !execution(* ...*$$EnhancerByCGLIB*.*(..))" />
+			 !execution(* get*()) and !execution(* toString()) and !execution(* ...*$$EnhancerByCGLIB*.*(..))" /> -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
 	</aop:config>
 	
@@ -53,14 +65,16 @@
 		<property name="dataSource" ref="baseDataSource" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.connection.release_mode">after_transaction</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.jdbc.fetch_size">50</prop>
 				<prop key="hibernate.jdbc.batch_size">30</prop>
 				<!-- 配置hibernate用户制定的schema -->
-				<prop key="hibernate.default_schema">sys_center</prop>
+				<!-- <prop key="hibernate.default_schema">sys_center</prop> -->
+				
 				<!-- 启用二级缓存 -->
 				<!-- <prop key="hibernate.cache.use_second_level_cache">true</prop>-->
 				<!--配置缓存插件 -->

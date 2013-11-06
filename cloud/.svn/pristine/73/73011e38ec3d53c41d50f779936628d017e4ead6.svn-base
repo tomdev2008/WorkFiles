@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/jsp/" /> -->
+	<constant name="struts.custom.i18n.resources" value="exceptionMessages"></constant>
+	<constant name="struts.locale" value="en_utf-8" />
+	<include file="struts-default.xml" />
+	<include file="struts-order.xml"></include>
+	<include file="struts-system.xml"></include>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+    <!-- 定义全局模块 -->
+	<package name="global" extends="json-default">
+		<interceptors>
+			<interceptor name="authenticationInterceptor"
+				class="cn.com.kxcomm.base.interceptor.AuthenticationInterceptor"></interceptor>
+			<interceptor-stack name="authenticationStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="authenticationInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="authenticationStack"></default-interceptor-ref>
+		<global-results>
+			<result name="operationException">/webapp/jsp/common/operationException.jsp</result>
+			<result name="systemException">/webapp/jsp/common/systemException.jsp</result>
+			<result name="login">/jsp/main/index.jsp</result>
+			<result name="timeout">/jsp/timeout.jsp</result>
+			<result type="json" />
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="operationException" exception="cn.com.kxcomm.base.exception.OperationException"></exception-mapping>
+			<exception-mapping result="systemException" exception="cn.com.kxcomm.base.exception.SystemException"></exception-mapping>
+		</global-exception-mappings>
+	</package>
+	
+	<package name="authentication" extends="global" >
+        	<!-- 登录 -->
+		<action name="Login" class="cn.com.kxcomm.selfservice.action.system.TenantsAction" method="tenantsLogin">
+			<result name="success" >jsp/main/index.html</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+</struts>

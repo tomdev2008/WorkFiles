@@ -7,6 +7,7 @@
 	<constant name="struts.custom.i18n.resources" value="exceptionMessages"></constant>
 	<constant name="struts.locale" value="en_utf-8" />
 	<include file="struts-default.xml" />
+	<include file="struts-order.xml"></include>
 	<include file="struts-system.xml"></include>
 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
     <!-- 定义全局模块 -->

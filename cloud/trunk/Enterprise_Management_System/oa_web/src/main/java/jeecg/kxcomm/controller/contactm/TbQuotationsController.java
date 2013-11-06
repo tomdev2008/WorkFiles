@@ -168,6 +168,8 @@ public class TbQuotationsController extends BaseController {
 			}
 		} else {
 			message = "添加成功";
+			String title = request.getParameter("name");
+			tbQuotations.setTitle(title);
 			String fileName = System.currentTimeMillis()+".xlsx";
 			tbQuotations.setDownUrl(fileName);
 			tbQuotations.setCreateTime(new Date());
@@ -255,4 +257,5 @@ public class TbQuotationsController extends BaseController {
 		String fileName = tbQuotations.getDownUrl();
 	    return PathConstants.basePath+urlPath+fileName;
 	}
+	
 }

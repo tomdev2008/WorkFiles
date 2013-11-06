@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * 
 * 功能描述:角色实体类
@@ -23,7 +25,7 @@ import javax.persistence.Table;
 * @since mms-cms-unicom
  */
 @Entity
-@SequenceGenerator(name="SEQ_ROLE_ID",sequenceName="SEQ_ROLE_ID",allocationSize=1)
+//@SequenceGenerator(name="SEQ_ROLE_ID",sequenceName="SEQ_ROLE_ID",allocationSize=1)
 @Table(name = "tb_role")
 public class TbRole implements java.io.Serializable {
 
@@ -57,7 +59,9 @@ public class TbRole implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="SEQ_ROLE_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GenericGenerator(name = "gen", strategy = "uuid")
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="SEQ_ROLE_ID")
 	@Column(name = "id", nullable = false)
 	public Long getId() {
 		return this.id;

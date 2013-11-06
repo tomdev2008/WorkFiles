@@ -45,45 +45,8 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 总记录数
-	 */
-	public final String TOTAL_ROWS = "totalRows";
-
-	/**
-	 * 查询全部
-	 */
-	public static final String LIST = "list";
-
-	/**
-	 * 管理员名秄1�7
-	 */
-	public String adminname;
-	/**
-	 * 管理员角艄1�7
-	 */
-	public String adminrole;
-
-	public String getAdminrole() {
-		return adminrole;
-	}
-
-
-	public void setAdminrole(String adminrole) {
-		this.adminrole = adminrole;
-	}
-
-
-	public String getAdminname() {
-		return adminname;
-	}
-
-
-	public void setAdminname(String adminname) {
-		this.adminname = adminname;
-	}
-
 	public boolean success;
+	
 	public String msg;
 	/**
 	 * 分页对象
@@ -121,7 +84,6 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 		this.msg = msg;
 	}
 	
-	//@JSON(serialize=true)
 	public List<T> getList() {
 		return list;
 	}
@@ -204,6 +166,7 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 * 
 	 * @return
 	 */
+	@JSON(serialize = false)
 	protected Page<T> getPageInfo() {
 		return new Page(ServletActionContext.getRequest());
 	}
@@ -230,6 +193,7 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 * @param success
 	 * @param msg 
 	 */
+	@JSON(serialize = false)
 	public String info(boolean success,String msg){
 		this.success = success;
 		this.msg = msg;
@@ -299,6 +263,7 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 * </pre>
 	 * @return
 	 */
+	@JSON(serialize = false)
 	public abstract T getModel();
 
 	/**
@@ -311,6 +276,7 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 * 在子类中具体匄1�7,这样struts组装旄1�7,类型才能正确!!
 	 * @return
 	 */
+	@JSON(serialize = false)
 	public abstract PK[] getIds();
 
 	/**
@@ -325,6 +291,7 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 * 
 	 * @return
 	 */
+	@JSON(serialize = false)
 	public static HttpServletRequest getHttpRequest() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		return request;
@@ -349,6 +316,7 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 * 
 	 * @return
 	 */
+	@JSON(serialize = false)
 	public static HttpSession getHttpSession() {
 		HttpSession session=ServletActionContext.getRequest().getSession();
 		return session;
@@ -359,6 +327,7 @@ public abstract class BaseAction<T,PK extends Serializable> extends ActionSuppor
 	 * 
 	 * @return
 	 */
+	@JSON(serialize = false)
 	public static HttpServletResponse getHttpResponse() {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		return response;

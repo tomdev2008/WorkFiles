@@ -160,12 +160,13 @@ public class TbConfigModelsController extends BaseController {
 		} else {
 			message = "添加成功";
 			String quotationId = request.getParameter("quotationId");
-			
+			String name = request.getParameter("name");
 			String dataSourceId = request.getParameter("dataSourceId");
 			
 			TbQuotationsEntity tbQuotations = systemService.getEntity(TbQuotationsEntity.class, quotationId);
 			TbDataSourceEntityEntity tbDataSource = systemService.getEntity(TbDataSourceEntityEntity.class, dataSourceId);
 			
+			tbConfigModels.setName(name);
 			tbConfigModels.setType(tbDataSource.getTbDataSourceType().getId());
 			tbConfigModels.setTbDataSource(tbDataSource);
 			tbConfigModels.setTbQuotations(tbQuotations);

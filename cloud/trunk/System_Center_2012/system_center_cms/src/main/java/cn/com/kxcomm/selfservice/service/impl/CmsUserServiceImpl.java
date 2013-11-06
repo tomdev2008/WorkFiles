@@ -191,13 +191,41 @@ public class CmsUserServiceImpl extends CommonServiceImpl<TbCmsUser> implements 
 			List list = cmsUserDAO.executeHql(hql, roleId,roleId,roleId);
 			Object[] obj = new Object[list.size()];
 			List<RightEntity> rightList = new ArrayList<RightEntity>();
+			Object object = null;
+			int rightid = 0;
+			short level = 0;
+			int parentId = 0;
 			for (int i = 0; i < list.size(); i++) {
 				obj = (Object[]) list.get(i);
 				RightEntity entity = new RightEntity();
-				entity.setRightId(((BigDecimal)obj[0]).intValue());
+				object = obj[0];
+				if(object instanceof BigDecimal){
+					rightid = ((BigDecimal)object).intValue();
+				}else if(object instanceof Integer){
+					rightid = (Integer) obj[0];
+				}
+				entity.setRightId(rightid);
 				entity.setRightName(BlankUtil.isNull(obj[1]));
-				entity.setParentId(obj[2]!=null?((BigDecimal)obj[2]).intValue():0);
-				entity.setLevel(((BigDecimal)obj[3]).shortValue());
+				
+				object = obj[2];
+				if( null == object){
+					parentId = 0;
+				}else{
+					if(object instanceof BigDecimal){
+						parentId = ((BigDecimal)object).intValue();
+					}else if(object instanceof Integer){
+						parentId = (Integer)object;
+					}
+				}
+				entity.setParentId(parentId);
+				
+				object = obj[3];
+				if(object instanceof BigDecimal){
+					level = ((BigDecimal)obj[3]).shortValue();
+				}else if(object instanceof Short){
+					level = (Short) obj[3];
+				}
+				entity.setLevel(level);
 				entity.setUrl(BlankUtil.isNull(obj[4]));
 				rightList.add(entity);
 			}

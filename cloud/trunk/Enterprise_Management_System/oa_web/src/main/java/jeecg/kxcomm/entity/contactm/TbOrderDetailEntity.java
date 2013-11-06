@@ -54,7 +54,17 @@ public class TbOrderDetailEntity implements java.io.Serializable {
 	 */
 	private String status;
 	
+	private String configModelsId;
 	
+	@Column(name ="config_models_id",nullable=true,length=255)
+	public String getConfigModelsId() {
+		return this.configModelsId;
+	}
+
+	public void setConfigModelsId(String configModelsId) {
+		this.configModelsId = configModelsId;
+	}
+
 	@Column(name ="status",nullable=true,length=20)
 	public String getStatus() {
 		return status;

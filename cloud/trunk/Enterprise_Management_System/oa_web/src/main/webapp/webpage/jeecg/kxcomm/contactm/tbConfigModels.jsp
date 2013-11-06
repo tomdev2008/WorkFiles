@@ -25,6 +25,7 @@
  <body style="overflow-y: hidden" scroll="no">
   <t:formvalid formid="formobj" dialog="true" usePlugin="password" layout="table" action="tbConfigModelsController.do?save&quotationId=${qid }">
 			<input id="id" name="id" type="hidden" value="${tbConfigModelsPage.id }">
+			<input id="quotationId" name="quotationId" type="hidden" value="${qid }">
 			<table style="width: 600px;" cellpadding="0" cellspacing="1" class="formtable">
 				<tr>
 					<td align="right">

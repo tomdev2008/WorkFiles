@@ -207,7 +207,7 @@ public class InitDatabase {
 			tbRight.setRightName("用户管理");
 			tbRight.setParid(5);
 			tbRight.setRightLevel(2);
-			tbRight.setUrl("/jsp/user/user.jsp");
+			tbRight.setUrl("/jsp/user_manager/user_manager.jsp");
 			rightDAO.save(tbRight);
 			
 			//+++++++++++++++++++++++++++++++++
@@ -218,7 +218,7 @@ public class InitDatabase {
 			tbRight.setRightName("角色管理");
 			tbRight.setParid(5);
 			tbRight.setRightLevel(2);
-			tbRight.setUrl("/jsp/role/role.jsp");
+			tbRight.setUrl("/jsp/role_manager/role_manager.jsp");
 			rightDAO.save(tbRight);
 			
 			//**********************第三级菜单*********************

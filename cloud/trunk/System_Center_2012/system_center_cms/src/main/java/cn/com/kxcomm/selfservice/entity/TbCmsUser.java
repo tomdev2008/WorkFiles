@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 /**
  * 
 * 功能描述: 用户实体
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 * @since mms-cms-unicom
  */
 @Entity
-@SequenceGenerator(name="SEQ_CMS_USER_ID",sequenceName="SEQ_CMS_USER_ID",allocationSize=1)
+//@SequenceGenerator(name="SEQ_CMS_USER_ID",sequenceName="SEQ_CMS_USER_ID",allocationSize=1)
 @Table(name = "tb_cms_user")
 public class TbCmsUser implements java.io.Serializable {
 
@@ -44,7 +46,9 @@ public class TbCmsUser implements java.io.Serializable {
 	private String phoneNumber;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="SEQ_CMS_USER_ID")
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="SEQ_CMS_USER_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GenericGenerator(name = "gen", strategy = "uuid")
 	@Column(name = "id",  nullable = false)
 	public Long getId() {
 		return this.id;

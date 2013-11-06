@@ -211,7 +211,7 @@
 						</label>
 					</td>
 					<td class="value" colspan="3">
-					<textarea style="width:70%;height:80px;" id="description" name="description"  datatype="s0-50">${tbCustomerEntityPage.description}</textarea>
+					<textarea style="width:70%;height:80px;" id="description" name="description"  datatype="*0-100">${tbCustomerEntityPage.description}</textarea>
 						<span class="Validform_checktip"></span>
 					</td>
 				</tr>

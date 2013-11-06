@@ -35,6 +35,12 @@
   			$("#status").val(status);
   		}
     }
+  
+  //根据选择的金额比例改变相应的价格
+  function changesMoney(){
+	  var endvalues = $("#peyfortime").val();
+	  
+  } 
   </script>
  </head>
  <body style="overflow-y: hidden" scroll="no">
@@ -108,6 +114,17 @@
 					         ${temps.companyName}
 					        </option>
 					       </c:forEach>
+				      	</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<label class="Validform_label">
+							付款比例:
+						</label>
+					</td>
+					<td class="value">
+						<select id="peyfortime"  name="peyfortime" onchange="changesMoney();">
 				      	</select>
 					</td>
 				</tr>

@@ -229,6 +229,25 @@ public class TbPurchaseController extends BaseController {
 		return new ModelAndView("jeecg/kxcomm/contactm/tbPurchaseList");
 	}
 	
+	/**
+	 * 
+	 * 提供给销售、售后人员查询的某销售订单的采购信息
+	 * 
+	 * @param request
+	 * @return
+	 * @author zhangjh 新增日期：2013-11-5
+	 * @since private-kx-system
+	 */
+	@RequestMapping(params = "smallPurchase")
+	public ModelAndView smallPurchaseList(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		request.setAttribute("id",id);
+		String hql0 = "from TbPurchaseEntity where 1 = 1 AND tbOrderDetail.id = ? ";
+	    List<TbPurchaseEntity> list = systemService.findHql(hql0,id);
+	    request.setAttribute("smallPurchaseList", list);
+		return new ModelAndView("jeecg/kxcomm/contactm/tbSmallPurchaseList");
+	}
+	
 	
 
 	/**

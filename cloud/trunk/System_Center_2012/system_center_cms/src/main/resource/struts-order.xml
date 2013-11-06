@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="order" extends="global" namespace="/order">
+		<action name="order" class="cn.com.kxcomm.selfservice.action.order.OrdersAction">
+			<result name="success" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">success,msg</param>
+			</result>
+			<result name="list" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">pageList.*</param>
+				<param name="excludeProperties">pageList.result\[\d+\]\.orderDetailEntity.*</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

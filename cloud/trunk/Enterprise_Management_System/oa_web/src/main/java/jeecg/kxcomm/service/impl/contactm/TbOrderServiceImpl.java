@@ -8,9 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jeecg.kxcomm.entity.contactm.TbConfigModelsEntity;
 import jeecg.kxcomm.entity.contactm.TbContractEntity;
+import jeecg.kxcomm.entity.contactm.TbContractQuotationsEntity;
 import jeecg.kxcomm.entity.contactm.TbOrderDetailEntity;
 import jeecg.kxcomm.entity.contactm.TbOrderEntity;
+import jeecg.kxcomm.entity.contactm.TbQuotationsDataEntity;
 import jeecg.kxcomm.service.contactm.TbContractServiceI;
 import jeecg.kxcomm.service.contactm.TbOrderServiceI;
 import jeecg.kxcomm.util.BusinessUtil;
@@ -46,10 +49,36 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 			}
 			tbOrder.setTotalPrice(""+sum);
 			this.save(tbOrder);
-		
+			String conid = tbOrder.getTbContract().getId();
+			List<TbContractQuotationsEntity> contracts = this.findByProperty(TbContractQuotationsEntity.class,"contractId.id",conid);
+			List<TbQuotationsDataEntity> modelsEntities = new ArrayList<TbQuotationsDataEntity>();
+			for(TbContractQuotationsEntity quotationsEntity:contracts){
+				System.out.println("****************: "+quotationsEntity.getQuotationsId());
+				List<TbQuotationsDataEntity> entities = this.findByProperty(TbQuotationsDataEntity.class,"tbQuotations.id",quotationsEntity.getQuotationsId().getId());
+				for(TbQuotationsDataEntity entity:entities){
+					modelsEntities.add(entity);
+				}
+			}
 			/**保存-产品明细*/
 			for(TbOrderDetailEntity tbOrderDetail:tbOrderDetailList){
 				//外键设置
+				if(null != tbOrderDetail.getNumber() && !"".equals(tbOrderDetail.getNumber())) {
+					if(0 < tbOrderDetail.getNumber().indexOf(",")) {
+						String[] ends = tbOrderDetail.getNumber().split(",");
+						tbOrderDetail.setNumber(ends[1]);
+					}
+				}
+				if(null != tbOrderDetail.getId() && !"".equals(tbOrderDetail.getId())) {
+					for(TbQuotationsDataEntity tentity:modelsEntities) {
+						if(tbOrderDetail.getId().equals(tentity.getTbConfigModels().getId())) {
+							String order = tentity.getOrdered();
+							String nownum = tbOrderDetail.getNumber();
+							order = (Integer.parseInt(order)+Integer.parseInt(nownum))+"";
+							this.updateBySqlString("update tb_quotations_data set ordered = '"+order+"' where id = '"+tentity.getId()+"'");
+						}
+					}
+				}
+				tbOrderDetail.setPurchaseprice("0");
 				tbOrderDetail.setStatus(BusinessUtil.TO_PURCHASE);
 				tbOrderDetail.setTbOrder(tbOrder);//.setOrderId(tbOrder.getId());////
 				this.save(tbOrderDetail);
@@ -65,12 +94,6 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 				String rs = commonUtil.numberFormat(tbOrderDetail.getTotalprice(), 4, true);
 				totalPrice = Double.parseDouble(rs);
 				System.out.println("******"+totalPrice);
-			}
-			if(null != tbOrderDetail.getNumber() && !"".equals(tbOrderDetail.getNumber())) {
-				if(0 < tbOrderDetail.getNumber().indexOf(",")) {
-					String[] ends = tbOrderDetail.getNumber().split(",");
-					tbOrderDetail.setNumber(ends[0]);
-				}
 			}
 			sum+=totalPrice;
 		}
@@ -101,8 +124,8 @@ public class TbOrderServiceImpl extends CommonServiceImpl implements TbOrderServ
 	    	if(null!=tbOrderDetail.getId() && !(tbOrderDetail.getId()).equals("")){
 	    		TbOrderDetailEntity t = this.getEntity(TbOrderDetailEntity.class, tbOrderDetail.getId());
 	    		t.setName(tbOrderDetail.getName());
-	    		t.setNumber(tbOrderDetail.getNumber());
 	    		System.out.println("********************: "+tbOrderDetail.getNumber());
+	    		t.setNumber(tbOrderDetail.getNumber());
 	    		t.setPrice(tbOrderDetail.getPrice());
 	    		t.setTotalprice(tbOrderDetail.getTotalprice());
 	    		t.setType(tbOrderDetail.getType());

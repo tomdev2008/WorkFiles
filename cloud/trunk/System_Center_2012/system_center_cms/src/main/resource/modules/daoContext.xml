@@ -17,4 +17,5 @@
 	<bean id="rightRoleDAO" class="cn.com.kxcomm.selfservice.dao.RightRoleDAO" parent="commonDAO"></bean>
 	<bean id="cmsUserDAO" class="cn.com.kxcomm.selfservice.dao.CmsUserDAO" parent="commonDAO"></bean>
 	<bean id="tenantsDAO" class="cn.com.kxcomm.selfservice.dao.TenantsDAO" parent="commonDAO"></bean>
+	<bean id="ordersDAO" class="cn.com.kxcomm.selfservice.dao.OrdersDAO" parent="commonDAO"></bean>
 </beans>
